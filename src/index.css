@@ -8,7 +8,6 @@
 }
 
 :root {
-  --lighter: #dd3355;
   --background: #fcfcfc;
   --darker: #2e3532;
   --primary: #dd3355;
@@ -23,7 +22,7 @@ body {
 }
 
 header {
-  background-color: var(--darker);
+  background-color: var(--accent);
 
   img {
     max-width: 15rem;
@@ -33,4 +32,13 @@ header {
 
 main {
   min-height: calc(100vh - 295px);
+}
+
+footer {
+  background-color: var(--darker);
+
+  a {
+    color: var(--accent) !important;
+    padding-left: 0 !important;
+  }
 }
