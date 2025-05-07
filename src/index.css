@@ -1,2 +1,27 @@
 @import 'bootstrap';
 @import 'bootstrap-icons';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+:root {
+  --lighter: #dd3355;
+  --background: #fcfcfc;
+  --darker: #2e3532;
+  --primary: #dd3355;
+  --secondary: #f0d3f7;
+  --tertiary: #fbd87f;
+  --accent: #81d2c7;
+}
+
+header {
+  background-color: var(--darker);
+
+  img {
+    max-width: 15rem;
+    padding-block: 1rem;
+  }
+}
