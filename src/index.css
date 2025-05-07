@@ -16,8 +16,15 @@
   --accent: #81d2c7;
 }
 
-body {
+.debug {
   min-height: 100vh;
+}
+
+
+
+
+body {
+
   min-width: 300px;
 }
 
@@ -31,13 +38,13 @@ header {
 }
 
 main {
-  min-height: calc(100vh - 200px);
+  /* min-height: calc(100vh - 200px); */
 }
 
 footer {
   background-color: var(--darker);
   min-height: 200px;
-  padding-top: 2rem;
+  padding-top: 1rem;
 
   a {
     color: var(--accent) !important;
