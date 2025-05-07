@@ -1,7 +1,15 @@
 export default function Header() {
     return (
         <>
-            <h1>header alessandro</h1>
+
+            <header>
+                <div className="container text-center">
+                    <a className="navbar-brand" href="/">
+                        <img src="/logoipsum-custom-logo-8.svg" alt="logo" />
+                    </a>
+                </div>
+            </header>
+
         </>
     )
 }

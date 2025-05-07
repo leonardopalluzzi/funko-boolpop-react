@@ -16,3 +16,12 @@
   --tertiary: #fbd87f;
   --accent: #81d2c7;
 }
+
+header {
+  background-color: var(--darker);
+
+  img {
+    max-width: 15rem;
+    padding-block: 1rem;
+  }
+}
