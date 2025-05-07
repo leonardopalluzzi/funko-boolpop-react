@@ -37,10 +37,6 @@ header {
   }
 }
 
-main {
-  /* min-height: calc(100vh - 200px); */
-}
-
 footer {
   background-color: var(--darker);
   min-height: 200px;
