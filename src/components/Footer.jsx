@@ -3,7 +3,7 @@ export default function Footer() {
         <>
             <footer>
                 <div className="col col-xl-">
-                    <div className="bg-black text-center p-3">
+                    <div className="bg-black p-3">
 
                         <ul className="nav justify-content-start flex-column ">
                             <li className="nav-item">
