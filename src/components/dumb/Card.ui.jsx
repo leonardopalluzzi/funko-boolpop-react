@@ -13,8 +13,32 @@ export default function CardUi({ images, name, price, attributes, license, promo
                         <ProductImages images={images} />
                     </div>
                     <div className="card-body p-3">
-                        <h4>{name}</h4>
-                        <span>{promotions.length > 0 ? (<>{price} €</>) : (<>{price * 100 / promotions[0].disocunt} €</>)}</span>
+                        <h4 className="mb-4">{name}</h4>
+                        <div className="price_section_card">
+                            {
+                                promotions.length > 0 ?
+                                    (
+                                        <>
+                                            <label>
+                                                <span className="text-danger fs-6">
+                                                    <del>{price} €</del>
+                                                </span>
+                                                <span className="price_label_card text-success">
+                                                    {
+                                                        (price * promotions[0].discount / 100).toFixed(2)
+                                                    } €
+                                                </span>
+                                            </label>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <label className="price_label_card">
+                                                {funko.result.price} €
+                                            </label>
+                                        </>
+                                    )
+                            }
+                        </div>
                         <span>{attributes}</span>
                         <span>{license}</span>
                     </div>
