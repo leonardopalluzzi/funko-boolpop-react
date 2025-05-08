@@ -30,7 +30,7 @@ export default function List({ query, scrollRef }) {
                     message: err.message
                 })
             })
-    }, [page])
+    }, [page, limit])
 
     function handleLoadNext() {
         setPage(page + 1)
@@ -59,10 +59,25 @@ export default function List({ query, scrollRef }) {
         case 'success':
             return (
                 <>
-                    <div className="page_counter">
+                    <div className="page_counter d-flex align-items-center justify-content-center gap-4">
+                        <div class="">
+                            <label for="" class="form-label">select item number</label>
+                            <select
+                                class="form-select form-select-lg"
+                                name=""
+                                id=""
+                                onChange={(e) => setLimit(Number(e.target.value))}
+                            >
+                                <option value='' selected>Select one</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                            </select>
+                        </div>
+
                         <span>Page: {page}</span>
                     </div>
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap">
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap my-5">
                         {products.data.map(product => (
                             <>
                                 <CardUi
