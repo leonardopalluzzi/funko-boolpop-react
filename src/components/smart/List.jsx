@@ -16,6 +16,8 @@ export default function List({ query, scrollRef }) {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&trans=${query}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
+
                 setProducts({
                     state: 'success',
                     data: data
@@ -84,10 +86,10 @@ export default function List({ query, scrollRef }) {
                                     images={product.images}
                                     name={product.name}
                                     price={Number(product.price)}
-                                    attributes={product.attributes}
                                     license={product.license}
                                     promotions={product.promotions}
                                     slug={product.slug}
+                                    quantity={product.quantity}
                                 />
                             </>
                         ))}

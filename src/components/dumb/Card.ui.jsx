@@ -1,10 +1,7 @@
-import { useNavigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ProductImages from "../smart/ProductImages"
 
-export default function CardUi({ images, name, price, attributes, license, promotions, slug }) {
-
-    const navigate = useNavigate()
-
+export default function CardUi({ images, name, price, license, promotions, slug, quantity }) {
     return (
         <>
             <div className="col">
@@ -40,11 +37,7 @@ export default function CardUi({ images, name, price, attributes, license, promo
                                         )
                                 }
                             </div>
-                            <span>{attributes}</span>
-                            <span>{license}</span>
-                        </div>
-                        <div className="card-footer">
-                            <button onClick={() => navigate(`/${slug}`)} className="btn btn-primary">Buy</button>
+                            <span className="d-block my-4">Available: {quantity}</span>
                         </div>
                     </div>
                 </Link>
