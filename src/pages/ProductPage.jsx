@@ -106,7 +106,7 @@ export default function ProductPage() {
                                                     Additional Information
                                                 </button>
                                             </h2>
-                                            <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                            <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                                 <div className="accordion-body">
                                                     <p>Category: {funko.result.category}</p>
                                                     <p>License: {funko.result.license}</p>
