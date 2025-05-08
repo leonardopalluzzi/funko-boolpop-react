@@ -14,6 +14,8 @@
   --secondary: #f0d3f7;
   --tertiary: #fbd87f;
   --accent: #81d2c7;
+  --text: #000000;
+  --text-light: #ffffff;
 }
 
 .debug {
@@ -27,6 +29,61 @@ body {
 
   min-width: 300px;
 }
+
+/* #region carosello per cards  */
+
+.caro_btn {
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--sf-text);
+  border: none;
+}
+
+.lists_scroll {
+  overflow: hidden;
+  overflow-y: visible;
+  display: flex;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.jumbo_slide {
+  overflow: hidden;
+  min-width: 100%;
+  height: 70vh;
+  position: relative;
+}
+
+.jumbo_img {
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.jumbo_info {
+  position: absolute;
+  z-index: 10;
+  bottom: 10%;
+  left: 5%;
+  color: var(--text-light);
+}
+
+.dots {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  ul {
+    display: flex;
+    gap: 5%;
+    color: var(--accent);
+  }
+
+}
+
+/* #endregion carosello per cards  */
 
 header {
   background-color: var(--accent);

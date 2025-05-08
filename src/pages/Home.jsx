@@ -1,8 +1,10 @@
+import Jumbo from "../components/smart/Jumbo"
+
 export default function Home() {
     return (
         <>
             <main className="debug">
-                <h2>homepage</h2>
+                <Jumbo />
             </main>
         </>
     )
