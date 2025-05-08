@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
 
 export default function ProductPage() {
@@ -8,17 +9,19 @@ export default function ProductPage() {
         state: 'loading'
     })
 
+    const { slug } = useParams()
+    console.log(slug);
 
     useEffect(() => {
-        const slug = funko.slug
         fetch(`http://localhost:3000/api/v1/funkoboolpop/${slug}`)
             .then(res => res.json())
             .then(data => {
                 setFunkos({
                     state: 'success',
-                    data: data
+                    result: data
                 })
-                console.log(funko);
+                console.log(data);
+
 
             })
             .catch(err => {
@@ -50,27 +53,27 @@ export default function ProductPage() {
                     <main>
                         <div className="container p-4 ">
                             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-                                <div className="col" key={funko.slug}>
+                                <div className="col" key={funko.result.slug}>
                                     <div className="card h-100 shadow-lg bg-emphasis">
                                         <div className="position-relative">
                                             <img
                                                 className="card-img-top"
-                                                src={funko.images[0].image}
-                                                alt={funko.name}
+                                                src={funko.result.images[0].image}
+                                                alt={funko.result.name}
                                                 style={{ height: '300px', objectFit: 'cover' }}
                                             />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <h1>{funko.name}</h1>
-                                    <p>{funko.price}</p>
+                                    <h1>{funko.result.name}</h1>
+                                    <p>{funko.result.price}</p>
                                     <button
                                         class="btn btn-outline-success my-2 my-sm-0"
                                         type="submit">
                                         Aggiungi al carrello
                                     </button>
-                                    <p>{funko.desctription}</p>
+                                    <p>{funko.result.desctription}</p>
                                     <div className="accordion" id="accordionExample">
                                         <div className="accordion-item">
                                             <h2 className="accordion-header">
@@ -80,9 +83,9 @@ export default function ProductPage() {
                                             </h2>
                                             <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                                 <div className="accordion-body">
-                                                    <p>{funko.categories}</p>
-                                                    <p>{funko.licenses}</p>
-                                                    <p>{funko.attributes}</p>
+                                                    <p>{funko.result.category}</p>
+                                                    <p>{funko.result.license}</p>
+                                                    <p>{funko.result.attributes[0].name}</p>
                                                 </div>
                                             </div>
                                         </div>
