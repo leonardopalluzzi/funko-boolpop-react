@@ -9,18 +9,6 @@ export default function HomeCarousels() {
 
     const trans = 0; // definisce il numero di transazioni minimo che un elemento deve avere
 
-    function setScrollTrans(value) {
-        if (scrollRefTrans.current) {
-            setScrollRefTrans(useRef(value))
-        }
-    }
-
-    function setScrollLast(value) {
-        if (scrollRefLast.current) {
-            setScrollRefLast(useRef(value))
-        }
-    }
-
     return (
         <>
             <div className="container">

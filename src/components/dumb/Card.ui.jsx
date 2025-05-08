@@ -1,5 +1,6 @@
 import { useActionState } from "react"
 import { useNavigate } from "react-router-dom"
+import ProductImages from "../smart/ProductImages"
 
 export default function CardUi({ images, name, price, attributes, license, promotions, slug }) {
 
@@ -10,7 +11,7 @@ export default function CardUi({ images, name, price, attributes, license, promo
             <div className="col">
                 <div className="card h-100">
                     <div className="card-header">
-                        <img src="logo.svg" alt="" />
+                        <ProductImages images={images} />
                     </div>
                     <div className="card-body">
                         <h2>{name}</h2>
