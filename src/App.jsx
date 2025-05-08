@@ -3,6 +3,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 import Home from "./pages/Home"
 
 
+
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+
 
     </>
   )

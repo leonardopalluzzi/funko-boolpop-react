@@ -1,7 +1,7 @@
 import CardUi from "../dumb/Card.ui"
 import { useState, useEffect } from "react"
 
-export default function List({ query }) {
+export default function List({ query, scrollRef }) {
 
     const [products, setProducts] = useState({
         state: 'loading'
@@ -11,6 +11,8 @@ export default function List({ query }) {
     const [limit, setLimit] = useState(5)  // definisce il numero di elementi ricevuti dal db
 
     useEffect(() => {
+        console.log('fetch eseguito');
+
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&trans=${query}`)
             .then(res => res.json())
             .then(data => {
@@ -29,6 +31,12 @@ export default function List({ query }) {
 
     function handleLoadNext() {
         setPage(page + 1)
+
+        if (scrollRef?.current) {
+            scrollRef.current.scrollLeft = 0; // Resetta lo scroll
+        }
+        console.log(page);
+
     }
 
     switch (products.state) {
@@ -58,10 +66,11 @@ export default function List({ query }) {
                                     attributes={product.attributes}
                                     license={product.license}
                                     promotions={product.promotions}
+                                    slug={product.slug}
                                 />
                             </>
                         ))}
-                        <button className="btn btn-primary" onClick={() => handleLoadNext}>Load More</button>
+                        <button className="btn btn-primary" onClick={() => handleLoadNext()}>Load More</button>
                     </div>
                 </>
             )

@@ -1,8 +1,8 @@
-import { useRef } from "react";
 
-export default function CarouselUi({ content }) {
 
-    const scrollRef = useRef();
+export default function CarouselUi({ content, scrollRef }) {
+
+
 
     function scroll(direction) {
         const { current } = scrollRef;

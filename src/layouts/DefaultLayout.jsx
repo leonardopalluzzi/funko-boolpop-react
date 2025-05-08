@@ -7,6 +7,7 @@ export default function () {
         <>
             <Header />
             <Outlet />
+
             <Footer />
         </>
     )

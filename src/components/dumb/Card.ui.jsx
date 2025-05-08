@@ -1,4 +1,10 @@
-export default function CardUi({ images, name, price, attributes, license, promotions }) {
+import { useActionState } from "react"
+import { useNavigate } from "react-router-dom"
+
+export default function CardUi({ images, name, price, attributes, license, promotions, slug }) {
+
+    const navigate = useNavigate()
+
     return (
         <>
             <div className="col">
@@ -11,6 +17,9 @@ export default function CardUi({ images, name, price, attributes, license, promo
                         <span>{promotions.length > 0 ? (<>{price}</>) : (<>{price * 100 / promotions[0].disocunt}</>)}</span>
                         <span>{attributes}</span>
                         <span>{license}</span>
+                    </div>
+                    <div className="card-footer">
+                        <button onClick={() => navigate(`/${slug}`)} className="btn btn-primary">Buy</button>
                     </div>
                 </div>
             </div>
