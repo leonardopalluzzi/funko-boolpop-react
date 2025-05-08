@@ -77,7 +77,7 @@ export default function List({ query, scrollRef }) {
 
                         <span>Page: {page}</span>
                     </div>
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap my-5">
+                    <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 my-5">
                         {products.data.map(product => (
                             <>
                                 <CardUi

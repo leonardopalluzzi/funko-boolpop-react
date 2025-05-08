@@ -37,7 +37,7 @@ body {
 }
 
 .lists_scroll {
-  overflow: hidden;
+  overflow-x: auto;
   overflow-y: visible;
   display: flex;
   scroll-behavior: smooth;
@@ -161,4 +161,8 @@ footer {
     cursor: pointer;
     color: var(--accent);
   }
+}
+
+.home_p_list {
+  flex-wrap: nowrap;
 }
