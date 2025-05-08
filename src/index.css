@@ -88,6 +88,7 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    color: var(--primary);
   }
 }
 
@@ -152,12 +153,12 @@ footer {
   ul {
     display: flex;
     gap: 5%;
-    color: var(--accent);
   }
 
   .dot_btn {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    color: var(--accent);
   }
 }
