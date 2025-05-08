@@ -5,7 +5,7 @@ export default function CardUi({ images, name, price, license, promotions, slug,
     return (
         <>
             <div className="col">
-                <Link to={`/${slug}`}>
+                <Link className="card_on_click" to={`/${slug}`}>
                     <div className="card w-100 h-100">
                         <div className="card-header p-0">
                             <ProductImages images={images} />

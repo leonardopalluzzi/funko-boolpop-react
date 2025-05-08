@@ -197,6 +197,10 @@ footer {
   height: 60%;
 }
 
+.card_on_click {
+  text-decoration: none;
+}
+
 
 
 .btn_chart {
