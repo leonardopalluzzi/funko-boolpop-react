@@ -60,8 +60,36 @@ export default function ProductPage() {
                                     </div>
                                 </div>
                                 <div className="col">
+                                    <label htmlFor="">{funko.result.license.toUpperCase()}</label>
                                     <h1 className="mb-5">{funko.result.name}</h1>
-                                    <h2>Price: <label className="price_label" htmlFor="">{funko.result.price}</label> </h2>
+                                    <div className="price_section">
+                                        <h2 className="mb-4">Price:</h2>
+                                        <div>
+                                            {
+                                                funko.result.promotion.length > 0 ?
+                                                    (
+                                                        <>
+                                                            <label>
+                                                                <span className="text-danger fs-5">
+                                                                    <del>{funko.result.price} €</del>
+                                                                </span>
+                                                                <span className="price_label mx-3 text-success">
+                                                                    {
+                                                                        (funko.result.price * funko.result.promotion[0].discount / 100).toFixed(2)
+                                                                    } €
+                                                                </span>
+                                                            </label>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <label className="price_label">
+                                                                {funko.result.price} €
+                                                            </label>
+                                                        </>
+                                                    )
+                                            }
+                                        </div>
+                                    </div>
                                     <button
                                         class="btn btn_chart my-2 my-sm-0"
                                         type="submit">

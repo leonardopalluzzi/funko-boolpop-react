@@ -14,7 +14,7 @@ export default function CardUi({ images, name, price, attributes, license, promo
                     </div>
                     <div className="card-body p-3">
                         <h4>{name}</h4>
-                        <span>{promotions.length > 0 ? (<>{price}</>) : (<>{price * 100 / promotions[0].disocunt}</>)}</span>
+                        <span>{promotions.length > 0 ? (<>{price} €</>) : (<>{price * 100 / promotions[0].disocunt} €</>)}</span>
                         <span>{attributes}</span>
                         <span>{license}</span>
                     </div>

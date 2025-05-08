@@ -191,10 +191,12 @@ footer {
 }
 
 .price_label {
-  background-color: var(--accent);
   padding: 1rem;
+  border: 1px solid var(--accent);
   border-radius: 20px;
   margin-bottom: 3rem;
+  font-weight: 700;
+  font-size: 2rem;
 }
 
 .btn_chart {
@@ -207,6 +209,10 @@ footer {
   &:hover {
     background-color: var(--accent);
   }
+}
+
+.price_section {
+  margin: 3rem 0;
 }
 
 .product_description {
