@@ -19,13 +19,13 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
                   {i == slideIndex ? (
                     <>
                       <button className="dot_btn" onClick={() => setIndex(i)}>
-                        <i class="bi bi-circle-fill"></i>
+                        <i className="bi bi-circle-fill"></i>
                       </button>
                     </>
                   ) : (
                     <>
                       <button className="dot_btn" onClick={() => setIndex(i)}>
-                        <i class="bi bi-circle"></i>
+                        <i className="bi bi-circle"></i>
                       </button>
                     </>
                   )}
