@@ -93,6 +93,12 @@ body {
 
 /* #endregion carosello per cards  */
 
+.page_counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 header {
   background-color: var(--accent);
 

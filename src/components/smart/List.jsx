@@ -20,6 +20,9 @@ export default function List({ query, scrollRef }) {
                     state: 'success',
                     data: data
                 })
+                if (data.length < 1) {
+                    setPage(1)
+                }
             })
             .catch(err => {
                 setProducts({
@@ -56,6 +59,9 @@ export default function List({ query, scrollRef }) {
         case 'success':
             return (
                 <>
+                    <div className="page_counter">
+                        <span>Page: {page}</span>
+                    </div>
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap">
                         {products.data.map(product => (
                             <>
