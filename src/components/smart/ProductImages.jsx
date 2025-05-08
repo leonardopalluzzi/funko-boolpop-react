@@ -14,31 +14,34 @@ export default function ProductImages({ images }) {
 
     return (
         <>
+            <div className="position-relative">
+                <ProductImagesUi images={images} index={currentIndex} />
 
-            <ProductImagesUi images={images} index={currentIndex} />
-
-            <div className="dots">
-                <ul className="list-unstyled">
-                    {images.map((dot, i) => (
-                        <>
-                            <li key={dot.item_number}>
-                                {i == currentIndex ? (
-                                    <>
-                                        <button className="dot_btn" onClick={() => setCurrentIndex(i)}>
-                                            <i className="bi bi-circle-fill"></i>
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <button className="dot_btn" onClick={() => setCurrentIndex(i)}>
-                                            <i className="bi bi-circle"></i>
-                                        </button>
-                                    </>
-                                )}
-                            </li>
-                        </>
-                    ))}
-                </ul>
+                <div className="dots_product_container">
+                    <div className="dots_product">
+                        <ul className="list-unstyled">
+                            {images.map((dot, i) => (
+                                <>
+                                    <li key={dot.item_number}>
+                                        {i == currentIndex ? (
+                                            <>
+                                                <button className="dot_btn" onClick={() => setCurrentIndex(i)}>
+                                                    <i className="bi bi-circle-fill"></i>
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <button className="dot_btn" onClick={() => setCurrentIndex(i)}>
+                                                    <i className="bi bi-circle"></i>
+                                                </button>
+                                            </>
+                                        )}
+                                    </li>
+                                </>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </>
     )

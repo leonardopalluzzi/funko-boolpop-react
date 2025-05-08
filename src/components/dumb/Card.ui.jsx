@@ -10,7 +10,7 @@ export default function CardUi({ images, name, price, attributes, license, promo
         <>
             <div className="col">
                 <div className="card h-100">
-                    <div className="card-header">
+                    <div className="card-header p-0">
                         <ProductImages images={images} />
                     </div>
                     <div className="card-body">
