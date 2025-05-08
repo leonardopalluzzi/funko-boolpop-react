@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import ProductImages from "../components/smart/ProductImages"
 
 
 export default function ProductPage() {
@@ -51,29 +52,25 @@ export default function ProductPage() {
             return (
                 <>
                     <main>
-                        <div className="container p-4 ">
-                            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                        <div className="container py-5">
+                            <div className="row row-cols-1 row-cols-sm-2 g-4">
                                 <div className="col" key={funko.result.slug}>
-                                    <div className="card h-100 shadow-lg bg-emphasis">
-                                        <div className="position-relative">
-                                            <img
-                                                className="card-img-top"
-                                                src={funko.result.images[0].image}
-                                                alt={funko.result.name}
-                                                style={{ height: '300px', objectFit: 'cover' }}
-                                            />
-                                        </div>
+                                    <div className="product_page_img border rounded-5 overflow-hidden">
+                                        <ProductImages images={funko.result.images} />
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <h1>{funko.result.name}</h1>
-                                    <p>{funko.result.price}</p>
+                                    <h1 className="mb-5">{funko.result.name}</h1>
+                                    <h2>Price: <label className="price_label" htmlFor="">{funko.result.price}</label> </h2>
                                     <button
-                                        class="btn btn-outline-success my-2 my-sm-0"
+                                        class="btn btn_chart my-2 my-sm-0"
                                         type="submit">
                                         Aggiungi al carrello
                                     </button>
-                                    <p>{funko.result.desctription}</p>
+                                    <div className="product_description">
+                                        <h4>Description:</h4>
+                                        <p>{funko.result.description}</p>
+                                    </div>
                                     <div className="accordion" id="accordionExample">
                                         <div className="accordion-item">
                                             <h2 className="accordion-header">
@@ -83,9 +80,18 @@ export default function ProductPage() {
                                             </h2>
                                             <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                                 <div className="accordion-body">
-                                                    <p>{funko.result.category}</p>
-                                                    <p>{funko.result.license}</p>
-                                                    <p>{funko.result.attributes[0].name}</p>
+                                                    <p>Category: {funko.result.category}</p>
+                                                    <p>License: {funko.result.license}</p>
+                                                    <p>
+                                                        Special Attributes:
+                                                        <ul className="list-unstyled">
+                                                            {funko.result.attributes.map(item => (
+                                                                <>
+                                                                    <li className="mx-4">- <strong>{item.name.toUpperCase()}</strong></li>
+                                                                </>
+                                                            ))}
+                                                        </ul>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

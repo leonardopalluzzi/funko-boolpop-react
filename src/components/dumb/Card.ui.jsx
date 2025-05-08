@@ -1,4 +1,3 @@
-import { useActionState } from "react"
 import { useNavigate } from "react-router-dom"
 import ProductImages from "../smart/ProductImages"
 
@@ -13,8 +12,8 @@ export default function CardUi({ images, name, price, attributes, license, promo
                     <div className="card-header p-0">
                         <ProductImages images={images} />
                     </div>
-                    <div className="card-body">
-                        <h2>{name}</h2>
+                    <div className="card-body p-3">
+                        <h4>{name}</h4>
                         <span>{promotions.length > 0 ? (<>{price}</>) : (<>{price * 100 / promotions[0].disocunt}</>)}</span>
                         <span>{attributes}</span>
                         <span>{license}</span>
