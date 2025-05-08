@@ -10,7 +10,13 @@ export default function Cart() {
     return (
         <>
             <div className="container">
-                <h1>cart</h1>
+                <ul className="list-unstyled">
+                    {cart.userCart.map(item => (
+                        <>
+                            <li>{item.name}</li>
+                        </>
+                    ))}
+                </ul>
                 <button
                     onClick={() => navigate(`/${funko.result.slug}/checkout`)}
                     class="btn btn-success fs-3 my-2 my-sm-0"

@@ -241,3 +241,21 @@ footer {
   font-weight: 700;
   font-size: 1.3rem;
 }
+
+.cart_label {
+  color: var(--text-light);
+  font-size: 0.7rem;
+  background-color: var(--primary);
+  padding: 0.2rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%);
+}

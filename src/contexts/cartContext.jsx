@@ -11,19 +11,22 @@ function CartProvider({ children }) {
     })
 
     function handleCart(newItem) {
-        const itemCheck = cart.find(item => item.slug == newItem.slug)
+        const itemCheck = cart.userCart.find(item => item.slug == newItem.slug)
 
         if (itemCheck) {
             setCart({
-                ...cart,
                 state: 'error',
-                message: 'This product is already in your chart'
+                message: 'This product is already in your chart',
+                userCart: [...cart.userCart]
             })
         } else {
             setCart({
-                ...cart,
-                userChart: [...chart.userChart, newItem]
+                state: 'success',
+                message: 'Product added to your cart',
+                userCart: [...cart.userCart, newItem]
             })
+            console.log(cart);
+
         }
     }
 

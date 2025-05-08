@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import { useCartContext } from "../../contexts/cartContext";
 
 export default function Header() {
+
+  const { cart } = useCartContext()
+
   return (
     <>
       <header>
@@ -37,7 +41,10 @@ export default function Header() {
                   </NavLink>
                 </li>
               </ul>
-              <Link to={'/cart'} className="mx-4 text-white fs-4">
+              <Link to={'/cart'} className="mx-4 text-white fs-4 position-relative">
+                {
+                  cart.userCart.length > 0 ? (<><label className="cart_label" htmlFor="">{cart.userCart.length}</label></>) : (<></>)
+                }
                 <i class="bi bi-cart-fill"></i>
               </Link>
               {/*form*/}

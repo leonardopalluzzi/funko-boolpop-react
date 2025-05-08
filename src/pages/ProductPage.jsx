@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import ProductImages from "../components/smart/ProductImages"
+import { useCartContext } from "../contexts/cartContext"
 
 
 export default function ProductPage() {
+
+    const { handleCart, cart } = useCartContext()
 
     const navigate = useNavigate()
 
@@ -93,11 +96,12 @@ export default function ProductPage() {
                                         </div>
                                     </div>
                                     <button
-                                        onClick={() => navigate(`/${funko.result.slug}/checkout`)}
+                                        onClick={() => handleCart(funko.result)}
                                         class="btn btn_chart my-2 my-sm-0"
                                         type="submit">
                                         Aggiungi al carrello
                                     </button>
+                                    <span>{cart.message}</span>
                                     <div className="product_description">
                                         <h4>Description:</h4>
                                         <p>{funko.result.description}</p>
