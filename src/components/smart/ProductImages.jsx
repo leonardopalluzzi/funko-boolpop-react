@@ -25,13 +25,13 @@ export default function ProductImages({ images }) {
                                     <li key={dot.item_number}>
                                         {i == currentIndex ? (
                                             <>
-                                                <button className="dot_btn" onClick={() => setCurrentIndex(i)}>
+                                                <button className="dot_btn" onMouseEnter={() => setCurrentIndex(i)}>
                                                     <i className="bi bi-circle-fill"></i>
                                                 </button>
                                             </>
                                         ) : (
                                             <>
-                                                <button className="dot_btn" onClick={() => setCurrentIndex(i)}>
+                                                <button className="dot_btn" onMouseEnter={() => setCurrentIndex(i)}>
                                                     <i className="bi bi-circle"></i>
                                                 </button>
                                             </>

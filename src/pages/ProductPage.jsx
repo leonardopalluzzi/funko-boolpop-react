@@ -1,10 +1,12 @@
 
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import ProductImages from "../components/smart/ProductImages"
 
 
 export default function ProductPage() {
+
+    const navigate = useNavigate()
 
     const [funko, setFunkos] = useState({
         state: 'loading'
@@ -91,6 +93,7 @@ export default function ProductPage() {
                                         </div>
                                     </div>
                                     <button
+                                        onClick={() => navigate(`/${funko.result.slug}/checkout`)}
                                         class="btn btn_chart my-2 my-sm-0"
                                         type="submit">
                                         Aggiungi al carrello

@@ -37,7 +37,9 @@ export default function Header() {
                   </NavLink>
                 </li>
               </ul>
-
+              <Link to={'/cart'} className="mx-4 text-white fs-4">
+                <i class="bi bi-cart-fill"></i>
+              </Link>
               {/*form*/}
               <SearchBar />
             </div>
