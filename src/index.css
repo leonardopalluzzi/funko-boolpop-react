@@ -259,3 +259,15 @@ footer {
   right: 0;
   transform: translate(50%);
 }
+
+.cart_img_container {
+  display: inline-block;
+  width: 20%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 20px;
+
+  .cart_img {
+    max-width: 100%;
+  }
+}
