@@ -1,4 +1,4 @@
-export default function JumboUi({ productList, slideIndex }) {
+export default function JumboUi({ productList, slideIndex, setIndex }) {
 
     return (
         <>
@@ -13,8 +13,8 @@ export default function JumboUi({ productList, slideIndex }) {
                         {productList.map((dot, i) => (
                             <>
                                 <li>
-                                    {i == slideIndex ? (<><i class="bi bi-circle-fill"></i></>) : (<><i class="bi bi-circle"></i></>)}
-                                </li>
+                                    {i == slideIndex ? (<><button className="dot_btn" onClick={() => setIndex(i)}><i class="bi bi-circle-fill"></i></button></>) : (<><button className="dot_btn" onClick={() => setIndex(i)}><i class="bi bi-circle"></i></button></>)}
+                                </li >
                             </>
                         ))}
                     </ul>

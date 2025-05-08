@@ -42,7 +42,7 @@ export default function Jumbo() {
             }, 4000)
             return () => clearInterval(timer)
         }
-    }, [funkos.state])
+    }, [funkos.state, currentIndex])
 
 
     switch (funkos.state) {
@@ -62,7 +62,7 @@ export default function Jumbo() {
         case 'success':
             return (
                 <>
-                    <JumboUi productList={funkos.data} slideIndex={currentIndex} />
+                    <JumboUi productList={funkos.data} slideIndex={currentIndex} setIndex={setCurrentIndex} />
                 </>
             )
     }

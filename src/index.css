@@ -81,6 +81,12 @@ body {
     color: var(--accent);
   }
 
+  .dot_btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
 }
 
 /* #endregion carosello per cards  */
