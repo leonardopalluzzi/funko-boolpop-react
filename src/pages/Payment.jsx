@@ -39,7 +39,7 @@ export default function Payment() {
             return (
                 <>
                     <Elements stripe={stripePromise} options={options}>
-                        <PaymentForm publicApi={stripePromise} clientSecret={client_secret} />
+                        <PaymentForm clientSecret={client_secret} />
                     </Elements>
                 </>
             )

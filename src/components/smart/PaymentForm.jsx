@@ -2,7 +2,7 @@ import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useState } from 'react'
 import { redirect } from 'react-router-dom';
 
-export default function PaymentForm({ clientSecret, publicApi }) {
+export default function PaymentForm({ clientSecret }) {
 
     const stripe = useStripe()
     const elements = useElements()
@@ -14,19 +14,27 @@ export default function PaymentForm({ clientSecret, publicApi }) {
         setErrorMessage(error.message);
     }
 
-    function handleSubmit() {
+    async function handleSubmit() {
 
-        if (!stripe || !elements) {
-            return
+        if (!stripe) {
+
+            return;
         }
 
         setLoading(true)
 
         console.log(elements, clientSecret);
 
+        const { error: submitError } = await elements.submit();
+        if (submitError) {
+            handleError(submitError);
+            return;
+        }
+
+        //delocalizzare la funzione fetch per la creazione dell'intent qui, passare le info dal componente
 
 
-        const { error } = stripe.confirmPayment(publicApi, {
+        const { error } = stripe.confirmPayment({
             elements,
             clientSecret,
             confirmParams: {
