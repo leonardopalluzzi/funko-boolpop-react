@@ -7,7 +7,8 @@ export default function HomeCarousels() {
     const [scrollRefTrans, setScrollRefTrans] = useState(useRef())
     const [scrollRefLast, setScrollRefLast] = useState(useRef())
 
-    const trans = 0; // definisce il numero di transazioni minimo che un elemento deve avere
+    const trans = 5; // definisce il numero di transazioni minimo che un elemento deve avere
+    const date = 1; //imposta l'ordinamento per data
 
     return (
         <>
@@ -17,7 +18,7 @@ export default function HomeCarousels() {
                     <h1 className="fs-3">Più venduti</h1>
                     <CarouselUi scrollRef={scrollRefTrans} content={(
                         <>
-                            <List scrollRef={scrollRefTrans} query={trans} />
+                            <List scrollRef={scrollRefTrans} queryName={'trans'} query={trans} />
                         </>
                     )} />
                 </div>
@@ -26,7 +27,7 @@ export default function HomeCarousels() {
                     <h1 className="fs-3">Ultimi arrivi</h1>
                     <CarouselUi scrollRef={scrollRefLast} content={(
                         <>
-                            <List scrollRef={scrollRefLast} query={''} />
+                            <List scrollRef={scrollRefLast} queryName={'date'} query={date} />
                         </>
                     )} />
                 </div>

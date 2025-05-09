@@ -1,7 +1,7 @@
 import CardUi from "../dumb/Card.ui"
 import { useState, useEffect } from "react"
 
-export default function List({ query, scrollRef }) {
+export default function List({ query, scrollRef, queryName }) {
 
     const [products, setProducts] = useState({
         state: 'loading'
@@ -11,7 +11,7 @@ export default function List({ query, scrollRef }) {
     const [limit, setLimit] = useState(5)  // definisce il numero di elementi ricevuti dal db
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&${queryName}=${query}`)
             .then(res => res.json())
             .then(data => {
 
