@@ -13,20 +13,23 @@ export default function HomeCarousels() {
         <>
             <div className="container">
                 {/* piu venduti */}
-                <h1>Piu venduti</h1>
-                <CarouselUi scrollRef={scrollRefTrans} content={(
-                    <>
-                        <List scrollRef={scrollRefTrans} query={trans} />
-                    </>
-                )} />
-
+                <div className="mt-5">
+                    <h1 className="fs-3">Più venduti</h1>
+                    <CarouselUi scrollRef={scrollRefTrans} content={(
+                        <>
+                            <List scrollRef={scrollRefTrans} query={trans} />
+                        </>
+                    )} />
+                </div>
                 {/*  ultimi arrivi */}
-                <h1>ultimi arrivi</h1>
-                <CarouselUi scrollRef={scrollRefLast} content={(
-                    <>
-                        <List scrollRef={scrollRefLast} query={''} />
-                    </>
-                )} />
+                <div className="mb-5">
+                    <h1 className="fs-3">Ultimi arrivi</h1>
+                    <CarouselUi scrollRef={scrollRefLast} content={(
+                        <>
+                            <List scrollRef={scrollRefLast} query={''} />
+                        </>
+                    )} />
+                </div>
             </div>
 
         </>

@@ -29,8 +29,11 @@ export default function Header() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="collapsibleNavId">
-              <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-                {/*<li className="nav-item">
+              <div className="navbar-nav me-auto mt-2 mt-lg-0">
+                {/*
+                va cambiato di nuovo in ul se serve mettere i link
+                
+                <li className="nav-item">
                   <NavLink to={'/'} className="nav-link active text-white fs-4">
                     <i className="bi bi-house-fill"></i>
                   </NavLink>
@@ -40,12 +43,12 @@ export default function Header() {
                     Link
                   </NavLink>
                 </li>*/}
-              </ul>
+              </div>
               <Link to={'/cart'} className="mx-4 text-white fs-4 position-relative">
                 {
                   cart.cartItemNumber > 0 ? (<><label className="cart_label" htmlFor="">{cart.cartItemNumber}</label></>) : (<></>)
                 }
-                <i class="bi bi-cart-fill"></i>
+                <i className="bi bi-cart-fill"></i>
               </Link>
               <SearchBar />
             </div>

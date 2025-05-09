@@ -20,23 +20,23 @@ export default function ProductImages({ images }) {
                     <div className="dots_product">
                         <ul className="list-unstyled">
                             {images.map((dot, i) => (
-                                <>
-                                    <li key={dot.item_number}>
-                                        {i == currentIndex ? (
-                                            <>
-                                                <button className="dot_btn" onMouseEnter={() => setCurrentIndex(i)}>
-                                                    <i className="bi bi-circle-fill"></i>
-                                                </button>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <button className="dot_btn" onMouseEnter={() => setCurrentIndex(i)}>
-                                                    <i className="bi bi-circle"></i>
-                                                </button>
-                                            </>
-                                        )}
-                                    </li>
-                                </>
+
+                                <li key={dot.item_number}>
+                                    {i == currentIndex ? (
+                                        <>
+                                            <button className="dot_btn" onMouseEnter={() => setCurrentIndex(i)}>
+                                                <i className="bi bi-circle-fill"></i>
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <button className="dot_btn" onMouseEnter={() => setCurrentIndex(i)}>
+                                                <i className="bi bi-circle"></i>
+                                            </button>
+                                        </>
+                                    )}
+                                </li>
+
                             ))}
                         </ul>
                     </div>
