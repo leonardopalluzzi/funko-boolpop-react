@@ -254,7 +254,8 @@ footer {
 }
 
 .btn_chart {
-  background-color: var(--primary);
+  background-color: var(--darker);
+  color: var(--background);
   padding: 1rem;
   border: none;
   border-radius: 20px;
@@ -331,3 +332,6 @@ footer {
   padding: 1rem;
   margin-bottom: 1rem;
 }
+
+
+/* pagina prodotto */

@@ -55,9 +55,9 @@ export default function ProductPage() {
             return (
                 <>
                     <main>
-                        <div className="container py-5">
-                            <div className="row row-cols-1 row-cols-sm-2 ">
-                                <div className="col col-xs-12 col-sm-12 col-md-12 col-lg-6" key={funko.result.slug}>
+                        <div className="container py-5 ">
+                            <div className="row row-cols-1 row-cols-lg-2 ">
+                                <div className=" col col-xs-12 col-sm-12 col-md-12 col-lg-6 " key={funko.result.slug}>
                                     <div className="product_page_img border rounded-5 overflow-hidden">
                                         <ProductImages images={funko.result.images} />
                                     </div>
@@ -66,7 +66,7 @@ export default function ProductPage() {
                                     <label htmlFor="">{funko.result.license.toUpperCase()}</label>
                                     <h1 className="mb-5">{funko.result.name}</h1>
                                     <div className="price_section">
-                                        <h2 className="mb-4">Price:</h2>
+                                        {/* <h2 className="mb-4">Price:</h2> */}
                                         <div>
                                             {
                                                 funko.result.promotion.length > 0 ?
@@ -95,11 +95,11 @@ export default function ProductPage() {
                                     </div>
                                     <button
                                         onClick={() => handleCart(funko.result)}
-                                        class="btn btn_chart my-2 my-sm-0"
+                                        className="btn btn_chart my-2 my-sm-0"
                                         type="submit">
                                         Add to cart
                                     </button>
-                                    <span>{cart.message}</span>
+                                    <span className="mx-4">{cart.message}</span>
                                     <div className="product_description">
                                         <h4>Description:</h4>
                                         <p>{funko.result.description}</p>
