@@ -101,19 +101,51 @@ body {
   right: 0;
 }
 
+/*HEADER*/
 header {
-  background-color: var(--accent);
+  background-color: var(--primary);
+
+  overflow: hidden;
+  background-image: url('/public/halftone.svg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 
   img {
-    max-width: 15rem;
+    max-width: 20rem;
     padding-block: 1rem;
   }
+
 }
+
+/*cambia gli effetti del bottone con l'icona search*/
+.btn:focus,
+.btn:active {
+  box-shadow: none;
+  border-color: none;
+  outline: none;
+
+}
+
+.searchbar {
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchbar:focus,
+.searchbar:active {
+  border-color: var(--tertiary);
+  box-shadow: 0 0 5px var(--tertiary);
+}
+
+/*FOOTER*/
 
 footer {
   background-color: var(--darker);
-  min-height: 200px;
-  padding-top: 1rem;
 
   a {
     color: var(--accent) !important;
@@ -200,8 +232,6 @@ footer {
 .card_on_click {
   text-decoration: none;
 }
-
-
 
 .btn_chart {
   background-color: var(--primary);

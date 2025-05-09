@@ -39,7 +39,7 @@ export default function Jumbo() {
                 setCurrentIndex((prevIndex) => prevIndex === funkos.data.length - 1 ? 0 : prevIndex + 1)
                 console.log('incremento slide');
 
-            }, 4000)
+            }, 10000)
             return () => clearInterval(timer)
         }
     }, [funkos.state, currentIndex])

@@ -2,7 +2,12 @@ export default function Footer() {
     return (
         <>
             <footer>
-                <div className="container">
+
+                <div className="text-center py-3 text-light">
+                    &copy;2025 Team 2
+                </div>
+
+                {/*<div className="container">
                     <div className="col col-xl-12">
                         <div>
                             <ul className="nav justify-content-start flex-column ">
@@ -34,7 +39,7 @@ export default function Footer() {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>*/}
             </footer>
         </>
     );
