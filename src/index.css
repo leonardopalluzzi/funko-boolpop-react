@@ -23,7 +23,7 @@
 }
 
 body {
-  min-width: 300px;
+  min-width: 400px;
 }
 
 /* #region carosello per cards  */
@@ -145,10 +145,19 @@ header {
 /*FOOTER*/
 
 footer {
-  background-color: var(--darker);
+  /*background-color: var(--darker);*/
+  background-color: var(--primary);
+
+  overflow: hidden;
+  background-image: url('/public/halftone.svg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  font-weight: bold;
 
   a {
-    color: var(--accent) !important;
+    color: var(--accent);
+
   }
 }
 
