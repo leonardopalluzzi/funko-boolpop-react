@@ -2,18 +2,18 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
     return (
         <>
             <div className="container">
-                <form method="POST" onSubmit={() => onsubmit()}>
+                <form method="POST" onSubmit={(e) => { e.preventDefault(); onsubmit() }}>
 
                     {/* user info  */}
 
                     <div class="mb-3">
                         <label class="form-label">Name</label>
                         <input
-                            value={checkout.userName}
+                            value={checkout.username}
                             onChange={(e) => onChangeUser(e.target.name, e.target.value)}
                             type="text"
                             class="form-control"
-                            name="userName"
+                            name="username"
                             id=""
                             aria-describedby="helpId"
                             placeholder="Mario"
@@ -24,11 +24,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                     <div class="mb-3">
                         <label class="form-label">Last Name</label>
                         <input
-                            value={checkout.userLastName}
+                            value={checkout.user_last_name}
                             onChange={(e) => onChangeUser(e.target.name, e.target.value)}
                             type="text"
                             class="form-control"
-                            name="userLastName"
+                            name="user_last_name"
                             id=""
                             aria-describedby="helpId"
                             placeholder="Rossi"
@@ -37,28 +37,13 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Phone</label>
-                        <input
-                            value={checkout.phone}
-                            onChange={(e) => onChangeUser(e.target.name, e.target.value)}
-                            type="text"
-                            class="form-control"
-                            name="phone"
-                            id=""
-                            aria-describedby="helpId"
-                            placeholder="+36 333 333 3333"
-                            required
-                        />
-                    </div>
-
-                    <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input
-                            value={checkout.email}
+                            value={checkout.useremail}
                             onChange={(e) => onChangeUser(e.target.name, e.target.value)}
                             type="email"
                             class="form-control"
-                            name="email"
+                            name="useremail"
                             id=""
                             aria-describedby="helpId"
                             placeholder="mario@rossi.com"
@@ -184,11 +169,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                                         <div class="mb-3">
                                             <label class="form-label">City</label>
                                             <input
-                                                value={billing.city}
+                                                value={billing.billing_city}
                                                 onChange={(e) => onChangeBilling(e.target.name, e.target.value)}
                                                 type="text"
                                                 class="form-control"
-                                                name="city"
+                                                name="billing_city"
                                                 id=""
                                                 aria-describedby="helpId"
                                                 placeholder=""
@@ -199,11 +184,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                                         <div class="mb-3">
                                             <label class="form-label">Province</label>
                                             <input
-                                                value={billing.province}
+                                                value={billing.billing_province}
                                                 onChange={(e) => onChangeBilling(e.target.name, e.target.value)}
                                                 type="text"
                                                 class="form-control"
-                                                name="province"
+                                                name="billing_province"
                                                 id=""
                                                 aria-describedby="helpId"
                                                 placeholder=""
@@ -214,11 +199,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                                         <div class="mb-3">
                                             <label class="form-label">Nation</label>
                                             <input
-                                                value={billing.nation}
+                                                value={billing.billing_nation}
                                                 onChange={(e) => onChangeBilling(e.target.name, e.target.value)}
                                                 type="text"
                                                 class="form-control"
-                                                name="nation"
+                                                name="billing_nation"
                                                 id=""
                                                 aria-describedby="helpId"
                                                 placeholder=""
@@ -230,11 +215,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                                         <div class="mb-3">
                                             <label class="form-label">Street</label>
                                             <input
-                                                value={billing.street}
+                                                value={billing.billing_street}
                                                 onChange={(e) => onChangeBilling(e.target.name, e.target.value)}
                                                 type="text"
                                                 class="form-control"
-                                                name="street"
+                                                name="billing_street"
                                                 id=""
                                                 aria-describedby="helpId"
                                                 placeholder=""
@@ -245,11 +230,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                                         <div class="mb-3">
                                             <label class="form-label">Civic</label>
                                             <input
-                                                value={billing.civic}
+                                                value={billing.billing_civic}
                                                 onChange={(e) => onChangeBilling(e.target.name, e.target.value)}
                                                 type="text"
                                                 class="form-control"
-                                                name="civic"
+                                                name="billing_civic"
                                                 id=""
                                                 aria-describedby="helpId"
                                                 placeholder=""
@@ -260,11 +245,11 @@ export default function CheckoutFormUi({ checkout, shipping, billing, onChangeUs
                                         <div class="mb-3">
                                             <label class="form-label">Cap</label>
                                             <input
-                                                value={billing.cap}
+                                                value={billing.billing_cap}
                                                 onChange={(e) => onChangeBilling(e.target.name, e.target.value)}
                                                 type="text"
                                                 class="form-control"
-                                                name="cap"
+                                                name="billing_cap"
                                                 id=""
                                                 aria-describedby="helpId"
                                                 placeholder=""

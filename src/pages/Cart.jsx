@@ -101,7 +101,7 @@ export default function Cart() {
                     <h5>{total.toFixed(2)}€</h5>
                 </div>
                 <button
-                    onClick={() => navigate(`/${funko.result.slug}/checkout`)}
+                    onClick={() => navigate(`/checkout`)}
                     class="btn btn-success fs-3 my-2 my-sm-0"
                     type="submit">
                     Procedi al pagamento

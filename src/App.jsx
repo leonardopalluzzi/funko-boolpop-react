@@ -19,7 +19,7 @@ function App() {
               <Route path="/" Component={Home} />
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
-              <Route path="/:slug/checkout" Component={Checkout} />
+              <Route path="/checkout" Component={Checkout} />
             </Route>
           </Routes>
         </BrowserRouter>
