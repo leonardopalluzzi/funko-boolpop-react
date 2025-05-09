@@ -31,12 +31,12 @@ export default function Header() {
             <div className="collapse navbar-collapse" id="collapsibleNavId">
               <ul className="navbar-nav me-auto mt-2 mt-lg-0">
                 <li className="nav-item">
-                  <NavLink to={'/'} className="nav-link active">
+                  <NavLink to={'/'} className="nav-link active text-white">
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to={'/'} className="nav-link">
+                  <NavLink to={'/'} className="nav-link text-white">
                     Link
                   </NavLink>
                 </li>

@@ -12,17 +12,17 @@ export default function SearchBarUi({ searchText, setSearchText, handleSearch })
             }}
         >
             <input
-                className="form-control me-sm-2"
+                className="form-control me-sm-2 searchbar"
                 type="text"
                 placeholder="Search"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
             />
             <button
-                className="btn btn-outline-success my-2 my-sm-0 d-flex align-items-center"
+                className="btn btn-outline-light my-2 my-sm-0  d-flex align-items-center"
                 type="submit"
             >
-                <i className="bi bi-search me-2"></i>
+                <i className="bi bi-search px-2"></i>
             </button>
         </form>
     );
