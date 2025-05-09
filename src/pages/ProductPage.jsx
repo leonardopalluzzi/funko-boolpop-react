@@ -66,7 +66,7 @@ export default function ProductPage() {
                                     <label htmlFor="">{funko.result.license.toUpperCase()}</label>
                                     <h1 className="mb-5">{funko.result.name}</h1>
                                     <div className="price_section">
-                                        <h2 className="mb-4">Price:</h2>
+                                        {/* <h2 className="mb-4">Price:</h2> */}
                                         <div>
                                             {
                                                 funko.result.promotion.length > 0 ?
@@ -95,7 +95,7 @@ export default function ProductPage() {
                                     </div>
                                     <button
                                         onClick={() => handleCart(funko.result)}
-                                        class="btn btn_chart my-2 my-sm-0"
+                                        className="btn btn_chart my-2 my-sm-0"
                                         type="submit">
                                         Add to cart
                                     </button>
