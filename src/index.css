@@ -280,7 +280,7 @@ footer {
 }
 
 .product_description {
-  margin: 2rem 0;
+  margin: 1rem 0;
   border: 1px solid var(--accent);
   padding: 1rem;
   border-radius: 20px;

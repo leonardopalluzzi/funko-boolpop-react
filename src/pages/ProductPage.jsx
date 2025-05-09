@@ -5,7 +5,7 @@ import ProductImages from "../components/smart/ProductImages"
 import { useCartContext } from "../contexts/cartContext"
 
 
-export default function ProductPage() {
+export default function ProductPage({ quantity }) {
 
     const { handleCart, cart } = useCartContext()
 
@@ -100,6 +100,9 @@ export default function ProductPage() {
                                         Add to cart
                                     </button>
                                     <span className="mx-4">{cart.message}</span>
+
+                                    <span className="d-block pt-3"> <i class="bi bi-box-fill"></i> Available: {quantity}</span>
+
                                     <div className="product_description">
                                         <h4>Description:</h4>
                                         <p>{funko.result.description}</p>
