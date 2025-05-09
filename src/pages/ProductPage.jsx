@@ -62,14 +62,14 @@ export default function ProductPage({ quantity }) {
                 </div>
                 <div className="col">
                   <label htmlFor="">{funko.result.license.toUpperCase()}</label>
-                  <h2 className="mb-5">{funko.result.name}</h2>
+                  <h2 className="mb-2">{funko.result.name}</h2>
                   <div className="price_section">
                     {/* <h2 className="mb-4">Price:</h2> */}
                     <div>
                       {funko.result.promotion.length > 0 ? (
                         <>
                           <label>
-                            <span className="text-danger fs-5">
+                            <span className="text-secondary fs-5">
                               <del>{funko.result.price} €</del>
                             </span>
                             <span className={`${styles.price_label} mx-3`}>
@@ -93,14 +93,14 @@ export default function ProductPage({ quantity }) {
                   </div>
                   <button
                     onClick={() => handleCart(funko.result)}
-                    className="btn btn_chart my-2 my-sm-0"
+                    className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
                     type="submit"
                   >
                     Add to cart
                   </button>
                   <span className="mx-4">{cart.message}</span>
 
-                  <span className="d-block pt-3">
+                  <span className="d-block pt-4">
                     {" "}
                     <i class="bi bi-box-fill"></i> Available: {quantity}
                   </span>
@@ -109,9 +109,12 @@ export default function ProductPage({ quantity }) {
                     <h4>Description:</h4>
                     <p>{funko.result.description}</p>
                   </div>
-                  <div className="accordion" id="accordionExample">
-                    <div className="accordion-item">
-                      <h2 className="accordion-header">
+                  <div
+                    className="accordion my-custom-accordion"
+                    id="accordionExample"
+                  >
+                    <div className="accordion-item ">
+                      <h2 className="accordion-header ">
                         <button
                           className="accordion-button"
                           type="button"
@@ -129,10 +132,15 @@ export default function ProductPage({ quantity }) {
                         data-bs-parent="#accordionExample"
                       >
                         <div className="accordion-body">
-                          <p>Category: {funko.result.category}</p>
-                          <p>License: {funko.result.license}</p>
                           <p>
-                            Special Attributes:
+                            <strong>Category:</strong> {funko.result.category}
+                          </p>
+                          <p>
+                            <strong>License: </strong>
+                            {funko.result.license}
+                          </p>
+                          <p>
+                            <strong>Special Attributes:</strong>
                             <ul className="list-unstyled">
                               {funko.result.attributes.map((item) => (
                                 <>
