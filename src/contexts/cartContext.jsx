@@ -13,15 +13,38 @@ function CartProvider({ children }) {
 
     function handleCart(newItem) {
 
-        newItem.cartQuantity = 1
+        let itemOverFlag = false;
+
+        if (newItem.quantity == 0) {
+            return setCart({
+                ...cart,
+                state: 'error',
+                message: 'This item is no longer available',
+            })
+        }
+
+
         const itemCheck = cart.userCart.find(item => item.slug == newItem.slug)
+
+        if (itemCheck) {
+            const currentQuantity = newItem.quantity
+            const currentBuying = newItem.cartQuantity
+
+            console.log(currentQuantity, currentBuying);
+
+
+            if (currentBuying == currentQuantity) {
+                itemOverFlag = true
+            }
+        }
 
         if (itemCheck) {
             const updatedCart = cart.userCart.map(item => {
                 if (item.slug == newItem.slug) {
                     return {
                         ...item,
-                        cartQuantity: Number(item.cartQuantity + 1)
+                        cartQuantity: Number(item.cartQuantity + 1),
+                        quantity: item.quantity - 1
                     }
                 } else {
                     return item
@@ -34,6 +57,8 @@ function CartProvider({ children }) {
                 userCart: updatedCart
             })
         } else {
+            newItem.cartQuantity = 1
+            newItem.quantity = newItem.quantity - 1
             setCart({
                 state: 'success',
                 message: 'Product added to your cart',
