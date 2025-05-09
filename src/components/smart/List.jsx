@@ -84,7 +84,7 @@ export default function List({ query, scrollRef, queryName }) {
                                 images={product.images}
                                 name={product.name}
                                 price={Number(product.price)}
-                                license={product.license}
+                                license={product.licenses}
                                 promotions={product.promotions}
                                 slug={product.slug}
                                 quantity={product.quantity}
