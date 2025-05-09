@@ -58,11 +58,11 @@ export default function List({ query, scrollRef }) {
         case 'success':
             return (
                 <>
-                    <div className="page_counter d-flex align-items-center justify-content-center gap-4">
-                        <div class="">
-                            <label for="" class="form-label">select item number</label>
+                    <div className="page_counter d-flex align-items-center justify-content-center gap-2">
+                        <div className="">
+                            {/*<label for="" className="form-label">select item number</label>*/}
                             <select
-                                class="form-select form-select-lg"
+                                className="form-select form-select-sm"
                                 name=""
                                 id=""
                                 onChange={(e) => setLimit(Number(e.target.value))}
@@ -74,21 +74,22 @@ export default function List({ query, scrollRef }) {
                             </select>
                         </div>
 
-                        <span>Page: {page}</span>
+                        <span className="sm-font">Page: {page}</span>
                     </div>
-                    <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 my-5 align-items-center">
+                    <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 align-items-center">
                         {products.data.map(product => (
-                            <>
-                                <CardUi
-                                    images={product.images}
-                                    name={product.name}
-                                    price={Number(product.price)}
-                                    license={product.license}
-                                    promotions={product.promotions}
-                                    slug={product.slug}
-                                    quantity={product.quantity}
-                                />
-                            </>
+
+                            <CardUi
+                                key={`unique${product.slug}`}
+                                images={product.images}
+                                name={product.name}
+                                price={Number(product.price)}
+                                license={product.license}
+                                promotions={product.promotions}
+                                slug={product.slug}
+                                quantity={product.quantity}
+                            />
+
                         ))}
                         <button className="btn btn-transparent" onClick={() => handleLoadNext()}>Load More</button>
                     </div>

@@ -37,12 +37,19 @@ body {
 }
 
 .lists_scroll {
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  /*nasconde la barra su firefox*/
   display: flex;
   scroll-behavior: smooth;
   width: 100%;
-  height: 70vh;
+  /*height: 70vh;*/
+}
+
+.lists_scroll::-webkit-scrollbar {
+  display: none;
+  /* Nasconde la scrollbar su gli altri browser*/
 }
 
 .jumbo_slide {
@@ -107,7 +114,7 @@ header {
   background-color: var(--primary);
 
   overflow: hidden;
-  background-image: url('/public/halftone.svg');
+  background-image: url('/halftone.svg');
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
@@ -160,7 +167,7 @@ footer {
   /*background-color: var(--darker);*/
   background-color: var(--primary);
   overflow: hidden;
-  background-image: url('/public/halftone.svg');
+  background-image: url('/halftone.svg');
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
@@ -203,7 +210,7 @@ footer {
   z-index: 10;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -10%);
 
   ul {
     display: flex;
@@ -214,7 +221,7 @@ footer {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--accent);
+    color: var(--primary);
   }
 }
 
@@ -228,8 +235,9 @@ footer {
   transition-duration: 0.5s;
 
   &:hover {
-    transform: scale(1.1);
-    box-shadow: 1px 1px 20px 2px black;
+    transform: scale(1.05);
+    /*box-shadow: 2px 2px 0px 1px grey;*/
+    box-shadow: 2px 2px 5px 1px rgba(159, 159, 159, 0.619);
     cursor: pointer;
   }
 
@@ -240,8 +248,29 @@ footer {
     aspect-ratio: 1;
   }
 
-  .card-body {
-    height: 220px;
+  /*.card-body {
+    height: 150px;
+  }*/
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/halftone-card-tertiary.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+  }
+
+  .card-title {
+    height: 60px;
+    font-size: 1.1rem;
   }
 }
 
@@ -330,4 +359,12 @@ footer {
   border-radius: 20px;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+
+.sm-font {
+  font-size: 0.8rem;
+}
+
+.arrow-caro {
+  color: var(--primary);
 }
