@@ -1,11 +1,15 @@
 import CheckoutFormUi from "../components/dumb/CheckoutForm.ui"
 import { useState } from "react"
 import { useCartContext } from "../contexts/cartContext";
+import { usePaymentContext } from "../contexts/paymentContext";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Checkout() {
 
     const { cart } = useCartContext()
+    const { paymentIntent } = usePaymentContext()
+    const navigate = useNavigate()
 
     //calcola il totale da comprare
     let total = 0;
@@ -110,19 +114,7 @@ export default function Checkout() {
 
         console.log(formToSend);
 
-        fetch('http://localhost:3000/api/v1/transactions', {
-            method: 'POST',
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(formToSend)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-
-            })
-            .catch(err => {
-                console.error(err)
-            })
+        paymentIntent(formToSend)
 
         setCheckout({
             username: '',
@@ -146,6 +138,7 @@ export default function Checkout() {
             billing_civic: '',
             billing_cap: ''
         })
+        navigate('/complete-checkout')
 
     }
 
