@@ -5,6 +5,7 @@ import ProductPage from "./pages/ProductPage"
 import Checkout from "./pages/Checkout"
 import { CartProvider } from "./contexts/cartContext"
 import Cart from "./pages/Cart"
+import Payment from "./pages/Payment"
 
 
 function App() {
@@ -15,10 +16,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route Component={DefaultLayout}>
-              {/* pagine qui  */}
               <Route path="/" Component={Home} />
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
+              <Route path="/complete-checkout" Component={Payment} />
               <Route path="/checkout" Component={Checkout} />
             </Route>
           </Routes>
