@@ -7,7 +7,7 @@ export default function HomeCarousels() {
     const [scrollRefTrans, setScrollRefTrans] = useState(useRef())
     const [scrollRefLast, setScrollRefLast] = useState(useRef())
 
-    const trans = 5; // definisce il numero di transazioni minimo che un elemento deve avere
+    const trans = 2; // definisce il numero di transazioni minimo che un elemento deve avere
     const date = 1; //imposta l'ordinamento per data
 
     return (
