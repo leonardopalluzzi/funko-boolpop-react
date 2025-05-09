@@ -8,7 +8,6 @@ export default function ProductImages({ images }) {
     useEffect(() => {
 
         setCurrentIndex((prevIndex) => prevIndex === images.length - 1 ? 0 : prevIndex + 1)
-        console.log('incremento slide');
 
     }, [])
 

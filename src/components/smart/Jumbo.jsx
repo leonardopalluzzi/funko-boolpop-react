@@ -15,7 +15,6 @@ export default function Jumbo() {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setFunkos({
                     state: 'success',
                     data: data
@@ -37,7 +36,6 @@ export default function Jumbo() {
         if (funkos.state == 'success') {
             const timer = setInterval(() => {
                 setCurrentIndex((prevIndex) => prevIndex === funkos.data.length - 1 ? 0 : prevIndex + 1)
-                console.log('incremento slide');
 
             }, 4000)
             return () => clearInterval(timer)

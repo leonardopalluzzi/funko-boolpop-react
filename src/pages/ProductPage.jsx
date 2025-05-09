@@ -16,7 +16,6 @@ export default function ProductPage() {
     })
 
     const { slug } = useParams()
-    console.log(slug);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/funkoboolpop/${slug}`)
@@ -26,7 +25,6 @@ export default function ProductPage() {
                     state: 'success',
                     result: data
                 })
-                console.log(data);
 
 
             })

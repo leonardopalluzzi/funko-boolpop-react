@@ -4,8 +4,31 @@ import { useCartContext } from "../contexts/cartContext"
 export default function Cart() {
 
     const { cart } = useCartContext()
+    console.log(cart);
+
 
     const navigate = useNavigate()
+
+    let total = 0;
+
+    const priceArr = cart.userCart.map(item => {
+        console.log(item);
+
+        const basePrice = Number(item.price)
+        const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
+        const quantity = Number(item.cartQuantity)
+
+        let price = (basePrice * discount / 100) * quantity;
+
+        console.log(price);
+
+        return Number(price)
+    })
+
+    priceArr.forEach(item => {
+        total = total + item
+    })
+
 
     return (
         <>
@@ -15,7 +38,9 @@ export default function Cart() {
                         <tr>
                             <th scope="col">Product Image</th>
                             <th scope="col">Product Name</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Promotions</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price*</th>
                             <th scope="col">ACTIONS</th>
 
                         </tr>
@@ -31,7 +56,34 @@ export default function Cart() {
                                             </div>
                                         </td>
                                         <td>{item.name}</td>
-                                        <td>{item.price} €</td>
+                                        <td>
+                                            {
+                                                item.promotion.length > 0 ? (<><span>{item.promotion[0].name}: </span><span>{item.promotion[0].discount}%</span></>) : (<>No promotions found</>)
+                                            }
+                                        </td>
+                                        <td>X{item.cartQuantity}</td>
+                                        <td>
+                                            {
+                                                item.promotion.length > 0 ?
+                                                    (
+                                                        <>
+                                                            <label>
+                                                                <span className="price_label_card text-success">
+                                                                    {
+                                                                        (item.price * item.promotion[0].discount / 100).toFixed(2)
+                                                                    } €
+                                                                </span>
+                                                            </label>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <label className="price_label_card">
+                                                                {item.price} €
+                                                            </label>
+                                                        </>
+                                                    )
+                                            }
+                                        </td>
                                         <td>
                                             <button className="btn btn-danger mx-2"><i class="bi bi-trash"></i></button>
                                             <button onClick={() => navigate(`/${item.slug}`)} className="btn btn-primary"><i class="bi bi-eye"></i></button>
@@ -44,6 +96,10 @@ export default function Cart() {
 
                     </tbody>
                 </table>
+                <div className="total">
+                    <h4>TOTAL:</h4>
+                    <h5>{total.toFixed(2)}€</h5>
+                </div>
                 <button
                     onClick={() => navigate(`/${funko.result.slug}/checkout`)}
                     class="btn btn-success fs-3 my-2 my-sm-0"

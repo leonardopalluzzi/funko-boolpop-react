@@ -43,7 +43,7 @@ export default function Header() {
               </ul>
               <Link to={'/cart'} className="mx-4 text-white fs-4 position-relative">
                 {
-                  cart.userCart.length > 0 ? (<><label className="cart_label" htmlFor="">{cart.userCart.length}</label></>) : (<></>)
+                  cart.cartItemNumber > 0 ? (<><label className="cart_label" htmlFor="">{cart.cartItemNumber}</label></>) : (<></>)
                 }
                 <i class="bi bi-cart-fill"></i>
               </Link>
