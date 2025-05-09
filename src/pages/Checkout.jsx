@@ -34,7 +34,7 @@ export default function Checkout() {
         username: '',
         user_last_name: '',
         useremail: '',
-        amount: total
+        amount: Number(total.toFixed(2))
     })
 
     const [shippingAddress, setShippingAddress] = useState({
@@ -114,6 +114,29 @@ export default function Checkout() {
             .catch(err => {
                 console.error(err)
             })
+
+        setCheckout({
+            username: '',
+            user_last_name: '',
+            useremail: '',
+            amount: Number(total.toFixed(2))
+        })
+        setShippingAddress({
+            city: '',
+            province: '',
+            nation: '',
+            street: '',
+            civic: '',
+            cap: ''
+        })
+        setBillingAddress({
+            billing_city: '',
+            billing_province: '',
+            billing_nation: '',
+            billing_street: '',
+            billing_civic: '',
+            billing_cap: ''
+        })
 
     }
 
