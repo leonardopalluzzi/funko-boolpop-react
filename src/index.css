@@ -68,14 +68,18 @@ body {
   height: 70vh;
   position: relative;
   transition: transform 0.6s ease-in-out;
-  background-color: var(--tertiary);
+  background-image: url('/jumbo-background.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .jumbo_img {
-  min-width: 100%;
+  width: 100%;
   object-fit: cover;
-  transition: transform 1s ease;
-  transform: scale(1);
+  display: block;
+  margin: auto;
+  /*transform: scale(1);
+  transition: transform 1s ease;*/
 }
 
 .jumbo_info {
@@ -83,7 +87,7 @@ body {
   z-index: 10;
   bottom: 10%;
   left: 5%;
-  color: var(--text-light);
+  color: var(--darker);
 }
 
 .jumbo_slide.active .jumbo_img {
@@ -374,3 +378,19 @@ footer {
 .arrow-caro {
   color: var(--primary);
 }
+
+
+/*tablet in su*/
+@media screen and (min-width:768px) {
+  .jumbo_img {
+    width: 70%;
+  }
+}
+
+/*desktop in su*/
+@media screen and (min-width:992px) {
+  .jumbo_img {
+    width: 60%;
+  }
+}
+
