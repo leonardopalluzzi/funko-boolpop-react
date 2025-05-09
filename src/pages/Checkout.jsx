@@ -81,6 +81,13 @@ export default function Checkout() {
     function handleSubmit() {
         console.log(addressFlag);
 
+        const productsInfo = cart.userCart.map(item => {
+            const prod = {
+                item_slug: item.slug,
+                item_quantity: item.cartQuantity
+            }
+            return prod
+        })
 
         const billingData = addressFlag
             ? billingAddress
@@ -95,6 +102,8 @@ export default function Checkout() {
 
         const formToSend = {
             ...checkout,
+            status: 'intent',
+            products_info: productsInfo,
             ...shippingAddress,
             ...billingData
         }

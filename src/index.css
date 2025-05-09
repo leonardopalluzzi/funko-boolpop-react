@@ -283,7 +283,8 @@ footer {
 }
 
 .btn_chart {
-  background-color: var(--primary);
+  background-color: var(--darker);
+  color: var(--background);
   padding: 1rem;
   border: none;
   border-radius: 20px;
@@ -308,7 +309,7 @@ footer {
 }
 
 .product_description {
-  margin: 2rem 0;
+  margin: 1rem 0;
   border: 1px solid var(--accent);
   padding: 1rem;
   border-radius: 20px;
@@ -361,6 +362,7 @@ footer {
   margin-bottom: 1rem;
 }
 
+
 .sm-font {
   font-size: 0.8rem;
 }
@@ -368,3 +370,4 @@ footer {
 .arrow-caro {
   color: var(--primary);
 }
+
