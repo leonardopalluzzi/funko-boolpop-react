@@ -18,10 +18,6 @@
   --text-light: #ffffff;
 }
 
-.debug {
-  min-height: 100vh;
-}
-
 body {
   min-width: 400px;
 }
@@ -194,11 +190,15 @@ footer {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 
   .product_image {
     width: 100%;
-    max-width: 100%;
-    height: 100%;
+    max-width: 50%;
+    height: auto;
     transition-duration: 0.5s;
 
     &:hover {
@@ -284,7 +284,7 @@ footer {
 }
 
 .product_page_img {
-  height: 60%;
+  height: 100%;
 }
 
 .card_on_click {
@@ -393,4 +393,3 @@ footer {
     width: 60%;
   }
 }
-
