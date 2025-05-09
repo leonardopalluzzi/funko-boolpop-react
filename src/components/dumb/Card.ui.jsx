@@ -3,6 +3,7 @@ import ProductImages from "../smart/ProductImages"
 
 export default function CardUi({ images, name, price, license, promotions, slug, quantity }) {
 
+    console.log(images)
 
     return (
         <>
