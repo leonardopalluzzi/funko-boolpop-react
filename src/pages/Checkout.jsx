@@ -81,6 +81,9 @@ export default function Checkout() {
     function handleSubmit() {
         console.log(addressFlag);
 
+        const productsSlug = cart.userCart.map(item => {
+            return item.slug
+        })
 
         const billingData = addressFlag
             ? billingAddress
@@ -95,6 +98,7 @@ export default function Checkout() {
 
         const formToSend = {
             ...checkout,
+            products_slug: productsSlug,
             ...shippingAddress,
             ...billingData
         }
