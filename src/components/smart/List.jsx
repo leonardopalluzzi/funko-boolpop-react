@@ -11,12 +11,9 @@ export default function List({ query, scrollRef }) {
     const [limit, setLimit] = useState(5)  // definisce il numero di elementi ricevuti dal db
 
     useEffect(() => {
-        console.log('fetch eseguito');
-
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&trans=${query}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
 
                 setProducts({
                     state: 'success',

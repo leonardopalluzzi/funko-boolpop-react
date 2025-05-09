@@ -1,17 +1,21 @@
 
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import ProductImages from "../components/smart/ProductImages"
+import { useCartContext } from "../contexts/cartContext"
 
 
 export default function ProductPage() {
+
+    const { handleCart, cart } = useCartContext()
+
+    const navigate = useNavigate()
 
     const [funko, setFunkos] = useState({
         state: 'loading'
     })
 
     const { slug } = useParams()
-    console.log(slug);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/funkoboolpop/${slug}`)
@@ -21,7 +25,6 @@ export default function ProductPage() {
                     state: 'success',
                     result: data
                 })
-                console.log(data);
 
 
             })
@@ -91,10 +94,12 @@ export default function ProductPage() {
                                         </div>
                                     </div>
                                     <button
+                                        onClick={() => handleCart(funko.result)}
                                         class="btn btn_chart my-2 my-sm-0"
                                         type="submit">
                                         Aggiungi al carrello
                                     </button>
+                                    <span>{cart.message}</span>
                                     <div className="product_description">
                                         <h4>Description:</h4>
                                         <p>{funko.result.description}</p>

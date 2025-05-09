@@ -1,0 +1,138 @@
+import CheckoutFormUi from "../components/dumb/CheckoutForm.ui"
+import { useState } from "react"
+import { useCartContext } from "../contexts/cartContext";
+
+
+export default function Checkout() {
+
+    const { cart } = useCartContext()
+
+    //calcola il totale da comprare
+    let total = 0;
+
+    const priceArr = cart.userCart.map(item => {
+        console.log(item);
+
+        const basePrice = Number(item.price)
+        const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
+        const quantity = Number(item.cartQuantity)
+
+        let price = (basePrice * discount / 100) * quantity;
+
+        console.log(price);
+
+        return Number(price)
+    })
+
+    priceArr.forEach(item => {
+        total = total + item
+    })
+
+
+
+    const [checkout, setCheckout] = useState({
+        username: '',
+        user_last_name: '',
+        useremail: '',
+        amount: total
+    })
+
+    const [shippingAddress, setShippingAddress] = useState({
+        city: '',
+        province: '',
+        nation: '',
+        street: '',
+        civic: '',
+        cap: ''
+    })
+
+    const [billingAddress, setBillingAddress] = useState({
+        billing_city: '',
+        billing_province: '',
+        billing_nation: '',
+        billing_street: '',
+        billing_civic: '',
+        billing_cap: ''
+    })
+
+    const [addressFlag, setAddressFlag] = useState(false)
+
+    function handleChangeUser(key, value) {
+        setCheckout({
+            ...checkout,
+            [key]: value
+        })
+    }
+
+    function handleChangeShipping(key, value) {
+        setShippingAddress({
+            ...shippingAddress,
+            [key]: value
+        })
+    }
+
+    function handleChangeBilling(key, value) {
+        setBillingAddress({
+            ...billingAddress,
+            [key]: value
+        })
+    }
+
+    function handleSubmit() {
+        console.log(addressFlag);
+
+
+        const billingData = addressFlag
+            ? billingAddress
+            : {
+                billing_city: shippingAddress.city,
+                billing_province: shippingAddress.province,
+                billing_nation: shippingAddress.nation,
+                billing_street: shippingAddress.street,
+                billing_civic: shippingAddress.civic,
+                billing_cap: shippingAddress.cap
+            };
+
+        const formToSend = {
+            ...checkout,
+            ...shippingAddress,
+            ...billingData
+        }
+
+        console.log(formToSend);
+
+        fetch('http://localhost:3000/api/v1/transactions', {
+            method: 'POST',
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(formToSend)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+            })
+            .catch(err => {
+                console.error(err)
+            })
+
+    }
+
+    function handleAddress(flag) {
+        setAddressFlag(flag)
+    }
+
+    return (
+        <>
+            <CheckoutFormUi
+                checkout={checkout}
+                shipping={shippingAddress}
+                billing={billingAddress}
+                onChangeUser={handleChangeUser}
+                onChangeShipping={handleChangeShipping}
+                onChangeBilling={handleChangeBilling}
+                onsubmit={handleSubmit}
+                addressFlag={addressFlag}
+                handleAddress={handleAddress} />
+        </>
+    )
+}
