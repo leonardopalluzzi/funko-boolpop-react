@@ -55,9 +55,9 @@ export default function ProductPage() {
             return (
                 <>
                     <main>
-                        <div className="container py-5">
-                            <div className="row row-cols-1 row-cols-sm-2 ">
-                                <div className="col col-xs-12 col-sm-12 col-md-12 col-lg-6" key={funko.result.slug}>
+                        <div className="container py-5 ">
+                            <div className="row row-cols-1 row-cols-lg-2 ">
+                                <div className=" col col-xs-12 col-sm-12 col-md-12 col-lg-6 " key={funko.result.slug}>
                                     <div className="product_page_img border rounded-5 overflow-hidden">
                                         <ProductImages images={funko.result.images} />
                                     </div>
@@ -99,7 +99,7 @@ export default function ProductPage() {
                                         type="submit">
                                         Add to cart
                                     </button>
-                                    <span>{cart.message}</span>
+                                    <span className="mx-4">{cart.message}</span>
                                     <div className="product_description">
                                         <h4>Description:</h4>
                                         <p>{funko.result.description}</p>
