@@ -56,8 +56,8 @@ export default function ProductPage() {
                 <>
                     <main>
                         <div className="container py-5">
-                            <div className="row row-cols-1 row-cols-sm-2 g-4">
-                                <div className="col" key={funko.result.slug}>
+                            <div className="row row-cols-1 row-cols-sm-2 ">
+                                <div className="col col-xs-12 col-sm-12 col-md-12 col-lg-6" key={funko.result.slug}>
                                     <div className="product_page_img border rounded-5 overflow-hidden">
                                         <ProductImages images={funko.result.images} />
                                     </div>
@@ -97,7 +97,7 @@ export default function ProductPage() {
                                         onClick={() => handleCart(funko.result)}
                                         class="btn btn_chart my-2 my-sm-0"
                                         type="submit">
-                                        Aggiungi al carrello
+                                        Add to cart
                                     </button>
                                     <span>{cart.message}</span>
                                     <div className="product_description">
