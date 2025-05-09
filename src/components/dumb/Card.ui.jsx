@@ -23,11 +23,11 @@ export default function CardUi({ images, name, price, license, promotions, slug,
                                         (
                                             <>
                                                 <label>
-                                                    <div className="fw-bold text-danger">{promotions[0].name}</div>
-                                                    <span className="fs-6 text-secondary">
+                                                    <div className="fw-bold text-promo">{promotions[0].name}</div>
+                                                    <span className="fs-6 text-old-price">
                                                         <del>{price}€</del>
                                                     </span>
-                                                    <span className="price_label_card text-dark">
+                                                    <span className="price_label_card text-price">
                                                         {
                                                             (price * promotions[0].discount / 100).toFixed(2)
                                                         }€
@@ -36,7 +36,7 @@ export default function CardUi({ images, name, price, license, promotions, slug,
                                             </>
                                         ) : (
                                             <>
-                                                <label className="price_label_card">
+                                                <label className="price_label_card text-price">
                                                     {funko.result.price}€
                                                 </label>
                                             </>
