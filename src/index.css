@@ -51,6 +51,7 @@ body {
   height: 70vh;
   position: relative;
   transition: transform 0.6s ease-in-out;
+  background-color: var(--tertiary);
 }
 
 .jumbo_img {
@@ -111,6 +112,17 @@ header {
   background-position: center;
   background-blend-mode: overlay;
 
+  .custom-btn {
+    background-color: var(--darker);
+    color: white;
+    border: none;
+  }
+
+  .custom-btn:hover {
+    background-color: var(--tertiary);
+    color: var(--darker);
+  }
+
   img {
     max-width: 20rem;
     padding-block: 1rem;
@@ -139,7 +151,7 @@ header {
 .searchbar:focus,
 .searchbar:active {
   border-color: var(--tertiary);
-  box-shadow: 0 0 5px var(--tertiary);
+  box-shadow: 0 0 0 2px var(--tertiary);
 }
 
 /*FOOTER*/
@@ -147,7 +159,6 @@ header {
 footer {
   /*background-color: var(--darker);*/
   background-color: var(--primary);
-
   overflow: hidden;
   background-image: url('/public/halftone.svg');
   background-size: cover;
@@ -284,7 +295,7 @@ footer {
 .cart_label {
   color: var(--text-light);
   font-size: 0.7rem;
-  background-color: var(--primary);
+  background-color: var(--darker);
   padding: 0.2rem;
   width: 20px;
   height: 20px;

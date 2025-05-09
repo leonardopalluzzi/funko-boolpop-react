@@ -30,16 +30,16 @@ export default function Header() {
             </button>
             <div className="collapse navbar-collapse" id="collapsibleNavId">
               <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-                <li className="nav-item">
-                  <NavLink to={'/'} className="nav-link active text-white">
-                    Home
+                {/*<li className="nav-item">
+                  <NavLink to={'/'} className="nav-link active text-white fs-4">
+                    <i className="bi bi-house-fill"></i>
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink to={'/'} className="nav-link text-white">
                     Link
                   </NavLink>
-                </li>
+                </li>*/}
               </ul>
               <Link to={'/cart'} className="mx-4 text-white fs-4 position-relative">
                 {
@@ -47,13 +47,11 @@ export default function Header() {
                 }
                 <i class="bi bi-cart-fill"></i>
               </Link>
-              {/*form*/}
               <SearchBar />
             </div>
           </div>
         </nav>
-
-      </header>
+      </header >
     </>
   );
 }
