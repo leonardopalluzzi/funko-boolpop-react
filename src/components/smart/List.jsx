@@ -91,7 +91,7 @@ export default function List({ query, scrollRef }) {
                             />
 
                         ))}
-                        <button className="btn btn-transparent" onClick={() => handleLoadNext()}>Load More</button>
+                        <button className="btn btn-transparent" onClick={() => handleLoadNext()}> <i className="bi bi-arrow-clockwise arrow-caro"></i> Load More</button>
                     </div>
                 </>
             )
