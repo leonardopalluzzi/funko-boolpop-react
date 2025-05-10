@@ -1,15 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext()
 
 function CartProvider({ children }) {
 
-    const [cart, setCart] = useState({
+    const emptyCart = {
         state: '',
         message: '',
         cartItemNumber: 0,
         userCart: []
-    })
+    }
+
+    const checkForCart = JSON.parse(localStorage.getItem('cart'))
+
+    const [cart, setCart] = useState(checkForCart ? checkForCart : emptyCart)
+
+
+
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }, [cart])
+
+
 
     function handleCart(newItem) {
 
@@ -25,7 +38,6 @@ function CartProvider({ children }) {
 
 
         const itemCheck = cart.userCart.find(item => item.slug == newItem.slug)
-
         if (itemCheck) {
             const currentQuantity = newItem.quantity
             const currentBuying = newItem.cartQuantity
@@ -56,17 +68,20 @@ function CartProvider({ children }) {
                 cartItemNumber: cart.cartItemNumber + 1,
                 userCart: updatedCart
             })
+
         } else {
             newItem.cartQuantity = 1
             newItem.quantity = newItem.quantity - 1
+
+
             setCart({
                 state: 'success',
                 message: 'Product added to your cart',
                 cartItemNumber: cart.cartItemNumber + 1,
                 userCart: [...cart.userCart, newItem]
             })
-            console.log(cart);
 
+            console.log(cart);
         }
     }
 
