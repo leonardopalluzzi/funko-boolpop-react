@@ -40,6 +40,16 @@ function CartProvider({ children }) {
 
         const itemCheck = cart.userCart.find(item => item.slug == newItem.slug)
         if (itemCheck) {
+
+            if (itemCheck.quantity == 0) {
+                return setCart({
+                    ...cart,
+                    state: 'error',
+                    message: 'This item is no longer available',
+                })
+            }
+
+            //credo sia inutile sta roba ma non ricordo
             const currentQuantity = newItem.quantity
             const currentBuying = newItem.cartQuantity
 
@@ -52,6 +62,7 @@ function CartProvider({ children }) {
         }
 
         if (itemCheck) {
+            newItem.quantity = newItem.quantity - 1
             const updatedCart = cart.userCart.map(item => {
                 if (item.slug == newItem.slug) {
                     return {

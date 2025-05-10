@@ -4,17 +4,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import ProductImages from "../components/smart/ProductImages";
 import { useCartContext } from "../contexts/cartContext";
 
-export default function ProductPage({ quantity }) {
+export default function ProductPage() {
     const { handleCart, cart } = useCartContext();
-
-    console.log(quantity);
-
 
     const navigate = useNavigate();
 
     const [funko, setFunkos] = useState({
         state: "loading",
     });
+
+    const [productQuantity, setProductQuantity] = useState(0)
 
     const { slug } = useParams();
 
@@ -34,6 +33,17 @@ export default function ProductPage({ quantity }) {
                 });
             });
     }, []);
+
+    useEffect(() => {
+        if (funko.state === 'success') {
+            const foundItem = cart.userCart.find(item => item.slug === funko.result.slug);
+            setProductQuantity(
+                foundItem ? foundItem.quantity : funko.result.quantity
+            );
+        }
+    }, [funko, cart])
+
+
 
     switch (funko.state) {
         case "loading":
@@ -105,7 +115,7 @@ export default function ProductPage({ quantity }) {
 
                                     <span className="d-block pt-4">
                                         {" "}
-                                        <i class="bi bi-box-fill"></i> Available: {quantity}
+                                        <i class="bi bi-box-fill"></i> Available: {productQuantity}
                                     </span>
 
                                     <div className="product_description">
