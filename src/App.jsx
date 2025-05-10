@@ -7,6 +7,7 @@ import { CartProvider } from "./contexts/cartContext"
 import Cart from "./pages/Cart"
 import Payment from "./pages/Payment"
 import { PaymentProvider } from "./contexts/paymentContext"
+import SuccessCheckout from "./pages/SuccessCheckout"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" Component={Home} />
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
+              <Route path="/success-checkout" Component={SuccessCheckout} />
               <Route path="/complete-checkout" element={
                 <>
                   <PaymentProvider>

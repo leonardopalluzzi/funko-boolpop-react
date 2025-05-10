@@ -13,12 +13,12 @@ export default function Payment() {
     const options = {
         clientSecret: client_secret,
         appearance: {
-            theme: 'flat'
+            theme: 'minimal'
         }
     }
 
 
-    const stripePromise = loadStripe('pk_live_51RKppyL1WbucwTe96tGRjDoGRLK2bczlROKQHcuWmshhl1iShdeIHj4AZDGXcdKaXKopwksWDcZZ03x2BpIlpxbK001ehElQdg');
+    const stripePromise = loadStripe('pk_test_51RKpq9Q6vBP0glqyfTSi0a2BNUEGYwoLm1tR8rkkRwcDRRdkqYaMgVX3bTnxuYG7A0odSoSqF0bzMNnV3TKyHqUf00xpcTWDMC');
 
 
     switch (payment.state) {

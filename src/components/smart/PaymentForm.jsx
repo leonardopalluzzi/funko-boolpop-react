@@ -9,6 +9,11 @@ export default function PaymentForm({ clientSecret }) {
     const [errorMessage, setErrorMessage] = useState();
     const [loading, setLoading] = useState(false);
 
+
+    if (!elements) {
+        return
+    }
+
     function handleError(error) {
         setLoading(false);
         setErrorMessage(error.message);
@@ -38,8 +43,8 @@ export default function PaymentForm({ clientSecret }) {
             elements,
             clientSecret,
             confirmParams: {
-                return_url: 'http://localhost:5173/success-payment'
-            }
+                return_url: 'http://localhost:5173/success-checkout',
+            },
         })
 
         if (error) {
@@ -57,6 +62,7 @@ export default function PaymentForm({ clientSecret }) {
                     <div className="container w-50">
                         <button className='btn btn-primary my-4 w-100 fs-3' type="submit" disabled={!stripe || loading}>Pay Now</button>
                         {errorMessage && <div>{errorMessage}</div>}
+                        <div>{errorMessage}</div>
                     </div>
                 </form>
             </div>
