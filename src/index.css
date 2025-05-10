@@ -361,6 +361,15 @@ footer {
   }
 }
 
+.empty_cart {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: grey;
+}
+
 .total {
   display: flex;
   flex-direction: column;
