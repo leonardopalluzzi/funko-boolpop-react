@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom"
 import { useCartContext } from "../contexts/cartContext"
+import { useEffect, useState } from "react";
 
 export default function Cart() {
 
-    const { cart, deleteFromCart } = useCartContext()
+    const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } = useCartContext()
     console.log(cart);
 
 
     const navigate = useNavigate()
 
-    let total = 0;
+
+    let total = 0
 
     const priceArr = cart.userCart.map(item => {
         console.log(item);
@@ -24,11 +26,9 @@ export default function Cart() {
 
         return Number(price)
     })
-
     priceArr.forEach(item => {
         total = total + item
     })
-
 
     return (
         <>
@@ -61,7 +61,12 @@ export default function Cart() {
                                                 item.promotion.length > 0 ? (<><span>{item.promotion[0].name}: </span><span>{item.promotion[0].discount}%</span></>) : (<>No promotions found</>)
                                             }
                                         </td>
-                                        <td>X{item.cartQuantity}</td>
+                                        <td>
+                                            <button onClick={() => subtractCartQuantity(item)} className="btn btn-transaprent fs-3 p-2">-</button>
+                                            X{item.cartQuantity}
+                                            <button onClick={() => addCartQuantity(item)} className="btn btn-transaprent fs-4 p-2">+</button>
+                                            <p>{cart.message}</p>
+                                        </td>
                                         <td>
                                             {
                                                 item.promotion.length > 0 ?

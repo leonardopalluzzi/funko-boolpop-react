@@ -105,14 +105,94 @@ function CartProvider({ children }) {
         })
     }
 
-    function changeCartQuantity() {
+    function subtractCartQuantity(itemToChange) {
+
+        if (itemToChange.cartQuantity > 1) {
+            const updatedCart = cart.userCart.map(item => {
+                if (item.slug === itemToChange.slug) {
+                    return {
+                        ...item,
+                        cartQuantity: item.cartQuantity - 1,
+                        quantity: item.quantity + 1
+                    };
+                }
+                return item;
+            });
+
+
+            setCart({
+                state: 'success',
+                message: 'Product subtracted',
+                cartItemNumber: cart.cartItemNumber - 1,
+                userCart: updatedCart
+            });
+
+
+
+        } else {
+            const quantityToDelete = Number(itemToChange.cartQuantity)
+
+            const updatedCart = cart.userCart.filter(item => {
+                if (item.slug !== itemToChange.slug) {
+                    return {
+                        ...item,
+                        cartQuantity: 0,
+                        quantity: item.quantity
+                    }
+                }
+            })
+
+            setCart({
+                state: 'success',
+                message: 'Product deleted from cart',
+                cartItemNumber: cart.cartItemNumber - quantityToDelete,
+                userCart: updatedCart
+            })
+        }
+
+    }
+
+    function addCartQuantity(itemToChange) {
+
+        if (itemToChange.cartQuantity < itemToChange.quantity) {
+            const updatedCart = cart.userCart.map(item => {
+                if (item.slug === itemToChange.slug) {
+                    return {
+                        ...item,
+                        cartQuantity: item.cartQuantity + 1,
+                        quantity: item.quantity - 1
+                    };
+                }
+                return item;
+            });
+
+
+            setCart({
+                state: 'success',
+                message: 'Product added',
+                cartItemNumber: cart.cartItemNumber + 1,
+                userCart: updatedCart
+            });
+
+
+
+        } else {
+
+            setCart({
+                state: 'error',
+                message: 'Product no longer available',
+                cartItemNumber: cart.cartItemNumber,
+                userCart: cart.userCart
+            })
+        }
 
     }
 
 
+
     return (
         <>
-            <CartContext.Provider value={{ handleCart, cart, deleteFromCart }}>
+            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity }}>
                 {children}
             </CartContext.Provider>
         </>
