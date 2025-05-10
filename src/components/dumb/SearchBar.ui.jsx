@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SearchBarUi({ searchText, setSearchText, handleSearch }) {
+export default function SearchBarUi({ serachName, serachDescription, serachCategory, onchange, handleSearch }) {
     return (
         <form
             className="d-flex my-2 my-lg-0"
@@ -8,7 +8,6 @@ export default function SearchBarUi({ searchText, setSearchText, handleSearch })
             onSubmit={(e) => {
                 e.preventDefault();
                 handleSearch(searchText);
-                setSearchText('');
             }}
         >
 
@@ -17,8 +16,8 @@ export default function SearchBarUi({ searchText, setSearchText, handleSearch })
                     className="form-control searchbar"
                     type="text"
                     placeholder="Search"
-                    value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
+                    value={serachName}
+                    onChange={(e) => onchange(e.target.name, e.target.value)}
                 />
                 <button
                     className="btn custom-btn"
