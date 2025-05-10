@@ -18,6 +18,9 @@ function CartProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
+        if (cart.userCart.length < 1) {
+            localStorage.removeItem('cart')
+        }
     }, [cart])
 
 
