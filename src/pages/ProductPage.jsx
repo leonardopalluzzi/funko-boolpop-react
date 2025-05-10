@@ -7,6 +7,9 @@ import { useCartContext } from "../contexts/cartContext";
 export default function ProductPage({ quantity }) {
     const { handleCart, cart } = useCartContext();
 
+    console.log(quantity);
+
+
     const navigate = useNavigate();
 
     const [funko, setFunkos] = useState({

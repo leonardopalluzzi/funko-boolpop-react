@@ -16,8 +16,6 @@ function CartProvider({ children }) {
     const [cart, setCart] = useState(checkForCart ? checkForCart : emptyCart)
 
 
-
-
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
@@ -85,12 +83,36 @@ function CartProvider({ children }) {
         }
     }
 
+    function deleteFromCart(itemToDelete) {
 
+        const quantityToDelete = Number(itemToDelete.cartQuantity)
+
+        const updatedCart = cart.userCart.filter(item => {
+            if (item.slug !== itemToDelete.slug) {
+                return {
+                    ...item,
+                    cartQuantity: 0,
+                    quantity: item.quantity
+                }
+            }
+        })
+
+        setCart({
+            state: 'success',
+            message: 'Product deleted from cart',
+            cartItemNumber: cart.cartItemNumber - quantityToDelete,
+            userCart: updatedCart
+        })
+    }
+
+    function changeCartQuantity() {
+
+    }
 
 
     return (
         <>
-            <CartContext.Provider value={{ handleCart, cart }}>
+            <CartContext.Provider value={{ handleCart, cart, deleteFromCart }}>
                 {children}
             </CartContext.Provider>
         </>

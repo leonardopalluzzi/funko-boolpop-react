@@ -3,7 +3,7 @@ import { useCartContext } from "../contexts/cartContext"
 
 export default function Cart() {
 
-    const { cart } = useCartContext()
+    const { cart, deleteFromCart } = useCartContext()
     console.log(cart);
 
 
@@ -85,7 +85,7 @@ export default function Cart() {
                                             }
                                         </td>
                                         <td>
-                                            <button className="btn btn-danger mx-2"><i class="bi bi-trash"></i></button>
+                                            <button onClick={() => deleteFromCart(item)} className="btn btn-danger mx-2"><i class="bi bi-trash"></i></button>
                                             <button onClick={() => navigate(`/${item.slug}`)} className="btn btn-primary"><i class="bi bi-eye"></i></button>
                                         </td>
 
