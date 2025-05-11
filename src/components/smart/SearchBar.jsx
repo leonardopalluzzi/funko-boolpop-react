@@ -22,7 +22,7 @@ export default function SearchBar({ page = 1, limit = 10 }) {
     });
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&description=${searchText.description}&category=${searchText.category}`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&description=${searchText.description}&category=${searchText.category}&searchOnly=true`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
