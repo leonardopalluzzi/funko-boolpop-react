@@ -202,6 +202,10 @@ function CartProvider({ children }) {
 
     }
 
+    function deleteBuyedItems() {
+
+    }
+
 
 
     return (
