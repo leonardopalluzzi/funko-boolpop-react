@@ -10,13 +10,6 @@ export default function SearchBar({ page = 1, limit = 10 }) {
         description: ''
     });
 
-    function handleChange(key, value) {
-        setSearchText({
-            ...searchText,
-            [key]: value
-        })
-
-    }
     const [filteredFunko, setFilteredFunko] = useState({
         state: 'loading'
     });
@@ -39,22 +32,24 @@ export default function SearchBar({ page = 1, limit = 10 }) {
             });
     }, [searchText])
 
+    function handleChange(key, value) {
+        setSearchText({
+            ...searchText,
+            [key]: value
+        })
+
+    }
+
     function handleSearch(searchText) {
-        // fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&description=${searchText.description}&category=${searchText.category}`)
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         console.log(data);
-        //         setFilteredFunko({
-        //             state: 'success',
-        //             data: data,
-        //         });
-        //     })
-        //     .catch((err) => {
-        //         setFilteredFunko({
-        //             state: 'error',
-        //             message: err.message,
-        //         });
-        //     });
+        //inserire redirect ad una pagina con i risultati della ricerca al submit
+    }
+
+    function emptyResearch() {
+        setSearchText({
+            name: '',
+            category: '',
+            description: ''
+        })
     }
 
     switch (filteredFunko.state) {
@@ -82,7 +77,7 @@ export default function SearchBar({ page = 1, limit = 10 }) {
                         handleSearch={handleSearch}
                     />
 
-                    <SearchResultsUi results={filteredFunko.data} />
+                    {filteredFunko.data.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data} /></>) : (<></>)}
                 </>
             );
     }

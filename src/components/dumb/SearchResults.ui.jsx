@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function SearchResultsUi({ results }) {
+export default function SearchResultsUi({ results, emptyResearch }) {
     console.log(results);
 
     return (
@@ -13,7 +13,7 @@ export default function SearchResultsUi({ results }) {
                         {results.map(item => (
                             <>
                                 <li>
-                                    <Link to={`/${item.slug}`}>
+                                    <Link onClick={() => emptyResearch()} to={`/${item.slug}`}>
                                         <div className="d-flex gap-5 align-items-center">
                                             <img className="search_results_img" src={`http://localhost:3000/${item.images[0].image}`} alt={item.name} />
                                             <p>{item.name}</p>
