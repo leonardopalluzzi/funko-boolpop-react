@@ -1,8 +1,11 @@
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useState } from 'react'
 import { redirect } from 'react-router-dom';
+import { useCartContext } from '../../contexts/cartContext';
 
 export default function PaymentForm({ clientSecret }) {
+
+    const { unloadCart } = useCartContext()
 
     const stripe = useStripe()
     const elements = useElements()
@@ -60,7 +63,7 @@ export default function PaymentForm({ clientSecret }) {
                 <form action="" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
                     <PaymentElement />
                     <div className="container w-50">
-                        <button className='btn btn-primary my-4 w-100 fs-3' type="submit" disabled={!stripe || loading}>Pay Now</button>
+                        <button onClick={() => unloadCart()} className='btn btn-primary my-4 w-100 fs-3' type="submit" disabled={!stripe || loading}>Pay Now</button>
                         {errorMessage && <div>{errorMessage}</div>}
                         <div>{errorMessage}</div>
                     </div>

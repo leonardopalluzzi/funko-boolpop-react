@@ -202,15 +202,16 @@ function CartProvider({ children }) {
 
     }
 
-    function deleteBuyedItems() {
-
+    function unloadCart() {
+        setCart(emptyCart)
     }
+
 
 
 
     return (
         <>
-            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity }}>
+            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart }}>
                 {children}
             </CartContext.Provider>
         </>
