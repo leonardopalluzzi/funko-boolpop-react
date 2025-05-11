@@ -14,11 +14,13 @@ export default function List({ query, scrollRef, queryName }) {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&${queryName}=${query}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
 
                 setProducts({
                     state: 'success',
                     data: data
                 })
+
                 if (data.length < 1) {
                     setPage(1)
                 }
@@ -32,7 +34,11 @@ export default function List({ query, scrollRef, queryName }) {
     }, [page, limit])
 
     function handleLoadNext() {
-        setPage(page + 1)
+        if (page < products.data.totalPages) {
+            setPage(page + 1)
+        } else {
+            setPage(1)
+        }
 
         if (scrollRef?.current) {
             scrollRef.current.scrollLeft = 0; // Resetta lo scroll
@@ -74,10 +80,10 @@ export default function List({ query, scrollRef, queryName }) {
                             </select>
                         </div>
 
-                        <span className="sm-font">Page: {page}</span>
+                        <span className="sm-font">Page: {products.data.currentPage} / {products.data.totalPages}</span>
                     </div>
                     <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 align-items-center">
-                        {products.data.map(product => (
+                        {products.data.results.map(product => (
 
                             <CardUi
                                 key={`unique${product.slug}`}

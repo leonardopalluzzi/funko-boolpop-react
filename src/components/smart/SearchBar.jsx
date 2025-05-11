@@ -16,7 +16,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&searchOnly=true`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                console.log(data.results);
                 setFilteredFunko({
                     state: 'success',
                     data: data,
@@ -75,7 +75,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
                         handleSearch={handleSearch}
                     />
                     <div className={display == false ? 'd-block' : 'd-none'}>
-                        {filteredFunko.data.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data} /></>) : (<></>)}
+                        {filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
                     </div>
 
 

@@ -60,7 +60,7 @@ export default function Jumbo() {
         case 'success':
             return (
                 <>
-                    <JumboUi productList={funkos.data} slideIndex={currentIndex} setIndex={setCurrentIndex} />
+                    <JumboUi productList={funkos.data.results} slideIndex={currentIndex} setIndex={setCurrentIndex} />
                 </>
             )
     }
