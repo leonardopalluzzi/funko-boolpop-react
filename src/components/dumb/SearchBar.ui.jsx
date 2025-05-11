@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SearchBarUi({ serachName, serachDescription, serachCategory, onchange, handleSearch }) {
+export default function SearchBarUi({ serachName, onchange, handleSearch }) {
     return (
         <form
             className="d-flex my-2 my-lg-0"

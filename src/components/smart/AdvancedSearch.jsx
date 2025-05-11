@@ -1,11 +1,14 @@
+import AdvancedSearchUi from "../dumb/AdvancedSearch.ui"
 import { useState, useEffect } from 'react';
-import SearchBarUi from '../dumb/SearchBar.ui';
-import SearchResultsUi from '../dumb/SearchResults.ui';
+import SearchResultsUi from "../dumb/SearchResults.ui";
 
-export default function SearchBar({ page = 1, limit = 10, display }) {
+export default function AdvancedSearch() {
 
+    const page = 1
+    const limit = 10
     const [searchText, setSearchText] = useState({
-        name: ''
+        category: '',
+        description: ''
     });
 
     const [filteredFunko, setFilteredFunko] = useState({
@@ -13,7 +16,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
     });
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&searchOnly=true`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&description=${searchText.description}&category=${searchText.category}&searchOnly=true`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -67,21 +70,18 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         case 'success':
             return (
                 <>
-                    <SearchBarUi
-                        serachName={searchText.name}
-                        serachDescription={searchText.description}
-                        serachCategory={searchText.category}
-                        onchange={handleChange}
-                        handleSearch={handleSearch}
-                    />
-                    <div className={display == false ? 'd-block' : 'd-none'}>
+                    <div className="container">
+                        <AdvancedSearchUi
+                            searchDescription={searchText.description}
+                            searchCategory={searchText.category}
+                            onchange={handleChange}
+                            handleSearch={handleSearch}
+                        />
+
                         {filteredFunko.data.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data} /></>) : (<></>)}
                     </div>
 
-
                 </>
-
-
-            );
+            )
     }
 }

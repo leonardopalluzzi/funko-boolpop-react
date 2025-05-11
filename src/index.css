@@ -438,7 +438,7 @@ footer {
     -ms-overflow-style: none;
     position: absolute;
     top: 12%;
-    right: 5%;
+    right: 10%;
     z-index: 20;
   }
 }
@@ -463,6 +463,6 @@ footer {
 
   .search_results_container {
     max-width: 20%;
-    right: 12%;
+    right: 22%;
   }
 }

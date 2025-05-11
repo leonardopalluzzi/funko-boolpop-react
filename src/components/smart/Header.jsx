@@ -2,10 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useCartContext } from "../../contexts/cartContext";
+import AdvancedSearch from "./AdvancedSearch";
 
 export default function Header() {
 
   const { cart } = useCartContext()
+  const [display, setDisplay] = useState(false)
 
   return (
     <>
@@ -50,10 +52,15 @@ export default function Header() {
                 }
                 <i className="bi bi-cart-fill"></i>
               </Link>
-              <SearchBar />
+              <SearchBar display={display} />
+              <button onClick={display == false ? () => setDisplay(true) : () => setDisplay(false)} className="btn btn-primary mx-3">Advanced Filters</button>
             </div>
           </div>
         </nav>
+        <div className={display == true ? 'd-block' : 'd-none'}>
+          <AdvancedSearch />
+        </div>
+
       </header >
     </>
   );
