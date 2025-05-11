@@ -16,6 +16,7 @@ export default function SearchBarUi({ serachName, serachDescription, serachCateg
                     className="form-control searchbar"
                     type="text"
                     placeholder="Search"
+                    name='name'
                     value={serachName}
                     onChange={(e) => onchange(e.target.name, e.target.value)}
                 />
