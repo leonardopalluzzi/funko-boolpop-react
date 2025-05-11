@@ -38,6 +38,7 @@ export default function Checkout() {
         username: '',
         user_last_name: '',
         useremail: '',
+        cart: cart.userCart,
         amount: Number(total.toFixed(2))
     })
 
