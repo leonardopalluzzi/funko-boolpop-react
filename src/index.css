@@ -349,15 +349,31 @@ footer {
   transform: translate(50%);
 }
 
+td {
+  max-width: 15%;
+}
+
 .cart_img_container {
-  display: inline-block;
-  width: 20%;
+  display: flex;
+  max-width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
+  border: 1px solid grey;
+  padding: 1rem;
   border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+
 
   .cart_img {
-    max-width: 100%;
+    max-width: 80%;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
   }
 }
 

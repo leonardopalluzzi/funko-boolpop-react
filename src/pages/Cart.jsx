@@ -48,7 +48,7 @@ export default function Cart() {
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Product Image</th>
+                                    <th scope="col" style={{ width: "15%" }}>Product Image</th>
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Promotions</th>
                                     <th scope="col">Quantity</th>
@@ -64,7 +64,7 @@ export default function Cart() {
                                             <tr>
                                                 <td>
                                                     <div className="cart_img_container">
-                                                        <img className="cart_img" src={item.images[0].image} alt="" />
+                                                        <img onClick={() => navigate(`/${item.slug}`)} className="cart_img" src={`http://localhost:3000/${item.images[0].image}`} alt={item.name} />
                                                     </div>
                                                 </td>
                                                 <td>{item.name}</td>
