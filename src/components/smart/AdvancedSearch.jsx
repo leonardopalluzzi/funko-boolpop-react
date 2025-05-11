@@ -15,6 +15,28 @@ export default function AdvancedSearch() {
         state: 'loading'
     });
 
+    const [categoryList, setCategoryList] = useState({
+        state: 'loading'
+    })
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/v1/funkoboolpop?getCategory=true')
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setCategoryList({
+                    state: 'success',
+                    data: data,
+                });
+            })
+            .catch((err) => {
+                setCategoryList({
+                    state: 'error',
+                    message: err.message,
+                });
+            });
+    }, [])
+
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&description=${searchText.description}&category=${searchText.category}&searchOnly=true`)
             .then((res) => res.json())
@@ -53,7 +75,7 @@ export default function AdvancedSearch() {
         })
     }
 
-    switch (filteredFunko.state) {
+    switch (categoryList.state) {
         case 'loading':
             return (
                 <>
@@ -76,9 +98,10 @@ export default function AdvancedSearch() {
                             searchCategory={searchText.category}
                             onchange={handleChange}
                             handleSearch={handleSearch}
+                            categoryList={categoryList.data}
                         />
 
-                        {filteredFunko.data.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data} /></>) : (<></>)}
+                        {filteredFunko.state == 'success' && filteredFunko.data.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data} /></>) : (<></>)}
                     </div>
 
                 </>

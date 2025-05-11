@@ -1,4 +1,4 @@
-export default function AdvancedSearchUi({ searchDescription, searchCategory, onchange, handleSearch }) {
+export default function AdvancedSearchUi({ searchDescription, searchCategory, onchange, handleSearch, categoryList }) {
     return (
         <>
             <div className="container">
@@ -16,9 +16,11 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, on
                             <option selected>Select a category</option>
 
                             {/* fare map per le options  */}
-                            <option value="">New Delhi</option>
-                            <option value="">Istanbul</option>
-                            <option value="">Jakarta</option>
+                            {categoryList.map(item => (
+                                <>
+                                    <option value={item.name.toLowerCase().replaceAll(' ', '')}>{item.name}</option>
+                                </>
+                            ))}
                         </select>
                     </div>
 
