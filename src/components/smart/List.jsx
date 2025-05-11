@@ -7,6 +7,8 @@ export default function List({ query, scrollRef, queryName }) {
         state: 'loading'
     })
 
+    const [active, setActive] = useState(0)
+
     const [page, setPage] = useState(1)  //definisce il numero della pagina visualizzata
     const [limit, setLimit] = useState(5)  // definisce il numero di elementi ricevuti dal db
 
@@ -64,23 +66,37 @@ export default function List({ query, scrollRef, queryName }) {
         case 'success':
             return (
                 <>
-                    <div className="page_counter d-flex align-items-center justify-content-center gap-2">
-                        <div className="">
+                    <div className="page_counter w-100 row">
+                        <div className="col-8">
+                            {(() => {
+                                const elements = [];
+                                for (let i = 0; i < products.data.totalPages; i++) {
+                                    elements.push(
+                                        <button className={`btn ${active == i ? 'btn-outline-primary' : 'btn-transaprent'}`} key={i} onClick={() => { setPage(i + 1); setActive(i) }}>
+                                            {i + 1}
+                                        </button>
+                                    );
+                                }
+                                return elements;
+                            })()}
+                        </div>
+                        <div className="col-4 d-flex gap-3 align-items-center justify-content-end">
                             {/*<label for="" className="form-label">select item number</label>*/}
                             <select
-                                className="form-select form-select-sm"
+                                className="form-select form-select-sm w-50"
                                 name=""
                                 id=""
                                 onChange={(e) => setLimit(Number(e.target.value))}
                             >
-                                <option value='' selected>Select one</option>
+                                <option value='' selected>Select Products Number</option>
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                             </select>
+                            <span className="sm-font">Page: {products.data.currentPage} / {products.data.totalPages}</span>
                         </div>
 
-                        <span className="sm-font">Page: {products.data.currentPage} / {products.data.totalPages}</span>
+
                     </div>
                     <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 align-items-center">
                         {products.data.results.map(product => (
