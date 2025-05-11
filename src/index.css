@@ -388,6 +388,47 @@ footer {
   color: var(--primary);
 }
 
+.search_results_container {
+  background-color: var(--background);
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: scroll;
+
+
+  .search_results_body {
+    ul {
+      list-style: none;
+      padding: 1rem;
+
+      li {
+        border: 1px solid var(--primary);
+        border-radius: 20px;
+        padding: 1rem;
+        height: 90px;
+        margin: 1rem 0;
+
+        a {
+          text-decoration: none;
+          color: var(--text);
+          transition-duration: 0.5s;
+          font-size: 1rem;
+
+
+          .search_results_img {
+            width: 100%;
+          }
+
+        }
+
+      }
+
+
+
+
+    }
+  }
+}
+
 
 /*tablet in su*/
 @media screen and (min-width:768px) {

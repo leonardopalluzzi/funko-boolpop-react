@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import SearchBarUi from '../dumb/SearchBar.ui';
+import SearchResultsUi from '../dumb/SearchResults.ui';
 
 export default function SearchBar({ page = 1, limit = 10 }) {
 
@@ -81,13 +82,7 @@ export default function SearchBar({ page = 1, limit = 10 }) {
                         handleSearch={handleSearch}
                     />
 
-                    <div className="container">
-                        {filteredFunko.data.map(item => (
-                            <>
-                                {item.name}
-                            </>
-                        ))}
-                    </div>
+                    <SearchResultsUi results={filteredFunko.data} />
                 </>
             );
     }
