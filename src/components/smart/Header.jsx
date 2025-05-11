@@ -11,9 +11,9 @@ export default function Header() {
     <>
       <header>
         <nav
-          className="navbar navbar-expand-sm"
+          className="navbar navbar-expand-sm position-static"
         >
-          <div className="container">
+          <div className="container position-static">
             <Link to={'/'} className="navbar-brand">
               <img className="w-100" src="/logo.svg" alt="" />
             </Link>
@@ -28,7 +28,7 @@ export default function Header() {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="collapsibleNavId">
+            <div className="collapse navbar-collapse position-static" id="collapsibleNavId">
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
                 {/*
                 va cambiato di nuovo in ul se serve mettere i link

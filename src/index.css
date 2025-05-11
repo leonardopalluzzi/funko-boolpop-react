@@ -415,7 +415,7 @@ footer {
 
 
           .search_results_img {
-            width: 100%;
+            width: 5%;
           }
 
         }
@@ -429,11 +429,29 @@ footer {
   }
 }
 
+@media screen and (min-width: 575px) {
+
+  .search_results_container {
+    max-width: 50%;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: absolute;
+    top: 12%;
+    right: 5%;
+    z-index: 20;
+  }
+}
+
 
 /*tablet in su*/
 @media screen and (min-width:768px) {
   .jumbo_img {
     width: 70%;
+  }
+
+  .search_results_container {
+    max-width: 40%;
   }
 }
 
@@ -441,5 +459,10 @@ footer {
 @media screen and (min-width:992px) {
   .jumbo_img {
     width: 60%;
+  }
+
+  .search_results_container {
+    max-width: 20%;
+    right: 12%;
   }
 }
