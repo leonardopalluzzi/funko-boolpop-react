@@ -13,7 +13,7 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, on
                             name="category"
                             id=""
                         >
-                            <option selected>Select a category</option>
+                            <option value='' selected>Select a category</option>
 
                             {/* fare map per le options  */}
                             {categoryList.map(item => (
