@@ -129,7 +129,7 @@ export default function ProductPage() {
                                         <div className="accordion-item ">
                                             <h2 className="accordion-header ">
                                                 <button
-                                                    className="accordion-button"
+                                                    className="accordion_button"
                                                     type="button"
                                                     data-bs-toggle="collapse"
                                                     data-bs-target="#collapseOne"
