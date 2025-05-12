@@ -5,7 +5,7 @@ import ProductImages from "../components/smart/ProductImages";
 import { useCartContext } from "../contexts/cartContext";
 
 export default function ProductPage() {
-    const { handleCart, cart } = useCartContext();
+    const { handleCart, cart, subtractCartQuantity, addCartQuantity } = useCartContext();
 
     const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ export default function ProductPage() {
     });
 
     const [productQuantity, setProductQuantity] = useState(0)
+    const [cartItem, setCartItem] = useState(null)
 
     const { slug } = useParams();
 
@@ -36,10 +37,14 @@ export default function ProductPage() {
 
     useEffect(() => {
         if (funko.state === 'success') {
+
             const foundItem = cart.userCart.find(item => item.slug === funko.result.slug);
+            foundItem != undefined ? setCartItem(foundItem) : setCartItem(null)
             setProductQuantity(
                 foundItem ? foundItem.quantity : funko.result.quantity
             );
+            console.log(productQuantity);
+
         }
     }, [funko, cart])
 
@@ -105,17 +110,28 @@ export default function ProductPage() {
                                         </div>
                                     </div>
                                     <button
-                                        onClick={() => handleCart(funko.result)}
+                                        onClick={() => handleCart(funko.result, funko.result.quantity)}
                                         className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
                                         type="submit"
                                     >
                                         Add to cart
                                     </button>
+
+                                    <div>
+                                        {cartItem ? (
+                                            <>
+                                                <button className="btn btn-transparent" onClick={() => subtractCartQuantity(cartItem)}>-</button>
+                                                {cartItem.cartQuantity}
+                                                <button className="btn btn-transparent" onClick={() => addCartQuantity(cartItem, funko.result.quantity)}>+</button>
+                                            </>
+                                        ) : (<></>)}
+
+                                    </div>
                                     <span className="mx-4">{cart.message}</span>
 
                                     <span className="d-block pt-4">
                                         {" "}
-                                        <i class="bi bi-box-fill"></i> Available: {productQuantity}
+                                        <i class="bi bi-box-fill"></i> Available: {cartItem != null ? cartItem.quantity : funko.result.quantity}
                                     </span>
 
                                     <div className="product_description">

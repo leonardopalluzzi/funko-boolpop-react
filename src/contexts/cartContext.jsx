@@ -29,10 +29,9 @@ function CartProvider({ children }) {
 
 
 
-    function handleCart(newItem) {
+    function handleCart(newItem, totalQuantity) {
 
-        let itemOverFlag = false;
-
+        //controlla inizialmente se la quantita e 0
         if (newItem.quantity == 0) {
             return setCart({
                 ...cart,
@@ -41,7 +40,7 @@ function CartProvider({ children }) {
             })
         }
 
-
+        //controlla se e gia nel carrello
         const itemCheck = cart.userCart.find(item => item.slug == newItem.slug)
         if (itemCheck) {
 
@@ -51,50 +50,35 @@ function CartProvider({ children }) {
                     state: 'error',
                     message: 'This item is no longer available',
                 })
+            } else {
+                addCartQuantity(itemCheck, totalQuantity)
+                // itemCheck.quantity = newItem.quantity - 1
+                // itemCheck.cartQuantity = newItem.cartQuantity + 1
+                // const updatedCart = cart.userCart.map(item => {
+                //     if (item.slug == newItem.slug) {
+                //         return itemCheck
+                //     } else {
+                //         return item
+                //     }
+                // })
+                // setCart({
+                //     state: 'success',
+                //     message: 'Product added to your cart again',
+                //     cartItemNumber: cart.cartItemNumber + 1,
+                //     userCart: updatedCart
+                // })
             }
-
-            //credo sia inutile sta roba ma non ricordo
-            const currentQuantity = newItem.quantity
-            const currentBuying = newItem.cartQuantity
-
-            console.log(currentQuantity, currentBuying);
-
-
-            if (currentBuying == currentQuantity) {
-                itemOverFlag = true
-            }
-        }
-
-        if (itemCheck) {
-            newItem.quantity = newItem.quantity - 1
-            const updatedCart = cart.userCart.map(item => {
-                if (item.slug == newItem.slug) {
-                    return {
-                        ...item,
-                        cartQuantity: Number(item.cartQuantity + 1),
-                        quantity: item.quantity - 1
-                    }
-                } else {
-                    return item
-                }
-            })
-            setCart({
-                state: 'success',
-                message: 'Product added to your cart again',
-                cartItemNumber: cart.cartItemNumber + 1,
-                userCart: updatedCart
-            })
-
         } else {
-            newItem.cartQuantity = 1
-            newItem.quantity = newItem.quantity - 1
+            const itemToPush = { ...newItem }
+            itemToPush.cartQuantity = 1
+            itemToPush.quantity = newItem.quantity - 1
 
 
             setCart({
                 state: 'success',
                 message: 'Product added to your cart',
                 cartItemNumber: cart.cartItemNumber + 1,
-                userCart: [...cart.userCart, newItem]
+                userCart: [...cart.userCart, itemToPush]
             })
 
             console.log(cart);
@@ -108,9 +92,7 @@ function CartProvider({ children }) {
         const updatedCart = cart.userCart.filter(item => {
             if (item.slug !== itemToDelete.slug) {
                 return {
-                    ...item,
-                    cartQuantity: 0,
-                    quantity: item.quantity
+                    ...item
                 }
             }
         })
@@ -134,7 +116,7 @@ function CartProvider({ children }) {
                         quantity: item.quantity + 1
                     };
                 }
-                return item;
+                // return item;
             });
 
 
@@ -147,41 +129,24 @@ function CartProvider({ children }) {
 
 
 
-        } else {
-            const quantityToDelete = Number(itemToChange.cartQuantity)
-
-            const updatedCart = cart.userCart.filter(item => {
-                if (item.slug !== itemToChange.slug) {
-                    return {
-                        ...item,
-                        cartQuantity: 0,
-                        quantity: item.quantity
-                    }
-                }
-            })
-
-            setCart({
-                state: 'success',
-                message: 'Product deleted from cart',
-                cartItemNumber: cart.cartItemNumber - quantityToDelete,
-                userCart: updatedCart
-            })
+        } else if (itemToChange.cartQuantity == 1) {
+            deleteFromCart(itemToChange)
         }
 
     }
 
-    function addCartQuantity(itemToChange) {
+    function addCartQuantity(itemToChange, totalQunatity) {
 
-        if (itemToChange.cartQuantity < itemToChange.quantity) {
+        if (itemToChange.cartQuantity < totalQunatity) {
             const updatedCart = cart.userCart.map(item => {
                 if (item.slug === itemToChange.slug) {
                     return {
                         ...item,
-                        cartQuantity: item.cartQuantity + 1,
-                        quantity: item.quantity - 1
+                        cartQuantity: itemToChange.cartQuantity + 1,
+                        quantity: itemToChange.quantity - 1
                     };
                 }
-                return item;
+                // return item;
             });
 
 
@@ -194,7 +159,7 @@ function CartProvider({ children }) {
 
 
 
-        } else {
+        } else if (itemToChange.quantity == 0) {
 
             setCart({
                 state: 'error',
