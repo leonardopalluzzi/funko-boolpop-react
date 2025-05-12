@@ -1,9 +1,14 @@
-export default function CarouselUi({ content, scrollRef }) {
+import { useEffect, useRef, useState } from "react";
+
+
+export default function CarouselUi({ content, page, setPage, dataLength }) {
+    const scrollRef = useRef(0)
+    const { current } = scrollRef;
+
+    console.log(current);
 
 
     function scroll(direction) {
-        const { current } = scrollRef;
-
         const scrollAmount = 1000;
 
         if (direction === 'left') {
@@ -13,10 +18,21 @@ export default function CarouselUi({ content, scrollRef }) {
         }
 
         console.log(current.scrollLeft);
+
     }
+    function handleLoadNext() {
+        if (page < dataLength) {
+            setPage(page + 1);
+        } else {
+            setPage(1);
+        }
 
 
-
+        if (scrollRef?.current) {
+            scrollRef.current.scrollLeft = 0; // Resetta lo scroll
+        }
+        console.log(page);
+    }
 
     return (
         <>
@@ -26,7 +42,9 @@ export default function CarouselUi({ content, scrollRef }) {
                     <div ref={scrollRef} className="lists_scroll d-flex p-5">
                         {content}
                     </div >
-                    <button className="caro_btn" onClick={() => scroll('right')}><i className="bi bi-caret-right arrow-caro"></i></button>
+                    <button className="caro_btn"
+                        onClick={current.scrollLeft < 200 ? () => scroll('right') : () => handleLoadNext()}>
+                        <i className="bi bi-caret-right arrow-caro"></i></button>
                 </div>
             </div >
 
