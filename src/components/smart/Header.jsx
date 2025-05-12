@@ -2,18 +2,20 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useCartContext } from "../../contexts/cartContext";
+import AdvancedSearch from "./AdvancedSearch";
 
 export default function Header() {
 
   const { cart } = useCartContext()
+  const [display, setDisplay] = useState(false)
 
   return (
     <>
       <header>
         <nav
-          className="navbar navbar-expand-sm"
+          className="navbar navbar-expand-sm position-static"
         >
-          <div className="container">
+          <div className="container position-static">
             <Link to={'/'} className="navbar-brand">
               <img className="w-100" src="/logo.svg" alt="" />
             </Link>
@@ -28,7 +30,7 @@ export default function Header() {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="collapsibleNavId">
+            <div className="collapse navbar-collapse position-static" id="collapsibleNavId">
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
                 {/*
                 va cambiato di nuovo in ul se serve mettere i link
@@ -50,10 +52,15 @@ export default function Header() {
                 }
                 <i className="bi bi-cart-fill"></i>
               </Link>
-              <SearchBar />
+              <SearchBar display={display} />
+              <button onClick={display == false ? () => setDisplay(true) : () => setDisplay(false)} className="btn btn-primary mx-3">Advanced Filters</button>
             </div>
           </div>
         </nav>
+        <div className={display == true ? 'd-block' : 'd-none'}>
+          <AdvancedSearch />
+        </div>
+
       </header >
     </>
   );
