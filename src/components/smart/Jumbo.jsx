@@ -35,9 +35,9 @@ export default function Jumbo() {
     useEffect(() => {
         if (funkos.state == 'success') {
             const timer = setInterval(() => {
-                setCurrentIndex((prevIndex) => prevIndex === funkos.data.length - 1 ? 0 : prevIndex + 1)
+                setCurrentIndex((prevIndex) => prevIndex === funkos.data.results.length - 1 ? 0 : prevIndex + 1)
 
-            }, 100000)
+            }, 10000)
             return () => clearInterval(timer)
         }
     }, [funkos.state, currentIndex])

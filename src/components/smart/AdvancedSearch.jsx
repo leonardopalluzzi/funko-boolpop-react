@@ -101,7 +101,7 @@ export default function AdvancedSearch() {
                             categoryList={categoryList.data}
                         />
 
-                        {filteredFunko.data.results && filteredFunko.state == 'success' && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
+                        {filteredFunko.state == 'success' && filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
                     </div>
 
                 </>

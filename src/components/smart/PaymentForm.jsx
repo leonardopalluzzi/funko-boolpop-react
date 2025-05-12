@@ -22,6 +22,7 @@ export default function PaymentForm({ clientSecret }) {
         setErrorMessage(error.message);
     }
 
+
     async function handleSubmit() {
 
         if (!stripe) {
@@ -40,20 +41,23 @@ export default function PaymentForm({ clientSecret }) {
         }
 
         //delocalizzare la funzione fetch per la creazione dell'intent qui, passare le info dal componente
+        try {
+            const { error } = await stripe.confirmPayment({
+                elements,
+                clientSecret,
+                confirmParams: {
+                    return_url: 'http://localhost:5173/success-checkout',
+                },
+            })
 
+            if (error) {
+                handleError(error)
+            } else {
 
-        const { error } = stripe.confirmPayment({
-            elements,
-            clientSecret,
-            confirmParams: {
-                return_url: 'http://localhost:5173/success-checkout',
-            },
-        })
-
-        if (error) {
-            handleError(error)
-        } else {
-
+            }
+        } catch (err) {
+            console.log(err);
+            handleError(err)
         }
     }
 
