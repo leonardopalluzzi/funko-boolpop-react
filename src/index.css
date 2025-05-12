@@ -32,6 +32,18 @@ body {
   --bs-accordion-active-color: var(--darker);
 }
 
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+
 /* #region carosello per cards  */
 
 .caro_btn {
