@@ -37,7 +37,9 @@ export default function Jumbo() {
             const timer = setInterval(() => {
                 setCurrentIndex((prevIndex) => prevIndex === funkos.data.results.length - 1 ? 0 : prevIndex + 1)
 
+
             }, 10000)
+
             return () => clearInterval(timer)
         }
     }, [funkos.state, currentIndex])

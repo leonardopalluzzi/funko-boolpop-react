@@ -8,7 +8,7 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
                 <img className="jumbo_img" src={`http://localhost:3000/${productList[slideIndex].banner}`} alt="" />
                 <div className="jumbo_info">
                     <h1>{productList[slideIndex].name}</h1>
-                    <p className="pb-3 me-1">{productList[slideIndex].description}</p>
+                    <p className="pb-4 me-1 fs-6">{productList[slideIndex].description}</p>
                 </div>
                 <div className="dots">
                     <ul className="list-unstyled">
