@@ -25,6 +25,13 @@ export default function CartHover() {
         total = total + item
     })
 
+    function truncateText(text, maxLength) {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "...";
+        }
+        return text;
+    }
+
 
 
     switch (cart.state) {
@@ -45,11 +52,12 @@ export default function CartHover() {
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col" style={{ width: "15%" }}>Product Image</th>
-                                                <th scope="col">Product Name</th>
-                                                <th scope="col">Promo</th>
-                                                <th scope="col">Price*</th>
-                                                <th scope="col">ACTIONS</th>
+                                                <th scope="col" >Image</th>
+                                                <th scope="col" className="" >Name</th>
+                                                <th scope="col" >Promo</th>
+                                                <th scope="col" style={{ width: "20%" }}>Price*</th>
+                                                <th scope="col" >Quantity</th>
+                                                <th scope="col" >ACTIONS</th>
 
                                             </tr>
                                         </thead>
@@ -58,15 +66,15 @@ export default function CartHover() {
                                                 cart.userCart.map(item => (
                                                     <>
                                                         <tr>
-                                                            <td>
+                                                            <td className="w-100">
                                                                 <div className="cart_img_container">
                                                                     <img onClick={() => navigate(`/${item.slug}`)} className="cart_img" src={`http://localhost:3000/${item.images[0].image}`} alt={item.name} />
                                                                 </div>
                                                             </td>
-                                                            <td>{item.name}</td>
+                                                            <td>{truncateText(item.name, 10)}</td>
                                                             <td>
                                                                 {
-                                                                    item.promotion.length > 0 ? (<><span>{item.promotion[0].name}: </span><span>{item.promotion[0].discount}%</span></>) : (<>No promotions found</>)
+                                                                    item.promotion.length > 0 ? (<><span>{item.promotion[0].discount}%</span></>) : (<>No promotions found</>)
                                                                 }
                                                             </td>
                                                             <td>
@@ -75,7 +83,7 @@ export default function CartHover() {
                                                                         (
                                                                             <>
                                                                                 <label>
-                                                                                    <span className="price_label_card text-success">
+                                                                                    <span className="price_label_card text-success fs-6">
                                                                                         {
                                                                                             (item.price * item.promotion[0].discount / 100).toFixed(2)
                                                                                         } €
@@ -91,9 +99,22 @@ export default function CartHover() {
                                                                         )
                                                                 }
                                                             </td>
-                                                            <td className="d-flex flex-column align-items-center gap-2">
-                                                                <button onClick={() => deleteFromCart(item)} className="btn btn-danger mx-2"><i class="bi bi-trash"></i></button>
-                                                                <button onClick={() => navigate(`/${item.slug}`)} className="btn btn-primary"><i class="bi bi-eye"></i></button>
+                                                            <td className="text-center">
+                                                                X{item.cartQuantity}
+                                                            </td>
+                                                            <td className="text-center">
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="bi bi-three-dots"></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu text-center">
+                                                                        <button onClick={() => deleteFromCart(item)} className="btn btn-danger mx-2 my-2"><i class="bi bi-trash"></i></button>
+                                                                        <button onClick={() => navigate(`/${item.slug}`)} className="btn btn-primary"><i class="bi bi-eye"></i></button>
+                                                                    </ul>
+                                                                </div>
+
+
+
                                                             </td>
 
                                                         </tr>
@@ -103,15 +124,21 @@ export default function CartHover() {
 
                                         </tbody>
                                     </table>
-                                    <div className="total">
-                                        <h4>TOTAL:</h4>
-                                        <h5>{total.toFixed(2)}€</h5>
+                                    <div className="total_hover_cart">
+                                        <h5>TOTAL:</h5>
+                                        <h6>{total.toFixed(2)}€</h6>
                                     </div>
                                     <button
                                         onClick={() => navigate(`/checkout`)}
-                                        class="btn btn-success fs-3 my-2 my-sm-0"
+                                        className="btn btn-success fs-5 my-2 my-sm-0"
                                         type="submit">
-                                        Procedi al pagamento
+                                        Proceed to payment
+                                    </button>
+                                    <button
+                                        onClick={() => navigate(`/cart`)}
+                                        className="btn btn-primary fs-5 my-2 my-sm-0 mx-3"
+                                        type="submit">
+                                        Show Cart
                                     </button>
                                 </div>
                             </div>

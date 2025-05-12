@@ -7,6 +7,9 @@ export default function List({ query, scrollRef, queryName }) {
         state: 'loading'
     })
 
+    console.log(products);
+
+
     const [active, setActive] = useState(0)
 
     const [page, setPage] = useState(1)  //definisce il numero della pagina visualizzata
