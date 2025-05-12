@@ -30,6 +30,7 @@ function CartProvider({ children }) {
 
 
     function handleCart(newItem, totalQuantity) {
+        console.log(cart.userCart);
 
         //controlla inizialmente se la quantita e 0
         if (newItem.quantity == 0) {
@@ -50,7 +51,7 @@ function CartProvider({ children }) {
                     state: 'error',
                     message: 'This item is no longer available',
                 })
-            } else {
+            } else if (itemCheck.quantity <= totalQuantity) {
                 addCartQuantity(itemCheck, totalQuantity)
                 // itemCheck.quantity = newItem.quantity - 1
                 // itemCheck.cartQuantity = newItem.cartQuantity + 1
@@ -115,8 +116,10 @@ function CartProvider({ children }) {
                         cartQuantity: item.cartQuantity - 1,
                         quantity: item.quantity + 1
                     };
+                } else {
+                    return item;
                 }
-                // return item;
+
             });
 
 
@@ -145,8 +148,9 @@ function CartProvider({ children }) {
                         cartQuantity: itemToChange.cartQuantity + 1,
                         quantity: itemToChange.quantity - 1
                     };
+                } else {
+                    return item;
                 }
-                // return item;
             });
 
 

@@ -3,24 +3,31 @@ import { useNavigate } from "react-router-dom"
 
 export default function CartHover() {
 
-    const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } = useCartContext()
+    const { cart, deleteFromCart } = useCartContext()
     const navigate = useNavigate()
 
     let total = 0
+    const priceArr = []
 
-    const priceArr = cart.userCart.map(item => {
-        console.log(item);
+    if (cart.state == 'success' && cart.userCart) {
+        console.log(cart.userCart);
 
-        const basePrice = Number(item.price)
-        const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
-        const quantity = Number(item.cartQuantity)
+        const prices = cart.userCart.map(item => {
+            console.log(item);
 
-        let price = (basePrice * discount / 100) * quantity;
+            const basePrice = Number(item.price)
+            const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
+            const quantity = Number(item.cartQuantity)
 
-        console.log(price);
+            let price = (basePrice * discount / 100) * quantity;
 
-        return Number(price)
-    })
+            console.log(price);
+
+            return Number(price)
+        })
+        priceArr.push(...prices)
+    }
+
     priceArr.forEach(item => {
         total = total + item
     })
