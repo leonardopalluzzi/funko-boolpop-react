@@ -3,7 +3,9 @@ import Header from "../components/smart/Header"
 import Footer from "../components/smart/Footer"
 import CartHover from "../components/smart/CartHover"
 
+
 export default function () {
+
     return (
         <>
             <div className="app-layout">
@@ -13,7 +15,7 @@ export default function () {
                 </main>
                 <CartHover />
                 <Footer />
-            </div>
+            </div >
         </>
     )
 }

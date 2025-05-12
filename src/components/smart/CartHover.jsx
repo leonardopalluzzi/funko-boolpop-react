@@ -1,7 +1,10 @@
 import { useCartContext } from "../../contexts/cartContext"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 export default function CartHover() {
+
+    const [display, setDisplay] = useState(0)
 
     const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } = useCartContext()
     const navigate = useNavigate()
@@ -44,7 +47,11 @@ export default function CartHover() {
         case 'success':
             return (
                 <>
-                    <div className="hover_cart">
+
+                    <div className="hover_cart" style={{ transform: `translate(0, ${display}%)` }}>
+                        <div className="w-100 toggle_cart_container">
+                            <button className="btn toggle_cart_btn" onClick={display == 86 ? () => setDisplay(0) : () => setDisplay(86)}><i class="bi bi-cart-fill"></i></button>
+                        </div>
                         <div className="container">
                             <div className="hover_cart_body">
                                 <h4>Your Cart</h4>
@@ -53,8 +60,8 @@ export default function CartHover() {
                                         <thead>
                                             <tr>
                                                 <th scope="col" >Image</th>
-                                                <th scope="col" className="" >Name</th>
-                                                <th scope="col" >Promo</th>
+                                                <th scope="col" className="cart_hover_display" >Name</th>
+                                                <th scope="col" className="cart_hover_display" >Promo</th>
                                                 <th scope="col" style={{ width: "20%" }}>Price*</th>
                                                 <th scope="col" >Quantity</th>
                                                 <th scope="col" >ACTIONS</th>
@@ -71,8 +78,8 @@ export default function CartHover() {
                                                                     <img onClick={() => navigate(`/${item.slug}`)} className="cart_img" src={`http://localhost:3000/${item.images[0].image}`} alt={item.name} />
                                                                 </div>
                                                             </td>
-                                                            <td>{truncateText(item.name, 10)}</td>
-                                                            <td>
+                                                            <td className="cart_hover_display">{truncateText(item.name, 10)}</td>
+                                                            <td className="cart_hover_display">
                                                                 {
                                                                     item.promotion.length > 0 ? (<><span>{item.promotion[0].discount}%</span></>) : (<>No promotions found</>)
                                                                 }
@@ -143,7 +150,7 @@ export default function CartHover() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div >
                 </>
             )
     }
