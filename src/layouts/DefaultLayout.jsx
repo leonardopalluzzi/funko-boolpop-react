@@ -5,10 +5,13 @@ import Footer from "../components/smart/Footer"
 export default function () {
     return (
         <>
-            <Header />
-            <Outlet />
-
-            <Footer />
+            <div className="app-layout">
+                <Header />
+                <main className="main-content">
+                    <Outlet />
+                </main>
+                <Footer />
+            </div>
         </>
     )
 }
