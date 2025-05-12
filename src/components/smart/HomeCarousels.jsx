@@ -39,7 +39,7 @@ export default function HomeCarousels() {
                 })
 
             })
-    }, [])
+    }, [page])
 
 
     switch (products.state) {
