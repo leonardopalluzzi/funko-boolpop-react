@@ -42,6 +42,7 @@ export default function PaymentForm({ clientSecret }) {
 
         //delocalizzare la funzione fetch per la creazione dell'intent qui, passare le info dal componente
         try {
+
             const { error } = await stripe.confirmPayment({
                 elements,
                 clientSecret,
@@ -67,7 +68,7 @@ export default function PaymentForm({ clientSecret }) {
                 <form action="" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
                     <PaymentElement />
                     <div className="container w-50">
-                        <button onClick={() => unloadCart()} className='btn btn-primary my-4 w-100 fs-3' type="submit" disabled={!stripe || loading}>Pay Now</button>
+                        <button className='btn btn-primary my-4 w-100 fs-3' type="submit" disabled={!stripe || loading}>Pay Now</button>
                         {errorMessage && <div>{errorMessage}</div>}
                         <div>{errorMessage}</div>
                     </div>

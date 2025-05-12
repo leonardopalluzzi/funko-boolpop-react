@@ -14,6 +14,10 @@ function CartProvider({ children }) {
     const checkForCart = JSON.parse(localStorage.getItem('cart'))
 
     const [cart, setCart] = useState(checkForCart ? checkForCart : emptyCart)
+    const [postCart, setPostCart] = useState({
+        state: 'loading',
+        data: []
+    })
 
 
     useEffect(() => {
@@ -202,7 +206,37 @@ function CartProvider({ children }) {
 
     }
 
-    function unloadCart() {
+    async function unloadCart() {
+        await new Promise((resolve) => {
+
+            let total = 0
+
+            const priceArr = cart.userCart.map(item => {
+                console.log(item);
+
+                const basePrice = Number(item.price)
+                const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
+                const quantity = Number(item.cartQuantity)
+
+                let price = (basePrice * discount / 100) * quantity;
+
+                console.log(price);
+
+                return Number(price)
+            })
+            priceArr.forEach(item => {
+                total = total + item
+            })
+
+            setPostCart({
+                state: 'success',
+                amount: total,
+                data: cart.userCart
+            });
+            resolve();
+        });
+        console.log(postCart);
+
         setCart(emptyCart)
     }
 
@@ -211,7 +245,7 @@ function CartProvider({ children }) {
 
     return (
         <>
-            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart }}>
+            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart, postCart }}>
                 {children}
             </CartContext.Provider>
         </>
