@@ -5,18 +5,15 @@ import { useCartContext } from "../../contexts/cartContext";
 import AdvancedSearch from "./AdvancedSearch";
 
 export default function Header() {
-
-  const { cart } = useCartContext()
-  const [display, setDisplay] = useState(false)
+  const { cart } = useCartContext();
+  const [display, setDisplay] = useState(false);
 
   return (
     <>
       <header>
-        <nav
-          className="navbar navbar-expand-sm position-static"
-        >
+        <nav className="navbar navbar-expand-sm position-static">
           <div className="container position-static">
-            <Link to={'/'} className="navbar-brand">
+            <Link to={"/"} className="navbar-brand">
               <img className="w-100" src="/logo.svg" alt="" />
             </Link>
             <button
@@ -30,7 +27,10 @@ export default function Header() {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse position-static" id="collapsibleNavId">
+            <div
+              className="collapse navbar-collapse position-static"
+              id="collapsibleNavId"
+            >
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
                 {/*
                 va cambiato di nuovo in ul se serve mettere i link
@@ -46,22 +46,39 @@ export default function Header() {
                   </NavLink>
                 </li>*/}
               </div>
-              <Link to={'/cart'} className="mx-4 text-white fs-4 position-relative">
-                {
-                  cart.cartItemNumber > 0 ? (<><label className="cart_label" htmlFor="">{cart.cartItemNumber}</label></>) : (<></>)
-                }
+              <Link
+                to={"/cart"}
+                className="mx-4 text-white fs-4 position-relative"
+              >
+                {cart.cartItemNumber > 0 ? (
+                  <>
+                    <label className="cart_label" htmlFor="">
+                      {cart.cartItemNumber}
+                    </label>
+                  </>
+                ) : (
+                  <></>
+                )}
                 <i className="bi bi-cart-fill"></i>
               </Link>
               <SearchBar display={display} />
-              <button onClick={display == false ? () => setDisplay(true) : () => setDisplay(false)} className="btn btn-primary mx-3">Advanced Filters</button>
+              <button
+                onClick={
+                  display == false
+                    ? () => setDisplay(true)
+                    : () => setDisplay(false)
+                }
+                className="btn btn-filters mx-3"
+              >
+                Advanced Filters
+              </button>
             </div>
           </div>
         </nav>
-        <div className={display == true ? 'd-block' : 'd-none'}>
+        <div className={display == true ? "d-block" : "d-none"}>
           <AdvancedSearch />
         </div>
-
-      </header >
+      </header>
     </>
   );
 }
