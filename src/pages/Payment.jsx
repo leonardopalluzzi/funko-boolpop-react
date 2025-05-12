@@ -22,10 +22,10 @@ export default function Payment() {
 
 
     switch (payment.state) {
-        case 'laoding':
+        case 'loading':
             return (
                 <>
-                    <h1>Laoding...</h1>
+                    <h1>Loading...</h1>
                 </>
             )
         case 'error':
