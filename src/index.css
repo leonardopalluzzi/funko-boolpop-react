@@ -576,3 +576,21 @@ td {
     max-width: 50%;
   }
 }
+
+/* #region carthover  */
+.hover_cart {
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  z-index: 100;
+  width: 40%;
+
+  .hover_cart_body {
+    background-color: var(--background);
+    border: 1px solid grey;
+    padding: 1rem;
+    border-radius: 20px;
+  }
+}
+
+/* #endregion carthover  */

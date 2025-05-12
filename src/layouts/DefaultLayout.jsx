@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Header from "../components/smart/Header"
 import Footer from "../components/smart/Footer"
+import CartHover from "../components/smart/CartHover"
 
 export default function () {
     return (
@@ -10,6 +11,7 @@ export default function () {
                 <main className="main-content">
                     <Outlet />
                 </main>
+                <CartHover />
                 <Footer />
             </div>
         </>

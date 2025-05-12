@@ -1,7 +1,9 @@
 export default function CarouselUi({ content, scrollRef }) {
 
+
     function scroll(direction) {
         const { current } = scrollRef;
+
         const scrollAmount = 1000;
 
         if (direction === 'left') {
@@ -9,7 +11,12 @@ export default function CarouselUi({ content, scrollRef }) {
         } else {
             current.scrollLeft += scrollAmount;
         }
+
+        console.log(current.scrollLeft);
     }
+
+
+
 
     return (
         <>
@@ -21,7 +28,7 @@ export default function CarouselUi({ content, scrollRef }) {
                     </div >
                     <button className="caro_btn" onClick={() => scroll('right')}><i className="bi bi-caret-right arrow-caro"></i></button>
                 </div>
-            </div>
+            </div >
 
         </>
     )
