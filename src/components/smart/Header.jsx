@@ -46,9 +46,10 @@ export default function Header() {
                   </NavLink>
                 </li>*/}
               </div>
+
               <Link
-                to={"/cart"}
                 className="mx-4 text-white fs-4 position-relative"
+                type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
               >
                 {cart.cartItemNumber > 0 ? (
                   <>
@@ -61,6 +62,7 @@ export default function Header() {
                 )}
                 <i className="bi bi-cart-fill"></i>
               </Link>
+
               <SearchBar display={display} />
               <button
                 onClick={

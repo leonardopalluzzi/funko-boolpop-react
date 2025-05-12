@@ -12,8 +12,8 @@ export default function () {
                 <Header />
                 <main className="main-content">
                     <Outlet />
+                    <CartHover />
                 </main>
-                <CartHover />
                 <Footer />
             </div >
         </>
