@@ -40,7 +40,7 @@ export default function SuccessCheckout() {
                         <h4>Check your email for further details</h4>
                         <div className="container">
                             <h3>Your order</h3>
-                            <div className="border rounded-5 p-3 w-50 m-auto">
+                            <div className="order_container border rounded-5 p-3 m-auto">
                                 <OrderListUi orderList={postCart} />
                                 <div>
                                     <h4>Tot: {postCart.amount.toFixed(2)} €</h4>

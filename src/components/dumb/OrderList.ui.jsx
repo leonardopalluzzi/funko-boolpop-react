@@ -21,25 +21,26 @@ export default function OrderListUi({ orderList }) {
         case 'success':
             return (
                 <>
-                    <ul className="list-unstyled">
+                    <ul className="list-unstyled w-100">
                         {orderList.data.map(item => (
                             <>
-                                <li className="row row-cols-4 w-100 gap-4 border border-top-0 border-start-0 border-end-0 py-3 m-auto align-items-center justify-content-between px-4">
-                                    <div className="col">
+                                <li className="order">
+                                    <div className="order_col  order_img" style={{ width: "25%" }}>
                                         <img className="w-100" src={`http://localhost:3000/${item.images[0].image}`} alt="" />
                                     </div>
-                                    <div className="col">{item.name}</div>
-                                    <div className="col">
+                                    <div className="order_col">{item.name}</div>
+                                    <div className="order_col">X{item.cartQuantity}</div>
+                                    <div className="order_col">
                                         {
                                             item.promotion.length > 0 ?
                                                 (
                                                     <>
                                                         <label>
-                                                            <div className="fw-bold text-danger">{item.promotion[0].name}</div>
-                                                            <span className="fs-6 text-secondary">
+                                                            <div className="fw-bold text-danger price">{item.promotion[0].name}</div>
+                                                            <span className="text-secondary price_original">
                                                                 <del>{item.price}€</del>
                                                             </span>
-                                                            <span className="price_label_card text-dark">
+                                                            <span className="price_label_card text-dark price_discount">
                                                                 {
                                                                     (item.price * item.promotion[0].discount / 100).toFixed(2)
                                                                 }€
