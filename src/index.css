@@ -576,3 +576,33 @@ td {
     max-width: 50%;
   }
 }
+
+/*search page*/
+.filter-text {
+
+  color: var(--text-light);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--tertiary);
+  }
+
+  &:active {
+    color: var(--tertiary) !important;
+  }
+
+}
+
+.bg-custom-darker {
+  background-color: var(--darker);
+}
+
+.btn-custom-primary {
+  background-color: var(--tertiary);
+  font-weight: 600;
+}
+
+.cancel-focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
