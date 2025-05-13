@@ -1,9 +1,14 @@
 import CardUi from "./Card.ui";
 import styles from "../../assets/css_modules/GridList.module.css";
+import ProductImages from "../smart/ProductImages";
 
 import { useNavigate } from "react-router-dom";
 export default function ListLayout({ products }) {
+
   const navigate = useNavigate();
+  console.log(products);
+
+
 
   if (!products || !products.results) {
     return (
@@ -12,60 +17,28 @@ export default function ListLayout({ products }) {
       </div>
     );
   }
+
   return (
     <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-10">
-          {" "}
-          {/* Questo div limita la larghezza della lista */}
-          <ul className="list-unstyled p-0 m-0">
-            {products.results.map((item) => (
-              <li
-                onClick={() => navigate(`/${item.slug}`)}
-                className={`${styles.card_list} order d-flex align-items-center mb-4 card_on_click`}
-                key={item.slug}
-              >
-                <div
-                  className="order_col text-center order_img"
-                  style={{ width: "25%" }}
-                >
-                  <img
-                    className="w-25"
-                    src={`http://localhost:3000/${item.images[0].image}`}
-                    alt=""
-                  />
+      <ul>
+        {products.results.map((item, i) => (
+          <>
+            <li>
+              <div className="d-flex">
+                <div className={`col-4 ${styles.result_list_img} `}>
+                  <ProductImages images={item.images} index={i} />
                 </div>
-                <div className="d-flex  align-items-center w-75 ps-4">
-                  <div className="order_col">
-                    <h5 className="mb-2">{item.name}</h5>
-                  </div>
-                  <div className="order_col text-end">
-                    {item.promotions && item.promotions.length > 0 ? (
-                      <label>
-                        <div className="fw-bold text-danger price">
-                          {item.promotions[0].name}
-                        </div>
-                        <span className="text-secondary price_original">
-                          <del>{item.price}€</del>
-                        </span>
-                        <span className="price_label_card text-dark price_discount">
-                          {(
-                            (item.price * item.promotions[0].discount) /
-                            100
-                          ).toFixed(2)}
-                          €
-                        </span>
-                      </label>
-                    ) : (
-                      <label className="price_label_card">{item.price}€</label>
-                    )}
-                  </div>
+                <div className="col-8 py-5">
+                  <h2>{item.name}</h2>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+              </div>
+            </li>
+          </>
+        ))}
+      </ul>
+
+
+
     </div>
   );
 }

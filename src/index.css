@@ -76,6 +76,12 @@ body {
   flex-grow: 1;
 }
 
+.layout-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 2rem 0;
+}
 
 /* #region carosello per cards  */
 
@@ -520,6 +526,10 @@ td {
 
     .order_img {
       display: none;
+
+      img {
+        max-width: 100%;
+      }
     }
 
     .order_col {
@@ -596,7 +606,6 @@ td {
   overflow-y: auto;
   padding: 1rem;
 }
-
 
 /* #endregion carthover  */
 

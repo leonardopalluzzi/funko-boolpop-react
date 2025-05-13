@@ -48,7 +48,12 @@ export default function LayoutSearchedProducts() {
         case 'grid':
           return (
             <>
-              <LayoutSelect setLayout={setLayout} layout={layout} />
+              <div className="w-100">
+                <div className="layout_switch">
+                  <LayoutSelect setLayout={setLayout} layout={layout} />
+                </div>
+              </div>
+
               <div className="container">
                 <div className={`items-container ${layout}`}>
                   <GridLayout products={products.data} />

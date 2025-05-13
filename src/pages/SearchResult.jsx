@@ -32,7 +32,7 @@ export default function SearchResult() {
             </div>
 
             <main className="p-4">
-                <h1>Search Page</h1>
+                <h1>Results</h1>
                 {/* Risultati della ricerca*/}
                 <LayoutSearchProducts />
             </main>

@@ -9,12 +9,8 @@
   --text-light: #ffffff;
 }
 
-.card_list {
-  border: 1px solid var(--primary);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  height: 150px;
-  width: 100%;
-  justify-content: center;
+
+.result_list_img {
+  overflow: hidden;
+  aspect-ratio: 1;
 }
