@@ -691,6 +691,7 @@ td {
 .cancel-focus {
   outline: none !important;
   box-shadow: none !important;
+}
 
 /* productPage */
 .carousel_productpage {
