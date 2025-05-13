@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBarUi from '../dumb/SearchBar.ui';
 import SearchResultsUi from '../dumb/SearchResults.ui';
 import Loader from '../dumb/Loader.ui';
 
 export default function SearchBar({ page = 1, limit = 10, display }) {
 
+    const navigate = useNavigate();
+
     const [searchText, setSearchText] = useState({
-        name: ''
+        name: '',
+        description: '',
+        category: ''
     });
 
     const [filteredFunko, setFilteredFunko] = useState({
@@ -41,6 +46,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
 
     function handleSearch(searchText) {
         //inserire redirect ad una pagina con i risultati della ricerca al submit
+        navigate('/search-result');
     }
 
     function emptyResearch() {
@@ -69,20 +75,16 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
             return (
                 <>
                     <SearchBarUi
-                        serachName={searchText.name}
-                        serachDescription={searchText.description}
-                        serachCategory={searchText.category}
+                        searchName={searchText.name}
+                        searchDescription={searchText.description}
+                        searchCategory={searchText.category}
                         onchange={handleChange}
                         handleSearch={handleSearch}
                     />
                     <div className={display == false ? 'd-block' : 'd-none'}>
                         {filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
                     </div>
-
-
                 </>
-
-
             );
     }
 }
