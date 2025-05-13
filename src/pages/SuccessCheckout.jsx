@@ -2,6 +2,7 @@ import { useCartContext } from "../contexts/cartContext"
 import OrderListUi from "../components/dumb/OrderList.ui"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/dumb/Loader.ui";
 
 export default function SuccessCheckout() {
 
@@ -25,7 +26,7 @@ export default function SuccessCheckout() {
                         <div className="container">
                             <h3>Your order</h3>
                             <div className="border rounded-5 p-3 w-50 m-auto">
-                                <h1>Loading...</h1>
+                                <Loader />
                             </div>
                         </div>
                     </div>
