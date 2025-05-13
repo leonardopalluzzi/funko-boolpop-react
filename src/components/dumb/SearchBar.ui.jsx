@@ -1,13 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function SearchBarUi({ serachName, onchange, handleSearch }) {
+export default function SearchBarUi({ searchName, onchange, handleSearch, searchDescription }) {
+
+    const navigate = useNavigate();
+
     return (
         <form
             className="d-flex my-2 my-lg-0"
             role="search"
             onSubmit={(e) => {
                 e.preventDefault();
-                handleSearch(searchText);
+                handleSearch();
             }}
         >
 
@@ -17,7 +21,7 @@ export default function SearchBarUi({ serachName, onchange, handleSearch }) {
                     type="text"
                     placeholder="Search"
                     name='name'
-                    value={serachName}
+                    value={searchName}
                     onChange={(e) => onchange(e.target.name, e.target.value)}
                 />
                 <button
@@ -27,6 +31,8 @@ export default function SearchBarUi({ serachName, onchange, handleSearch }) {
                     <i className="bi bi-search"></i>
                 </button>
             </div>
+
         </form>
     );
 }
+

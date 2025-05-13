@@ -8,6 +8,7 @@ import Cart from "./pages/Cart"
 import Payment from "./pages/Payment"
 import { PaymentProvider } from "./contexts/paymentContext"
 import SuccessCheckout from "./pages/SuccessCheckout"
+import SearchResult from "./pages/SearchResult"
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
               <Route path="/success-checkout" Component={SuccessCheckout} />
+              <Route path="/search-result" Component={SearchResult} />
               <Route path="/complete-checkout" element={
                 <>
                   <PaymentProvider>
