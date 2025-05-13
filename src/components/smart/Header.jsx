@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import { useCartContext } from "../../contexts/cartContext";
 import AdvancedSearch from "./AdvancedSearch";
 
-export default function Header() {
+export default function Header({ setCartOpen }) {
   const { cart } = useCartContext();
   const [display, setDisplay] = useState(false);
 
@@ -46,9 +46,11 @@ export default function Header() {
                   </NavLink>
                 </li>*/}
               </div>
+
               <Link
-                to={"/cart"}
+                onClick={() => setCartOpen(true)}
                 className="mx-4 text-white fs-4 position-relative"
+              // type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
               >
                 {cart.cartItemNumber > 0 ? (
                   <>
@@ -61,8 +63,10 @@ export default function Header() {
                 )}
                 <i className="bi bi-cart-fill"></i>
               </Link>
+
               <SearchBar display={display} />
-              <button
+              {/* bottone per filtraggio ricerca */}
+              {/* <button
                 onClick={
                   display == false
                     ? () => setDisplay(true)
@@ -71,7 +75,7 @@ export default function Header() {
                 className="btn btn-filters mx-3"
               >
                 Advanced Filters
-              </button>
+              </button> */}
             </div>
           </div>
         </nav>

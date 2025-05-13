@@ -2,6 +2,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import PaymentForm from '../components/smart/PaymentForm'
 import { usePaymentContext } from '../contexts/paymentContext';
+import Loader from '../components/dumb/Loader.ui';
 
 export default function Payment() {
 
@@ -22,10 +23,10 @@ export default function Payment() {
 
 
     switch (payment.state) {
-        case 'laoding':
+        case 'loading':
             return (
                 <>
-                    <h1>Laoding...</h1>
+                    <Loader />
                 </>
             )
         case 'error':

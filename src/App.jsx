@@ -10,9 +10,7 @@ import { PaymentProvider } from "./contexts/paymentContext"
 import SuccessCheckout from "./pages/SuccessCheckout"
 import SearchResult from "./pages/SearchResult"
 
-
 function App() {
-
   return (
     <>
       <CartProvider>
@@ -43,7 +41,7 @@ function App() {
         </BrowserRouter>
       </CartProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

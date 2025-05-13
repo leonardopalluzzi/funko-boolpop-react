@@ -1,3 +1,5 @@
+import Loader from "./Loader.ui";
+
 export default function OrderListUi({ orderList }) {
 
     console.log(orderList);
@@ -15,7 +17,7 @@ export default function OrderListUi({ orderList }) {
         case 'loading':
             return (
                 <>
-                    <h2>Loading...</h2>
+                    <Loader />
                 </>
             )
         case 'success':

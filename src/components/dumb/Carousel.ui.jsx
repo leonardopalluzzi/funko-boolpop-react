@@ -5,23 +5,31 @@ export default function CarouselUi({ content, page, setPage, dataLength }) {
     const scrollRef = useRef(0)
     const { current } = scrollRef;
 
-    console.log(current);
 
     function scroll(direction) {
         const scrollAmount = 1000;
+        console.log(current.scrollLeft);
+
 
         if (direction === 'left') {
             current.scrollLeft -= scrollAmount;
         } else {
             current.scrollLeft += scrollAmount;
         }
-        console.log(current.scrollLeft);
 
-
-
+        if (current.scrollLeft + current.offsetWidth >= current.scrollWidth) {
+            handleLoadNext();
+        }
 
     }
     function handleLoadNext() {
+        console.log('ciao');
+
+        console.log(page);
+        console.log(dataLength);
+
+
+
         if (page < dataLength) {
             setPage(page + 1);
         } else {
@@ -29,10 +37,11 @@ export default function CarouselUi({ content, page, setPage, dataLength }) {
         }
 
         if (scrollRef?.current) {
-            scrollRef.current.scrollLeft = 0; // Resetta lo scroll
+            scrollRef.current.scrollLeft = 0;
         }
         console.log(page);
     }
+
     return (
         <>
             <div className="item_list w-100">
@@ -42,10 +51,10 @@ export default function CarouselUi({ content, page, setPage, dataLength }) {
                         {content}
                     </div >
                     <button className="caro_btn"
-                        onClick={current.scrollLeft < 200 ? () => scroll('right') : () => handleLoadNext()}>
+                        onClick={() => scroll('right')}>
                         <i className="bi bi-caret-right arrow-caro"></i></button>
                 </div>
-            </div>
+            </div >
 
         </>
     )

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchBarUi from '../dumb/SearchBar.ui';
 import SearchResultsUi from '../dumb/SearchResults.ui';
+import Loader from '../dumb/Loader.ui';
 
 export default function SearchBar({ page = 1, limit = 10, display }) {
 
@@ -60,7 +61,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         case 'loading':
             return (
                 <>
-                    <h1>loading...</h1>
+
                 </>
             )
         case 'error':
