@@ -13,6 +13,8 @@ export default function LayoutSearchedProducts() {
     fetch("http://localhost:3000/api/v1/funkoboolpop")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+
         setProducts({
           state: "success",
           data: data,
@@ -28,32 +30,70 @@ export default function LayoutSearchedProducts() {
 
   switch (products.state) {
     case "loading":
-      return <Loader />;
-    case "error":
-      return <p>{products.message}</p>;
-    case "success":
       return (
-        <div className="container">
-          <div className="layout-buttons">
-            <button
-              onClick={() => setLayout("grid")}
-              className={`btn btn-grid ${layout === "grid" ? "active" : ""}`}
-            >
-              <i class="fa-solid fa-border-all"></i>
-            </button>
-            <button
-              onClick={() => setLayout("list")}
-              className={`btn btn-list ${layout === "list" ? "active" : ""}`}
-            >
-              <i class="fa-solid fa-list"></i>
-            </button>
-          </div>
+        <>
+          <Loader />
+        </>
+      )
+    case "error":
+      return (
+        <>
+          <h1>{products.state}</h1>
+          <p>{products.message}</p>;
+        </>
+      )
+    case "success":
+      switch (layout) {
+        case 'grid':
+          return (
+            <>
+              <div className="container">
+                <div className="layout-buttons">
+                  <button
+                    onClick={() => setLayout("grid")}
+                    className={`btn btn-grid ${layout === "grid" ? "active" : ""}`}
+                  >
+                    <i class="fa-solid fa-border-all"></i>
+                  </button>
+                  <button
+                    onClick={() => setLayout("list")}
+                    className={`btn btn-list ${layout === "list" ? "active" : ""}`}
+                  >
+                    <i class="fa-solid fa-list"></i>
+                  </button>
+                </div>
 
-          <div className={`items-container ${layout}`}>
-            <GridLayout products={products.data} />
-            <ListLayout products={products.data} />
-          </div>
-        </div>
-      );
+                <div className={`items-container ${layout}`}>
+                  <GridLayout products={products.data} />
+                </div>
+              </div>
+            </>
+          )
+        case 'list':
+          return (
+            <>
+              <div className="container">
+                <div className="layout-buttons">
+                  <button
+                    onClick={() => setLayout("grid")}
+                    className={`btn btn-grid ${layout === "grid" ? "active" : ""}`}
+                  >
+                    <i class="fa-solid fa-border-all"></i>
+                  </button>
+                  <button
+                    onClick={() => setLayout("list")}
+                    className={`btn btn-list ${layout === "list" ? "active" : ""}`}
+                  >
+                    <i class="fa-solid fa-list"></i>
+                  </button>
+                </div>
+
+                <div className={`items-container ${layout}`}>
+                  <ListLayout products={products.data} />
+                </div>
+              </div>
+            </>
+          )
+      }
   }
 }

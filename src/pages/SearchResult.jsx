@@ -34,7 +34,7 @@ export default function SearchResult() {
             <main className="p-4">
                 <h1>Search Page</h1>
                 {/* Risultati della ricerca*/}
-                {/* <LayoutSearchProducts /> */}
+                <LayoutSearchProducts />
             </main>
         </div>
     );

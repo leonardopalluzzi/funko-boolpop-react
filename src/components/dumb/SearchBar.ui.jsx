@@ -23,6 +23,7 @@ export default function SearchBarUi({ searchName, onchange, handleSearch, search
                     name='name'
                     value={searchName}
                     onChange={(e) => onchange(e.target.name, e.target.value)}
+                    required
                 />
                 <button
                     className="btn custom-btn"
