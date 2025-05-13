@@ -5,6 +5,7 @@ import ProductImages from "../components/smart/ProductImages";
 import { useCartContext } from "../contexts/cartContext";
 import CarouselUi from "../components/dumb/Carousel.ui";
 import List from "../components/smart/List";
+import Loader from "../components/dumb/Loader.ui";
 
 export default function ProductPage() {
     const { handleCart, cart, subtractCartQuantity, addCartQuantity } = useCartContext();
@@ -91,7 +92,7 @@ export default function ProductPage() {
         case "loading":
             return (
                 <>
-                    <h1>Loading...</h1>
+                    <Loader />
                 </>
             );
         case "error":

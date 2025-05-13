@@ -1,6 +1,7 @@
 import { useCartContext } from "../../contexts/cartContext"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import Loader from "../dumb/Loader.ui"
 
 export default function CartHover() {
 
@@ -66,7 +67,7 @@ export default function CartHover() {
         case 'loading':
             return (
                 <>
-                    <h1>Loading...</h1>
+                    <Loader />
                 </>
             )
         case 'success':

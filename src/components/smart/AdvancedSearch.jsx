@@ -1,6 +1,7 @@
 import AdvancedSearchUi from "../dumb/AdvancedSearch.ui"
 import { useState, useEffect } from 'react';
 import SearchResultsUi from "../dumb/SearchResults.ui";
+import Loader from "../dumb/Loader.ui";
 
 export default function AdvancedSearch() {
 
@@ -79,7 +80,7 @@ export default function AdvancedSearch() {
         case 'loading':
             return (
                 <>
-                    <h1>loading...</h1>
+                    <Loader />
                 </>
             )
         case 'error':
