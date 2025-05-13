@@ -1,5 +1,8 @@
 import { useState } from "react";
 import AdvancedSearch from "../components/smart/AdvancedSearch"
+import LayoutSearchProducts from '../components/smart/LayoutSearchedProducts'
+
+
 export default function SearchResult() {
 
     const [showFilters, setShowFilters] = useState(false);
@@ -16,12 +19,12 @@ export default function SearchResult() {
                     aria-controls="filterCollapse"
                 >
                     <span>
-                        <i className={bi ${showFilters ? "bi-x-lg" : "bi-funnel"}}></i>
+                        <i className={`bi ${showFilters ? "bi-x-lg" : "bi-funnel"}`}></i>
                     </span>{" "}
                     {showFilters ? "Chiudi" : "Filtri di ricerca"}
                 </button>
 
-                <div className={collapse${showFilters ? " show" : ""}} id="filterCollapse">
+                <div className={`collapse${showFilters ? " show" : ""}`} id="filterCollapse">
 
                     <AdvancedSearch />
 
@@ -31,6 +34,7 @@ export default function SearchResult() {
             <main className="p-4">
                 <h1>Search Page</h1>
                 {/* Risultati della ricerca*/}
+                {/* <LayoutSearchProducts /> */}
             </main>
         </div>
     );
