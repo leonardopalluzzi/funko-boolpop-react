@@ -8,6 +8,9 @@ import List from "../components/smart/List";
 import Loader from "../components/dumb/Loader.ui";
 
 export default function ProductPage() {
+
+    const { slug } = useParams();
+
     const { handleCart, cart, subtractCartQuantity, addCartQuantity } = useCartContext();
 
     const navigate = useNavigate();
@@ -20,6 +23,8 @@ export default function ProductPage() {
         state: "loading",
     });
 
+    const [pageSlug, setPageSlug] = useState(slug)
+
     const [productQuantity, setProductQuantity] = useState(0)
     const [cartItem, setCartItem] = useState(null)
     const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
@@ -27,11 +32,15 @@ export default function ProductPage() {
     const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
     const date = 1; //imposta l'ordinamento per data
 
-    const { slug } = useParams();
+
+    useEffect(() => {
+
+        setPageSlug(slug)
+    }, [slug])
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop/${slug}`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop/${pageSlug}`)
             .then((res) => res.json())
             .then((data) => {
                 setFunkos({

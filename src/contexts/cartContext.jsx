@@ -48,7 +48,7 @@ function CartProvider({ children }) {
             if (itemCheck.quantity == 0) {
                 return setCart({
                     ...cart,
-                    state: 'error',
+                    state: 'success',
                     message: 'This item is no longer available',
                 })
             } else if (itemCheck.quantity <= totalQuantity) {
@@ -166,7 +166,7 @@ function CartProvider({ children }) {
         } else if (itemToChange.quantity == 0) {
 
             setCart({
-                state: 'error',
+                state: 'success',
                 message: 'Product no longer available',
                 cartItemNumber: cart.cartItemNumber,
                 userCart: cart.userCart
