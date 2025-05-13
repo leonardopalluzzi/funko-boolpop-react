@@ -23,7 +23,7 @@ export default function ListLayout({ products }) {
       <ul>
         {products.results.map((item, i) => (
           <>
-            <li>
+            <li className="list-unstyled">
               <div className="d-flex">
                 <div className={`col-4 ${styles.result_list_img} `}>
                   <ProductImages images={item.images} index={i} />
