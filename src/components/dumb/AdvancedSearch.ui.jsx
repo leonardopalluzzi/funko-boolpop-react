@@ -103,7 +103,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 />
                             </div>
 
-                            <div className="col-12 col-md-2 mt-2 mb-2">
+                            <div className="d-flex justify-content-center col-12 col-md-2 mt-2 mb-2">
                                 <button
                                     type="submit"
                                     className="btn btn-warning px-3"
