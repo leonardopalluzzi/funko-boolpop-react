@@ -3,11 +3,17 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProductImages from "../components/smart/ProductImages";
 import { useCartContext } from "../contexts/cartContext";
+import CarouselUi from "../components/dumb/Carousel.ui";
+import List from "../components/smart/List";
 
 export default function ProductPage() {
     const { handleCart, cart, subtractCartQuantity, addCartQuantity } = useCartContext();
 
     const navigate = useNavigate();
+
+    const [products, setProducts] = useState({
+        state: 'loading'
+    })
 
     const [funko, setFunkos] = useState({
         state: "loading",
@@ -15,8 +21,13 @@ export default function ProductPage() {
 
     const [productQuantity, setProductQuantity] = useState(0)
     const [cartItem, setCartItem] = useState(null)
+    const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
+    const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
+    const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
+    const date = 1; //imposta l'ordinamento per data
 
     const { slug } = useParams();
+
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/funkoboolpop/${slug}`)
@@ -34,6 +45,32 @@ export default function ProductPage() {
                 });
             });
     }, []);
+
+    useEffect(() => {
+        Promise.all([
+            fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${pageTrans}&limit=${limit}&trans=2`).then(resTrans => resTrans.json()),
+            fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${pageDate}&limit=${limit}&date=1`).then(resDate => resDate.json()),
+        ])
+            .then(res => {
+                console.log(res);
+
+
+                setProducts({
+                    state: 'success',
+                    dataTrans: res[0],
+                    dataDate: res[1]
+                })
+
+            })
+            .catch(err => {
+                console.log(err);
+                setProducts({
+                    state: 'error',
+                    message: err.message
+                })
+
+            })
+    }, [pageTrans, pageDate])
 
     useEffect(() => {
         if (funko.state === 'success') {
@@ -186,6 +223,21 @@ export default function ProductPage() {
                                     </div>
                                 </div>
                             </div>
+                            {products.state === 'success' ? (
+                                <>
+                                    <div className="carousel_productpage mb-5">
+                                        <h1 className="fs-3">Guarda anche...</h1>
+                                        <CarouselUi dataLength={products.dataDate.totalPages} page={pageDate} setPage={setPageDate} content={(
+                                            <>
+                                                <List products={products.dataDate} queryName={'date'} page={pageDate} query={date} />
+
+                                            </>
+                                        )} />
+                                    </div>
+
+                                </>
+                            ) : (<></>)}
+
                         </div>
                     </main>
                 </>
