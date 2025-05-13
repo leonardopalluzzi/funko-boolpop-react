@@ -8,7 +8,7 @@ export default function Payment() {
     const { payment } = usePaymentContext()
     console.log(payment.client_secret);
 
-    const client_secret = payment.client_secret
+    const client_secret = payment.clientSecret
 
     const options = {
         clientSecret: client_secret,
