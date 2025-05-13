@@ -16,7 +16,7 @@ export default function () {
             <div className="app-layout">
                 <Header setCartOpen={setCartOpen} />
                 <CartOffcanvas isOpen={isCartOpen} onClose={() => setCartOpen(false)}>
-                    <p>DEBUG: Sono nel cart-offcanvas!</p>
+                    <h3>Your Cart</h3>
                     <CartHover />
                 </CartOffcanvas>
 

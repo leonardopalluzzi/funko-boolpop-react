@@ -543,7 +543,7 @@ td {
   position: fixed;
   top: 0;
   right: 0;
-  width: 350px;
+  width: 80%;
   height: 100%;
   background: #fff;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
@@ -601,6 +601,10 @@ td {
     width: 70%;
   }
 
+  .cart-offcanvas {
+    width: 60%;
+  }
+
   .offcanvas.offcanvas-end {
     width: 80%;
   }
@@ -638,6 +642,10 @@ td {
   .jumbo_img {
     width: 60%;
     left: 5%;
+  }
+
+  .cart-offcanvas {
+    width: 30%;
   }
 
   .offcanvas.offcanvas-end {

@@ -1,10 +1,13 @@
 import { useCartContext } from "../../contexts/cartContext"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export default function CartHover() {
 
     const { cart, deleteFromCart } = useCartContext()
     const navigate = useNavigate()
+
+    const [cartCheck, setCartCheck] = useState(JSON.parse(localStorage.getItem('cart')))
 
     let total = 0
     const priceArr = []
@@ -32,6 +35,16 @@ export default function CartHover() {
         total = total + item
     })
 
+
+
+    useEffect(() => {
+
+        setCartCheck(JSON.parse(localStorage.getItem('cart')))
+
+    }, [cart])
+
+
+
     function truncateText(text, maxLength) {
         if (text.length > maxLength) {
             return text.substring(0, maxLength) + "...";
@@ -39,8 +52,16 @@ export default function CartHover() {
         return text;
     }
 
-
-
+    if (cart.userCart.length == 0) {
+        return (
+            <>
+                <div className="container empty_cart">
+                    <h3>You don't have anything in your cart</h3>
+                    <p className="fs-2"><i class="bi bi-emoji-frown-fill"></i></p>
+                </div>
+            </>
+        )
+    }
     switch (cart.state) {
         case 'loading':
             return (
