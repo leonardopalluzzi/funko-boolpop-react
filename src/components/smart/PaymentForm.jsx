@@ -5,10 +5,13 @@ import { useCartContext } from '../../contexts/cartContext';
 import LoaderUi from '../dumb/Loader.ui'
 import { useNavigate } from 'react-router-dom';
 import { usePaymentContext } from '../../contexts/paymentContext';
+import OrderListUi from '../dumb/OrderList.ui'
 
 export default function PaymentForm() {
 
     const { payment } = usePaymentContext()
+
+    const { cart } = useCartContext()
 
 
     const navigate = useNavigate();
@@ -20,6 +23,28 @@ export default function PaymentForm() {
     useEffect(() => {
 
         const checkCart = JSON.parse(localStorage.getItem('cart'))
+
+
+        let total = 0
+
+        const priceArr = cart.userCart.map(item => {
+            console.log(item);
+
+            const basePrice = Number(item.price)
+            const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
+            const quantity = Number(item.cartQuantity)
+
+            let price = (basePrice * discount / 100) * quantity;
+
+            console.log(price);
+
+            return Number(price)
+        })
+        priceArr.forEach(item => {
+            total = total + item
+        })
+
+
         console.log('Carrello recuperato:', checkCart);
         if (checkCart) {
             const parsedCart = checkCart;
@@ -27,8 +52,12 @@ export default function PaymentForm() {
 
             setRecoverCart({
                 state: 'success',
-                data: checkCart
+                amount: total,
+                data: checkCart.userCart
             })
+
+            console.log(recoverCart);
+
         } else {
             setRecoverCart({
                 state: 'error',
@@ -124,6 +153,19 @@ export default function PaymentForm() {
             return (
                 <>
                     <div className="container my-5">
+                        <div className="container cart_summary text-center my-5">
+                            <h1>Cart Summary</h1>
+                            <div className="container">
+
+                                <div className="order_container border rounded-5 p-3 m-auto">
+                                    <OrderListUi orderList={recoverCart} />
+                                    <div>
+                                        <h4>Tot: {recoverCart.amount.toFixed(2)} €</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <form action="" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
                             <PaymentElement />
                             <div className="container w-50">
