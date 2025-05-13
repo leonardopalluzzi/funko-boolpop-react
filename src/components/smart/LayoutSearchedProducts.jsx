@@ -2,6 +2,7 @@ import GridLayout from "../dumb/GridLayout.ui";
 import ListLayout from "../dumb/ListLayout.ui";
 import { useState, useEffect } from "react";
 import Loader from "../dumb/Loader.ui";
+import LayoutSelect from "./LayoutSelect";
 
 export default function LayoutSearchedProducts() {
   const [layout, setLayout] = useState("grid");
@@ -47,22 +48,8 @@ export default function LayoutSearchedProducts() {
         case 'grid':
           return (
             <>
+              <LayoutSelect setLayout={setLayout} layout={layout} />
               <div className="container">
-                <div className="layout-buttons">
-                  <button
-                    onClick={() => setLayout("grid")}
-                    className={`btn btn-grid ${layout === "grid" ? "active" : ""}`}
-                  >
-                    <i class="fa-solid fa-border-all"></i>
-                  </button>
-                  <button
-                    onClick={() => setLayout("list")}
-                    className={`btn btn-list ${layout === "list" ? "active" : ""}`}
-                  >
-                    <i class="fa-solid fa-list"></i>
-                  </button>
-                </div>
-
                 <div className={`items-container ${layout}`}>
                   <GridLayout products={products.data} />
                 </div>
@@ -72,22 +59,8 @@ export default function LayoutSearchedProducts() {
         case 'list':
           return (
             <>
+              <LayoutSelect setLayout={setLayout} layout={layout} />
               <div className="container">
-                <div className="layout-buttons">
-                  <button
-                    onClick={() => setLayout("grid")}
-                    className={`btn btn-grid ${layout === "grid" ? "active" : ""}`}
-                  >
-                    <i class="fa-solid fa-border-all"></i>
-                  </button>
-                  <button
-                    onClick={() => setLayout("list")}
-                    className={`btn btn-list ${layout === "list" ? "active" : ""}`}
-                  >
-                    <i class="fa-solid fa-list"></i>
-                  </button>
-                </div>
-
                 <div className={`items-container ${layout}`}>
                   <ListLayout products={products.data} />
                 </div>
