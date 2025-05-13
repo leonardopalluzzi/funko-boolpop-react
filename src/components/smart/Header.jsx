@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import { useCartContext } from "../../contexts/cartContext";
 import AdvancedSearch from "./AdvancedSearch";
 
-export default function Header() {
+export default function Header({ setCartOpen }) {
   const { cart } = useCartContext();
   const [display, setDisplay] = useState(false);
 
@@ -48,8 +48,9 @@ export default function Header() {
               </div>
 
               <Link
+                onClick={() => setCartOpen(true)}
                 className="mx-4 text-white fs-4 position-relative"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+              // type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
               >
                 {cart.cartItemNumber > 0 ? (
                   <>
