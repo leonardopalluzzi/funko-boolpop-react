@@ -69,7 +69,7 @@ export default function List({ query, page, queryName, limit, products }) {
             images={product.images}
             name={product.name}
             price={Number(product.price)}
-            license={product.licenses}
+            license={product.license}
             promotions={product.promotions}
             slug={product.slug}
             quantity={product.quantity}

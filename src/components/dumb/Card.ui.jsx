@@ -16,7 +16,7 @@ export default function CardUi({ images, name, price, license, promotions, slug,
                             <ProductImages images={images} />
                         </div>
                         <div className="card-body p-3">
-                            <span> {license} License</span>
+                            <span className="fs-8"> {license.name.toUpperCase()}</span>
                             <h4 className="pb-2 card-title">{name}</h4>
                             <div className="price_section_card">
                                 {

@@ -10,7 +10,7 @@ export default function SearchResult() {
             <div className="bg-custom-darker border-bottom">
 
                 <button
-                    className="btn btn-link text-center w-100 filter-text"
+                    className="btn btn-link text-center w-100 filter-text my-2"
                     onClick={() => setShowFilters((prev) => !prev)}
                     aria-expanded={showFilters}
                     aria-controls="filterCollapse"
@@ -23,6 +23,9 @@ export default function SearchResult() {
 
                 <div className={`collapse${showFilters ? " show" : ""}`} id="filterCollapse">
 
+                    <AdvancedSearch />
+
+                    {/*
                     <form className="container pb-4">
                         <div className="row justify-content-center g-3 align-items-end">
                             <div className="col-12 col-md-3">
@@ -47,7 +50,6 @@ export default function SearchResult() {
                                 </label>
                             </div>
                         </div>
-                        <AdvancedSearch />
                         <div className="row justify-content-center">
                             <div className="col-12 col-md-3">
                                 <button
@@ -59,6 +61,7 @@ export default function SearchResult() {
                             </div>
                         </div>
                     </form>
+                    */}
                 </div>
             </div>
 
