@@ -8,8 +8,12 @@ export default function AdvancedSearch() {
     const page = 1
     const limit = 10
     const [searchText, setSearchText] = useState({
+        name: '',
         category: '',
-        description: ''
+        description: '',
+        minPrice: 0,
+        maxPrice: 1000,
+        promo: '',
     });
 
     const [filteredFunko, setFilteredFunko] = useState({
@@ -20,6 +24,30 @@ export default function AdvancedSearch() {
         state: 'loading'
     })
 
+    const [promoList, setPromoList] = useState({
+        state: 'loading'
+    })
+
+    /*fetch promo*/
+    useEffect(() => {
+        fetch('http://localhost:3000/api/v1/funkoboolpop?getCategory=true')//query da definire nella backend getPromo
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setPromoList({
+                    state: 'success',
+                    data: data,
+                });
+            })
+            .catch((err) => {
+                setPromoList({
+                    state: 'error',
+                    message: err.message,
+                });
+            });
+    }, [])
+
+    /*fetch category*/
     useEffect(() => {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getCategory=true')
             .then((res) => res.json())
@@ -38,6 +66,7 @@ export default function AdvancedSearch() {
             });
     }, [])
 
+    /*fetch funko*/
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&description=${searchText.description}&category=${searchText.category}&searchOnly=true`)
             .then((res) => res.json())
@@ -72,7 +101,9 @@ export default function AdvancedSearch() {
         setSearchText({
             name: '',
             category: '',
-            description: ''
+            description: '',
+            minPrice: 0,
+            maxPrice: 1000,
         })
     }
 
@@ -95,11 +126,16 @@ export default function AdvancedSearch() {
                 <>
                     <div className="container">
                         <AdvancedSearchUi
+                            searchName={searchText.name}
                             searchDescription={searchText.description}
                             searchCategory={searchText.category}
+                            searchMinPrice={searchText.minPrice}
+                            searchMaxPrice={searchText.maxPrice}
+                            searchPromo={searchText.promo}
                             onchange={handleChange}
                             handleSearch={handleSearch}
                             categoryList={categoryList.data}
+                            promoList={promoList.data}
                         />
 
                         {filteredFunko.state == 'success' && filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}

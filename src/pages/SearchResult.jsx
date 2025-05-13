@@ -25,43 +25,6 @@ export default function SearchResult() {
 
                     <AdvancedSearch />
 
-                    {/*
-                    <form className="container pb-4">
-                        <div className="row justify-content-center g-3 align-items-end">
-                            <div className="col-12 col-md-3">
-                                <label className="form-label w-100">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Name"
-                                        className="form-control mt-1"
-                                    />
-                                </label>
-                            </div>
-                            <div className="col-12 col-md-3">
-                                <label className="form-label w-100">
-                                    <input
-                                        type="number"
-                                        name="maxPrice"
-                                        min="0"
-                                        className="form-control mt-1"
-                                        placeholder="Max Price"
-                                    />
-                                </label>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="col-12 col-md-3">
-                                <button
-                                    type="submit"
-                                    className="btn btn-danger btn-sm w-100 mt-3"
-                                >
-                                    Applica filtri
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    */}
                 </div>
             </div>
 
