@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "bootstrap-icons";
 
+/*common region*/
 * {
   margin: 0;
   box-sizing: border-box;
@@ -13,6 +14,7 @@
   --primary: #dd3355;
   --secondary: #f0d3f7;
   --tertiary: #fbd87f;
+  --tertiary-light: #ffecbc;
   --accent: #81d2c7;
   --text: #000000;
   --text-light: #ffffff;
@@ -21,6 +23,23 @@
 body {
   min-width: 400px;
 }
+
+.fs-8 {
+  font-size: 0.7rem;
+}
+
+.btn-warning {
+  background-color: var(--tertiary);
+  border: 1px solid var(--tertiary);
+}
+
+.btn-warning:hover {
+  background-color: var(--tertiary-light);
+  color: var(--darker) !important;
+  border: 1px solid var(--tertiary-light);
+}
+
+/*accordion*/
 
 .my-custom-accordion {
   --bs-accordion-btn-bg: var(--background);
@@ -715,4 +734,17 @@ td {
     margin-bottom: -1.25rem !important
   }
 
+}
+
+.custom-input {
+  border: none;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.custom-input:focus,
+.custom-input:active {
+  border-color: var(--tertiary);
+  box-shadow: 0 0 0 2px var(--tertiary);
 }
