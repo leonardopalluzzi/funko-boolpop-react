@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+
+
 const FiltersContext = createContext()
 
 function FiltersProvider({ children }) {
 
     const page = 1
-
 
     const [products, setProducts] = useState({
         state: "loading",
@@ -19,13 +20,21 @@ function FiltersProvider({ children }) {
         description: '',
         minPrice: 0,
         maxPrice: 1000,
-        promo: '',
+        promotion: '',
+        attribute: ''
     });
 
     const [limit, setLimit] = useState(5)
 
+
+    const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=true&page=${page}&limit=${limit}&name=${searchText.name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
+
+    const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=true&page=${page}&limit=${limit}&name=${searchText.name}&description=${searchText.description}&category=${searchText.category}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}`
+
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?searchOnly=true&page=${page}&limit=${limit}&name=${searchText.name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`)
+        console.log(searchText);
+
+        fetch(test_url)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

@@ -75,7 +75,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     value={searchPromo}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
                                     className="form-select form-select-xs custom-input"
-                                    name="promo"
+                                    name="promotion"
 
                                 >
                                     <option value='' selected>Select a Promo</option>
@@ -101,15 +101,6 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     aria-describedby="helpId"
                                     placeholder="Search for keywords"
                                 />
-                            </div>
-
-                            <div className="d-flex justify-content-center col-12 col-md-2 mt-2 mb-2">
-                                <button
-                                    type="submit"
-                                    className="btn btn-warning px-3"
-                                >
-                                    Apply
-                                </button>
                             </div>
                         </div>
                     </form>

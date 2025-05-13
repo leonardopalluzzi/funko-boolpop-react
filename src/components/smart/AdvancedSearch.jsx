@@ -67,16 +67,6 @@ export default function AdvancedSearch() {
         //inserire redirect ad una pagina con i risultati della ricerca al submit
     }
 
-    // function emptyResearch() {
-    //     setSearchText({
-    //         name: '',
-    //         category: '',
-    //         description: '',
-    //         minPrice: 0,
-    //         maxPrice: 1000,
-    //     })
-    // }
-
     switch (categoryList.state) {
         case 'loading':
             return (
@@ -107,8 +97,6 @@ export default function AdvancedSearch() {
                             categoryList={categoryList.data}
                             promoList={promoList.data}
                         />
-
-                        {filteredFunko.state == 'success' && filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
                     </div>
 
                 </>
