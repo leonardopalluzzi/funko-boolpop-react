@@ -9,8 +9,27 @@
   --text-light: #ffffff;
 }
 
+.list_container {
+  margin: 2rem 0;
+  border: 1px solid grey;
+  padding: 1rem;
+  border-radius: 20px;
+  transition-duration: 0.5s;
 
-.result_list_img {
-  overflow: hidden;
-  aspect-ratio: 1;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-image: url('/halftone-card-darken.png');
+    background-size: cover;
+  }
+
+  .result_list_img {
+    overflow: hidden;
+    height: auto;
+    aspect-ratio: 1;
+
+    img {
+      max-width: 60%;
+    }
+  }
 }

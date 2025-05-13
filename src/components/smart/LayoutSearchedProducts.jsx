@@ -3,31 +3,17 @@ import ListLayout from "../dumb/ListLayout.ui";
 import { useState, useEffect } from "react";
 import Loader from "../dumb/Loader.ui";
 import LayoutSelect from "./LayoutSelect";
+import { useFiltersContext } from "../../contexts/filtersContext";
 
-export default function LayoutSearchedProducts() {
+export default function LayoutSearchedProducts({ filters }) {
+
+  const { products } = useFiltersContext()
+  console.log(products);
+
+
   const [layout, setLayout] = useState("grid");
-  const [products, setProducts] = useState({
-    state: "loading",
-  });
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/v1/funkoboolpop")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
 
-        setProducts({
-          state: "success",
-          data: data,
-        });
-      })
-      .catch((err) => {
-        setProducts({
-          state: "error",
-          message: err.message,
-        });
-      });
-  }, []);
 
   switch (products.state) {
     case "loading":

@@ -2,23 +2,20 @@ import AdvancedSearchUi from "../dumb/AdvancedSearch.ui"
 import { useState, useEffect } from 'react';
 import SearchResultsUi from "../dumb/SearchResults.ui";
 import Loader from "../dumb/Loader.ui";
+import { useFiltersContext } from "../../contexts/filtersContext";
 
 export default function AdvancedSearch() {
 
-    const page = 1
-    const limit = 10
-    const [searchText, setSearchText] = useState({
-        name: '',
-        category: '',
-        description: '',
-        minPrice: 0,
-        maxPrice: 1000,
-        promo: '',
-    });
+    const context = useFiltersContext()
 
-    const [filteredFunko, setFilteredFunko] = useState({
-        state: 'loading'
-    });
+    //aspetto che il context sia disponibile
+    if (!context) {
+        return <Loader />
+    }
+
+    console.log(context);
+
+    const { searchText, handleChangeFilters } = useFiltersContext()
 
     const [categoryList, setCategoryList] = useState({
         state: 'loading'
@@ -66,46 +63,19 @@ export default function AdvancedSearch() {
             });
     }, [])
 
-    /*fetch funko*/
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&description=${searchText.description}&category=${searchText.category}&searchOnly=true`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setFilteredFunko({
-                    state: 'success',
-                    data: data,
-                });
-            })
-            .catch((err) => {
-                setFilteredFunko({
-                    state: 'error',
-                    message: err.message,
-                });
-            });
-    }, [searchText])
-
-    function handleChange(key, value) {
-        setSearchText({
-            ...searchText,
-            [key]: value
-        })
-
-    }
-
     function handleSearch(searchText) {
         //inserire redirect ad una pagina con i risultati della ricerca al submit
     }
 
-    function emptyResearch() {
-        setSearchText({
-            name: '',
-            category: '',
-            description: '',
-            minPrice: 0,
-            maxPrice: 1000,
-        })
-    }
+    // function emptyResearch() {
+    //     setSearchText({
+    //         name: '',
+    //         category: '',
+    //         description: '',
+    //         minPrice: 0,
+    //         maxPrice: 1000,
+    //     })
+    // }
 
     switch (categoryList.state) {
         case 'loading':
@@ -132,7 +102,7 @@ export default function AdvancedSearch() {
                             searchMinPrice={searchText.minPrice}
                             searchMaxPrice={searchText.maxPrice}
                             searchPromo={searchText.promo}
-                            onchange={handleChange}
+                            onchange={handleChangeFilters}
                             handleSearch={handleSearch}
                             categoryList={categoryList.data}
                             promoList={promoList.data}

@@ -9,6 +9,7 @@ import Payment from "./pages/Payment"
 import { PaymentProvider } from "./contexts/paymentContext"
 import SuccessCheckout from "./pages/SuccessCheckout"
 import SearchResult from "./pages/SearchResult"
+import { FiltersProvider } from "./contexts/filtersContext"
 
 function App() {
   return (
@@ -21,7 +22,13 @@ function App() {
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
               <Route path="/success-checkout" Component={SuccessCheckout} />
-              <Route path="/search-result" Component={SearchResult} />
+              <Route path="/search-result" element={
+                <>
+                  <FiltersProvider>
+                    <SearchResult />
+                  </FiltersProvider>
+                </>
+              } />
               <Route path="/complete-checkout" element={
                 <>
                   <PaymentProvider>
