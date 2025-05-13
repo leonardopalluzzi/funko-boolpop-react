@@ -75,13 +75,7 @@ export default function List({ query, page, queryName, limit, products }) {
             quantity={product.quantity}
           />
         ))}
-        {/* <button
-              className="btn btn-transparent"
-              onClick={() => handleLoadNext()}
-            >
-              {" "}
-              <i className="bi bi-arrow-clockwise arrow-caro"></i> Load More
-            </button> */}
+
       </div>
     </>
   );

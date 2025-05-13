@@ -606,3 +606,16 @@ td {
     max-width: 50%;
   }
 }
+
+
+
+
+/* productPage */
+
+.carousel_productpage {
+  margin-top: 5rem;
+
+  h1 {
+    margin-bottom: -1.25rem !important
+  }
+}

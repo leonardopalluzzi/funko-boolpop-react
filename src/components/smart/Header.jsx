@@ -64,7 +64,8 @@ export default function Header() {
               </Link>
 
               <SearchBar display={display} />
-              <button
+              {/* bottone per filtraggio ricerca */}
+              {/* <button
                 onClick={
                   display == false
                     ? () => setDisplay(true)
@@ -73,7 +74,7 @@ export default function Header() {
                 className="btn btn-filters mx-3"
               >
                 Advanced Filters
-              </button>
+              </button> */}
             </div>
           </div>
         </nav>
