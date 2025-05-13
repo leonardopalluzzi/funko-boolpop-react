@@ -1,12 +1,23 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const PaymentContext = createContext()
 
 function PaymentProvider({ children }) {
 
     const [payment, setPayment] = useState({
-        state: 'laoding',
+        state: 'loading',
     })
+
+    useEffect(() => {
+        const clientSecretRecover = sessionStorage.getItem('clientSecret')
+
+        if (clientSecretRecover) {
+            setPayment({
+                state: 'success',
+                clientSecret: clientSecretRecover
+            })
+        }
+    }, [])
 
     function paymentIntent(form) {
         fetch('http://localhost:3000/api/v1/transactions', {
@@ -17,9 +28,10 @@ function PaymentProvider({ children }) {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                sessionStorage.setItem('clientSecret', data.clientSecret)
                 setPayment({
                     state: 'success',
-                    client_secret: data.clientSecret
+                    clientSecret: data.clientSecret
                 })
 
             })
@@ -27,7 +39,7 @@ function PaymentProvider({ children }) {
                 console.error(err)
                 setPayment({
                     state: 'error',
-                    messaage: err.message
+                    message: err.message
                 })
             })
     }

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
 
-    const { cart } = useCartContext()
+    const { cart, setCart } = useCartContext()
     const { paymentIntent } = usePaymentContext()
     const navigate = useNavigate()
 
