@@ -16,12 +16,12 @@ export default function SearchResult() {
                     aria-controls="filterCollapse"
                 >
                     <span>
-                        <i className={`bi ${showFilters ? "bi-x-lg" : "bi-funnel"}`}></i>
+                        <i className={bi ${showFilters ? "bi-x-lg" : "bi-funnel"}}></i>
                     </span>{" "}
                     {showFilters ? "Chiudi" : "Filtri di ricerca"}
                 </button>
 
-                <div className={`collapse${showFilters ? " show" : ""}`} id="filterCollapse">
+                <div className={collapse${showFilters ? " show" : ""}} id="filterCollapse">
 
                     <AdvancedSearch />
 

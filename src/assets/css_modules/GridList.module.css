@@ -1,0 +1,20 @@
+:root {
+  --background: #fcfcfc;
+  --darker: #2e3532;
+  --primary: #dd3355;
+  --secondary: #f0d3f7;
+  --tertiary: #fbd87f;
+  --accent: #81d2c7;
+  --text: #000000;
+  --text-light: #ffffff;
+}
+
+.card_list {
+  border: 1px solid var(--primary);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  height: 150px;
+  width: 100%;
+  justify-content: center;
+}
