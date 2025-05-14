@@ -78,7 +78,7 @@ export default function CartHover() {
             <div className="container mb-4">
               <div className="hover_cart_body">
                 <div className="container">
-                  <table class="table">
+                  <table class={`${styles.table_hover} table`}>
                     <thead>
                       <tr>
                         <th scope="col">Image</th>
@@ -95,7 +95,7 @@ export default function CartHover() {
                         <th scope="col"></th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className={styles.table_hover}>
                       {cart.userCart.map((item) => (
                         <>
                           <tr>
@@ -134,8 +134,8 @@ export default function CartHover() {
                                         (item.price *
                                           item.promotion[0].discount) /
                                         100
-                                      ).toFixed(2)}{" "}
-                                      €
+                                      ).toFixed(2)}
+                                      {""}€
                                     </span>
                                   </label>
                                 </>

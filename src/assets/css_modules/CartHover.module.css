@@ -13,6 +13,10 @@
   padding: 0.3rem !important;
 }
 
+/* .table_hover {
+  padding: 0.25rem 0.25rem !important;
+} */
+
 .price_tag_hover {
   padding: 0 !important;
 }
@@ -35,6 +39,7 @@
 .btn_show {
   background-color: var(--tertiary);
   color: var(--text-light);
+  margin-left: 0 !important;
 }
 
 .btn_show:hover {
