@@ -1,14 +1,9 @@
-import CardUi from "./Card.ui";
 import styles from "../../assets/css_modules/GridList.module.css";
 import ProductImages from "../smart/ProductImages";
-
 import { useNavigate } from "react-router-dom";
+
 export default function ListLayout({ products }) {
-
   const navigate = useNavigate();
-  console.log(products);
-
-
 
   if (!products || !products.results) {
     return (
@@ -19,55 +14,49 @@ export default function ListLayout({ products }) {
   }
 
   return (
-    <div className="container">
+    <div className="container py-4">
       <ul className="list-unstyled">
         {products.results.map((item, i) => (
-          <>
-            <li onClick={() => navigate(`/${item.slug}`)} className={styles.list_container}>
-              <div className="row h-50">
-                <div className={`col-3 ${styles.result_list_img} `}>
-                  <ProductImages images={item.images} index={i} />
+          <li
+            key={item.slug}
+            onClick={() => navigate(`/${item.slug}`)}
+            className={styles.list_container}
+          >
+            <div className={styles.list_item_content}>
+              <div className={styles.item_image}>
+                <ProductImages images={item.images} index={i} />
+              </div>
+
+              <div className={styles.item_details}>
+                <div className="flex-grow-1">
+                  <h3 className={styles.item_title}>{item.name}</h3>
+                  <p className={styles.item_description}>{item.description}</p>
                 </div>
-                <div className="col-9 py-5">
-                  <h2>{item.name}</h2>
-                  <p>{item.description}</p>
 
-                  <div>
-                    {
-                      item.promotions.length > 0 ?
-                        (
-                          <>
-                            <label>
-                              <div className="fw-bold text-promo">{item.promotions[0].name}</div>
-                              <span className="fs-6 text-old-price">
-                                <del>{item.price}€</del>
-                              </span>
-                              <span className="price_label_card text-price">
-                                {
-                                  (item.price * item.promotions[0].discount / 100).toFixed(2)
-                                }€
-                              </span>
-                            </label>
-                          </>
-                        ) : (
-                          <>
-                            <label className="price_label_card text-price">
-                              {item.price}€
-                            </label>
-                          </>
-                        )
-                    }
-                  </div>
-
+                <div className={styles.price_container}>
+                  {item.promotions.length > 0 ? (
+                    <>
+                      <div className="fw-bold text-promo mb-1">
+                        {item.promotions[0].name}
+                      </div>
+                      <span className="fs-6 text-old-price d-block">
+                        <del>{item.price}€</del>
+                      </span>
+                      <span className="price_label_card text-price fs-5">
+                        {(item.price * item.promotions[0].discount / 100).toFixed(2)}€
+                      </span>
+                    </>
+                  ) : (
+                    <span className="price_label_card text-price fs-5">
+                      {item.price}€
+                    </span>
+                  )}
                 </div>
               </div>
-            </li>
-          </>
+            </div>
+          </li>
         ))}
       </ul>
-
-
-
     </div>
   );
 }
