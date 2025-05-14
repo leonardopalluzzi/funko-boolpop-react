@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import SearchBarUi from '../dumb/SearchBar.ui';
 import SearchResultsUi from '../dumb/SearchResults.ui';
 import Loader from '../dumb/Loader.ui';
+import { useLocation } from 'react-router-dom';
 
 export default function SearchBar({ page = 1, limit = 10, display }) {
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
 
     const navigate = useNavigate();
 
@@ -41,12 +44,13 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
             ...searchText,
             [key]: value
         })
-
     }
 
-    function handleSearch(searchText) {
+    function handleSearch() {
+        console.log(searchText);
         //inserire redirect ad una pagina con i risultati della ricerca al submit
-        navigate('/search-result');
+        navigate(`/search-result?name=${searchText.name}`);
+        emptyResearch()
     }
 
     function emptyResearch() {
@@ -61,7 +65,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         case 'loading':
             return (
                 <>
-
+                    <Loader />
                 </>
             )
         case 'error':

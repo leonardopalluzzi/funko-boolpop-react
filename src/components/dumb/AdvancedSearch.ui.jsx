@@ -1,10 +1,10 @@
-export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, searchPromo, onchange, handleSearch, categoryList, promoList }) {
+export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, searchPromo, onchange, onsubmit, categoryList, promoList }) {
     return (
         <>
             <div className="container">
                 <div className=" mx-3 mt-2">
 
-                    <form className="mb-3" onSubmit={(e) => { e.preventDefault(); handleSearch() }}>
+                    <form className="mb-3" onSubmit={(e) => { e.preventDefault(); onsubmit() }}>
 
                         <div className="row justify-content-center ">
                             <div className="col-12 col-md-2 my-2">
@@ -101,6 +101,15 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     aria-describedby="helpId"
                                     placeholder="Search for keywords"
                                 />
+                            </div>
+
+                            <div className="d-flex justify-content-center col-12 col-md-2 mt-2 mb-2">
+                                <button
+                                    type="submit"
+                                    className="btn btn-warning px-3"
+                                >
+                                    Apply
+                                </button>
                             </div>
                         </div>
                     </form>
