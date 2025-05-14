@@ -35,10 +35,18 @@ function PaymentProvider({ children }) {
             .then(data => {
                 console.log(data);
                 sessionStorage.setItem('clientSecret', data.clientSecret)
-                setPayment({
-                    state: 'success',
-                    clientSecret: data.clientSecret
-                })
+                if (data && data.state == 'success') {
+                    setPayment({
+                        state: 'success',
+                        clientSecret: data.clientSecret
+                    })
+                } else {
+                    setPayment({
+                        state: data.state,
+                        message: data.message
+                    })
+                }
+
 
             })
             .catch(err => {
