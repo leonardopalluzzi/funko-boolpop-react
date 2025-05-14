@@ -7,24 +7,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function SearchResult() {
 
     const [showFilters, setShowFilters] = useState(false);
-    const VALID_QUERY = ['name', 'category', 'description', 'minPrice', 'maxPrice', 'promotion', 'attribute'];
+    const VALID_QUERY = ['name', 'category', 'description', 'minPrice', 'maxPrice', 'promotion', 'attribute']; //da mettere nel .env
 
+    const location = useLocation();
     const navigate = useNavigate()
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
-        const keys = Array.from(searchParams.keys());
+        const keys = Array.from(searchParams.keys()); //crea un array con lallista dei parametri presi dall'url corrente
 
-        // Caso 1: Nessuna query
+        // se non trova nessuna query
         if (keys.length === 0) {
             navigate("/", { replace: true });
             return;
         }
 
-        // Caso 2: Presenza di query non valide
+        // se vengono inserite query non valide query non valide
         const hasInvalidQuery = keys.some(key => !VALID_QUERY.includes(key));
         if (hasInvalidQuery) {
-            navigate("/", { replace: true });
+            navigate("/", { replace: true }); // il replace true sovrascrive la cronologia del browser
         }
 
     }, [location.search, navigate]);
