@@ -76,7 +76,7 @@ export default function Cart() {
                                                 <td>
                                                     <button onClick={() => subtractCartQuantity(item)} className="btn btn-transaprent fs-3 p-2">-</button>
                                                     X{item.cartQuantity}
-                                                    <button onClick={() => addCartQuantity(item)} className="btn btn-transaprent fs-4 p-2">+</button>
+                                                    <button onClick={() => addCartQuantity(item, item.cartQuantity + item.quantity)} className="btn btn-transaprent fs-4 p-2">+</button>
                                                     <p>{cart.message}</p>
                                                 </td>
                                                 <td>

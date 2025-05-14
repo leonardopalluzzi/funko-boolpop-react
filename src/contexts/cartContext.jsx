@@ -107,6 +107,7 @@ function CartProvider({ children }) {
     }
 
     function subtractCartQuantity(itemToChange) {
+        console.log(itemToChange);
 
         if (itemToChange.cartQuantity > 1) {
             const updatedCart = cart.userCart.map(item => {
