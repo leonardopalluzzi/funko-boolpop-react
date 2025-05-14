@@ -51,7 +51,7 @@ function FiltersProvider({ children }) {
     useEffect(() => {
         console.log(searchText);
 
-        fetch(test_url)
+        fetch(live_url)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

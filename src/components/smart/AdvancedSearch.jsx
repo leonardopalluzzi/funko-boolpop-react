@@ -27,7 +27,7 @@ export default function AdvancedSearch() {
 
     /*fetch promo*/
     useEffect(() => {
-        fetch('http://localhost:3000/api/v1/funkoboolpop?getCategory=true')//query da definire nella backend getPromo
+        fetch('http://localhost:3000/api/v1/funkoboolpop?getPromo=true')//query da definire nella backend getPromo
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
