@@ -111,7 +111,7 @@ function FiltersProvider({ children }) {
 
     return (
         <>
-            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, handleSubmit, handlePage }}>
+            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, limit, handleSubmit, handlePage }}>
                 {children}
             </FiltersContext.Provider>
         </>

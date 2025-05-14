@@ -1,11 +1,15 @@
 import { useFiltersContext } from "../../contexts/filtersContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Loader from "../dumb/Loader.ui";
 
 export default function PaginationControls() {
 
-    const { handlePage, handleLimit, products, page } = useFiltersContext()
+    const { handlePage, handleLimit, products, page, limit } = useFiltersContext()
     const [active, setActive] = useState(0)
+
+    useEffect(() => {
+        setActive(0)
+    }, [limit])
 
     function handleLoadNext() {
         if (page < products.data.totalPages) {
@@ -47,6 +51,7 @@ export default function PaginationControls() {
                                     Products Number
                                 </option>
                                 <option value="4">4</option>
+                                <option value="8">8</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                             </select>
