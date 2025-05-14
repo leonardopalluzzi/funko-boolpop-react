@@ -12,8 +12,6 @@ function FiltersProvider({ children }) {
     const queryParams = new URLSearchParams(location.search)
     const name = queryParams.get('name') || ''
 
-    const page = 1
-
     const [products, setProducts] = useState({
         state: "loading",
     });
@@ -32,7 +30,8 @@ function FiltersProvider({ children }) {
         attribute: ''
     });
 
-    const [limit, setLimit] = useState(5)
+    const [limit, setLimit] = useState(8)
+    const [page, setPage] = useState(1)
 
 
     const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
@@ -64,7 +63,11 @@ function FiltersProvider({ children }) {
                     message: err.message,
                 });
             });
-    }, [location.search, limit]);
+    }, [location.search, limit, page]);
+
+    useEffect(() => {
+        setPage(1)
+    }, [limit])
 
     function handleLimit(limitValue) {
         setLimit(limitValue)
@@ -78,6 +81,14 @@ function FiltersProvider({ children }) {
             [key]: value
         })
 
+    }
+
+    function handleLimit(newLimit) {
+        setLimit(newLimit)
+    }
+
+    function handlePage(newPage) {
+        setPage(newPage)
     }
 
     function handleSubmit() {
@@ -100,7 +111,7 @@ function FiltersProvider({ children }) {
 
     return (
         <>
-            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, handleSubmit }}>
+            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, handleSubmit, handlePage }}>
                 {children}
             </FiltersContext.Provider>
         </>

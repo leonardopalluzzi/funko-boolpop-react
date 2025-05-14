@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Loader from "../dumb/Loader.ui";
 import LayoutSelect from "./LayoutSelect";
 import { useFiltersContext } from "../../contexts/filtersContext";
+import PaginationControls from "./PaginationControls";
 
 export default function LayoutSearchedProducts({ filters }) {
 
@@ -47,11 +48,13 @@ export default function LayoutSearchedProducts({ filters }) {
               <div className="w-100">
                 <div className="layout_switch">
                   <LayoutSelect setLayout={setLayout} layout={layout} />
+
                 </div>
               </div>
 
               <div className="container">
                 <div className={`items-container ${layout}`}>
+                  <PaginationControls />
                   <GridLayout products={products.data} />
                 </div>
               </div>
@@ -63,6 +66,7 @@ export default function LayoutSearchedProducts({ filters }) {
               <LayoutSelect setLayout={setLayout} layout={layout} />
               <div className="container">
                 <div className={`items-container ${layout}`}>
+                  <PaginationControls />
                   <ListLayout products={products.data} />
                 </div>
               </div>
