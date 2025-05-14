@@ -86,8 +86,8 @@ function FiltersProvider({ children }) {
         if (searchText.description != '') queryParts.push(`description=${encodeURIComponent(searchText.description)}`);
         if (searchText.category != '') queryParts.push(`category=${encodeURIComponent(searchText.category)}`);
         if (searchText.attribute != '') queryParts.push(`attribute=${encodeURIComponent(searchText.attribute)}`);
-        if (searchText.minPrice) queryParts.push(`minPrice=${encodeURIComponent(searchText.minPrice)}`);
-        if (searchText.maxPrice) queryParts.push(`maxPrice=${encodeURIComponent(searchText.maxPrice)}`);
+        if (searchText.minPrice != 0) queryParts.push(`minPrice=${encodeURIComponent(searchText.minPrice)}`);
+        if (searchText.maxPrice != 1000) queryParts.push(`maxPrice=${encodeURIComponent(searchText.maxPrice)}`);
         if (searchText.promotion != '') queryParts.push(`promotion=${encodeURIComponent(searchText.promotion)}`);
 
         const queryString = queryParts.join('&')
