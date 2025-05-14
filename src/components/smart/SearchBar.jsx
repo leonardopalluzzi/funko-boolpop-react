@@ -62,7 +62,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         if (searchText.name == '') {
             return setMessage('Search for something by name')
         }
-        navigate(`/search-result?name=${searchText.name}`);
+        navigate(`/search-result?name=${searchText.name}&page=1&limit=8`);
         emptyResearch()
     }
 

@@ -30,8 +30,18 @@ function FiltersProvider({ children }) {
         attribute: ''
     });
 
-    const [limit, setLimit] = useState(8)
-    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(Number(queryParams.get('limit')) || 8)
+    const [page, setPage] = useState(Number(queryParams.get('page')) || 1)
+
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const limitFromUrl = Number(queryParams.get('limit')) || 8; // default a 12
+        const pageFromUrl = Number(queryParams.get('page')) || 1;
+
+        setLimit(limitFromUrl);
+        setPage(pageFromUrl);
+    }, [location.search]);
 
 
     const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
@@ -65,15 +75,6 @@ function FiltersProvider({ children }) {
             });
     }, [location.search, limit, page]);
 
-    useEffect(() => {
-        setPage(1)
-    }, [limit])
-
-    function handleLimit(limitValue) {
-        setLimit(limitValue)
-    }
-
-
     //funzioni per i filtri di ricerca
     function handleChangeFilters(key, value) {
         setSearchText({
@@ -84,10 +85,21 @@ function FiltersProvider({ children }) {
     }
 
     function handleLimit(newLimit) {
+        const queryParams = new URLSearchParams(location.search)
+        queryParams.set('limit', newLimit)
+        queryParams.set('page', 1) // reset page
+
+        navigate(`${location.pathname}?${queryParams.toString()}`, { replace: true })
         setLimit(newLimit)
+        setPage(1)
     }
 
     function handlePage(newPage) {
+        const queryParams = new URLSearchParams(location.search)
+        queryParams.set('page', newPage)
+        queryParams.set('limit', limit || 8) // fallback
+
+        navigate(`${location.pathname}?${queryParams.toString()}`, { replace: true })
         setPage(newPage)
     }
 
