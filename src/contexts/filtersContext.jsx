@@ -11,11 +11,6 @@ function FiltersProvider({ children }) {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
     const name = queryParams.get('name') || ''
-    const description = queryParams.get('description') || ''
-    const category = queryParams.get('category') || ''
-    const attribute = queryParams.get('attribute') || ''
-    const minPrice = Number(queryParams.get('minPrice')) || 0
-    const maxPrice = Number(queryParams.get('maxPrice')) || 100
 
     const page = 1
 
@@ -42,7 +37,7 @@ function FiltersProvider({ children }) {
 
     const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searhcOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
 
-    const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searhcOnly}&page=${page}&limit=${limit}&name=${name}&description=${description}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+    const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searhcOnly}&page=${page}&limit=${limit}&name=${name}`
 
     useEffect(() => {
         console.log(searchText);
