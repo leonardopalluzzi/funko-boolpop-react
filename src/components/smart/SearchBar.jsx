@@ -17,6 +17,8 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         category: ''
     });
 
+    const [message, setMessage] = useState('')
+
     const [filteredFunko, setFilteredFunko] = useState({
         state: 'loading'
     });
@@ -39,6 +41,14 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
             });
     }, [searchText])
 
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setMessage('')
+        }, 3000)
+
+        return () => clearInterval(timer)
+    }, [message])
+
     function handleChange(key, value) {
         setSearchText({
             ...searchText,
@@ -47,8 +57,11 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
     }
 
     function handleSearch() {
-        console.log(searchText);
+        console.log(message);
         //inserire redirect ad una pagina con i risultati della ricerca al submit
+        if (searchText.name == '') {
+            return setMessage('Search for something by name')
+        }
         navigate(`/search-result?name=${searchText.name}`);
         emptyResearch()
     }
@@ -84,8 +97,11 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
                         searchCategory={searchText.category}
                         onchange={handleChange}
                         handleSearch={handleSearch}
+                        message={message}
                     />
+                    <p className={message !== '' ? `alert alert-danger position-absolute top-0 left-50` : 'd-none'}>{message}</p>
                     <div className={display == false ? 'd-block' : 'd-none'}>
+
                         {filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
                     </div>
                 </>
