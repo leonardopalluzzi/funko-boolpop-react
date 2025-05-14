@@ -6,13 +6,19 @@ import LayoutSelect from "./LayoutSelect";
 import { useFiltersContext } from "../../contexts/filtersContext";
 import PaginationControls from "./PaginationControls";
 
-export default function LayoutSearchedProducts({ filters }) {
+export default function LayoutSearchedProducts() {
 
   const { products } = useFiltersContext()
   console.log(products);
 
 
-  const [layout, setLayout] = useState("grid");
+  const [layout, setLayout] = useState(() => {
+    return sessionStorage.getItem('layout') || 'grid';
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('layout', layout);
+  }, [layout]);
 
 
 
