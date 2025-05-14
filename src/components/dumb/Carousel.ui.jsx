@@ -8,19 +8,30 @@ export default function CarouselUi({ content, page, setPage, dataLength }) {
 
     function scroll(direction) {
         const scrollAmount = 1000;
-        console.log(current.scrollLeft);
+
+        if (direction === 'right') {
+            if (page < dataLength) {
+                setPage(page + 1);
+            } else {
+                setPage(1);
+            }
 
 
-        if (direction === 'left') {
-            current.scrollLeft -= scrollAmount;
-        } else {
-            current.scrollLeft += scrollAmount;
+            if (scrollRef?.current) {
+                scrollRef.current.scrollLeft = 0;
+            }
+        } else if (direction === 'left') {
+            if (page > 1) {
+                setPage(page - 1);
+            } else {
+                setPage(dataLength);
+            }
+
+            // Resetta lo scroll
+            if (scrollRef?.current) {
+                scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+            }
         }
-
-        if (current.scrollLeft + current.offsetWidth >= current.scrollWidth) {
-            handleLoadNext();
-        }
-
     }
     function handleLoadNext() {
         console.log('ciao');
