@@ -36,7 +36,7 @@ export default function SuccessCheckout() {
             return (
                 <>
                     <div className="container text-center my-5">
-                        <h1>We recived your order correctly</h1>
+                        <h1>We received your order correctly</h1>
                         <div><i class="bi bi-check-circle text-success fs-1"></i></div>
                         <h4>Check your email for further details</h4>
                         <div className="container">

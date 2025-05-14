@@ -159,14 +159,15 @@ export default function PaymentForm() {
             navigate('/cart');
             return null
         case 'success':
+
             return (
                 <>
                     <div className="container my-5">
-                        <div className="container cart_summary text-center my-5">
+                        <div className="cart_summary text-center my-5">
                             <h1>Cart Summary</h1>
                             <div className="container">
 
-                                <div className="order_container border rounded-5 p-3 m-auto">
+                                <div className="order_container border rounded-5 p-3 m-auto ">
                                     <OrderListUi orderList={recoverCart} />
                                     <div>
                                         <h4>Tot: {recoverCart.amount.toFixed(2)} €</h4>

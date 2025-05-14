@@ -74,6 +74,7 @@ body {
 
 .main-content {
   flex-grow: 1;
+  min-height: 100vh;
 }
 
 .layout-buttons {
@@ -509,7 +510,7 @@ td {
 }
 
 .order_container {
-  max-width: 100%;
+
 
   .order {
     display: flex;
@@ -519,13 +520,13 @@ td {
     align-items: center;
     justify-content: space-between;
 
-    .order_img {
-      display: none;
 
-      img {
-        max-width: 100%;
-      }
+
+    img {
+      max-width: 100%;
+      margin-right: 1rem;
     }
+
 
     .order_col {
       width: 30%;
@@ -609,6 +610,8 @@ td {
   overflow: scroll;
   margin: 0 2rem;
   scrollbar-width: none;
+
+
   /* Nasconde la scrollbar */
   -ms-overflow-style: none;
 }
