@@ -29,6 +29,16 @@ export default function LayoutSearchedProducts({ filters }) {
           <p>{products.message}</p>;
         </>
       )
+    case 'empty':
+      return (
+        <>
+          <div className="container flex-column d-flex align-items-center justify-content-center">
+            <h1 className="text-secondary">No results Found</h1>
+            <p className="fs-1"><i class="bi bi-emoji-frown"></i></p>
+          </div>
+
+        </>
+      )
     case "success":
       switch (layout) {
         case 'grid':

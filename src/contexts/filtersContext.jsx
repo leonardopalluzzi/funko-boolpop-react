@@ -18,12 +18,12 @@ function FiltersProvider({ children }) {
         state: "loading",
     });
 
-    const [searhcOnly, setSearchOnly] = useState(true);
+    const [searchOnly, setSearchOnly] = useState(true);
 
 
     //logica filtri
     const [searchText, setSearchText] = useState({
-        name: '',
+        name: name,
         category: '',
         description: '',
         minPrice: 0,
@@ -35,9 +35,9 @@ function FiltersProvider({ children }) {
     const [limit, setLimit] = useState(5)
 
 
-    const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searhcOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
+    const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
 
-    const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searhcOnly}&page=${page}&limit=${limit}&name=${name}`
+    const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}`
 
     useEffect(() => {
         console.log(searchText);
@@ -46,11 +46,17 @@ function FiltersProvider({ children }) {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-
-                setProducts({
-                    state: "success",
-                    data: data,
-                });
+                if (data.totalResults == 0) {
+                    setProducts({
+                        state: "empty",
+                        data: data,
+                    });
+                } else {
+                    setProducts({
+                        state: "success",
+                        data: data,
+                    });
+                }
             })
             .catch((err) => {
                 setProducts({
@@ -58,7 +64,7 @@ function FiltersProvider({ children }) {
                     message: err.message,
                 });
             });
-    }, [handleSubmit]);
+    }, [location.search, limit]);
 
     function handleLimit(limitValue) {
         setLimit(limitValue)
