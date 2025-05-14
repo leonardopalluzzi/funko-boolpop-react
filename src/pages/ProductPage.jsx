@@ -40,7 +40,7 @@ export default function ProductPage() {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop/${pageSlug}`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop/${slug}`)
             .then((res) => res.json())
             .then((data) => {
                 setFunkos({
@@ -54,7 +54,7 @@ export default function ProductPage() {
                     message: err.message,
                 });
             });
-    }, []);
+    }, [slug]);
 
     useEffect(() => {
         Promise.all([
