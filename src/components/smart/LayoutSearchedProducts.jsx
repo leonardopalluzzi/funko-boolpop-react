@@ -8,13 +8,22 @@ import PaginationControls from "./PaginationControls";
 
 export default function LayoutSearchedProducts() {
 
-  const { products } = useFiltersContext()
+  const { products, handleLimit, limit } = useFiltersContext()
   console.log(products);
 
 
   const [layout, setLayout] = useState(() => {
     return sessionStorage.getItem('layout') || 'grid';
   });
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMessage('')
+    }, 3000)
+
+    return () => clearInterval(timer)
+  }, [message])
 
   useEffect(() => {
     sessionStorage.setItem('layout', layout);
@@ -62,6 +71,10 @@ export default function LayoutSearchedProducts() {
                 <div className={`items-container ${layout}`}>
                   <PaginationControls />
                   <GridLayout products={products.data} />
+                  <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
+                    <button onClick={limit < products.data.totalResults ? () => handleLimit(limit + 2) : () => setMessage('No more items to show')} className="btn btn-outline-primary">Load More</button>
+                    <span className={message !== '' ? `alert alert-danger` : 'd-none'}>{message}</span>
+                  </div>
                 </div>
               </div>
             </>
@@ -74,6 +87,11 @@ export default function LayoutSearchedProducts() {
                 <div className={`items-container ${layout}`}>
                   <PaginationControls />
                   <ListLayout products={products.data} />
+                  <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
+                    <button onClick={limit < products.data.totalResults ? () => handleLimit(limit + 2) : () => setMessage('No more items to show')} className="btn btn-outline-primary">Load More</button>
+                    <span className={message !== '' ? `alert alert-danger` : 'd-none'}>{message}</span>
+                  </div>
+
                 </div>
               </div>
             </>
