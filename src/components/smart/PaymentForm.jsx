@@ -9,6 +9,10 @@ import OrderListUi from '../dumb/OrderList.ui'
 
 export default function PaymentForm() {
 
+    const context = usePaymentContext();
+    if (!context || !context.payment) return <LoaderUi />;
+
+
     const { payment } = usePaymentContext()
 
     const { cart } = useCartContext()
@@ -77,6 +81,11 @@ export default function PaymentForm() {
     const elements = useElements()
     const [errorMessage, setErrorMessage] = useState();
     const [loading, setLoading] = useState(false);
+
+    if (!stripe || !elements) {
+        console.error('Stripe or Elements not initialized');
+        return <LoaderUi />; // Mostra un loader finché gli elementi non sono pronti
+    }
 
 
     if (!elements) {

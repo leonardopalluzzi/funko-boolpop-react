@@ -20,7 +20,10 @@ export default function Payment() {
 
 
     const stripePromise = loadStripe('pk_test_51RKpq9Q6vBP0glqyfTSi0a2BNUEGYwoLm1tR8rkkRwcDRRdkqYaMgVX3bTnxuYG7A0odSoSqF0bzMNnV3TKyHqUf00xpcTWDMC');
-
+    if (!client_secret) {
+        console.error("Client secret is missing");
+        return <h1>Error: Missing client secret</h1>;
+    }
 
     switch (payment.state) {
         case 'loading':
@@ -30,6 +33,7 @@ export default function Payment() {
                 </>
             )
         case 'error':
+            console.error('Payment Error:', payment.message);
             return (
                 <>
                     <h1>{payment.state}</h1>
@@ -40,7 +44,7 @@ export default function Payment() {
             return (
                 <>
                     <Elements stripe={stripePromise} options={options}>
-                        <PaymentForm clientSecret={client_secret} />
+                        <PaymentForm />
                     </Elements>
                 </>
             )

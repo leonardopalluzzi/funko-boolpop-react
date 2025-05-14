@@ -16,6 +16,12 @@ function PaymentProvider({ children }) {
                 state: 'success',
                 clientSecret: clientSecretRecover
             })
+        } else {
+            // Puoi gestire il caso in cui non troviamo un clientSecret
+            setPayment({
+                state: 'error',
+                message: 'No client secret found in session storage.',
+            });
         }
     }, [])
 
