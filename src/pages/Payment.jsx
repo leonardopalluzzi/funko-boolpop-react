@@ -44,7 +44,7 @@ export default function Payment() {
             return (
                 <>
                     <Elements stripe={stripePromise} options={options}>
-                        <PaymentForm />
+                        <PaymentForm clientSecret={client_secret} />
                     </Elements>
                 </>
             )
