@@ -77,8 +77,8 @@ export default function AdvancedSearch() {
         case 'error':
             return (
                 <>
-                    <h1>{filteredFunko.state}</h1>
-                    <p>{filteredFunko.message}</p>
+                    <h1>{categoryList.state}</h1>
+                    <p>{categoryList.message}</p>
                 </>
             )
         case 'success':
