@@ -63,7 +63,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     {/* fare map per le options  */}
                                     {categoryList.map(item => (
                                         <>
-                                            <option value={item.name.toLowerCase().replaceAll(' ', '')}>{item.name}</option>
+                                            <option value={item.name}>{item.name}</option>
                                         </>
                                     ))}
                                 </select>
@@ -83,7 +83,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     {/* fare map per le options  */}
                                     {promoList.map(item => (
                                         <>
-                                            <option value={item.name.toLowerCase().replaceAll(' ', '')}>{item.name}</option>
+                                            <option value={item.name}>{item.name}</option>
                                         </>
                                     ))}
                                 </select>

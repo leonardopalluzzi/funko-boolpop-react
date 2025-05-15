@@ -117,6 +117,9 @@ function FiltersProvider({ children }) {
         const queryString = queryParts.join('&')
         const queryUrl = `/search-result`
 
+        console.log(queryUrl);
+
+
         navigate(`${queryUrl}${queryString ? '?' + queryString : ''}`)
 
     }
