@@ -25,6 +25,10 @@ export default function AdvancedSearch() {
         state: 'loading'
     })
 
+    const [attributeList, setAttributeList] = useState({
+        state: 'loading'
+    })
+
     /*fetch promo*/
     useEffect(() => {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getPromo=true')//query da definire nella backend getPromo
@@ -57,6 +61,25 @@ export default function AdvancedSearch() {
             })
             .catch((err) => {
                 setCategoryList({
+                    state: 'error',
+                    message: err.message,
+                });
+            });
+    }, [])
+
+    /*fetch attribute*/
+    useEffect(() => {
+        fetch('http://localhost:3000/api/v1/funkoboolpop?getAttribute=true')
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setAttributeList({
+                    state: 'success',
+                    data: data,
+                });
+            })
+            .catch((err) => {
+                setAttributeList({
                     state: 'error',
                     message: err.message,
                 });
@@ -96,6 +119,7 @@ export default function AdvancedSearch() {
                             onsubmit={handleSubmit}
                             categoryList={categoryList.data}
                             promoList={promoList.data}
+                            attributeList={attributeList.data}
                         />
                     </div>
 
