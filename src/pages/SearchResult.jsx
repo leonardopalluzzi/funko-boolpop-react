@@ -18,7 +18,7 @@ export default function SearchResult() {
 
         // se non trova nessuna query
         if (keys.length === 0) {
-            navigate("/", { replace: true });
+            navigate("/search-result", { replace: true });
             return;
         }
 
