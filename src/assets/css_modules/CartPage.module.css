@@ -22,11 +22,21 @@
 }
 
 .btn_delete {
+  background-color: var(--darker) !important;
+  color: var(--text-light) !important;
+}
+
+.btn_delete:hover {
   background-color: var(--primary) !important;
   color: var(--text-light) !important;
 }
 
 .btn_watch {
+  background-color: var(--darker) !important;
+  color: var(--text-light) !important;
+}
+
+.btn_watch:hover {
   background-color: var(--accent) !important;
   color: var(--text-light) !important;
 }
@@ -46,9 +56,15 @@
   justify-content: center;
   margin-bottom: 1rem;
 }
+
 .btn_payment {
-  background-color: var(--accent);
+  background-color: var(--darker);
   color: var(--background);
+}
+
+.btn_payment:hover {
+  background-color: var(--accent);
+  color: var(--darker);
 }
 
 /* UTILITY */
