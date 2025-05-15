@@ -27,7 +27,9 @@ function FiltersProvider({ children }) {
         minPrice: 0,
         maxPrice: 1000,
         promotion: '',
-        attribute: ''
+        attribute: '',
+        sortBydate: 0,
+        sortBySales: 0
     });
 
     const [limit, setLimit] = useState(Number(queryParams.get('limit')) || 8)
@@ -36,7 +38,7 @@ function FiltersProvider({ children }) {
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
-        const limitFromUrl = Number(queryParams.get('limit')) || 8; // default a 12
+        const limitFromUrl = Number(queryParams.get('limit')) || 8; // default a 8
         const pageFromUrl = Number(queryParams.get('page')) || 1;
 
         setLimit(limitFromUrl);
@@ -44,7 +46,7 @@ function FiltersProvider({ children }) {
     }, [location.search]);
 
 
-    const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}`
+    const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}&date=${Number(searchText.sortBydate)}&sales=${Number(searchText.sortBySales)}`
 
     const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}`
 
@@ -113,6 +115,8 @@ function FiltersProvider({ children }) {
         if (searchText.minPrice != 0) queryParts.push(`minPrice=${encodeURIComponent(searchText.minPrice)}`);
         if (searchText.maxPrice != 1000) queryParts.push(`maxPrice=${encodeURIComponent(searchText.maxPrice)}`);
         if (searchText.promotion != '') queryParts.push(`promotion=${encodeURIComponent(searchText.promotion)}`);
+        // if (searchText.sortBySales == 1 || searchText.sortBySales == -1) queryParts.push(`sales=${encodeURIComponent(searchText.sortBySales)}`);
+        // if (searchText.sortBydate == 1 || searchText.sortBydate == -1) queryParts.push(`date=${encodeURIComponent(searchText.sortBydate)}`);
 
         const queryString = queryParts.join('&')
         const queryUrl = `/search-result`
