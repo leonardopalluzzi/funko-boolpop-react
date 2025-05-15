@@ -13,7 +13,7 @@ export default function List({ query, page, queryName, limit, products }) {
           </span>
         </div>
       </div>
-      <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 align-items-center">
+      <div className="home_p_list row row-cols-1 row-cols-md-2 row-cols-lg-4 align-items-center flex-nowrap">
         {products.results.map((product) => (
           <CardUi
             key={`unique${product.slug}`}

@@ -34,12 +34,8 @@ export default function CarouselUi({ content, page, setPage, dataLength }) {
         }
     }
     function handleLoadNext() {
-        console.log('ciao');
-
         console.log(page);
         console.log(dataLength);
-
-
 
         if (page < dataLength) {
             setPage(page + 1);

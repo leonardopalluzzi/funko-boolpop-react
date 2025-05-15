@@ -109,10 +109,16 @@ body {
   /* Nasconde la scrollbar su gli altri browser*/
 }
 
+.home_p_list {
+  max-width: 100%;
+}
+
+/*JUMBO region*/
+
 .jumbo_slide {
   overflow: hidden;
   min-width: 100%;
-  height: 70vh;
+  height: 65vh;
   position: relative;
   transition: transform 0.6s ease-in-out;
   background-image: url("/jumbo-background.jpg");
@@ -120,11 +126,16 @@ body {
   background-position: center;
 }
 
+.jumbo-title {
+  font-size: 1.4rem;
+}
+
 .jumbo_img {
   width: 100%;
   object-fit: cover;
   display: block;
-  margin: auto;
+  margin-inline: auto;
+  margin-top: 1rem;
   /*transform: scale(1);
   transition: transform 1s ease;*/
 }
@@ -139,6 +150,18 @@ body {
 
 .jumbo_slide.active .jumbo_img {
   transform: scale(1.02);
+}
+
+.jumbo-title {
+  text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white,
+    -2px -2px 0 white,
+    2px -2px 0 white,
+    -2px 2px 0 white,
+    2px 2px 0 white;
 }
 
 .dots {
@@ -618,6 +641,8 @@ td {
   /* Nasconde la scrollbar su Chrome, Edge e Safari */
 }
 
+/*media query*/
+
 @media screen and (min-width: 575px) {
   .search_results_container {
     max-width: 50%;
@@ -629,6 +654,15 @@ td {
     right: 10%;
     z-index: 20;
   }
+
+  .jumbo_slide {
+    height: 80vh;
+  }
+
+  .jumbo-title {
+    font-size: 2rem;
+  }
+
 }
 
 
@@ -636,6 +670,10 @@ td {
 @media screen and (min-width: 768px) {
   .jumbo_img {
     width: 70%;
+  }
+
+  .jumbo_slide {
+    height: 75vh;
   }
 
   .cart-offcanvas {
@@ -672,6 +710,8 @@ td {
       }
     }
   }
+
+
 }
 
 /*desktop in su*/
@@ -679,6 +719,10 @@ td {
   .jumbo_img {
     width: 60%;
     left: 5%;
+  }
+
+  .jumbo_slide {
+    height: 80vh;
   }
 
   .cart-offcanvas {
@@ -696,6 +740,15 @@ td {
 
   .order_container {
     max-width: 50%;
+  }
+
+
+}
+
+@media screen and (min-width: 1440px) {
+
+  .jumbo-title {
+    font-size: 2.2rem;
   }
 }
 
