@@ -14,7 +14,7 @@ export default function SearchResult() {
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
-        const keys = Array.from(searchParams.keys()); //crea un array con lallista dei parametri presi dall'url corrente
+        const keys = Array.from(searchParams.keys()); //crea un array con la lista dei parametri presi dall'url corrente
 
         // se non trova nessuna query
         if (keys.length === 0) {
@@ -55,7 +55,7 @@ export default function SearchResult() {
                 </div>
             </div>
 
-            <main className="p-4">
+            <main className="container p-4">
                 <h1>Results</h1>
                 {/* Risultati della ricerca*/}
                 <LayoutSearchProducts />

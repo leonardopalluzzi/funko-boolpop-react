@@ -16,6 +16,7 @@
   transition: all 0.3s ease;
   overflow: hidden;
   cursor: pointer;
+
 }
 
 .list_item_content {
@@ -53,4 +54,20 @@
 
 .price_container {
   min-width: 120px;
+}
+
+@media (max-width: 767px) {
+  .list_item_content {
+    gap: 0;
+
+  }
+
+  .item_description {
+    display: none;
+  }
+
+  .item_title {
+    display: none;
+  }
+
 }
