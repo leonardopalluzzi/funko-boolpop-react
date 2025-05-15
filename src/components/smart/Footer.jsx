@@ -4,7 +4,7 @@ export default function Footer() {
             <footer>
 
                 <div className="text-center py-3 text-light">
-                    &copy;2025 Team 2
+                    &copy;2025 Team 2. All Rights Reserved
                 </div>
 
                 {/*<div className="container">
