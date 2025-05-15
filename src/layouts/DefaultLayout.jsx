@@ -17,11 +17,11 @@ export default function () {
                 <Header setCartOpen={setCartOpen} />
                 <CartOffcanvas isOpen={isCartOpen} onClose={() => setCartOpen(false)}>
                     <h3>Your Cart</h3>
-                    <CartHover />
+                    <CartHover onClose={() => setCartOpen(false)} />
                 </CartOffcanvas>
 
                 <main className="main-content">
-                    <Outlet />
+                    <Outlet setCartOpen={setCartOpen} />
                 </main>
                 <Footer />
             </div >

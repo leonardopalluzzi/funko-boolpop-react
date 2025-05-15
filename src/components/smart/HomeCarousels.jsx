@@ -60,7 +60,7 @@ export default function HomeCarousels() {
     case "success":
       return (
         <>
-          <div className="container">
+          <div className="container caro-bg">
             {/* piu venduti */}
             <div className="mt-5">
               <h1 className="fs-3">Più venduti</h1>
