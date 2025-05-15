@@ -105,7 +105,8 @@ function FiltersProvider({ children }) {
 
     function handleSubmit() {
         const queryParts = []
-
+        queryParts.push(`limit=${encodeURIComponent(queryParams.get('limit'))}`)
+        queryParts.push(`page=${encodeURIComponent(queryParams.get('page'))}`)
         if (searchText.name != '') queryParts.push(`name=${encodeURIComponent(searchText.name)}`);
         if (searchText.description != '') queryParts.push(`description=${encodeURIComponent(searchText.description)}`);
         if (searchText.category != '') queryParts.push(`category=${encodeURIComponent(searchText.category)}`);
