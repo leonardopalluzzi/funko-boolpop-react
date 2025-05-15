@@ -605,12 +605,8 @@ td {
 /* #endregion carthover  */
 
 .cart_summary {
-  max-height: 40vh;
-  overflow: scroll;
   margin: 0 2rem;
   scrollbar-width: none;
-  /* Nasconde la scrollbar */
-  -ms-overflow-style: none;
 }
 
 .cart_summary::-webkit-scrollbar {

@@ -162,7 +162,7 @@ export default function PaymentForm() {
             return (
                 <>
                     <div className="container my-5">
-                        <div className="container cart_summary text-center my-5">
+                        <div className="cart_summary text-center my-5">
                             <h1>Cart Summary</h1>
                             <div className="container">
 
@@ -177,12 +177,13 @@ export default function PaymentForm() {
 
                         <form action="" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
                             <PaymentElement />
-                            <div className="container w-50">
+                            <div className="container  w-50">
                                 <button className='btn btn-primary my-4 w-100 fs-3' type="submit" disabled={!stripe || loading}>Pay Now</button>
                                 {errorMessage && <div>{errorMessage}</div>}
                                 <div>{errorMessage}</div>
                             </div>
                         </form>
+
                     </div>
                 </>
             )
