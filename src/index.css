@@ -34,7 +34,7 @@ body {
   font-family: "Rampart One", sans-serif;
 }
 
-.caro-bg::before {
+body::before {
   content: "";
   position: absolute;
   top: 0;

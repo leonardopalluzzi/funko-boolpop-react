@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Loader from "../dumb/Loader.ui";
 import styles from "../../assets/css_modules/CartHover.module.css";
 
-export default function CartHover() {
+export default function CartHover({ onClose }) {
   const { cart, deleteFromCart } = useCartContext();
   const navigate = useNavigate();
 
@@ -187,14 +187,20 @@ export default function CartHover() {
                   </div>
 
                   <button
-                    onClick={() => navigate(`/cart`)}
+                    onClick={() => {
+                      if (onClose) onClose();
+                      navigate(`/cart`);
+                    }}
                     className={`${styles.btn_show} btn fs-5 my-2 my-sm-0 mx-3`}
                     type="submit"
                   >
                     Show Cart
                   </button>
                   <button
-                    onClick={() => navigate(`/checkout`)}
+                    onClick={() => {
+                      if (onClose) onClose();
+                      navigate(`/checkout`);
+                    }}
                     className={`${styles.btn_proceed} btn fs-5 my-2 my-sm-0`}
                     type="submit"
                   >
