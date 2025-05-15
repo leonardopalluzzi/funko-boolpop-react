@@ -19,7 +19,7 @@ export default function HomeCarousels() {
   useEffect(() => {
     Promise.all([
       fetch(
-        `http://localhost:3000/api/v1/funkoboolpop?page=${pageTrans}&limit=${limit}&trans=2`
+        `http://localhost:3000/api/v1/funkoboolpop?page=${pageTrans}&limit=${limit}&sales=1`
       ).then((resTrans) => resTrans.json()),
       fetch(
         `http://localhost:3000/api/v1/funkoboolpop?page=${pageDate}&limit=${limit}&date=1`
