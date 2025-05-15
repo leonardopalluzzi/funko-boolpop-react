@@ -21,36 +21,53 @@
   padding: 0 !important;
 }
 
-.btn_dropdown:hover {
-  background-color: var(--accent);
+.btn_dropdown {
+  background-color: var(--darker);
   color: var(--background);
 }
 
+.btn_dropdown:hover {
+  background-color: var(--accent);
+  color: var(--darker);
+}
+
 .btn_del {
+  background-color: var(--darker);
+  color: var(--text-light);
+}
+
+.btn_del:hover {
   background-color: var(--primary);
   color: var(--text-light);
 }
 
 .btn_watch {
+  background-color: var(--darker);
+  color: var(--text-light);
+}
+
+.btn_watch:hover {
   background-color: var(--accent);
   color: var(--text-light);
 }
 
 .btn_show {
-  background-color: var(--tertiary);
+  background-color: var(--darker);
   color: var(--text-light);
   margin-left: 0 !important;
 }
 
 .btn_show:hover {
   background-color: var(--tertiary);
+  color: var(--darker);
 }
 
 .btn_proceed {
-  background-color: var(--accent);
+  background-color: var(--darker);
   color: var(--text-light);
 }
 
 .btn_proceed:hover {
   background-color: var(--accent);
+  color: var(--darker);
 }
