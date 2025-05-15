@@ -27,7 +27,7 @@
 }
 
 .btn_dropdown:hover {
-  background-color: var(--accent);
+  background-color: var(--tertiary);
   color: var(--darker);
 }
 
@@ -47,8 +47,8 @@
 }
 
 .btn_watch:hover {
-  background-color: var(--accent);
-  color: var(--text-light);
+  background-color: var(--tertiary);
+  color: var(--darker);
 }
 
 .btn_show {
