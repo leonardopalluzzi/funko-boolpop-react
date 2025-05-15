@@ -23,7 +23,7 @@ export default function OrderListUi({ orderList }) {
         case 'success':
             return (
                 <>
-                    <ul className="list-unstyled w-100">
+                    <ul className="list-unstyled w-100 order_bg">
                         {orderList.data.map(item => (
                             <>
                                 <li className="order">
