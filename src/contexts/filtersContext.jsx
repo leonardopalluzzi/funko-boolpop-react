@@ -7,19 +7,25 @@ const FiltersContext = createContext()
 function FiltersProvider({ children }) {
 
     const navigate = useNavigate()
-
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
-    const name = queryParams.get('name') || ''
 
+
+
+    //parametri iniziali query
+    const name = queryParams.get('name') || ''
+    const initialLimit = Number(queryParams.get('limit')) || 8;
+    const initialPage = Number(queryParams.get('page')) || 1;
+
+
+    //stati
     const [products, setProducts] = useState({
         state: "loading",
     });
-
     const [searchOnly, setSearchOnly] = useState(true);
+    const [limit, setLimit] = useState(Number(queryParams.get('limit')) || 8)
+    const [page, setPage] = useState(Number(queryParams.get('page')) || 1)
 
-
-    //logica filtri
     const [searchText, setSearchText] = useState({
         name: name,
         category: '',
@@ -32,28 +38,19 @@ function FiltersProvider({ children }) {
         sortBySales: 0
     });
 
-    const [limit, setLimit] = useState(Number(queryParams.get('limit')) || 8)
-    const [page, setPage] = useState(Number(queryParams.get('page')) || 1)
-
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
-        const limitFromUrl = Number(queryParams.get('limit')) || 8; // default a 8
+        const limitFromUrl = Number(queryParams.get('limit')) || 8;
         const pageFromUrl = Number(queryParams.get('page')) || 1;
 
         setLimit(limitFromUrl);
         setPage(pageFromUrl);
-    }, [location.search]);
 
+        const finalUrl = `http://localhost:3000/api/v1/funkoboolpop${location.search}&searchOnly=${searchOnly}`
+        console.log(finalUrl);
 
-    const live_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}&description=${searchText.description}&category=${searchText.category}&attribute=${searchText.attribute}&minPrice=${searchText.minPrice}&maxPrice=${searchText.maxPrice}&promotion=${searchText.promotion}&date=${Number(searchText.sortBydate)}&sales=${Number(searchText.sortBySales)}`
-
-    const test_url = `http://localhost:3000/api/v1/funkoboolpop?searchOnly=${searchOnly}&page=${page}&limit=${limit}&name=${name}`
-
-    useEffect(() => {
-        console.log(searchText);
-
-        fetch(live_url)
+        fetch(finalUrl)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -76,6 +73,7 @@ function FiltersProvider({ children }) {
                 });
             });
     }, [location.search, limit, page]);
+
 
     //funzioni per i filtri di ricerca
     function handleChangeFilters(key, value) {
@@ -107,13 +105,14 @@ function FiltersProvider({ children }) {
 
     function handleSubmit() {
         const queryParts = []
-
+        queryParts.push(`limit=${encodeURIComponent(queryParams.get('limit'))}`)
+        queryParts.push(`page=${encodeURIComponent(queryParams.get('page'))}`)
         if (searchText.name != '') queryParts.push(`name=${encodeURIComponent(searchText.name)}`);
         if (searchText.description != '') queryParts.push(`description=${encodeURIComponent(searchText.description)}`);
         if (searchText.category != '') queryParts.push(`category=${encodeURIComponent(searchText.category)}`);
         if (searchText.attribute != '') queryParts.push(`attribute=${encodeURIComponent(searchText.attribute)}`);
-        if (searchText.minPrice != 0) queryParts.push(`minPrice=${encodeURIComponent(searchText.minPrice)}`);
-        if (searchText.maxPrice != 1000) queryParts.push(`maxPrice=${encodeURIComponent(searchText.maxPrice)}`);
+        if (searchText.minPrice) queryParts.push(`minPrice=${encodeURIComponent(searchText.minPrice)}`);
+        if (searchText.maxPrice) queryParts.push(`maxPrice=${encodeURIComponent(searchText.maxPrice)}`);
         if (searchText.promotion != '') queryParts.push(`promotion=${encodeURIComponent(searchText.promotion)}`);
         // if (searchText.sortBySales == 1 || searchText.sortBySales == -1) queryParts.push(`sales=${encodeURIComponent(searchText.sortBySales)}`);
         // if (searchText.sortBydate == 1 || searchText.sortBydate == -1) queryParts.push(`date=${encodeURIComponent(searchText.sortBydate)}`);
