@@ -553,6 +553,8 @@ td {
 
 .order_container {
   max-width: 100%;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.144);
 
   .order {
     display: flex;
