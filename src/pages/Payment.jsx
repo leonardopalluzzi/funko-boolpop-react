@@ -22,7 +22,15 @@ export default function Payment() {
     const stripePromise = loadStripe('pk_test_51RKpq9Q6vBP0glqyfTSi0a2BNUEGYwoLm1tR8rkkRwcDRRdkqYaMgVX3bTnxuYG7A0odSoSqF0bzMNnV3TKyHqUf00xpcTWDMC');
     if (!client_secret) {
         console.error("Client secret is missing");
-        return <h1>Error: Missing client secret</h1>;
+        return (
+            <>
+                <div className="container d-flex flex-column aling-items-center justify-content-center h-100 m-auto">
+                    {/* loader nell'attesa della client secret  */}
+                    <Loader />
+                </div>
+            </>
+
+        )
     }
 
     switch (payment.state) {

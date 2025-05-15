@@ -14,6 +14,10 @@ export default function SuccessCheckout() {
         unloadCart()
     }, [])
 
+    function deleteSecret() {
+        sessionStorage.removeItem('clientSecret')
+    }
+
 
     switch (postCart.state) {
         case 'loading':
@@ -47,7 +51,7 @@ export default function SuccessCheckout() {
                                     <h4>Tot: {postCart.amount.toFixed(2)} €</h4>
                                 </div>
                             </div>
-                            <button onClick={() => navigate('/')} className="btn btn-primary my-4 fs-3">Return to Home</button>
+                            <button onClick={() => { deleteSecret(); navigate('/') }} className="btn btn-primary my-4 fs-3">Return to Home</button>
                         </div>
                     </div>
                 </>
