@@ -221,8 +221,8 @@ export default function Cart() {
               </tbody>
             </table>
             <div className={`${styles.total_price} total`}>
-              <h5>TOTAL:</h5>
-              <h4 className={styles.price}>{cart.amount.toFixed(2)}€</h4>
+              <h5>TOTAL: </h5>
+              <h4 className={styles.price}>{(cart.amount + cart.shipping).toFixed(2)}€</h4>
               <h6>Shipping:</h6>
               <p>{cart.shipping === 0 ? (<>Free!</>) : (<>{cart.shipping}€</>)}</p>
             </div>

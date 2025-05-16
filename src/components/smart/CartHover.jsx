@@ -154,7 +154,7 @@ export default function CartHover({ onClose }) {
                   </table>
                   <div className="total_hover_cart">
                     <h6 className="text-end">TOTAL:</h6>
-                    <h5 className="text-end">{cart.amount < 50 ? (<>{(cart.amount - cart.shipping).toFixed(2)}€</>) : (<>{cart.amount.toFixed(2)}</>)}</h5>
+                    <h5 className="text-end">{cart.amount.toFixed(2)}</h5>
                   </div>
 
                   <button

@@ -32,14 +32,11 @@ function CartProvider({ children }) {
 
 
 
-    function getTotal(currentItems, shipping) {
-
-        console.log(currentItems);
+    function getTotal(currentItems) {
 
         let total = 0;
 
         const priceArr = currentItems.map((item) => {
-            console.log(item);
 
             const basePrice = Number(item.price);
             const discount =
@@ -48,18 +45,12 @@ function CartProvider({ children }) {
                     : 100;
             const quantity = Number(item.cartQuantity);
 
-            let price = ((basePrice * discount) / 100) * quantity;
+            let price = (basePrice * discount / 100) * quantity;
 
             return Number(price);
         });
         priceArr.forEach((item) => {
-            if (total < 50) {
-                total = (total + item) + shipping;
-
-            } else {
-                total = total + item
-
-            }
+            total = total + item
         });
         console.log(total);
 
@@ -99,7 +90,7 @@ function CartProvider({ children }) {
             itemToPush.cartQuantity = 1
             itemToPush.quantity = newItem.quantity - 1
 
-            const newAmount = getTotal([...cart.userCart, itemToPush], cart.shipping)
+            const newAmount = getTotal([...cart.userCart, itemToPush])
             const newShipping = newAmount > 50 ? 0 : 5
 
             setCart({
@@ -118,15 +109,9 @@ function CartProvider({ children }) {
 
         const quantityToDelete = Number(itemToDelete.cartQuantity)
 
-        const updatedCart = cart.userCart.filter(item => {
-            if (item.slug !== itemToDelete.slug) {
-                return {
-                    ...item
-                }
-            }
-        })
+        const updatedCart = cart.userCart.filter(item => item.slug !== itemToDelete.slug)
 
-        const newAmount = getTotal(updatedCart, cart.shipping)
+        const newAmount = getTotal(updatedCart)
         const newShipping = newAmount > 50 ? 0 : 5
 
         setCart({
@@ -156,8 +141,7 @@ function CartProvider({ children }) {
 
             });
 
-            const changedItem = updatedCart.find(item => item.slug == itemToChange.slug)
-            const newAmount = getTotal([...cart.userCart, changedItem], cart.shipping)
+            const newAmount = getTotal(updatedCart)
             const newShipping = newAmount > 50 ? 0 : 5
 
             setCart({
@@ -190,8 +174,7 @@ function CartProvider({ children }) {
                 }
             });
 
-            const changedItem = updatedCart.find(item => item.slug == itemToChange.slug)
-            const newAmount = getTotal([...cart.userCart, changedItem], cart.shipping)
+            const newAmount = getTotal(updatedCart)
             const newShipping = newAmount > 50 ? 0 : 5
 
             setCart({
