@@ -249,7 +249,7 @@ export default function Cart() {
                 class={`${styles.btn_payment} btn fs-3 my-2 my-sm-0`}
                 type="submit"
               >
-                Procedi al pagamento
+                Proceed to payment
               </button>
             </div>
           </div>
