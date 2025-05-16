@@ -17,10 +17,10 @@ export default function SearchResult() {
         const keys = Array.from(searchParams.keys()); //crea un array con la lista dei parametri presi dall'url corrente
 
         // se non trova nessuna query
-        // if (keys.length === 0) {
-        //     navigate("/search-result", { replace: true });
-        //     return;
-        // }
+        if (keys.length === 0) {
+            navigate("/search-result", { replace: true });
+            return;
+        }
 
         // se vengono inserite query non valide query non valide
         const hasInvalidQuery = keys.some(key => !VALID_QUERY.includes(key));
