@@ -5,31 +5,28 @@ import Loader from "../dumb/Loader.ui";
 import LayoutSelect from "./LayoutSelect";
 import { useFiltersContext } from "../../contexts/filtersContext";
 import PaginationControls from "./PaginationControls";
+import styles from "../../assets/css_modules/LayoutSearchedProducts.module.css";
 
 export default function LayoutSearchedProducts() {
-
-  const { products, handleLimit, limit } = useFiltersContext()
+  const { products, handleLimit, limit } = useFiltersContext();
   console.log(products);
 
-
   const [layout, setLayout] = useState(() => {
-    return sessionStorage.getItem('layout') || 'grid';
+    return sessionStorage.getItem("layout") || "grid";
   });
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setMessage('')
-    }, 3000)
+      setMessage("");
+    }, 3000);
 
-    return () => clearInterval(timer)
-  }, [message])
+    return () => clearInterval(timer);
+  }, [message]);
 
   useEffect(() => {
-    sessionStorage.setItem('layout', layout);
+    sessionStorage.setItem("layout", layout);
   }, [layout]);
-
-
 
   switch (products.state) {
     case "loading":
@@ -37,33 +34,33 @@ export default function LayoutSearchedProducts() {
         <>
           <Loader />
         </>
-      )
+      );
     case "error":
       return (
         <>
           <h1>{products.state}</h1>
           <p>{products.message}</p>;
         </>
-      )
-    case 'empty':
+      );
+    case "empty":
       return (
         <>
           <div className="container flex-column d-flex align-items-center justify-content-center">
             <h1 className="text-secondary">No results Found</h1>
-            <p className="fs-1"><i class="bi bi-emoji-frown"></i></p>
+            <p className="fs-1">
+              <i class="bi bi-emoji-frown"></i>
+            </p>
           </div>
-
         </>
-      )
+      );
     case "success":
       switch (layout) {
-        case 'grid':
+        case "grid":
           return (
             <>
               <div className="w-100">
                 <div className="layout_switch">
                   <LayoutSelect setLayout={setLayout} layout={layout} />
-
                 </div>
               </div>
 
@@ -72,14 +69,29 @@ export default function LayoutSearchedProducts() {
                   <PaginationControls />
                   <GridLayout products={products.data} />
                   <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
-                    <button onClick={limit < products.data.totalResults ? () => handleLimit(limit + 2) : () => setMessage('No more items to show')} className="btn btn-outline-primary">Load More</button>
-                    <span className={message !== '' ? `alert alert-danger` : 'd-none'}>{message}</span>
+                    <button
+                      onClick={
+                        limit < products.data.totalResults
+                          ? () => handleLimit(limit + 2)
+                          : () => setMessage("No more items to show")
+                      }
+                      className="btn btn-outline-primary"
+                    >
+                      Load More
+                    </button>
+                    <span
+                      className={
+                        message !== "" ? `alert alert-danger` : "d-none"
+                      }
+                    >
+                      {message}
+                    </span>
                   </div>
                 </div>
               </div>
             </>
-          )
-        case 'list':
+          );
+        case "list":
           return (
             <>
               <LayoutSelect setLayout={setLayout} layout={layout} />
@@ -88,14 +100,28 @@ export default function LayoutSearchedProducts() {
                   <PaginationControls />
                   <ListLayout products={products.data} />
                   <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
-                    <button onClick={limit < products.data.totalResults ? () => handleLimit(limit + 2) : () => setMessage('No more items to show')} className="btn btn-outline-primary">Load More</button>
-                    <span className={message !== '' ? `alert alert-danger` : 'd-none'}>{message}</span>
+                    <button
+                      onClick={
+                        limit < products.data.totalResults
+                          ? () => handleLimit(limit + 2)
+                          : () => setMessage("No more items to show")
+                      }
+                      className={`${styles.btn_load} btn `}
+                    >
+                      Load More
+                    </button>
+                    <span
+                      className={
+                        message !== "" ? `alert alert-danger` : "d-none"
+                      }
+                    >
+                      {message}
+                    </span>
                   </div>
-
                 </div>
               </div>
             </>
-          )
+          );
       }
   }
 }
