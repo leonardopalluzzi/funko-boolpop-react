@@ -4,33 +4,14 @@ import { useEffect, useState } from "react";
 import styles from "../assets/css_modules/CartPage.module.css";
 
 export default function Cart() {
-  const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } =
+  const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity, setCart } =
     useCartContext();
   console.log(cart);
 
   const navigate = useNavigate();
 
-  let total = 0;
+  console.log(`cart shipping in cart page: ${cart.shipping}`);
 
-  const priceArr = cart.userCart.map((item) => {
-    console.log(item);
-
-    const basePrice = Number(item.price);
-    const discount =
-      Array.isArray(item.promotion) && item.promotion.length > 0
-        ? Number(item.promotion[0].discount)
-        : 100;
-    const quantity = Number(item.cartQuantity);
-
-    let price = ((basePrice * discount) / 100) * quantity;
-
-    console.log(price);
-
-    return Number(price);
-  });
-  priceArr.forEach((item) => {
-    total = total + item;
-  });
 
   switch (true) {
     case cart.userCart.length == 0:
@@ -241,7 +222,9 @@ export default function Cart() {
             </table>
             <div className={`${styles.total_price} total`}>
               <h5>TOTAL:</h5>
-              <h4 className={styles.price}>{total.toFixed(2)}€</h4>
+              <h4 className={styles.price}>{cart.amount.toFixed(2)}€</h4>
+              <h6>Shipping:</h6>
+              <p>{cart.shipping === 0 ? (<>Free!</>) : (<>{cart.shipping}€</>)}</p>
             </div>
             <div className={styles.payment}>
               <button

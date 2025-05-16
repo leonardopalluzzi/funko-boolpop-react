@@ -58,8 +58,9 @@ export default function PaymentForm() {
 
       setRecoverCart({
         state: "success",
-        amount: total,
-        data: checkCart.userCart,
+        amount: checkCart.amount,
+        shipping: checkCart.shipping,
+        data: checkCart.userCart
       });
 
       console.log(recoverCart);

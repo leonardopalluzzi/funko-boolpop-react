@@ -12,35 +12,6 @@ export default function CartHover({ onClose }) {
     JSON.parse(localStorage.getItem("cart"))
   );
 
-  let total = 0;
-  const priceArr = [];
-
-  if (cart.state == "success" && cart.userCart) {
-    console.log(cart.userCart);
-
-    const prices = cart.userCart.map((item) => {
-      console.log(item);
-
-      const basePrice = Number(item.price);
-      const discount =
-        Array.isArray(item.promotion) && item.promotion.length > 0
-          ? Number(item.promotion[0].discount)
-          : 100;
-      const quantity = Number(item.cartQuantity);
-
-      let price = ((basePrice * discount) / 100) * quantity;
-
-      console.log(price);
-
-      return Number(price);
-    });
-    priceArr.push(...prices);
-  }
-
-  priceArr.forEach((item) => {
-    total = total + item;
-  });
-
   useEffect(() => {
     setCartCheck(JSON.parse(localStorage.getItem("cart")));
   }, [cart]);
@@ -183,7 +154,7 @@ export default function CartHover({ onClose }) {
                   </table>
                   <div className="total_hover_cart">
                     <h6 className="text-end">TOTAL:</h6>
-                    <h5 className="text-end">{total.toFixed(2)}€</h5>
+                    <h5 className="text-end">{cart.amount < 50 ? (<>{(cart.amount - cart.shipping).toFixed(2)}€</>) : (<>{cart.amount.toFixed(2)}</>)}</h5>
                   </div>
 
                   <button

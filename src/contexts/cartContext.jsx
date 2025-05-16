@@ -7,6 +7,8 @@ function CartProvider({ children }) {
     const emptyCart = {
         state: '',
         message: '',
+        amount: 0,
+        shipping: 5,
         cartItemNumber: 0,
         userCart: []
     }
@@ -26,6 +28,44 @@ function CartProvider({ children }) {
             localStorage.removeItem('cart')
         }
     }, [cart])
+
+
+
+
+    function getTotal(currentItems, shipping) {
+
+        console.log(currentItems);
+
+        let total = 0;
+
+        const priceArr = currentItems.map((item) => {
+            console.log(item);
+
+            const basePrice = Number(item.price);
+            const discount =
+                Array.isArray(item.promotion) && item.promotion.length > 0
+                    ? Number(item.promotion[0].discount)
+                    : 100;
+            const quantity = Number(item.cartQuantity);
+
+            let price = ((basePrice * discount) / 100) * quantity;
+
+            return Number(price);
+        });
+        priceArr.forEach((item) => {
+            if (total < 50) {
+                total = (total + item) + shipping;
+
+            } else {
+                total = total + item
+
+            }
+        });
+        console.log(total);
+
+        return total
+    }
+
 
 
 
@@ -53,36 +93,24 @@ function CartProvider({ children }) {
                 })
             } else if (itemCheck.quantity <= totalQuantity) {
                 addCartQuantity(itemCheck, totalQuantity)
-                // itemCheck.quantity = newItem.quantity - 1
-                // itemCheck.cartQuantity = newItem.cartQuantity + 1
-                // const updatedCart = cart.userCart.map(item => {
-                //     if (item.slug == newItem.slug) {
-                //         return itemCheck
-                //     } else {
-                //         return item
-                //     }
-                // })
-                // setCart({
-                //     state: 'success',
-                //     message: 'Product added to your cart again',
-                //     cartItemNumber: cart.cartItemNumber + 1,
-                //     userCart: updatedCart
-                // })
             }
         } else {
             const itemToPush = { ...newItem }
             itemToPush.cartQuantity = 1
             itemToPush.quantity = newItem.quantity - 1
 
+            const newAmount = getTotal([...cart.userCart, itemToPush], cart.shipping)
+            const newShipping = newAmount > 50 ? 0 : 5
 
             setCart({
                 state: 'success',
                 message: 'Product added to your cart',
                 cartItemNumber: cart.cartItemNumber + 1,
+                amount: newAmount,
+                shipping: newShipping,
                 userCart: [...cart.userCart, itemToPush]
             })
 
-            console.log(cart);
         }
     }
 
@@ -98,10 +126,15 @@ function CartProvider({ children }) {
             }
         })
 
+        const newAmount = getTotal(updatedCart, cart.shipping)
+        const newShipping = newAmount > 50 ? 0 : 5
+
         setCart({
             state: 'success',
             message: 'Product deleted from cart',
             cartItemNumber: cart.cartItemNumber - quantityToDelete,
+            amount: newAmount,
+            shipping: newShipping,
             userCart: updatedCart
         })
     }
@@ -123,15 +156,18 @@ function CartProvider({ children }) {
 
             });
 
+            const changedItem = updatedCart.find(item => item.slug == itemToChange.slug)
+            const newAmount = getTotal([...cart.userCart, changedItem], cart.shipping)
+            const newShipping = newAmount > 50 ? 0 : 5
 
             setCart({
                 state: 'success',
                 message: 'Product subtracted',
                 cartItemNumber: cart.cartItemNumber - 1,
+                amount: newAmount,
+                shipping: newShipping,
                 userCart: updatedCart
             });
-
-
 
         } else if (itemToChange.cartQuantity == 1) {
             deleteFromCart(itemToChange)
@@ -154,11 +190,16 @@ function CartProvider({ children }) {
                 }
             });
 
+            const changedItem = updatedCart.find(item => item.slug == itemToChange.slug)
+            const newAmount = getTotal([...cart.userCart, changedItem], cart.shipping)
+            const newShipping = newAmount > 50 ? 0 : 5
 
             setCart({
                 state: 'success',
                 message: 'Product added',
                 cartItemNumber: cart.cartItemNumber + 1,
+                amount: newAmount,
+                shipping: newShipping,
                 userCart: updatedCart
             });
 
@@ -169,6 +210,8 @@ function CartProvider({ children }) {
             setCart({
                 state: 'success',
                 message: 'Product no longer available',
+                shipping: cart.shipping,
+                amount: cart.amount,
                 cartItemNumber: cart.cartItemNumber,
                 userCart: cart.userCart
             })
@@ -179,28 +222,10 @@ function CartProvider({ children }) {
     async function unloadCart() {
         await new Promise((resolve) => {
 
-            let total = 0
-
-            const priceArr = cart.userCart.map(item => {
-                console.log(item);
-
-                const basePrice = Number(item.price)
-                const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
-                const quantity = Number(item.cartQuantity)
-
-                let price = (basePrice * discount / 100) * quantity;
-
-                console.log(price);
-
-                return Number(price)
-            })
-            priceArr.forEach(item => {
-                total = total + item
-            })
-
             setPostCart({
                 state: 'success',
-                amount: total,
+                amount: cart.amount,
+                shipping: cart.shipping,
                 data: cart.userCart
             });
             resolve();
@@ -215,7 +240,7 @@ function CartProvider({ children }) {
 
     return (
         <>
-            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart, postCart }}>
+            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart, postCart, setCart }}>
                 {children}
             </CartContext.Provider>
         </>
