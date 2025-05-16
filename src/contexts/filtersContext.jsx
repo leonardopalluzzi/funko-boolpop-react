@@ -140,9 +140,13 @@ function FiltersProvider({ children }) {
 
     }
 
+    function handleEmptyQuery() {
+
+    }
+
     return (
         <>
-            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, limit, handleSubmit, handlePage, sortValues, handleChangeSort }}>
+            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, limit, handleSubmit, handlePage, sortValues, handleChangeSort, handleEmptyQuery }}>
                 {children}
             </FiltersContext.Provider>
         </>

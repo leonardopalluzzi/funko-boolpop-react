@@ -15,7 +15,7 @@ export default function AdvancedSearch() {
 
     console.log(context);
 
-    const { searchText, handleChangeFilters, handleSubmit, sortValues, handleChangeSort } = useFiltersContext()
+    const { searchText, handleChangeFilters, handleSubmit, sortValues, handleChangeSort, handleEmptyQuery } = useFiltersContext()
 
     const [categoryList, setCategoryList] = useState({
         state: 'loading'
@@ -25,12 +25,15 @@ export default function AdvancedSearch() {
         state: 'loading'
     })
 
+    const [attributeList, setAttributeList] = useState({
+        state: 'loading'
+    })
+
     /*fetch promo*/
     useEffect(() => {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getPromo=true')//query da definire nella backend getPromo
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setPromoList({
                     state: 'success',
                     data: data,
@@ -44,12 +47,30 @@ export default function AdvancedSearch() {
             });
     }, [])
 
+    //filtri attributes
+    useEffect(() => {
+        fetch('http://localhost:3000/api/v1/funkoboolpop?getAttribute=true')
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(`lista attributei: ${data}`);
+                setAttributeList({
+                    state: 'success',
+                    data: data,
+                });
+            })
+            .catch((err) => {
+                setAttributeList({
+                    state: 'error',
+                    message: err.message,
+                });
+            });
+    }, [])
+
     /*fetch category*/
     useEffect(() => {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getCategory=true')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setCategoryList({
                     state: 'success',
                     data: data,
@@ -67,7 +88,7 @@ export default function AdvancedSearch() {
         //inserire redirect ad una pagina con i risultati della ricerca al submit
     }
 
-    switch (categoryList.state) {
+    switch (categoryList.state && promoList.state && attributeList.state) {
         case 'loading':
             return (
                 <>
@@ -92,12 +113,15 @@ export default function AdvancedSearch() {
                             searchMinPrice={searchText.minPrice}
                             searchMaxPrice={searchText.maxPrice}
                             searchPromo={searchText.promotion}
+                            searchAttribute={searchText.attribute}
                             onchange={handleChangeFilters}
                             onsubmit={handleSubmit}
                             categoryList={categoryList.data}
                             promoList={promoList.data}
                             sortValues={sortValues}
                             onchangeSort={handleChangeSort}
+                            attributeList={attributeList.data}
+                            emptyQuery={handleEmptyQuery}
                         />
                     </div>
 

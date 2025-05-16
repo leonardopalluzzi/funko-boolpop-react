@@ -1,10 +1,10 @@
-export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, searchPromo, onchange, onsubmit, categoryList, promoList, sortValues, onchangeSort }) {
+export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, emptyQuery, searchPromo, onchange, onsubmit, categoryList, promoList, searchAttribute, sortValues, onchangeSort, attributeList }) {
     return (
         <>
             <div className="container">
                 <div className=" mx-3 mt-2">
 
-                    <form className="mb-3" onSubmit={(e) => { e.preventDefault(); onsubmit() }}>
+                    <form id="filtersForm" className="mb-3" onSubmit={(e) => { e.preventDefault(); onsubmit() }}>
 
                         <div className="row justify-content-center ">
                             <div className="col-12 col-md-2 my-2">
@@ -17,6 +17,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     className="form-control custom-input"
                                     value={searchName}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
+                                    defaultValue=""
                                 />
 
                             </div>
@@ -90,6 +91,27 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                             </div>
 
 
+                            {/* filtro attributi */}
+                            <div className="col-12 col-md-2 my-2 ">
+                                <select
+                                    value={searchAttribute}
+                                    onChange={(e) => onchange(e.target.name, e.target.value)}
+                                    className="form-select form-select-xs custom-input"
+                                    name="attribute"
+
+                                >
+                                    <option value='' selected>Select an Attribute</option>
+
+                                    {/* fare map per le options  */}
+                                    {attributeList.map(item => (
+                                        <>
+                                            <option value={item.name}>{item.name}</option>
+                                        </>
+                                    ))}
+                                </select>
+                            </div>
+
+
                             {/* filtro ordinamento */}
                             <div className="col-12 col-md-2 my-2 ">
                                 <select
@@ -133,6 +155,9 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     className="btn btn-warning px-3"
                                 >
                                     Apply
+                                </button>
+                                <button type="button" className="btn btn-warning px-3" onClick={() => emptyQuery()}>
+                                    Reset Filters
                                 </button>
                             </div>
                         </div>
