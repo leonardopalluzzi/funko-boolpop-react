@@ -16,13 +16,13 @@
   transition: all 0.3s ease;
   overflow: hidden;
   cursor: pointer;
-
 }
 
 .list_item_content {
   display: flex;
   align-items: center;
   gap: 5rem;
+  background-color: var(--background);
 }
 
 .item_image {
@@ -56,10 +56,13 @@
   min-width: 120px;
 }
 
+.text_promo_list {
+  color: var(--primary) !important;
+}
+
 @media (max-width: 767px) {
   .list_item_content {
     gap: 0;
-
   }
 
   .item_description {
@@ -69,5 +72,4 @@
   .item_title {
     display: none;
   }
-
 }
