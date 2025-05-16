@@ -121,7 +121,7 @@ export default function ProductPage() {
                                     className=" col col-xs-12 col-sm-12 col-md-12 col-lg-6 "
                                     key={funko.result.slug}
                                 >
-                                    <div className="product_page_img border rounded-5 overflow-hidden">
+                                    <div className="product_page_img rounded-5 overflow-hidden">
                                         <ProductImages images={funko.result.images} />
                                     </div>
                                 </div>
