@@ -16,10 +16,7 @@ function CartProvider({ children }) {
     const checkForCart = JSON.parse(localStorage.getItem('cart'))
 
     const [cart, setCart] = useState(checkForCart ? checkForCart : emptyCart)
-    const [postCart, setPostCart] = useState({
-        state: 'loading',
-        data: []
-    })
+
 
 
     useEffect(() => {
@@ -202,19 +199,7 @@ function CartProvider({ children }) {
 
     }
 
-    async function unloadCart() {
-        await new Promise((resolve) => {
-
-            setPostCart({
-                state: 'success',
-                amount: cart.amount,
-                shipping: cart.shipping,
-                data: cart.userCart
-            });
-            resolve();
-        });
-        console.log(postCart);
-
+    function unloadCart() {
         setCart(emptyCart)
     }
 
@@ -223,7 +208,7 @@ function CartProvider({ children }) {
 
     return (
         <>
-            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart, postCart, setCart }}>
+            <CartContext.Provider value={{ handleCart, cart, deleteFromCart, subtractCartQuantity, addCartQuantity, unloadCart, setCart }}>
                 {children}
             </CartContext.Provider>
         </>

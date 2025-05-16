@@ -51,10 +51,7 @@ export default function PaymentForm() {
       total = total + item;
     });
 
-    console.log("Carrello recuperato:", checkCart);
     if (checkCart) {
-      const parsedCart = checkCart;
-      console.log("Parsed cart:", parsedCart);
 
       setRecoverCart({
         state: "success",
@@ -63,7 +60,6 @@ export default function PaymentForm() {
         data: checkCart.userCart
       });
 
-      console.log(recoverCart);
     } else {
       setRecoverCart({
         state: "error",
@@ -162,7 +158,7 @@ export default function PaymentForm() {
                 <div className="order_container border rounded-5 p-3 m-auto">
                   <OrderListUi orderList={recoverCart} />
                   <div>
-                    <h4>Tot: {recoverCart.amount.toFixed(2)} €</h4>
+                    <h4>Tot: {(recoverCart.amount + recoverCart.shipping).toFixed(2)} €</h4>
                   </div>
                 </div>
               </div>
