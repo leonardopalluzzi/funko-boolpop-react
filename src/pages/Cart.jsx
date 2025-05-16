@@ -51,7 +51,9 @@ export default function Cart() {
       return (
         <>
           <div className="container">
-            <table class={`${styles.table_mobile} table mt-3`}>
+            <table
+              class={`${styles.table_mobile} ${styles.table_border} table mt-3`}
+            >
               <thead>
                 <tr>
                   <th
