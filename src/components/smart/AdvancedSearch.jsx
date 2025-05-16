@@ -71,6 +71,8 @@ export default function AdvancedSearch() {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getCategory=true')
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
+
                 setCategoryList({
                     state: 'success',
                     data: data,
@@ -88,44 +90,47 @@ export default function AdvancedSearch() {
         //inserire redirect ad una pagina con i risultati della ricerca al submit
     }
 
-    switch (categoryList.state && promoList.state && attributeList.state) {
-        case 'loading':
-            return (
-                <>
-                    <Loader />
-                </>
-            )
-        case 'error':
-            return (
-                <>
-                    <h1>{categoryList.state}</h1>
-                    <p>{categoryList.message}</p>
-                </>
-            )
-        case 'success':
-            return (
-                <>
-                    <div className="container">
-                        <AdvancedSearchUi
-                            searchName={searchText.name}
-                            searchDescription={searchText.description}
-                            searchCategory={searchText.category}
-                            searchMinPrice={searchText.minPrice}
-                            searchMaxPrice={searchText.maxPrice}
-                            searchPromo={searchText.promotion}
-                            searchAttribute={searchText.attribute}
-                            onchange={handleChangeFilters}
-                            onsubmit={handleSubmit}
-                            categoryList={categoryList.data}
-                            promoList={promoList.data}
-                            sortValues={sortValues}
-                            onchangeSort={handleChangeSort}
-                            attributeList={attributeList.data}
-                            emptyQuery={handleEmptyQuery}
-                        />
-                    </div>
 
-                </>
-            )
+    if (categoryList.state === 'loading' || promoList.state === 'loading' || attributeList.state === 'loading') {
+        return <Loader />;
     }
+
+
+    if (categoryList.state === 'error' || promoList.state === 'error' || attributeList.state === 'error') {
+        return (
+            <>
+                <h1>Error loading data</h1>
+                <p>{categoryList.message || promoList.message || attributeList.message}</p>
+            </>
+        );
+    }
+
+
+    if (categoryList.state === 'success' && promoList.state === 'success' && attributeList.state === 'success') {
+        return (
+            <div className="container">
+                <AdvancedSearchUi
+                    searchName={searchText.name}
+                    searchDescription={searchText.description}
+                    searchCategory={searchText.category}
+                    searchMinPrice={searchText.minPrice}
+                    searchMaxPrice={searchText.maxPrice}
+                    searchPromo={searchText.promotion}
+                    searchAttribute={searchText.attribute}
+                    onchange={handleChangeFilters}
+                    onsubmit={handleSubmit}
+                    categoryList={categoryList.data}
+                    promoList={promoList.data}
+                    sortValues={sortValues}
+                    onchangeSort={handleChangeSort}
+                    attributeList={attributeList.data}
+                    emptyQuery={handleEmptyQuery}
+                />
+            </div>
+        );
+    }
+
+    // Fallback 
+    return <Loader />;
+
 }

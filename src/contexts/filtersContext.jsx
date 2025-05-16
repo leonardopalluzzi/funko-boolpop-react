@@ -141,7 +141,20 @@ function FiltersProvider({ children }) {
     }
 
     function handleEmptyQuery() {
-
+        setSearchText({
+            name: '',
+            category: '',
+            description: '',
+            minPrice: 0,
+            maxPrice: 1000,
+            promotion: '',
+            attribute: '',
+            sortBydate: 0,
+            sortBySales: 0
+        })
+        setSortValues('')
+        handleSubmit()
+        navigate('/search-result?searchOnly=true')
     }
 
     return (
