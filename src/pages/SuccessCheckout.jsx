@@ -1,22 +1,67 @@
 import { useCartContext } from "../contexts/cartContext"
 import OrderListUi from "../components/dumb/OrderList.ui"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/dumb/Loader.ui";
 import Styles from "../assets/css_modules/btnCheckout.module.css"
 
 export default function SuccessCheckout() {
 
-    const { postCart, unloadCart } = useCartContext()
-    console.log(postCart);
+    const { unloadCart, cart } = useCartContext()
+
     const navigate = useNavigate()
 
+    const [postCart, setPostCart] = useState({
+        state: 'loading',
+        amount: 0,
+        shipping: 0,
+        data: []
+    })
+
+
     useEffect(() => {
-        unloadCart()
+
+        const existingPostCart = JSON.parse(sessionStorage.getItem('postCart'))
+        if (existingPostCart) {
+            setPostCart({
+                state: 'success',
+                amount: existingPostCart.amount,
+                shipping: existingPostCart.shipping,
+                data: existingPostCart.userCart
+            })
+        } else {
+
+            if (cart.userCart.length > 0) {
+                const cartCopy = {
+                    amount: cart.amount,
+                    shipping: cart.shipping,
+                    userCart: cart.userCart
+                }
+                sessionStorage.setItem('postCart', JSON.stringify(cartCopy))
+                setPostCart({
+                    state: 'success',
+                    amount: cart.amount,
+                    shipping: cart.shipping,
+                    data: cart.userCart
+                })
+                unloadCart()
+            } else {
+
+                setPostCart({ state: 'error' })
+            }
+        }
+
+
+        return () => {
+            sessionStorage.removeItem('postCart')
+            sessionStorage.removeItem('clientSecret')
+        }
     }, [])
+
 
     function deleteSecret() {
         sessionStorage.removeItem('clientSecret')
+        sessionStorage.removeItem('postCart')
     }
 
 
@@ -49,7 +94,7 @@ export default function SuccessCheckout() {
                             <div className="order_container border rounded-5 p-3 m-auto">
                                 <OrderListUi orderList={postCart} />
                                 <div>
-                                    <h4>Total: {postCart.amount.toFixed(2)} €</h4>
+                                    <h4>Total: {(postCart.amount + postCart.shipping).toFixed(2)} €</h4>
                                 </div>
                             </div>
                             <button onClick={() => { deleteSecret(); navigate('/') }} className={`${Styles.btn_checkout} btn my-4 fs-3`}>Return to Home</button>
@@ -57,5 +102,16 @@ export default function SuccessCheckout() {
                     </div>
                 </>
             )
+        case 'error':
+        default:
+            return (
+                <main className="container text-center my-5">
+                    <h1>Something went wrong</h1>
+                    <h4>We couldn't retrieve your order details</h4>
+                    <button onClick={() => navigate('/')} className={`${Styles.btn_checkout} btn my-4 fs-3`}>
+                        Return to Home
+                    </button>
+                </main>
+            );
     }
 }

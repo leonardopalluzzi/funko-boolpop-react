@@ -11,35 +11,13 @@ export default function Checkout() {
     const { paymentIntent } = usePaymentContext()
     const navigate = useNavigate()
 
-    //calcola il totale da comprare
-    let total = 0;
-
-    const priceArr = cart.userCart.map(item => {
-        console.log(item);
-
-        const basePrice = Number(item.price)
-        const discount = Array.isArray(item.promotion) && item.promotion.length > 0 ? Number(item.promotion[0].discount) : 100
-        const quantity = Number(item.cartQuantity)
-
-        let price = (basePrice * discount / 100) * quantity;
-
-        console.log(price);
-
-        return Number(price)
-    })
-
-    priceArr.forEach(item => {
-        total = total + item
-    })
-
-
-
     const [checkout, setCheckout] = useState({
         username: '',
         user_last_name: '',
         useremail: '',
         cart: cart.userCart,
-        amount: Number(total.toFixed(2))
+        amount: Number(cart.amount.toFixed(2)),
+        shipping: cart.shipping
     })
 
     const [shippingAddress, setShippingAddress] = useState({
@@ -121,7 +99,8 @@ export default function Checkout() {
             username: '',
             user_last_name: '',
             useremail: '',
-            amount: Number(total.toFixed(2))
+            amount: Number(cart.amount.toFixed(2)),
+            shipping: cart.shipping
         })
         setShippingAddress({
             city: '',

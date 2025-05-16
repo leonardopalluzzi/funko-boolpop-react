@@ -26,6 +26,8 @@ function PaymentProvider({ children }) {
     }, [])
 
     function paymentIntent(form) {
+        console.log(form);
+
         fetch('http://localhost:3000/api/v1/transactions', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
