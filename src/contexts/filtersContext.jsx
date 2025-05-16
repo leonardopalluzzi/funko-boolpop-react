@@ -154,7 +154,7 @@ function FiltersProvider({ children }) {
         })
         setSortValues('')
         handleSubmit()
-        navigate('/search-result?searchOnly=true')
+        navigate('/search-result?searchOnly=true&limit=8&page=1')
     }
 
     return (
