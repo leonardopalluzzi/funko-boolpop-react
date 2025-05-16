@@ -15,7 +15,7 @@ export default function AdvancedSearch() {
 
     console.log(context);
 
-    const { searchText, handleChangeFilters, handleSubmit } = useFiltersContext()
+    const { searchText, handleChangeFilters, handleSubmit, sortValues, handleChangeSort } = useFiltersContext()
 
     const [categoryList, setCategoryList] = useState({
         state: 'loading'
@@ -91,11 +91,13 @@ export default function AdvancedSearch() {
                             searchCategory={searchText.category}
                             searchMinPrice={searchText.minPrice}
                             searchMaxPrice={searchText.maxPrice}
-                            searchPromo={searchText.promo}
+                            searchPromo={searchText.promotion}
                             onchange={handleChangeFilters}
                             onsubmit={handleSubmit}
                             categoryList={categoryList.data}
                             promoList={promoList.data}
+                            sortValues={sortValues}
+                            onchangeSort={handleChangeSort}
                         />
                     </div>
 

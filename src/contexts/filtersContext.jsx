@@ -38,6 +38,8 @@ function FiltersProvider({ children }) {
         sortBySales: 0
     });
 
+    const [sortValues, setSortValues] = useState('')
+
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
@@ -84,6 +86,11 @@ function FiltersProvider({ children }) {
 
     }
 
+    function handleChangeSort(value) {
+        //fare controlli se value e diverso da 1 o da -1
+        setSortValues(value)
+    }
+
     function handleLimit(newLimit) {
         const queryParams = new URLSearchParams(location.search)
         queryParams.set('limit', newLimit)
@@ -114,6 +121,12 @@ function FiltersProvider({ children }) {
         if (searchText.minPrice) queryParts.push(`minPrice=${encodeURIComponent(searchText.minPrice)}`);
         if (searchText.maxPrice) queryParts.push(`maxPrice=${encodeURIComponent(searchText.maxPrice)}`);
         if (searchText.promotion != '') queryParts.push(`promotion=${encodeURIComponent(searchText.promotion)}`);
+        if (sortValues == 'sales=-1') queryParts.push(`sales=${encodeURIComponent('-1')}`);
+        if (sortValues == 'sales=1') queryParts.push(`sales=${encodeURIComponent('1')}`);
+        if (sortValues == 'date=-1') queryParts.push(`date=${encodeURIComponent('-1')}`);
+        if (sortValues == 'date=1') queryParts.push(`date=${encodeURIComponent('1')}`);
+        if (sortValues == 'price=-1') queryParts.push(`price=${encodeURIComponent('-1')}`);
+        if (sortValues == 'price=1') queryParts.push(`price=${encodeURIComponent('1')}`);
         // if (searchText.sortBySales == 1 || searchText.sortBySales == -1) queryParts.push(`sales=${encodeURIComponent(searchText.sortBySales)}`);
         // if (searchText.sortBydate == 1 || searchText.sortBydate == -1) queryParts.push(`date=${encodeURIComponent(searchText.sortBydate)}`);
 
@@ -129,7 +142,7 @@ function FiltersProvider({ children }) {
 
     return (
         <>
-            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, limit, handleSubmit, handlePage }}>
+            <FiltersContext.Provider value={{ products, handleLimit, handleChangeFilters, searchText, limit, handleSubmit, handlePage, sortValues, handleChangeSort }}>
                 {children}
             </FiltersContext.Provider>
         </>

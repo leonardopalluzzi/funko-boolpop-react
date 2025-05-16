@@ -1,4 +1,4 @@
-export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, searchPromo, onchange, onsubmit, categoryList, promoList }) {
+export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, searchPromo, onchange, onsubmit, categoryList, promoList, sortValues, onchangeSort }) {
     return (
         <>
             <div className="container">
@@ -86,6 +86,30 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                             <option value={item.name}>{item.name}</option>
                                         </>
                                     ))}
+                                </select>
+                            </div>
+
+
+                            {/* filtro ordinamento */}
+                            <div className="col-12 col-md-2 my-2 ">
+                                <select
+                                    value={sortValues}
+                                    onChange={(e) => onchangeSort(e.target.value)}
+                                    className="form-select form-select-xs custom-input"
+                                    name="promotion"
+
+                                >
+                                    <option value='' selected>Sort By</option>
+
+                                    {/* fare map per le options  */}
+
+                                    <option value="price=1">Sort By Price Cheaper</option>
+                                    <option value="price=-1">Sort By Price Most Expensive</option>
+                                    <option value="date=1">Sort By Date last Arrive</option>
+                                    <option value="date=-1">Sort By Date Oldest</option>
+                                    <option value="sales=1">Sort By Most Sold</option>
+                                    <option value="sales=-1">Sort By Less Sold</option>
+
                                 </select>
                             </div>
 

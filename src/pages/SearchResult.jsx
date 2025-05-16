@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function SearchResult() {
 
     const [showFilters, setShowFilters] = useState(false);
-    const VALID_QUERY = ['name', 'category', 'description', 'minPrice', 'maxPrice', 'promotion', 'attribute', 'page', 'limit']; //da mettere nel .env
+    const VALID_QUERY = ['name', 'category', 'description', 'minPrice', 'maxPrice', 'promotion', 'attribute', 'page', 'limit', 'sales', 'date', 'price']; //da mettere nel .env
 
     const location = useLocation();
     const navigate = useNavigate()
