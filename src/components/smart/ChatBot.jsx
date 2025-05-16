@@ -4,9 +4,80 @@ import styles from '../../assets/css_modules/chatBot.module.css';
 
 export default function ChatBot({ onClose }) {
 
-    function onsubmit() {
+    const [question, setQuestion] = useState('')
+
+    const [answer, setAnswer] = useState({
+        state: 'waiting'
+    })
+
+    function handleSubmit() {
         console.log('submitChatBot');
 
+        setAnswer({
+            state: 'loading',
+            message: 'Thinking...'
+        })
+
+        fetch('http://localhost:3000/api/v1/chatbot', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ message: question })
+        })
+            .then(res => {
+                console.log('primo then');
+
+                return res.json()
+            })
+            .then(data => {
+                console.log(data);
+
+                if (data.results) {
+                    setAnswer({
+                        state: 'success',
+                        answer: data
+                    })
+                } else {
+                    setAnswer({
+                        state: 'empty',
+                        answer: ''
+                    })
+                }
+            })
+            .catch(err => {
+                setAnswer({
+                    state: 'error',
+                    message: err.message
+                })
+            })
+        setQuestion('')
+
+    }
+
+    function renderAnswer() {
+        switch (answer.state) {
+            case 'waiting':
+                return <div>HI! how can i help you?</div>
+            case 'loading':
+                return <div>{answer.message}</div>
+            case 'error':
+                return <div>There was an error rendering the answer: {answer.message}</div>
+            case 'empty':
+                return <div>No answer found</div>
+            case 'success':
+                switch (answer.answer.state) {
+                    case 'json':
+                        return <div className={styles.sent_text}>{answer.answer.reply}</div>;
+                    case 'not-a-json-fallback':
+                        return <div>{answer.answer.results}</div>
+                    case 'not-a-json-failed':
+                        return <div>{answer.answer.results}</div>
+                    case 'text':
+                        return <div>{answer.answer.results}</div>
+                }
+
+            default:
+                return <div>Nessun azione performata</div>;
+        }
     }
 
     return (
@@ -21,6 +92,7 @@ export default function ChatBot({ onClose }) {
                     <i className="fa-solid fa-xmark"></i>
                 </button>
             </div>
+
             <div className={styles.chat_container}>
                 <div className={styles.chat_messages}>
                     <p className={styles.sent_text}>
@@ -28,11 +100,14 @@ export default function ChatBot({ onClose }) {
                     <p className={styles.sent_text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, veniam cupiditate obcaecati voluptates quia nam inventore libero eius sed expedita?</p>
                     <p className={styles.sent_text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita qui fuga officia deserunt voluptates perferendis incidunt suscipit deleniti quas voluptas!</p>
                     {/* Qui andranno i messaggi */}
+                    {
+                        renderAnswer()
+                    }
                 </div>
 
                 <div className={styles.form_chat}>
-                    <form onSubmit={(e) => { e.preventDefault(); onsubmit() }} action="">
-                        <textarea className={styles.textarea_chat} type="text" />
+                    <form method='POST' onSubmit={(e) => { e.preventDefault(); handleSubmit() }} action="">
+                        <textarea value={question} onChange={(e) => setQuestion(e.target.value)} className={styles.textarea_chat} type="text" />
                         <button type='submit' className={styles.btn_chat}>
                             <i class="fa-regular fa-paper-plane"></i>
                         </button>

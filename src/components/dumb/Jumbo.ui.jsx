@@ -1,7 +1,5 @@
 export default function JumboUi({ productList, slideIndex, setIndex }) {
 
-    console.log(productList);
-
     return (
         <>
             <div className="jumbo_slide">

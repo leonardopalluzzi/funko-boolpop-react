@@ -27,7 +27,6 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&searchOnly=true`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data.results);
                 setFilteredFunko({
                     state: 'success',
                     data: data,

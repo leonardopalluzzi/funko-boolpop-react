@@ -1,10 +1,5 @@
 export default function ProductImagesUi({ images, index }) {
 
-    console.log(images[index].image);
-    console.log(index);
-
-
-
     return (
         <>
             <div className="product_images">

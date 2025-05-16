@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 
 export default function CartOffcanvas({ isOpen, onClose, children }) {
-    console.log(children);
 
 
     useEffect(() => {

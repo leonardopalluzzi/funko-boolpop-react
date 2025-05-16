@@ -26,8 +26,6 @@ export default function HomeCarousels() {
       ).then((resDate) => resDate.json()),
     ])
       .then((res) => {
-        console.log(res);
-
         setProducts({
           state: "success",
           dataTrans: res[0],
