@@ -27,10 +27,14 @@ export default function ProductPage() {
 
     const [productQuantity, setProductQuantity] = useState(0)
     const [cartItem, setCartItem] = useState(null)
-    const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
+    // const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
     const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
     const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
     const date = 1; //imposta l'ordinamento per data
+
+    const [suggested, setSuggested] = useState({
+        state: 'laoding'
+    })
 
 
     useEffect(() => {
@@ -57,32 +61,6 @@ export default function ProductPage() {
     }, [slug]);
 
     useEffect(() => {
-        Promise.all([
-            fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${pageTrans}&limit=${limit}&trans=2`).then(resTrans => resTrans.json()),
-            fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${pageDate}&limit=${limit}&date=1`).then(resDate => resDate.json()),
-        ])
-            .then(res => {
-                console.log(res);
-
-
-                setProducts({
-                    state: 'success',
-                    dataTrans: res[0],
-                    dataDate: res[1]
-                })
-
-            })
-            .catch(err => {
-                console.log(err);
-                setProducts({
-                    state: 'error',
-                    message: err.message
-                })
-
-            })
-    }, [pageTrans, pageDate])
-
-    useEffect(() => {
         if (funko.state === 'success') {
 
             const foundItem = cart.userCart.find(item => item.slug === funko.result.slug);
@@ -94,6 +72,27 @@ export default function ProductPage() {
 
         }
     }, [funko, cart])
+
+
+    //fetch per suggested
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/v1/recommended?slug=${pageSlug}&limit=${limit}&page=${pageDate}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                setSuggested({
+                    state: 'success',
+                    results: data
+                })
+            })
+            .catch(err => {
+                setSuggested({
+                    state: 'error',
+                    message: err.message
+                })
+            })
+    }, [pageSlug])
 
 
 
@@ -233,20 +232,24 @@ export default function ProductPage() {
                                     </div>
                                 </div>
                             </div>
-                            {products.state === 'success' ? (
+                            {suggested.state === 'success' ? (
                                 <>
                                     <div className="carousel_productpage mb-5">
                                         <h1 className="fs-3">Guarda anche...</h1>
-                                        <CarouselUi dataLength={products.dataDate.totalPages} page={pageDate} setPage={setPageDate} content={(
+                                        <CarouselUi dataLength={suggested.results.totalPages} page={pageDate} setPage={setPageDate} content={(
                                             <>
-                                                <List products={products.dataDate} queryName={'date'} page={pageDate} query={date} />
+                                                <List products={suggested.results} queryName={'date'} page={pageDate} query={date} />
 
                                             </>
                                         )} />
                                     </div>
 
                                 </>
-                            ) : (<></>)}
+                            ) : (
+                                <>
+                                    <Loader />
+                                </>
+                            )}
 
                         </div>
                     </main>
