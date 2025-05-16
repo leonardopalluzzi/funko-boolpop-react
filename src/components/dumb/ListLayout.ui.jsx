@@ -41,7 +41,9 @@ export default function ListLayout({ products }) {
                       >
                         {item.promotions[0].name}
                       </div>
-                      <span className="fs-6 text-old-price d-block">
+                      <span
+                        className={`${styles.text_old_price_list} fs-6 text-old-price d-block`}
+                      >
                         <del>{item.price}€</del>
                       </span>
                       <span className="price_label_card text-price fs-5">

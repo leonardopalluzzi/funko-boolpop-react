@@ -11,7 +11,8 @@
 
 .list_container {
   margin: 1rem 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  border: 1px solid var(--darker);
   border-radius: 20px;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -22,7 +23,7 @@
   display: flex;
   align-items: center;
   gap: 5rem;
-  background-color: var(--background);
+  background-color: white;
 }
 
 .item_image {
@@ -53,11 +54,15 @@
 }
 
 .price_container {
-  min-width: 120px;
+  min-width: 140px;
 }
 
 .text_promo_list {
   color: var(--primary) !important;
+}
+
+.text_old_price_list {
+  color: #6c757d !important;
 }
 
 @media (max-width: 767px) {
