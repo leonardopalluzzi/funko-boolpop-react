@@ -36,14 +36,22 @@ export default function ListLayout({ products }) {
                 <div className={styles.price_container}>
                   {item.promotions.length > 0 ? (
                     <>
-                      <div className="fw-bold text-promo mb-1">
+                      <div
+                        className={`${styles.text_promo_list} fw-bold text-promo mb-1`}
+                      >
                         {item.promotions[0].name}
                       </div>
-                      <span className="fs-6 text-old-price d-block">
+                      <span
+                        className={`${styles.text_old_price_list} fs-6 text-old-price d-block`}
+                      >
                         <del>{item.price}€</del>
                       </span>
                       <span className="price_label_card text-price fs-5">
-                        {(item.price * item.promotions[0].discount / 100).toFixed(2)}€
+                        {(
+                          (item.price * item.promotions[0].discount) /
+                          100
+                        ).toFixed(2)}
+                        €
                       </span>
                     </>
                   ) : (
