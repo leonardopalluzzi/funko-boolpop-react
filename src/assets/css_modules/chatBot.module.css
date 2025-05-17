@@ -55,6 +55,24 @@
     position: relative;
 }
 
+a {
+    text-decoration: none;
+    color: var(--text);
+    transition-duration: 0.5s;
+
+    &:hover {
+        color: var(--primary);
+    }
+
+    ul {
+        transition-duration: 0.5s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
 .chatbot_header {
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../../assets/css_modules/chatBot.module.css';
+import { Link } from 'react-router-dom';
 
 
 export default function ChatBot({ onClose }) {
@@ -66,7 +67,27 @@ export default function ChatBot({ onClose }) {
             case 'success':
                 switch (answer.answer.state) {
                     case 'json':
-                        return <div className={styles.sent_text}>{answer.answer.reply}</div>;
+                        return <div className={styles.sent_text}>
+                            <ul className='list-unstyled'>
+                                {answer.answer.results.map(item => (
+                                    <>
+                                        <Link to={`/${item.slug.toLowerCase().replaceAll(' ', '-').replaceAll('(', '').replaceAll(')', '')}`}>
+                                            <ul className='col-8 my-2 p-2 border w-100 rounded-2'>
+                                                <div className="row">
+                                                    <div className="col-8">
+                                                        {item.name}
+                                                    </div>
+                                                    <div className="col-4">
+                                                        {item.price}
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </Link>
+                                    </>
+                                ))}
+                            </ul>
+
+                        </div>;
                     case 'not-a-json-fallback':
                         return <div>{answer.answer.results}</div>
                     case 'not-a-json-failed':
