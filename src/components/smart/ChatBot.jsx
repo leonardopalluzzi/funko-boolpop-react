@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../../assets/css_modules/chatBot.module.css';
 import { Link } from 'react-router-dom';
+import Loader from '../dumb/Loader.ui';
 
 
 export default function ChatBot({ onClose }) {
@@ -59,16 +60,17 @@ export default function ChatBot({ onClose }) {
             case 'waiting':
                 return <div>HI! how can i help you?</div>
             case 'loading':
-                return <div>{answer.message}</div>
+                return <div><Loader /></div>
             case 'error':
                 return <div>There was an error rendering the answer: {answer.message}</div>
             case 'empty':
-                return <div>No answer found</div>
+                return <div>No answers found</div>
             case 'success':
                 switch (answer.answer.state) {
                     case 'json':
                         return <div className={styles.sent_text}>
                             <ul className='list-unstyled'>
+                                <h5>Here is what I've found</h5>
                                 {answer.answer.results.map(item => (
                                     <>
                                         <Link to={`/${item.slug.toLowerCase().replaceAll(' ', '-').replaceAll('(', '').replaceAll(')', '')}`}>
@@ -97,7 +99,7 @@ export default function ChatBot({ onClose }) {
                 }
 
             default:
-                return <div>Nessun azione performata</div>;
+                return <div>No actions performed</div>;
         }
     }
 
