@@ -339,11 +339,14 @@ footer {
   align-items: center;
   justify-content: center;
   background-color: white;
+  aspect-ratio: 1;
 
   .product_image {
     width: 100%;
     max-width: 50%;
-    height: auto;
+    /* height: auto; */
+    height: 100%;
+    object-fit: contain;
     transition-duration: 0.5s;
 
     &:hover {
