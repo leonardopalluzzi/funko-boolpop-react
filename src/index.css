@@ -674,7 +674,7 @@ td {
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: absolute;
-    top: 12%;
+    top: 5%;
     right: 10%;
     z-index: 20;
   }
@@ -717,6 +717,7 @@ td {
 
   .search_results_container {
     max-width: 40%;
+    top: 8%;
   }
 
   .order_container {
@@ -759,7 +760,8 @@ td {
 
   .search_results_container {
     max-width: 20%;
-    right: 22%;
+    right: 15%;
+    box-shadow: 0px 1px 20px 0px black;
   }
 
   .order_container {
