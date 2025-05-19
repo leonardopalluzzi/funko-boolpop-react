@@ -25,7 +25,7 @@ export default function PaginationControls() {
                 <>
                     <div className="d-flex w-100 align-items-center justify-content-between">
                         <div>
-                            <label for="" className="form-label">select item number</label>
+                            <label for="" className="form-label">Seleziona numero di porodotti</label>
 
                             <select
                                 className="form-select form-select-sm w-100"
@@ -42,7 +42,7 @@ export default function PaginationControls() {
                         </div>
 
                         <div>
-                            <span className="mx-4">Select Page</span>
+                            <span className="mx-4">Seleziona Pagina</span>
                             {Array.from({ length: products.data.totalPages }).map((_, i) => (
                                 <button
                                     className={`btn ${page === i + 1 ? 'btn-outline-primary' : 'btn-transparent'}`}
@@ -53,7 +53,7 @@ export default function PaginationControls() {
                                 </button>
                             ))}
                             <span className="sm-font">
-                                Page: {products.data.currentPage} / {products.data.totalPages}
+                                Pagina: {products.data.currentPage} / {products.data.totalPages}
                             </span>
                         </div>
                     </div>

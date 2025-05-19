@@ -9,7 +9,7 @@ export default function List({ products }) {
         </div>
         <div className="col-4 d-flex gap-3 align-items-center justify-content-end">
           <span className="sm-font">
-            Page: {products.currentPage} / {products.totalPages}
+            Pagina: {products.currentPage} / {products.totalPages}
           </span>
         </div>
       </div>

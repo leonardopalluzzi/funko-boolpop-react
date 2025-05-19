@@ -53,7 +53,7 @@ export default function CartHover({ onClose }) {
                         <th scope="col" style={{ width: "20%" }}>
                           Prezzo*
                         </th>
-                        <th scope="col">Q.ty</th>
+                        <th scope="col">Q.tà</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
