@@ -89,7 +89,7 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, se
                                     name="attribute"
 
                                 >
-                                    <option value='' selected>Select an Attribute</option>
+                                    <option value='' selected>Seleziona un Attributo</option>
 
                                     {attributeList.map(item => (
                                         <>

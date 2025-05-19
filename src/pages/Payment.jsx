@@ -9,6 +9,7 @@ export default function Payment() {
     const { payment } = usePaymentContext()
 
     const client_secret = payment.clientSecret
+    const stripe_test_key = import.meta.env.VITE_STRIPE_TEST_KEY
 
     const options = {
         clientSecret: client_secret,
@@ -18,7 +19,7 @@ export default function Payment() {
     }
 
 
-    const stripePromise = loadStripe('pk_test_51RKpq9Q6vBP0glqyfTSi0a2BNUEGYwoLm1tR8rkkRwcDRRdkqYaMgVX3bTnxuYG7A0odSoSqF0bzMNnV3TKyHqUf00xpcTWDMC');
+    const stripePromise = loadStripe(stripe_test_key);
     if (!client_secret) {
         console.error("Client secret is missing");
         return (
