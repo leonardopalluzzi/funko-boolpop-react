@@ -5,9 +5,11 @@ import SearchResultsUi from '../dumb/SearchResults.ui';
 import Loader from '../dumb/Loader.ui';
 import { useLocation } from 'react-router-dom';
 
-export default function SearchBar({ page = 1, limit = 10, display, setDisplay }) {
+export default function SearchBar({ page = 1, limit = 10, display }) {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
+    console.log();
+
 
     const navigate = useNavigate();
 
@@ -22,6 +24,7 @@ export default function SearchBar({ page = 1, limit = 10, display, setDisplay })
     const [filteredFunko, setFilteredFunko] = useState({
         state: 'loading'
     });
+    const [resultsDisplay, setResultsDisplay] = useState(false)
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&searchOnly=true`)
@@ -49,6 +52,7 @@ export default function SearchBar({ page = 1, limit = 10, display, setDisplay })
     }, [message])
 
     function handleChange(key, value) {
+        setResultsDisplay(true)
         setSearchText({
             ...searchText,
             [key]: value
@@ -63,8 +67,7 @@ export default function SearchBar({ page = 1, limit = 10, display, setDisplay })
             return setMessage('Search for something by name')
         }
         navigate(`/search-result?name=${searchText.name}&page=1&limit=8`);
-        // emptyResearch()
-        setDisplay(false)
+        setResultsDisplay(false)
     }
 
     function emptyResearch() {
@@ -103,7 +106,7 @@ export default function SearchBar({ page = 1, limit = 10, display, setDisplay })
                     <p className={message !== '' ? `alert alert-danger position-absolute top-0 left-50` : 'd-none'}>{message}</p>
                     <div className={display == false ? 'd-block' : 'd-none'}>
 
-                        {filteredFunko.data.results && filteredFunko.data.results.length > 0 ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
+                        {filteredFunko.data.results && filteredFunko.data.results.length > 0 && resultsDisplay == true ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}
                     </div>
                 </>
             );

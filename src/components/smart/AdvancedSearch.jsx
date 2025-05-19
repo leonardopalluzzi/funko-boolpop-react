@@ -52,7 +52,6 @@ export default function AdvancedSearch() {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getAttribute=true')
             .then((res) => res.json())
             .then((data) => {
-                console.log(`lista attributei: ${data}`);
                 setAttributeList({
                     state: 'success',
                     data: data,
