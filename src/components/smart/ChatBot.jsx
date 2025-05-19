@@ -2,9 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import styles from '../../assets/css_modules/chatBot.module.css';
 import { Link } from 'react-router-dom';
 import Loader from '../dumb/Loader.ui';
-
+import { useCartContext } from '../../contexts/cartContext'
 
 export default function ChatBot({ onClose }) {
+
+    const { cart } = useCartContext()
+    console.log(cart);
+
 
     const [question, setQuestion] = useState('')
     const [messages, setMessages] = useState([])
@@ -47,7 +51,7 @@ export default function ChatBot({ onClose }) {
         fetch('http://localhost:3000/api/v1/chatbot', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify({ message: question, context: messages.slice(-10) })
+            body: JSON.stringify({ message: question, context: messages.slice(-10), userCart: cart.userCart })
         })
             .then(res => {
                 console.log('primo then');
