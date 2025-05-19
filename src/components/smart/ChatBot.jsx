@@ -47,7 +47,7 @@ export default function ChatBot({ onClose }) {
         fetch('http://localhost:3000/api/v1/chatbot', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify({ message: question })
+            body: JSON.stringify({ message: question, context: messages.slice(-10) })
         })
             .then(res => {
                 console.log('primo then');
@@ -57,11 +57,26 @@ export default function ChatBot({ onClose }) {
             .then(data => {
                 console.log(data);
 
-                if (data.results) {
+                function isValidProduct(item) {
+                    return (
+                        item &&
+                        typeof item.slug === 'string' &&
+                        typeof item.name === 'string' &&
+                        typeof item.price === 'number' &&
+                        typeof item.quantity === 'number'
+                    );
+                }
+
+                const isValidArray = Array.isArray(data.results) && data.results.every(isValidProduct);
+
+                if (isValidArray) {
                     addMessage('bot', data)
 
                 } else {
-                    addMessage('bot', 'Looks like there are no related products to your research :(')
+                    addMessage('bot', {
+                        state: 'text',
+                        results: 'Oops! I could not understand the response format. Please try asking differently'
+                    })
                 }
             })
             .catch(err => {
