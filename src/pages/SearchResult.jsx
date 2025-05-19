@@ -45,7 +45,7 @@ export default function SearchResult() {
                     <span>
                         <i className={`bi ${showFilters ? "bi-x-lg" : "bi-funnel"}`}></i>
                     </span>{" "}
-                    {showFilters ? "Close" : "Filters"}
+                    {showFilters ? "Chiudi" : "Filtri"}
                 </button>
 
                 <div className={`collapse${showFilters ? " show" : ""}`} id="filterCollapse">

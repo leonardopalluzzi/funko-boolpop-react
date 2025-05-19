@@ -134,7 +134,7 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, se
                                     name="description"
                                     id=""
                                     aria-describedby="helpId"
-                                    placeholder="Search for keywords"
+                                    placeholder="Cerca per parole chiave"
                                 />
                             </div>
                         </div>
