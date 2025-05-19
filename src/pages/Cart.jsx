@@ -15,12 +15,12 @@ export default function Cart() {
       return (
         <>
           <div className="container empty_cart">
-            <h3>You don't have anything in your cart</h3>
+            <h3>Non hai ancora aggiunto prodotti al carrello</h3>
             <p className="fs-2">
               <i class="bi bi-emoji-frown-fill"></i>
             </p>
             <button onClick={() => navigate("/")} className="btn btn-primary">
-              Home Page
+              Torna alla Home
             </button>
           </div>
         </>
@@ -105,7 +105,7 @@ export default function Cart() {
                             <span>{item.promotion[0].discount}%</span>
                           </>
                         ) : (
-                          <>No promotions found</>
+                          <>Nessuna promozione trovata</>
                         )}
                       </td>
                       <td className={`${styles.table_body} ${styles.desktop}`}>
