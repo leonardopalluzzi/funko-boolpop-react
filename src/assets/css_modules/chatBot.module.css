@@ -87,7 +87,7 @@ a {
 .close_button {
     background: transparent;
     border: none;
-    color: var(--darker);
+    color: var(--text-light);
     font-size: 25px;
     cursor: pointer;
 }
