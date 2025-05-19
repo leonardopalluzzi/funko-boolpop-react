@@ -1,16 +1,17 @@
+import { Link } from "react-router-dom"
+
 export default function JumboUi({ productList, slideIndex, setIndex }) {
 
     return (
         <>
+
             <div className="jumbo_slide">
-                <img className="jumbo_img" src={`http://localhost:3000/${productList[slideIndex].banner}`} alt="" />
+                <Link to={`/${productList[slideIndex].slug}`}>
+                    <img className="jumbo_img" src={`http://localhost:3000/${productList[slideIndex].banner}`} alt="" />
+                </Link>
+
                 <div className="jumbo_info">
-
-
-
                     <h1 className="jumbo-title">{productList[slideIndex].name}</h1>
-
-
                     <p className="pb-4 me-1 fs-6">{productList[slideIndex].description}</p>
                 </div>
                 <div className="dots">
@@ -37,6 +38,7 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
                     </ul>
                 </div>
             </div >
+
         </>
     )
 }
