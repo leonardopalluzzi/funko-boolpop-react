@@ -5,13 +5,13 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
         <>
 
             <div className="jumbo_slide">
-                <Link to={`/${productList[slideIndex].slug}`}>
+                <Link className="img_jumbo_container" to={`/${productList[slideIndex].slug}`}>
                     <img className="jumbo_img" src={`http://localhost:3000/${productList[slideIndex].banner}`} alt="" />
                 </Link>
 
                 <div className="jumbo_info">
                     <h1 className="jumbo-title">{productList[slideIndex].name}</h1>
-                    <p className="pb-4 me-1 fs-6">{productList[slideIndex].description}</p>
+                    <p className="pb-4 me-1 fs-6 d-none d-md-block">{productList[slideIndex].description}</p>
                 </div>
                 <div className="dots">
                     <ul className="list-unstyled">
