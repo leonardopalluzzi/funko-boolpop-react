@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../../assets/css_modules/chatBot.module.css';
 import { Link } from 'react-router-dom';
 import Loader from '../dumb/Loader.ui';
@@ -7,20 +7,31 @@ import Loader from '../dumb/Loader.ui';
 export default function ChatBot({ onClose }) {
 
     const [question, setQuestion] = useState('')
+    const [messages, setMessages] = useState([])
+    const [loading, setLoading] = useState(false)
 
-    const [answer, setAnswer] = useState({
-        state: 'waiting'
-    })
+    useEffect(() => {
+        const savedMessages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+        setMessages(savedMessages);
+    }, []);
 
-    const [conversation, setConversation] = useState([])
+    useEffect(() => {
+        localStorage.setItem('chat_messages', JSON.stringify(messages));
+    }, [messages]);
+
+
+    function addMessage(role, content) {
+        setMessages(prev => [...prev, { role, content }]);
+    }
+
 
     function handleSubmit() {
         console.log('submitChatBot');
-        setConversation([...conversation, ...question])
-        setAnswer({
-            state: 'loading',
-            message: 'Thinking...'
-        })
+        if (!question.trim()) return;
+
+        const useMessage = question
+        addMessage('user', useMessage)
+        setLoading(true)
 
         fetch('http://localhost:3000/api/v1/chatbot', {
             method: 'POST',
@@ -36,51 +47,39 @@ export default function ChatBot({ onClose }) {
                 console.log(data);
 
                 if (data.results) {
-                    setAnswer({
-                        state: 'success',
-                        answer: data
-                    })
+                    addMessage('bot', data)
+
                 } else {
-                    setAnswer({
-                        state: 'empty',
-                        answer: ''
-                    })
+                    addMessage('bot', 'Looks like there are no related products to your research :(')
                 }
             })
             .catch(err => {
-                setAnswer({
-                    state: 'error',
-                    message: err.message
-                })
+                addMessage('bot', err.message)
             })
+        setLoading(false)
         setQuestion('')
-
     }
 
-    function renderAnswer() {
-        switch (answer.state) {
-            case 'waiting':
-                return (<div>HI! how can i help you?</div>)
-            case 'loading':
-                return <div><Loader /></div>
-            case 'error':
-                return (<div>There was an error rendering the answer: {answer.message}</div>)
-            case 'empty':
-                return (<div>No answers found</div>)
-            case 'success':
-                switch (answer.answer.state) {
+    console.log(messages);
+
+    function renderMessages(role, msgState, msg, i) {
+        switch (role) {
+            case 'user':
+                return <p key={i} className={styles.sent_text}><strong>You:</strong> {msg}</p>;
+            case 'bot':
+                switch (msgState) {
                     case 'json':
-                        if (answer.answer.results.length == 0) {
-                            return (<p>Looks Like there are no releated products to your research :(</p>)
+                        if (msg.results.length == 0) {
+                            return (<p key={i} className={styles.sent_text}>Looks Like there are no releated products to your research :(</p>)
                         }
                         return (
                             <>
-                                <div className={styles.sent_text} >
+                                <div key={i} className={styles.sent_text} >
                                     <ul className='list-unstyled'>
                                         <h5>Here is what I've found</h5>
-                                        {answer.answer.results.map(item => (
+                                        {msg.results.map((item, idx) => (
                                             <>
-                                                <Link to={`/${item.slug.toLowerCase().replaceAll(' ', '-').replaceAll('(', '').replaceAll(')', '')}`}>
+                                                <Link key={idx} to={`/${item.slug.toLowerCase().replaceAll(' ', '-').replaceAll('(', '').replaceAll(')', '')}`}>
                                                     <ul className='col-8 my-2 p-2 border w-100 rounded-2'>
                                                         <div className="row">
                                                             <div className="col-8">
@@ -99,17 +98,9 @@ export default function ChatBot({ onClose }) {
                                 </div >
                             </>
                         )
-
-                    case 'not-a-json-fallback':
-                        return <div>{answer.answer.results}</div>
-                    case 'not-a-json-failed':
-                        return <div>{answer.answer.results}</div>
                     case 'text':
-                        return <div>{answer.answer.results}</div>
+                        return <div key={i} className={styles.sent_text}><strong>BoolBot: </strong>{msg.results}</div>
                 }
-
-            default:
-                return <div>No actions performed</div>;
         }
     }
 
@@ -128,14 +119,9 @@ export default function ChatBot({ onClose }) {
 
             <div className={styles.chat_container}>
                 <div className={styles.chat_messages}>
-                    {/* <p className={styles.sent_text}>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae cumque voluptatem, ut eum hic excepturi </p>
-                    <p className={styles.sent_text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, veniam cupiditate obcaecati voluptates quia nam inventore libero eius sed expedita?</p>
-                    <p className={styles.sent_text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita qui fuga officia deserunt voluptates perferendis incidunt suscipit deleniti quas voluptas!</p> */}
-                    {/* Qui andranno i messaggi */}
-                    {
-                        renderAnswer()
-                    }
+                    {messages.length === 0 && <p className={styles.sent_text}>Hi! How can I help you?</p>}
+                    {messages.map((item, i) => renderMessages(item.role, item.content.state, item.content, i))}
+                    {loading && <div><Loader /></div>}
                 </div>
 
                 <div className={styles.form_chat}>

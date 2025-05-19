@@ -68,7 +68,6 @@ export default function ProductPage() {
             setProductQuantity(
                 foundItem ? foundItem.quantity : funko.result.quantity
             );
-            console.log(productQuantity);
 
         }
     }, [funko, cart])
@@ -79,7 +78,6 @@ export default function ProductPage() {
         fetch(`http://localhost:3000/api/v1/recommended?slug=${pageSlug}&limit=${limit}&page=${pageDate}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
 
                 setSuggested({
                     state: 'success',
@@ -214,7 +212,7 @@ export default function ProductPage() {
                                                         <strong>License: </strong>
                                                         {funko.result.license}
                                                     </p>
-                                                    <p>
+                                                    <div>
                                                         <strong>Special Attributes:</strong>
                                                         <ul className="list-unstyled">
                                                             {funko.result.attributes.map((item) => (
@@ -225,7 +223,7 @@ export default function ProductPage() {
                                                                 </>
                                                             ))}
                                                         </ul>
-                                                    </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
