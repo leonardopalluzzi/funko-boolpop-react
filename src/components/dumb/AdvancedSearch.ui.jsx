@@ -48,7 +48,7 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, se
                                     name="category"
                                     id=""
                                 >
-                                    <option value='' selected>Select a category</option>
+                                    <option value='' selected>Seleziona un cateogria</option>
 
                                     {categoryList.map(item => (
                                         <>
@@ -68,7 +68,7 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, se
                                     name="promotion"
 
                                 >
-                                    <option value='' selected>Select a Promo</option>
+                                    <option value='' selected>Seleziona un promozione</option>
 
                                     {promoList.map(item => (
                                         <>
@@ -113,12 +113,12 @@ export default function AdvancedSearchUi({ searchDescription, searchCategory, se
                                     <option value='' selected>Scegli un opzione</option>
 
 
-                                    <option value="price=1">Price Cheaper</option>
-                                    <option value="price=-1">Price Most Expensive</option>
-                                    <option value="date=1">Date last Arrive</option>
-                                    <option value="date=-1">Date Oldest</option>
-                                    <option value="sales=1">Most Sold</option>
-                                    <option value="sales=-1">Less Sold</option>
+                                    <option value="price=1">Prezzo crescente</option>
+                                    <option value="price=-1">Prezzo discendente</option>
+                                    <option value="date=1">Ultimi arrivi</option>
+                                    <option value="date=-1">Piu vecchi</option>
+                                    <option value="sales=1">Piu venduti</option>
+                                    <option value="sales=-1">Meno venduti</option>
 
                                 </select>
                             </div>
