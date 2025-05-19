@@ -62,50 +62,48 @@ export default function ChatBot({ onClose }) {
         }
 
         function tryFetch(retry = false) {
-
-        }
-
-        fetch('http://localhost:3000/api/v1/chatbot', {
-            method: 'POST',
-            headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify({ message: question, context: messages.slice(-10), userCart: cart.userCart })
-        })
-            .then(res => {
-                console.log('primo then');
-
-                return res.json()
+            fetch('http://localhost:3000/api/v1/chatbot', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({ message: question, context: messages.slice(-10), userCart: cart.userCart })
             })
-            .then(data => {
-                console.log(data);
+                .then(res => {
+                    console.log('primo then');
 
-                if (data.state == 'json') {
-                    if (isValidResponse(data)) {
-                        addMessage('bot', data)
-
-                    } else if (!retry) {
-                        //se fallisce il primofetch lo riprova una volta
-                        console.warn('Invalid format, retrying once...');
-                        tryFetch(true);
-                    } else {
-                        addMessage('bot', {
-                            state: 'text',
-                            results: 'Oops! I could not understand the response format. Please try asking differently'
-                        })
-                    }
-                } else if (data.state == 'text') {
-                    addMessage('bot', data)
-                }
-            })
-            .catch(err => {
-                addMessage('bot', {
-                    state: 'text',
-                    results: `An error occurred: ${err.message}`
+                    return res.json()
                 })
-            })
-            .finally(() => {
-                setLoading(false)
+                .then(data => {
+                    console.log(data);
 
-            })
+                    if (data.state == 'json') {
+                        if (isValidResponse(data)) {
+                            addMessage('bot', data)
+
+                        } else if (!retry) {
+                            //se fallisce il primofetch lo riprova una volta
+                            console.warn('Invalid format, retrying once...');
+                            tryFetch(true);
+                        } else {
+                            addMessage('bot', {
+                                state: 'text',
+                                results: 'Oops! I could not understand the response format. Please try asking differently'
+                            })
+                        }
+                    } else if (data.state == 'text') {
+                        addMessage('bot', data)
+                    }
+                })
+                .catch(err => {
+                    addMessage('bot', {
+                        state: 'text',
+                        results: `An error occurred: ${err.message}`
+                    })
+                })
+                .finally(() => {
+                    setLoading(false)
+
+                })
+        }
 
         //triggero primo fetch
         tryFetch();
