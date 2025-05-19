@@ -1,4 +1,4 @@
-export default function AdvancedSearchUi({ searchName, searchDescription, searchCategory, searchMinPrice, searchMaxPrice, emptyQuery, searchPromo, onchange, onsubmit, categoryList, promoList, searchAttribute, sortValues, onchangeSort, attributeList }) {
+export default function AdvancedSearchUi({ searchDescription, searchCategory, searchMinPrice, searchMaxPrice, emptyQuery, searchPromo, onchange, onsubmit, categoryList, promoList, searchAttribute, sortValues, onchangeSort, attributeList }) {
     return (
         <>
             <div className="container">
@@ -7,20 +7,6 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                     <form id="filtersForm" className="mb-3" onSubmit={(e) => { e.preventDefault(); onsubmit() }}>
 
                         <div className="row row-cols-1 row-cols-md-4 row-cols-lg-8 justify-content-center ">
-                            {/* <div className="col my-2">
-
-                                
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Name"
-                                    className="form-control custom-input"
-                                    value={searchName}
-                                    onChange={(e) => onchange(e.target.name, e.target.value)}
-                                    defaultValue=""
-                                />
-
-                            </div> */}
                             <div className="col my-2">
                                 {/*prezzo*/}
                                 <label className="text-white" htmlFor="">Prezzo Minimo</label>
@@ -64,7 +50,6 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 >
                                     <option value='' selected>Select a category</option>
 
-                                    {/* fare map per le options  */}
                                     {categoryList.map(item => (
                                         <>
                                             <option value={item.name}>{item.name}</option>
@@ -85,7 +70,6 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 >
                                     <option value='' selected>Select a Promo</option>
 
-                                    {/* fare map per le options  */}
                                     {promoList.map(item => (
                                         <>
                                             <option value={item.name}>{item.name}</option>
@@ -107,7 +91,6 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 >
                                     <option value='' selected>Select an Attribute</option>
 
-                                    {/* fare map per le options  */}
                                     {attributeList.map(item => (
                                         <>
                                             <option value={item.name}>{item.name}</option>
@@ -129,7 +112,6 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 >
                                     <option value='' selected>Scegli un opzione</option>
 
-                                    {/* fare map per le options  */}
 
                                     <option value="price=1">Price Cheaper</option>
                                     <option value="price=-1">Price Most Expensive</option>

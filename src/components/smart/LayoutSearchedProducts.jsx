@@ -5,10 +5,9 @@ import Loader from "../dumb/Loader.ui";
 import LayoutSelect from "./LayoutSelect";
 import { useFiltersContext } from "../../contexts/filtersContext";
 import PaginationControls from "./PaginationControls";
-import styles from "../../assets/css_modules/LayoutSearchedProducts.module.css";
 
 export default function LayoutSearchedProducts() {
-  const { products, handleLimit, limit } = useFiltersContext();
+  const { products } = useFiltersContext();
   console.log(products);
 
   const [layout, setLayout] = useState(() => {
@@ -69,16 +68,6 @@ export default function LayoutSearchedProducts() {
                   <PaginationControls />
                   <GridLayout products={products.data} />
                   <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
-                    {/* <button
-                      onClick={
-                        limit < products.data.totalResults
-                          ? () => handleLimit(limit + 2)
-                          : () => setMessage("No more items to show")
-                      }
-                      className="btn btn-outline-primary"
-                    >
-                      Load More
-                    </button> */}
                     <span
                       className={
                         message !== "" ? `alert alert-danger` : "d-none"
@@ -100,16 +89,6 @@ export default function LayoutSearchedProducts() {
                   <PaginationControls />
                   <ListLayout products={products.data} />
                   <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
-                    {/* <button
-                      onClick={
-                        limit < products.data.totalResults
-                          ? () => handleLimit(limit + 2)
-                          : () => setMessage("No more items to show")
-                      }
-                      className={`${styles.btn_load} btn `}
-                    >
-                      Load More
-                    </button> */}
                     <span
                       className={
                         message !== "" ? `alert alert-danger` : "d-none"

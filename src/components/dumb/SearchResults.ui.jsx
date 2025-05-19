@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function SearchResultsUi({ results, emptyResearch }) {
-    console.log(results);
-
+export default function SearchResultsUi({ results }) {
     return (
         <>
             <h5 className="text-white d-md-none">Results:</h5>

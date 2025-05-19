@@ -7,7 +7,6 @@ import Loader from '../components/dumb/Loader.ui';
 export default function Payment() {
 
     const { payment } = usePaymentContext()
-    console.log(payment);
 
     const client_secret = payment.clientSecret
 

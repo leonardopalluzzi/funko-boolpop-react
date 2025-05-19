@@ -14,8 +14,8 @@ function FiltersProvider({ children }) {
 
     //parametri iniziali query
     const name = queryParams.get('name') || ''
-    const initialLimit = Number(queryParams.get('limit')) || 8;
-    const initialPage = Number(queryParams.get('page')) || 1;
+    // const initialLimit = Number(queryParams.get('limit')) || 8;
+    // const initialPage = Number(queryParams.get('page')) || 1;
 
 
     //stati
@@ -50,12 +50,10 @@ function FiltersProvider({ children }) {
         setPage(pageFromUrl);
 
         const finalUrl = `http://localhost:3000/api/v1/funkoboolpop${location.search}&searchOnly=${searchOnly}`
-        console.log(finalUrl);
 
         fetch(finalUrl)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.totalResults == 0) {
                     setProducts({
                         state: "empty",
@@ -132,9 +130,6 @@ function FiltersProvider({ children }) {
 
         const queryString = queryParts.join('&')
         const queryUrl = `/search-result`
-
-        console.log(queryUrl);
-
 
         navigate(`${queryUrl}${queryString ? '?' + queryString : ''}`)
 

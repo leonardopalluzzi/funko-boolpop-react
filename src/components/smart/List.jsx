@@ -1,6 +1,6 @@
 import CardUi from "../dumb/Card.ui";
 
-export default function List({ query, page, queryName, limit, products }) {
+export default function List({ products }) {
   return (
     <>
       <div className="page_counter w-100 row">

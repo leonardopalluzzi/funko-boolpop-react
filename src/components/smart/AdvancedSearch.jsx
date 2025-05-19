@@ -1,6 +1,5 @@
 import AdvancedSearchUi from "../dumb/AdvancedSearch.ui"
 import { useState, useEffect } from 'react';
-import SearchResultsUi from "../dumb/SearchResults.ui";
 import Loader from "../dumb/Loader.ui";
 import { useFiltersContext } from "../../contexts/filtersContext";
 
@@ -84,10 +83,6 @@ export default function AdvancedSearch() {
                 });
             });
     }, [])
-
-    function handleSearch(searchText) {
-        //inserire redirect ad una pagina con i risultati della ricerca al submit
-    }
 
 
     if (categoryList.state === 'loading' || promoList.state === 'loading' || attributeList.state === 'loading') {

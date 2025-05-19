@@ -6,9 +6,8 @@ import Loader from '../dumb/Loader.ui';
 import { useLocation } from 'react-router-dom';
 
 export default function SearchBar({ page = 1, limit = 10, display }) {
-    const location = useLocation()
-    const queryParams = new URLSearchParams(location.search)
-    console.log();
+    // const location = useLocation()
+    // const queryParams = new URLSearchParams(location.search)
 
 
     const navigate = useNavigate();

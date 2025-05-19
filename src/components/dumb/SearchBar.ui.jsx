@@ -1,8 +1,4 @@
-export default function SearchBarUi({ searchName, onchange, handleSearch, searchDescription }) {
-
-
-
-
+export default function SearchBarUi({ searchName, onchange, handleSearch }) {
     return (
         <>
             <div>

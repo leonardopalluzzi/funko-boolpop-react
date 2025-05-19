@@ -26,4 +26,3 @@ export default function GridLayout({ products }) {
     </div>
   );
 }
-// row-cols-1 row-cols-md-2 row-cols-lg-4

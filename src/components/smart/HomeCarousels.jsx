@@ -13,8 +13,7 @@ export default function HomeCarousels() {
   const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
   const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
   const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
-  const trans = 2; // definisce il numero di transazioni minimo che un elemento deve avere
-  const date = 1; //imposta l'ordinamento per data
+
 
   useEffect(() => {
     Promise.all([
@@ -70,8 +69,6 @@ export default function HomeCarousels() {
                   <>
                     <List
                       products={products.dataTrans}
-                      queryName={"trans"}
-                      query={trans}
                     />
                   </>
                 }
@@ -88,9 +85,6 @@ export default function HomeCarousels() {
                   <>
                     <List
                       products={products.dataDate}
-                      queryName={"date"}
-                      page={pageDate}
-                      query={date}
                     />
                   </>
                 }
