@@ -148,18 +148,17 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     placeholder="Search for keywords"
                                 />
                             </div>
-
-                            <div className="d-flex justify-content-center col-12 col-md-2 mt-2 mb-2">
-                                <button
-                                    type="submit"
-                                    className="btn btn-warning px-3"
-                                >
-                                    Apply
-                                </button>
-                                <button type="button" className="btn btn-warning px-3" onClick={() => emptyQuery()}>
-                                    Reset Filters
-                                </button>
-                            </div>
+                        </div>
+                        <div className="d-flex align-item-center justify-content-center w-100 gap-4 mt-2 mb-2">
+                            <button
+                                type="submit"
+                                className="btn btn-warning px-3"
+                            >
+                                Apply
+                            </button>
+                            <button type="button" className="btn btn-warning px-3" onClick={() => emptyQuery()}>
+                                Reset Filters
+                            </button>
                         </div>
                     </form>
                 </div>
