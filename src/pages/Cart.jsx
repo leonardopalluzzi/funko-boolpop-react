@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../contexts/cartContext";
 import styles from "../assets/css_modules/CartPage.module.css";
+import btnStyles from "../assets/css_modules/btnQuantity.module.css";
 
 export default function Cart() {
 
@@ -110,11 +111,13 @@ export default function Cart() {
                       <td className={`${styles.table_body} ${styles.desktop}`}>
                         <button
                           onClick={() => subtractCartQuantity(item)}
-                          className="btn btn-transaprent fs-3 p-2"
+                          className={btnStyles.btn_quantity}
                         >
                           -
                         </button>
-                        X{item.cartQuantity}
+                        <div className={btnStyles.btn_item}>
+                          X{item.cartQuantity}
+                        </div>
                         <button
                           onClick={() =>
                             addCartQuantity(
@@ -122,11 +125,11 @@ export default function Cart() {
                               item.cartQuantity + item.quantity
                             )
                           }
-                          className="btn btn-transaprent fs-4 p-2"
+                          className={btnStyles.btn_quantity}
                         >
                           +
                         </button>
-                        <p className={styles.add_message}>{cart.message}</p>
+                        {/* <p className={styles.add_message}>{cart.message}</p> */}
                       </td>
                       <td className={`${styles.table_body} ${styles.desktop}`}>
                         {item.promotion.length > 0 ? (
@@ -154,11 +157,14 @@ export default function Cart() {
                         <td className={styles.table_body}>
                           <button
                             onClick={() => subtractCartQuantity(item)}
-                            className="btn btn-transaprent fs-3 p-2"
+                            className={btnStyles.btn_quantity}
                           >
                             -
                           </button>
-                          X{item.cartQuantity}
+                          <div className={btnStyles.btn_item}>
+                            X{item.cartQuantity}
+                          </div>
+
                           <button
                             onClick={() =>
                               addCartQuantity(
@@ -166,11 +172,11 @@ export default function Cart() {
                                 item.cartQuantity + item.quantity
                               )
                             }
-                            className="btn btn-transaprent fs-4 p-2"
+                            className={btnStyles.btn_quantity}
                           >
                             +
                           </button>
-                          <p className={styles.add_message}>{cart.message}</p>
+                          {/* <p className={styles.add_message}>{cart.message}</p> */}
                         </td>
                         <td
                           className={`${styles.table_body} ${styles.price_tag}`}

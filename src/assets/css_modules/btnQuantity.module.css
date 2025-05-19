@@ -9,7 +9,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 10px;
-
+    width: 40px;
 }
 
 .btn_container {
