@@ -13,14 +13,14 @@ export default function ChatBot({ onClose }) {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        const savedMessages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+        const savedMessages = JSON.parse(sessionStorage.getItem('chat_messages') || '[]');
         setMessages(savedMessages);
         setHasLoaded(true);
     }, []);
 
     useEffect(() => {
         if (hasLoaded) {
-            localStorage.setItem('chat_messages', JSON.stringify(messages));
+            sessionStorage.setItem('chat_messages', JSON.stringify(messages));
         }
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
