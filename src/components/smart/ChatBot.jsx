@@ -48,6 +48,25 @@ export default function ChatBot({ onClose }) {
         setLoading(true)
         setQuestion('')
 
+        //funzione validazione output ai
+        function isValidProduct(item) {
+            return (
+                item &&
+                typeof item.slug === 'string' &&
+                typeof item.name === 'string' &&
+                typeof item.price === 'number' &&
+                typeof item.quantity === 'number'
+            );
+        }
+
+        function isValidResponse(data) {
+            return Array.isArray(data.results) && data.results.every(isValidProduct);
+        }
+
+        function tryFetch(retry = false) {
+
+        }
+
         fetch('http://localhost:3000/api/v1/chatbot', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
@@ -62,21 +81,13 @@ export default function ChatBot({ onClose }) {
                 console.log(data);
 
                 if (data.state == 'json') {
-                    function isValidProduct(item) {
-                        return (
-                            item &&
-                            typeof item.slug === 'string' &&
-                            typeof item.name === 'string' &&
-                            typeof item.price === 'number' &&
-                            typeof item.quantity === 'number'
-                        );
-                    }
-
-                    const isValidArray = Array.isArray(data.results) && data.results.every(isValidProduct);
-
-                    if (isValidArray) {
+                    if (isValidResponse(data)) {
                         addMessage('bot', data)
 
+                    } else if (!retry) {
+                        //se fallisce il primofetch lo riprova una volta
+                        console.warn('Invalid format, retrying once...');
+                        tryFetch(true);
                     } else {
                         addMessage('bot', {
                             state: 'text',
@@ -88,12 +99,18 @@ export default function ChatBot({ onClose }) {
                 }
             })
             .catch(err => {
-                addMessage('bot', err.message)
+                addMessage('bot', {
+                    state: 'text',
+                    results: `An error occurred: ${err.message}`
+                })
             })
             .finally(() => {
                 setLoading(false)
 
             })
+
+        //triggero primo fetch
+        tryFetch();
     }
 
     function renderMessages(role, msgState, msg, i) {
