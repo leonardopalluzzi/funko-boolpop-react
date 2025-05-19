@@ -90,7 +90,7 @@ export default function ProductPage() {
                     message: err.message
                 })
             })
-    }, [pageSlug])
+    }, [pageSlug, pageDate])
 
 
 
