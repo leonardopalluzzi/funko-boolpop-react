@@ -57,26 +57,30 @@ export default function ChatBot({ onClose }) {
             .then(data => {
                 console.log(data);
 
-                function isValidProduct(item) {
-                    return (
-                        item &&
-                        typeof item.slug === 'string' &&
-                        typeof item.name === 'string' &&
-                        typeof item.price === 'number' &&
-                        typeof item.quantity === 'number'
-                    );
-                }
+                if (data.state == 'json') {
+                    function isValidProduct(item) {
+                        return (
+                            item &&
+                            typeof item.slug === 'string' &&
+                            typeof item.name === 'string' &&
+                            typeof item.price === 'number' &&
+                            typeof item.quantity === 'number'
+                        );
+                    }
 
-                const isValidArray = Array.isArray(data.results) && data.results.every(isValidProduct);
+                    const isValidArray = Array.isArray(data.results) && data.results.every(isValidProduct);
 
-                if (isValidArray) {
+                    if (isValidArray) {
+                        addMessage('bot', data)
+
+                    } else {
+                        addMessage('bot', {
+                            state: 'text',
+                            results: 'Oops! I could not understand the response format. Please try asking differently'
+                        })
+                    }
+                } else if (data.state == 'text') {
                     addMessage('bot', data)
-
-                } else {
-                    addMessage('bot', {
-                        state: 'text',
-                        results: 'Oops! I could not understand the response format. Please try asking differently'
-                    })
                 }
             })
             .catch(err => {
