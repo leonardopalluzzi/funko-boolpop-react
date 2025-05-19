@@ -152,14 +152,19 @@ export default function ProductPage() {
                                             )}
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={() => handleCart(funko.result, funko.result.quantity)}
-                                        className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
-                                        type="submit"
-                                    >
-                                        Aggiungi al carrello
-                                    </button>
-
+                                    {
+                                        cartItem ? (<></>) : (
+                                            <>
+                                                <button
+                                                    onClick={() => handleCart(funko.result, funko.result.quantity)}
+                                                    className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
+                                                    type="submit"
+                                                >
+                                                    Aggiungi al carrello
+                                                </button>
+                                            </>
+                                        )
+                                    }
                                     <div className={btnStyles.btn_container}>
                                         {cartItem ? (
                                             <>
