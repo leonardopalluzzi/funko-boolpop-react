@@ -29,9 +29,9 @@
 }
 
 .chatbot_button:hover {
-    background-color: var(--tertiary);
+    background-color: var(--primary);
     transform: scale(1.1);
-    color: var(--darker)
+    color: var(--text-light)
 }
 
 .chatbot_content {
@@ -77,8 +77,8 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--tertiary);
-    color: var(--darker);
+    background-color: var(--darker);
+    color: var(--text-light);
     padding: 16px 16px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
