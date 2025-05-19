@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom"
 import ProductImages from "../smart/ProductImages"
 import { useNavigate } from "react-router-dom"
 
-export default function CardUi({ images, name, price, license, promotions, slug, quantity }) {
+export default function CardUi({ images, name, price, license, promotions, slug }) {
     const navigate = useNavigate()
 
 
@@ -44,7 +43,6 @@ export default function CardUi({ images, name, price, license, promotions, slug,
                                         )
                                 }
                             </div>
-                            {/*<span className="d-block text-end pt-2"> <i class="bi bi-box-fill"></i> Available: {quantity}</span>*/}
                         </div>
                     </div>
                 </div>

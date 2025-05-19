@@ -1,5 +1,4 @@
 export default function ProductImagesUi({ images, index }) {
-
     return (
         <>
             <div className="product_images">

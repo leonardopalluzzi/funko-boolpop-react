@@ -16,19 +16,12 @@ export default function ProductPage() {
 
     const navigate = useNavigate();
 
-    const [products, setProducts] = useState({
-        state: 'loading'
-    })
-
     const [funko, setFunkos] = useState({
         state: "loading",
     });
 
     const [pageSlug, setPageSlug] = useState(slug)
-
-    const [productQuantity, setProductQuantity] = useState(0)
     const [cartItem, setCartItem] = useState(null)
-    // const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
     const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
     const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
     const date = 1; //imposta l'ordinamento per data
@@ -66,10 +59,6 @@ export default function ProductPage() {
 
             const foundItem = cart.userCart.find(item => item.slug === funko.result.slug);
             foundItem != undefined ? setCartItem(foundItem) : setCartItem(null)
-            setProductQuantity(
-                foundItem ? foundItem.quantity : funko.result.quantity
-            );
-
         }
     }, [funko, cart])
 
@@ -91,7 +80,7 @@ export default function ProductPage() {
                     message: err.message
                 })
             })
-    }, [pageSlug])
+    }, [pageSlug, pageDate])
 
 
 
@@ -127,7 +116,6 @@ export default function ProductPage() {
                                     <label htmlFor="">{funko.result.license.toUpperCase()}</label>
                                     <h2 className="mb-2">{funko.result.name}</h2>
                                     <div className="price_section">
-                                        {/* <h2 className="mb-4">Price:</h2> */}
                                         <div>
                                             {funko.result.promotion.length > 0 ? (
                                                 <>

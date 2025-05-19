@@ -1,5 +1,4 @@
 import { useFiltersContext } from "../../contexts/filtersContext";
-import { useState, useEffect } from "react";
 import Loader from "../dumb/Loader.ui";
 
 export default function PaginationControls() {

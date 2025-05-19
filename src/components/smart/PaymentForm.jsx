@@ -4,7 +4,6 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
-import { redirect } from "react-router-dom";
 import { useCartContext } from "../../contexts/cartContext";
 import LoaderUi from "../dumb/Loader.ui";
 import { useNavigate } from "react-router-dom";

@@ -1,21 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../contexts/cartContext";
-import { useEffect, useState } from "react";
 import styles from "../assets/css_modules/CartPage.module.css";
 
 export default function Cart() {
-  const {
-    cart,
-    deleteFromCart,
-    subtractCartQuantity,
-    addCartQuantity,
-    setCart,
-  } = useCartContext();
-  console.log(cart);
+
+  const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } =
+    useCartContext();
 
   const navigate = useNavigate();
-
-  console.log(`cart shipping in cart page: ${cart.shipping}`);
 
   switch (true) {
     case cart.userCart.length == 0:

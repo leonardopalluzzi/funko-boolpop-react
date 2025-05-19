@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
 
-    const { cart, setCart } = useCartContext()
+    const { cart } = useCartContext()
     const { paymentIntent } = usePaymentContext()
     const navigate = useNavigate()
 
@@ -62,8 +62,6 @@ export default function Checkout() {
     }
 
     function handleSubmit() {
-        console.log(addressFlag);
-
         const productsInfo = cart.userCart.map(item => {
             const prod = {
                 item_slug: item.slug,
@@ -90,8 +88,6 @@ export default function Checkout() {
             ...shippingAddress,
             ...billingData
         }
-
-        console.log(formToSend);
 
         paymentIntent(formToSend)
 

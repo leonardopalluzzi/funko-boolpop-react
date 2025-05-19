@@ -1,20 +1,11 @@
 import { useCartContext } from "../../contexts/cartContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Loader from "../dumb/Loader.ui";
 import styles from "../../assets/css_modules/CartHover.module.css";
 
 export default function CartHover({ onClose }) {
   const { cart, deleteFromCart } = useCartContext();
   const navigate = useNavigate();
-
-  const [cartCheck, setCartCheck] = useState(
-    JSON.parse(localStorage.getItem("cart"))
-  );
-
-  useEffect(() => {
-    setCartCheck(JSON.parse(localStorage.getItem("cart")));
-  }, [cart]);
 
   function truncateText(text, maxLength) {
     if (text.length > maxLength) {

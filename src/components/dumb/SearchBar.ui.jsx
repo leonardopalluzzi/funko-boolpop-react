@@ -1,10 +1,5 @@
-export default function SearchBarUi({
-  searchName,
-  onchange,
-  handleSearch,
-  searchDescription,
-}) {
-  return (
+export default function SearchBarUi({ searchName, onchange, handleSearch }) {
+ return (
     <>
       <div>
         <form
