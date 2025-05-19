@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from '../../assets/css_modules/chatBot.module.css';
 import { Link } from 'react-router-dom';
 import Loader from '../dumb/Loader.ui';
@@ -10,6 +10,7 @@ export default function ChatBot({ onClose }) {
     const [messages, setMessages] = useState([])
     const [loading, setLoading] = useState(false)
     const [hasLoaded, setHasLoaded] = useState(false);
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
         const savedMessages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
@@ -21,6 +22,7 @@ export default function ChatBot({ onClose }) {
         if (hasLoaded) {
             localStorage.setItem('chat_messages', JSON.stringify(messages));
         }
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
 
@@ -40,6 +42,7 @@ export default function ChatBot({ onClose }) {
 
         addMessage('user', userMessage)
         setLoading(true)
+        setQuestion('')
 
         fetch('http://localhost:3000/api/v1/chatbot', {
             method: 'POST',
@@ -64,8 +67,10 @@ export default function ChatBot({ onClose }) {
             .catch(err => {
                 addMessage('bot', err.message)
             })
-        setLoading(false)
-        setQuestion('')
+            .finally(() => {
+                setLoading(false)
+
+            })
     }
 
     console.log(messages);
@@ -127,9 +132,11 @@ export default function ChatBot({ onClose }) {
 
             <div className={styles.chat_container}>
                 <div className={styles.chat_messages}>
+
                     {messages.length === 0 && <p className={styles.sent_text}>Hi! How can I help you?</p>}
                     {messages.map((item, i) => renderMessages(item.role, item.content.state, item.content, i))}
                     {loading && <div><Loader /></div>}
+                    <div ref={messagesEndRef} />
                 </div>
 
                 <div className={styles.form_chat}>
