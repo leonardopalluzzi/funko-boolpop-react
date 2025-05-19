@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function SearchResultsUi({ results }) {
-   return (
+  return (
     <>
       <h5 className="text-white d-md-none">Risultati:</h5>
       <div className="search_results_container">
@@ -28,3 +28,4 @@ export default function SearchResultsUi({ results }) {
       </div>
     </>
   );
+}
