@@ -116,7 +116,7 @@ export default function Cart() {
                           -
                         </button>
                         <div className={btnStyles.btn_item}>
-                          X{item.cartQuantity}
+                          <span className="fs-5">X{item.cartQuantity}</span>
                         </div>
                         <button
                           onClick={() =>
@@ -162,7 +162,8 @@ export default function Cart() {
                             -
                           </button>
                           <div className={btnStyles.btn_item}>
-                            X{item.cartQuantity}
+                            <span className="fs-5">X{item.cartQuantity}</span>
+
                           </div>
 
                           <button
