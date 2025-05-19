@@ -9,14 +9,18 @@ export default function ChatBot({ onClose }) {
     const [question, setQuestion] = useState('')
     const [messages, setMessages] = useState([])
     const [loading, setLoading] = useState(false)
+    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
         const savedMessages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
         setMessages(savedMessages);
+        setHasLoaded(true);
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('chat_messages', JSON.stringify(messages));
+        if (hasLoaded) {
+            localStorage.setItem('chat_messages', JSON.stringify(messages));
+        }
     }, [messages]);
 
 
@@ -29,8 +33,12 @@ export default function ChatBot({ onClose }) {
         console.log('submitChatBot');
         if (!question.trim()) return;
 
-        const useMessage = question
-        addMessage('user', useMessage)
+        const userMessage = {
+            state: 'text',
+            results: question
+        };
+
+        addMessage('user', userMessage)
         setLoading(true)
 
         fetch('http://localhost:3000/api/v1/chatbot', {
@@ -65,7 +73,7 @@ export default function ChatBot({ onClose }) {
     function renderMessages(role, msgState, msg, i) {
         switch (role) {
             case 'user':
-                return <p key={i} className={styles.sent_text}><strong>You:</strong> {msg}</p>;
+                return <p key={i} className={styles.sent_text}><strong>You:</strong> {msg.results}</p>;
             case 'bot':
                 switch (msgState) {
                     case 'json':
