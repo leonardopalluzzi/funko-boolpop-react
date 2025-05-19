@@ -219,14 +219,14 @@ export default function ProductPage() {
                       >
                         <div className="accordion-body">
                           <p>
-                            <strong>Categoria:</strong> {funko.result.category}
+                            <strong>Categoria: </strong> {funko.result.category}
                           </p>
                           <p>
                             <strong>Licenza: </strong>
                             {funko.result.license}
                           </p>
                           <div>
-                            <strong>Attributi speciali:</strong>
+                            <strong>Attributi speciali: </strong>
                             <ul className="list-unstyled">
                               {funko.result.attributes.map((item) => (
                                 <>
