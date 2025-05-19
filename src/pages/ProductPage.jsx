@@ -184,7 +184,7 @@ export default function ProductPage() {
 
                                     <span className="d-block pt-4">
                                         {" "}
-                                        <i class="bi bi-box-fill"></i> Disponibilita: {cartItem != null ? cartItem.quantity : funko.result.quantity}
+                                        <i class="bi bi-box-fill"></i> Disponibilità: {cartItem != null ? cartItem.quantity : funko.result.quantity}
                                     </span>
 
                                     <div className="product_description">
@@ -218,7 +218,7 @@ export default function ProductPage() {
                                                         <strong>Categoria: :</strong> {funko.result.category}
                                                     </p>
                                                     <p>
-                                                        <strong>Licensa: </strong>
+                                                        <strong>Licenza: </strong>
                                                         {funko.result.license}
                                                     </p>
                                                     <div>
