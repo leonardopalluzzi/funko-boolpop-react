@@ -147,7 +147,7 @@ export default function ProductPage() {
                                         className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
                                         type="submit"
                                     >
-                                        Add to cart
+                                        Aggiungi al carrello
                                     </button>
 
                                     <div className={btnStyles.btn_container}>
@@ -166,11 +166,11 @@ export default function ProductPage() {
 
                                     <span className="d-block pt-4">
                                         {" "}
-                                        <i class="bi bi-box-fill"></i> Available: {cartItem != null ? cartItem.quantity : funko.result.quantity}
+                                        <i class="bi bi-box-fill"></i> Disponibilita: {cartItem != null ? cartItem.quantity : funko.result.quantity}
                                     </span>
 
                                     <div className="product_description">
-                                        <h4>Description:</h4>
+                                        <h4>Descrizione:</h4>
                                         <p>{funko.result.description}</p>
                                     </div>
                                     <div
@@ -187,7 +187,7 @@ export default function ProductPage() {
                                                     aria-expanded="true"
                                                     aria-controls="collapseOne"
                                                 >
-                                                    Additional Information
+                                                    Informazioni aggiuntive
                                                 </button>
                                             </h2>
                                             <div
@@ -197,14 +197,14 @@ export default function ProductPage() {
                                             >
                                                 <div className="accordion-body">
                                                     <p>
-                                                        <strong>Category:</strong> {funko.result.category}
+                                                        <strong>Categoria: :</strong> {funko.result.category}
                                                     </p>
                                                     <p>
-                                                        <strong>License: </strong>
+                                                        <strong>Licensa: </strong>
                                                         {funko.result.license}
                                                     </p>
                                                     <div>
-                                                        <strong>Special Attributes:</strong>
+                                                        <strong>Attributi Speciali:</strong>
                                                         <ul className="list-unstyled">
                                                             {funko.result.attributes.map((item) => (
                                                                 <>
