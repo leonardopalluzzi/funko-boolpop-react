@@ -25,6 +25,7 @@ export default function ProductPage() {
     const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
     const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
     const date = 1; //imposta l'ordinamento per data
+    const [displayMsg, setDisplayMsg] = useState(false)
 
     const [suggested, setSuggested] = useState({
         state: 'laoding'
@@ -35,6 +36,15 @@ export default function ProductPage() {
 
         setPageSlug(slug)
     }, [slug])
+
+
+    useEffect(() => {
+        setDisplayMsg(true)
+        const timer = setInterval(() => {
+            setDisplayMsg(false)
+        }, 3000)
+        return () => clearInterval(timer)
+    }, [cart])
 
 
     useEffect(() => {
@@ -162,7 +172,10 @@ export default function ProductPage() {
                                         ) : (<></>)}
 
                                     </div>
-                                    <span className="mx-4">{cart.message}</span>
+                                    {
+                                        displayMsg ? (<><span className="mx-4">{cart.message}</span></>) : (<></>)
+                                    }
+
 
                                     <span className="d-block pt-4">
                                         {" "}
