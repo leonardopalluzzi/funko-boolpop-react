@@ -35,6 +35,7 @@ function PaymentProvider({ children }) {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
 
                 sessionStorage.setItem('clientSecret', data.clientSecret)
                 if (data.clientSecret) {
