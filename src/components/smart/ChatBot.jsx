@@ -92,8 +92,6 @@ export default function ChatBot({ onClose }) {
             })
     }
 
-    console.log(messages);
-
     function renderMessages(role, msgState, msg, i) {
         switch (role) {
             case 'user':
