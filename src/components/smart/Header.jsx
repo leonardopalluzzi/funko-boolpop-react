@@ -64,18 +64,7 @@ export default function Header({ setCartOpen }) {
                 <i className="bi bi-cart-fill"></i>
               </Link>
 
-              <SearchBar display={display} />
-              {/* bottone per filtraggio ricerca */}
-              {/* <button
-                onClick={
-                  display == false
-                    ? () => setDisplay(true)
-                    : () => setDisplay(false)
-                }
-                className="btn btn-filters mx-3"
-              >
-                Advanced Filters
-              </button> */}
+              <SearchBar display={display} setDisplay={setDisplay} />
             </div>
           </div>
         </nav>

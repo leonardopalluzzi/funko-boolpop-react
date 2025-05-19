@@ -6,10 +6,10 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                     <form id="filtersForm" className="mb-3" onSubmit={(e) => { e.preventDefault(); onsubmit() }}>
 
-                        <div className="row justify-content-center ">
-                            <div className="col-12 col-md-2 my-2">
+                        <div className="row row-cols-1 row-cols-md-4 row-cols-lg-8 justify-content-center ">
+                            {/* <div className="col my-2">
 
-                                {/*nome*/}
+                                
                                 <input
                                     type="text"
                                     name="name"
@@ -20,8 +20,8 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     defaultValue=""
                                 />
 
-                            </div>
-                            <div className="col-12 col-md-2 my-2">
+                            </div> */}
+                            <div className="col my-2">
                                 {/*prezzo*/}
                                 <input
                                     type="number"
@@ -35,7 +35,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 />
                             </div>
 
-                            <div className="col-12 col-md-2 my-2 ">
+                            <div className="col my-2 ">
                                 {/*prezzo*/}
                                 <input
                                     type="number"
@@ -51,7 +51,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
 
                             {/* filtro categoria  */}
-                            <div className="col-12 col-md-2 my-2 ">
+                            <div className="col my-2 ">
                                 <select
                                     value={searchCategory}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -71,7 +71,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                             </div>
 
                             {/* filtro promozioni */}
-                            <div className="col-12 col-md-2 my-2 ">
+                            <div className="col my-2 ">
                                 <select
                                     value={searchPromo}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -92,7 +92,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
 
                             {/* filtro attributi */}
-                            <div className="col-12 col-md-2 my-2 ">
+                            <div className="col my-2 ">
                                 <select
                                     value={searchAttribute}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -113,7 +113,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
 
                             {/* filtro ordinamento */}
-                            <div className="col-12 col-md-2 my-2 ">
+                            <div className="col my-2 ">
                                 <select
                                     value={sortValues}
                                     onChange={(e) => onchangeSort(e.target.value)}
@@ -136,7 +136,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                             </div>
 
                             {/* filtro descrizione  */}
-                            <div className="col-12 col-md-2 my-2">
+                            <div className="col my-2">
                                 <input
                                     value={searchDescription}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}

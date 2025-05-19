@@ -13,7 +13,7 @@ export default function SearchResultsUi({ results, emptyResearch }) {
                         {results.map(item => (
                             <>
                                 <li>
-                                    <Link onClick={() => emptyResearch()} to={`/${item.slug}`}>
+                                    <Link to={`/${item.slug}`}>
                                         <div className="d-flex gap-5 align-items-center">
                                             <img className="search_results_img" src={`http://localhost:3000/${item.images[0].image}`} alt={item.name} />
                                             <p>{item.name}</p>

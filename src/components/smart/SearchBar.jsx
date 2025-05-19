@@ -5,7 +5,7 @@ import SearchResultsUi from '../dumb/SearchResults.ui';
 import Loader from '../dumb/Loader.ui';
 import { useLocation } from 'react-router-dom';
 
-export default function SearchBar({ page = 1, limit = 10, display }) {
+export default function SearchBar({ page = 1, limit = 10, display, setDisplay }) {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
 
@@ -58,11 +58,13 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
     function handleSearch() {
         console.log(message);
         //inserire redirect ad una pagina con i risultati della ricerca al submit
+
         if (searchText.name == '') {
             return setMessage('Search for something by name')
         }
         navigate(`/search-result?name=${searchText.name}&page=1&limit=8`);
-        emptyResearch()
+        // emptyResearch()
+        setDisplay(false)
     }
 
     function emptyResearch() {
