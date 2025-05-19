@@ -69,7 +69,7 @@ export default function LayoutSearchedProducts() {
                   <PaginationControls />
                   <GridLayout products={products.data} />
                   <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
-                    <button
+                    {/* <button
                       onClick={
                         limit < products.data.totalResults
                           ? () => handleLimit(limit + 2)
@@ -78,7 +78,7 @@ export default function LayoutSearchedProducts() {
                       className="btn btn-outline-primary"
                     >
                       Load More
-                    </button>
+                    </button> */}
                     <span
                       className={
                         message !== "" ? `alert alert-danger` : "d-none"
@@ -100,7 +100,7 @@ export default function LayoutSearchedProducts() {
                   <PaginationControls />
                   <ListLayout products={products.data} />
                   <div className="w-50 m-auto d-flex flex-column aling-items-center justify-content-center">
-                    <button
+                    {/* <button
                       onClick={
                         limit < products.data.totalResults
                           ? () => handleLimit(limit + 2)
@@ -109,7 +109,7 @@ export default function LayoutSearchedProducts() {
                       className={`${styles.btn_load} btn `}
                     >
                       Load More
-                    </button>
+                    </button> */}
                     <span
                       className={
                         message !== "" ? `alert alert-danger` : "d-none"
