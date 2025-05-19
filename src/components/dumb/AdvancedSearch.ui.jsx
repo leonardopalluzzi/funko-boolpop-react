@@ -23,6 +23,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                             </div> */}
                             <div className="col my-2">
                                 {/*prezzo*/}
+                                <label className="text-white" htmlFor="">Prezzo Minimo</label>
                                 <input
                                     type="number"
                                     name="minPrice"
@@ -37,6 +38,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                             <div className="col my-2 ">
                                 {/*prezzo*/}
+                                <label className="text-white" htmlFor="">Prezzo Massimo</label>
                                 <input
                                     type="number"
                                     name="maxPrice"
@@ -52,6 +54,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                             {/* filtro categoria  */}
                             <div className="col my-2 ">
+                                <label className="text-white" htmlFor="">Cerca per cateogria</label>
                                 <select
                                     value={searchCategory}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -72,6 +75,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                             {/* filtro promozioni */}
                             <div className="col my-2 ">
+                                <label className="text-white" htmlFor="">Cerca per promozione</label>
                                 <select
                                     value={searchPromo}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -93,6 +97,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                             {/* filtro attributi */}
                             <div className="col my-2 ">
+                                <label className="text-white" htmlFor="">Cerca per attributo</label>
                                 <select
                                     value={searchAttribute}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -114,6 +119,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                             {/* filtro ordinamento */}
                             <div className="col my-2 ">
+                                <label className="text-white" htmlFor="">Ordina per</label>
                                 <select
                                     value={sortValues}
                                     onChange={(e) => onchangeSort(e.target.value)}
@@ -137,6 +143,7 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
 
                             {/* filtro descrizione  */}
                             <div className="col my-2">
+                                <label className="text-white" htmlFor="">Cerca per Parole chiave</label>
                                 <input
                                     value={searchDescription}
                                     onChange={(e) => onchange(e.target.name, e.target.value)}
@@ -154,10 +161,10 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                 type="submit"
                                 className="btn btn-warning px-3"
                             >
-                                Apply
+                                Applica
                             </button>
                             <button type="button" className="btn btn-warning px-3" onClick={() => emptyQuery()}>
-                                Reset Filters
+                                Resetta Filtri
                             </button>
                         </div>
                     </form>
