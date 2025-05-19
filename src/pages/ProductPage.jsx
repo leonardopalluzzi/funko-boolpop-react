@@ -6,6 +6,7 @@ import { useCartContext } from "../contexts/cartContext";
 import CarouselUi from "../components/dumb/Carousel.ui";
 import List from "../components/smart/List";
 import Loader from "../components/dumb/Loader.ui";
+import btnStyles from "../assets/css_modules/btnQuantity.module.css";
 
 export default function ProductPage() {
 
@@ -149,12 +150,14 @@ export default function ProductPage() {
                                         Add to cart
                                     </button>
 
-                                    <div>
+                                    <div className={btnStyles.btn_container}>
                                         {cartItem ? (
                                             <>
-                                                <button className="btn btn-transparent" onClick={() => subtractCartQuantity(cartItem)}>-</button>
-                                                {cartItem.cartQuantity}
-                                                <button className="btn btn-transparent" onClick={() => addCartQuantity(cartItem, funko.result.quantity)}>+</button>
+                                                <button className={btnStyles.btn_quantity} onClick={() => subtractCartQuantity(cartItem)}>-</button>
+                                                <div className={btnStyles.btn_item}>
+                                                    {cartItem.cartQuantity}
+                                                </div>
+                                                <button className={btnStyles.btn_quantity} onClick={() => addCartQuantity(cartItem, funko.result.quantity)}>+</button>
                                             </>
                                         ) : (<></>)}
 

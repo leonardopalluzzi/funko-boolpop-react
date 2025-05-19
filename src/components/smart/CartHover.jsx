@@ -18,7 +18,7 @@ export default function CartHover({ onClose }) {
     return (
       <>
         <div className="container empty_cart">
-          <h3>You don't have anything in your cart</h3>
+          <h3>Il tuo carrello è vuoto</h3>
           <p className="fs-2">
             <i class="bi bi-emoji-frown-fill"></i>
           </p>
@@ -43,15 +43,15 @@ export default function CartHover({ onClose }) {
                   <table class={`${styles.table_hover} table`}>
                     <thead>
                       <tr>
-                        <th scope="col">Image</th>
+                        <th scope="col">Immagine</th>
                         <th scope="col" className="cart_hover_display">
-                          Name
+                          Nome
                         </th>
                         <th scope="col" className="cart_hover_display">
-                          Promo
+                          Prodotto
                         </th>
                         <th scope="col" style={{ width: "20%" }}>
-                          Price*
+                          Prezzo*
                         </th>
                         <th scope="col">Q.ty</th>
                         <th scope="col"></th>
@@ -82,7 +82,7 @@ export default function CartHover({ onClose }) {
                                   <span>{item.promotion[0].discount}%</span>
                                 </>
                               ) : (
-                                <>No promotions found</>
+                                <>Nessuna promozione trovata</>
                               )}
                             </td>
                             <td>
@@ -144,7 +144,7 @@ export default function CartHover({ onClose }) {
                     </tbody>
                   </table>
                   <div className="total_hover_cart">
-                    <h6 className="text-end">TOTAL:</h6>
+                    <h6 className="text-end">TOTALE:</h6>
                     <h5 className="text-end">{cart.amount.toFixed(2)}</h5>
                   </div>
 
@@ -156,7 +156,7 @@ export default function CartHover({ onClose }) {
                     className={`${styles.btn_show} btn fs-5 my-2 my-sm-0 mx-3`}
                     type="submit"
                   >
-                    Show Cart
+                    Vai al carrello
                   </button>
                   <button
                     onClick={() => {
@@ -166,7 +166,7 @@ export default function CartHover({ onClose }) {
                     className={`${styles.btn_proceed} btn fs-5 my-2 my-sm-0`}
                     type="submit"
                   >
-                    Proceed to payment
+                    Procedi al pagamento
                   </button>
                 </div>
               </div>

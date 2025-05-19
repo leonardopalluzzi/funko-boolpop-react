@@ -3,6 +3,7 @@ import { useCartContext } from "../contexts/cartContext";
 import styles from "../assets/css_modules/CartPage.module.css";
 
 export default function Cart() {
+
   const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } =
     useCartContext();
 
@@ -37,22 +38,22 @@ export default function Cart() {
                     scope="col"
                     style={{ width: "15%" }}
                   >
-                    Product Image
+                    Immagine prodotto
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Product Name
+                    Nome prodotto
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Promotions
+                    Promozioni
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Quantity
+                    Quantità
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Price*
+                    Prezzo*
                   </th>
                   <th className={styles.table_header} scope="col">
-                    ACTIONS
+                    Azioni
                   </th>
                 </tr>
               </thead>
@@ -216,10 +217,14 @@ export default function Cart() {
               </tbody>
             </table>
             <div className={`${styles.total_price} total`}>
-              <h5>TOTAL: </h5>
-              <h4 className={styles.price}>{(cart.amount + cart.shipping).toFixed(2)}€</h4>
-              <h6>Shipping:</h6>
-              <p>{cart.shipping === 0 ? (<>Free!</>) : (<>{cart.shipping}€</>)}</p>
+              <h5>TOTALE: </h5>
+              <h4 className={styles.price}>
+                {(cart.amount + cart.shipping).toFixed(2)}€
+              </h4>
+              <h6>Spedizione: </h6>
+              <p>
+                {cart.shipping === 0 ? <>Gratuita!</> : <>{cart.shipping}€</>}
+              </p>
             </div>
             <div className={styles.payment}>
               <button
@@ -227,7 +232,7 @@ export default function Cart() {
                 class={`${styles.btn_payment} btn fs-3 my-2 my-sm-0`}
                 type="submit"
               >
-                Proceed to payment
+                Procedi al pagamento
               </button>
             </div>
           </div>

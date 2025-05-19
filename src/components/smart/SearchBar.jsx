@@ -1,48 +1,54 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SearchBarUi from '../dumb/SearchBar.ui';
-import SearchResultsUi from '../dumb/SearchResults.ui';
-import Loader from '../dumb/Loader.ui';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import SearchBarUi from "../dumb/SearchBar.ui";
+import SearchResultsUi from "../dumb/SearchResults.ui";
+import Loader from "../dumb/Loader.ui";
+import { useLocation } from "react-router-dom";
 
 export default function SearchBar({ page = 1, limit = 10, display }) {
     // const location = useLocation()
     // const queryParams = new URLSearchParams(location.search)
 
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const [searchText, setSearchText] = useState({
-        name: '',
-        description: '',
-        category: ''
-    });
-
-    const [message, setMessage] = useState('')
+  const [searchText, setSearchText] = useState({
+    name: "",
+    description: "",
+    category: "",
+  });
 
     const [filteredFunko, setFilteredFunko] = useState({
         state: 'loading'
     });
     const [resultsDisplay, setResultsDisplay] = useState(false)
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&searchOnly=true`)
-            .then((res) => res.json())
-            .then((data) => {
-                setFilteredFunko({
-                    state: 'success',
-                    data: data,
-                });
-            })
-            .catch((err) => {
-                setFilteredFunko({
-                    state: 'error',
-                    message: err.message,
-                });
-            });
-    }, [searchText])
+  const [message, setMessage] = useState("");
 
-    useEffect(() => {
+
+  const [filteredFunko, setFilteredFunko] = useState({
+    state: "loading",
+  });
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/api/v1/funkoboolpop?page=${page}&limit=${limit}&name=${searchText.name}&searchOnly=true`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setFilteredFunko({
+          state: "success",
+          data: data,
+        });
+      })
+      .catch((err) => {
+        setFilteredFunko({
+          state: "error",
+          message: err.message,
+        });
+      });
+  }, [searchText]);
+
+ useEffect(() => {
         const timer = setInterval(() => {
             setMessage('')
         }, 3000)
@@ -50,7 +56,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         return () => clearInterval(timer)
     }, [message])
 
-    function handleChange(key, value) {
+ function handleChange(key, value) {
         setResultsDisplay(true)
         setSearchText({
             ...searchText,
@@ -58,26 +64,27 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
         })
     }
 
-    function handleSearch() {
-        console.log(message);
-        //inserire redirect ad una pagina con i risultati della ricerca al submit
 
-        if (searchText.name == '') {
-            return setMessage('Search for something by name')
-        }
-        navigate(`/search-result?name=${searchText.name}&page=1&limit=8`);
-        setResultsDisplay(false)
+  function handleSearch() {
+    console.log(message);
+
+
+    if (searchText.name == "") {
+      return setMessage("Cerca un prodotto per nome");
     }
+    navigate(`/search-result?name=${searchText.name}&page=1&limit=8`);
+    setResultsDisplay(false)
+  }
 
-    function emptyResearch() {
-        setSearchText({
-            name: '',
-            category: '',
-            description: ''
-        })
-    }
+  function emptyResearch() {
+    setSearchText({
+      name: "",
+      category: "",
+      description: "",
+    });
+  }
 
-    switch (filteredFunko.state) {
+switch (filteredFunko.state) {
         case 'loading':
             return (
                 <>
