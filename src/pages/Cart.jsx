@@ -22,8 +22,8 @@ export default function Cart() {
             <p className="fs-2">
               <i class="bi bi-emoji-frown-fill"></i>
             </p>
-            <button onClick={() => navigate("/")} className="btn btn-primary">
-              Home Page
+            <button onClick={() => navigate("/")} className="btn btn-dark mt-4">
+              <i class="bi bi-arrow-left-short"></i> Home Page
             </button>
           </div>
         </>

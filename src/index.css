@@ -59,6 +59,10 @@ body::before {
   border: 1px solid var(--tertiary-light);
 }
 
+.btn-dark {
+  background-color: var(--darker);
+}
+
 /*accordion*/
 
 .my-custom-accordion {
@@ -138,7 +142,7 @@ body::before {
 .jumbo_slide {
   overflow: hidden;
   min-width: 100%;
-  height: 65vh;
+  height: 26.5rem;
   position: relative;
   transition: transform 0.6s ease-in-out;
   background-image: url("/jumbo-background.jpg");
@@ -679,9 +683,9 @@ td {
     z-index: 20;
   }
 
-  .jumbo_slide {
+  /*.jumbo_slide {
     height: 80vh;
-  }
+  }*/
 
   .jumbo-title {
     font-size: 2rem;
@@ -697,7 +701,8 @@ td {
   }
 
   .jumbo_slide {
-    height: 75vh;
+    /*height: 75vh;*/
+    height: 28rem;
   }
 
   .cart-offcanvas {
@@ -747,7 +752,8 @@ td {
   }
 
   .jumbo_slide {
-    height: 80vh;
+    /*height: 75vh;*/
+    height: 28rem;
   }
 
   .cart-offcanvas {
@@ -774,7 +780,11 @@ td {
 @media screen and (min-width: 1440px) {
 
   .jumbo-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+  }
+
+  .jumbo_slide {
+    height: 70vh;
   }
 }
 
