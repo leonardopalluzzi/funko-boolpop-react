@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useCartContext } from "../../contexts/cartContext";
@@ -32,25 +32,11 @@ export default function Header({ setCartOpen }) {
               id="collapsibleNavId"
             >
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
-                {/*
-                va cambiato di nuovo in ul se serve mettere i link
-                
-                <li className="nav-item">
-                  <NavLink to={'/'} className="nav-link active text-white fs-4">
-                    <i className="bi bi-house-fill"></i>
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink to={'/'} className="nav-link text-white">
-                    Link
-                  </NavLink>
-                </li>*/}
               </div>
 
               <Link
                 onClick={() => setCartOpen(true)}
                 className="mx-4 text-white fs-4 position-relative"
-              // type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
               >
                 {cart.cartItemNumber > 0 ? (
                   <>

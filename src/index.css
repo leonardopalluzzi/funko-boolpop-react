@@ -2,7 +2,7 @@
 @import "bootstrap-icons";
 
 /*fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rampart+One&display=swap");
 
 /*common region*/
 * {
@@ -27,7 +27,6 @@ body {
   min-width: 400px;
   position: relative;
   background-color: #f6f7f8;
-
 }
 
 body::before {
@@ -360,8 +359,6 @@ footer {
     aspect-ratio: 1;
   }
 
-
-
   &:hover::after {
     content: "";
     position: absolute;
@@ -394,18 +391,17 @@ footer {
   }
 
   .text-promo {
-    color: var(--tertiary)
+    color: var(--tertiary);
   }
 
   .text-old-price {
     color: var(--darker);
-
   }
 }
 
 .product_page_img {
   height: 100%;
-  border: solid 1px var(--darker)
+  border: solid 1px var(--darker);
 }
 
 .card_on_click {
@@ -562,8 +558,6 @@ td {
   backdrop-filter: blur(3px);
   background-color: white;
 
-
-
   .order {
     display: flex;
     gap: 3px;
@@ -578,9 +572,7 @@ td {
       img {
         max-width: 100%;
       }
-
     }
-
 
     .order_col {
       width: 30%;
@@ -690,9 +682,7 @@ td {
   .jumbo-title {
     font-size: 2rem;
   }
-
 }
-
 
 /*tablet in su*/
 @media screen and (min-width: 768px) {
@@ -714,7 +704,6 @@ td {
   }
 
   .hover_cart {
-
     .cart_hover_display {
       display: table-cell;
     }
@@ -740,8 +729,6 @@ td {
       }
     }
   }
-
-
 }
 
 /*desktop in su*/
@@ -773,12 +760,9 @@ td {
   .order_container {
     max-width: 50%;
   }
-
-
 }
 
 @media screen and (min-width: 1440px) {
-
   .jumbo-title {
     font-size: 2.5rem;
   }
@@ -788,10 +772,15 @@ td {
   }
 }
 
+@media screen and (max-width: 575px) {
+  .bi-cart-fill::before {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
 
 /*search page*/
 .filter-text {
-
   color: var(--text-light);
   text-decoration: none;
 
@@ -802,7 +791,6 @@ td {
   &:active {
     color: var(--tertiary) !important;
   }
-
 }
 
 .bg-custom-darker {
@@ -824,16 +812,14 @@ td {
   margin-top: 5rem;
 
   h1 {
-    margin-bottom: -1.25rem !important
+    margin-bottom: -1.25rem !important;
   }
-
 }
 
 .custom-input {
   border: none;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
 }
 
 .custom-input:focus,

@@ -4,7 +4,6 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
-import { redirect } from "react-router-dom";
 import { useCartContext } from "../../contexts/cartContext";
 import LoaderUi from "../dumb/Loader.ui";
 import { useNavigate } from "react-router-dom";
@@ -52,14 +51,12 @@ export default function PaymentForm() {
     });
 
     if (checkCart) {
-
       setRecoverCart({
         state: "success",
         amount: checkCart.amount,
         shipping: checkCart.shipping,
-        data: checkCart.userCart
+        data: checkCart.userCart,
       });
-
     } else {
       setRecoverCart({
         state: "error",
@@ -153,12 +150,15 @@ export default function PaymentForm() {
         <>
           <div className="container my-5">
             <div className="cart_summary text-center my-5">
-              <h1>Cart Summary</h1>
+              <h1>Riepilogo Carrello</h1>
               <div className="container">
                 <div className="order_container border rounded-5 p-3 m-auto">
                   <OrderListUi orderList={recoverCart} />
                   <div>
-                    <h4>Tot: {(recoverCart.amount + recoverCart.shipping).toFixed(2)} €</h4>
+                    <h4>
+                      Tot:{" "}
+                      {(recoverCart.amount + recoverCart.shipping).toFixed(2)} €
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export default function PaymentForm() {
                   type="submit"
                   disabled={!stripe || loading}
                 >
-                  Pay Now
+                  Paga ora
                 </button>
                 {errorMessage && <div>{errorMessage}</div>}
                 <div>{errorMessage}</div>

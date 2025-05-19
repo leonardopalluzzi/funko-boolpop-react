@@ -24,7 +24,7 @@ export default function CheckoutFormUi({
           {/* user info  */}
 
           <div className="mb-3 mt-3">
-            <label className="form-label">Name</label>
+            <label className="form-label">Nome</label>
             <input
               value={checkout.username}
               onChange={(e) => onChangeUser(e.target.name, e.target.value)}
@@ -39,7 +39,7 @@ export default function CheckoutFormUi({
           </div>
 
           <div className="mb-3">
-            <label className="form-label">Last Name</label>
+            <label className="form-label">Cognome</label>
             <input
               value={checkout.user_last_name}
               onChange={(e) => onChangeUser(e.target.name, e.target.value)}
@@ -71,12 +71,12 @@ export default function CheckoutFormUi({
           <div className="container shipping_address">
             {/* shipping info  */}
 
-            <h3>Shipping Address</h3>
+            <h3>Indirizzo di spedizione</h3>
 
             <div className="row row-cols-1 row-cols-md-2">
               <div className="col">
                 <div className="mb-3">
-                  <label className="form-label">City</label>
+                  <label className="form-label">Città</label>
                   <input
                     value={shipping.city}
                     onChange={(e) =>
@@ -93,7 +93,7 @@ export default function CheckoutFormUi({
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Province</label>
+                  <label className="form-label">Provincia</label>
                   <input
                     value={shipping.province}
                     onChange={(e) =>
@@ -110,7 +110,7 @@ export default function CheckoutFormUi({
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Nation</label>
+                  <label className="form-label">Nazione</label>
                   <input
                     value={shipping.nation}
                     onChange={(e) =>
@@ -128,7 +128,7 @@ export default function CheckoutFormUi({
               </div>
               <div className="col">
                 <div className="mb-3">
-                  <label className="form-label">Street</label>
+                  <label className="form-label">Indirizzo</label>
                   <input
                     value={shipping.street}
                     onChange={(e) =>
@@ -145,7 +145,7 @@ export default function CheckoutFormUi({
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Civic</label>
+                  <label className="form-label">Civico</label>
                   <input
                     value={shipping.civic}
                     onChange={(e) =>
@@ -193,7 +193,8 @@ export default function CheckoutFormUi({
               />
               <label className="form-check-label">
                 {" "}
-                Billing Address different from Shipping Address{" "}
+                Indirizzo di Fatturazione differente dall'indirizzo di
+                Spedizione{" "}
               </label>
             </div>
           </div>
@@ -204,12 +205,12 @@ export default function CheckoutFormUi({
               <div className="container billing_address">
                 {/* Billing info  */}
 
-                <h3>Billing Address</h3>
+                <h3>Indirizzo di Fatturazione</h3>
 
                 <div className="row row-cols-1 row-cols-md-2">
                   <div className="col">
                     <div className="mb-3">
-                      <label className="form-label">City</label>
+                      <label className="form-label">Città</label>
                       <input
                         value={billing.billing_city}
                         onChange={(e) =>
@@ -226,7 +227,7 @@ export default function CheckoutFormUi({
                     </div>
 
                     <div className="mb-3">
-                      <label className="form-label">Province</label>
+                      <label className="form-label">Provincia</label>
                       <input
                         value={billing.billing_province}
                         onChange={(e) =>
@@ -243,7 +244,7 @@ export default function CheckoutFormUi({
                     </div>
 
                     <div className="mb-3">
-                      <label className="form-label">Nation</label>
+                      <label className="form-label">Nazione</label>
                       <input
                         value={billing.billing_nation}
                         onChange={(e) =>
@@ -261,7 +262,7 @@ export default function CheckoutFormUi({
                   </div>
                   <div className="col">
                     <div className="mb-3">
-                      <label className="form-label">Street</label>
+                      <label className="form-label">Indirizzo</label>
                       <input
                         value={billing.billing_street}
                         onChange={(e) =>
@@ -278,7 +279,7 @@ export default function CheckoutFormUi({
                     </div>
 
                     <div className="mb-3">
-                      <label className="form-label">Civic</label>
+                      <label className="form-label">Civico</label>
                       <input
                         value={billing.billing_civic}
                         onChange={(e) =>
@@ -319,7 +320,7 @@ export default function CheckoutFormUi({
             type="submit"
             className={`${styles.btn_proceed} btn  ms-2 mt-3 mb-3`}
           >
-            Proceed to payment
+            Procedi al pagamento
           </button>
         </form>
       </div>

@@ -1,6 +1,5 @@
 import AdvancedSearchUi from "../dumb/AdvancedSearch.ui"
 import { useState, useEffect } from 'react';
-import SearchResultsUi from "../dumb/SearchResults.ui";
 import Loader from "../dumb/Loader.ui";
 import { useFiltersContext } from "../../contexts/filtersContext";
 
@@ -52,7 +51,6 @@ export default function AdvancedSearch() {
         fetch('http://localhost:3000/api/v1/funkoboolpop?getAttribute=true')
             .then((res) => res.json())
             .then((data) => {
-                console.log(`lista attributei: ${data}`);
                 setAttributeList({
                     state: 'success',
                     data: data,
@@ -85,10 +83,6 @@ export default function AdvancedSearch() {
                 });
             });
     }, [])
-
-    function handleSearch(searchText) {
-        //inserire redirect ad una pagina con i risultati della ricerca al submit
-    }
 
 
     if (categoryList.state === 'loading' || promoList.state === 'loading' || attributeList.state === 'loading') {

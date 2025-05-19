@@ -26,7 +26,7 @@ function PaymentProvider({ children }) {
     }, [])
 
     function paymentIntent(form) {
-        console.log(form);
+
 
         fetch('http://localhost:3000/api/v1/transactions', {
             method: 'POST',
@@ -35,7 +35,7 @@ function PaymentProvider({ children }) {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 sessionStorage.setItem('clientSecret', data.clientSecret)
                 if (data.clientSecret) {
                     setPayment({

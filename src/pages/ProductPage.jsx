@@ -6,6 +6,7 @@ import { useCartContext } from "../contexts/cartContext";
 import CarouselUi from "../components/dumb/Carousel.ui";
 import List from "../components/smart/List";
 import Loader from "../components/dumb/Loader.ui";
+import btnStyles from "../assets/css_modules/btnQuantity.module.css";
 
 export default function ProductPage() {
 
@@ -15,22 +16,16 @@ export default function ProductPage() {
 
     const navigate = useNavigate();
 
-    const [products, setProducts] = useState({
-        state: 'loading'
-    })
-
     const [funko, setFunkos] = useState({
         state: "loading",
     });
 
     const [pageSlug, setPageSlug] = useState(slug)
-
-    const [productQuantity, setProductQuantity] = useState(0)
     const [cartItem, setCartItem] = useState(null)
-    // const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
     const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
     const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
     const date = 1; //imposta l'ordinamento per data
+    const [displayMsg, setDisplayMsg] = useState(false)
 
     const [suggested, setSuggested] = useState({
         state: 'laoding'
@@ -41,6 +36,15 @@ export default function ProductPage() {
 
         setPageSlug(slug)
     }, [slug])
+
+
+    useEffect(() => {
+        setDisplayMsg(true)
+        const timer = setInterval(() => {
+            setDisplayMsg(false)
+        }, 3000)
+        return () => clearInterval(timer)
+    }, [cart])
 
 
     useEffect(() => {
@@ -65,10 +69,6 @@ export default function ProductPage() {
 
             const foundItem = cart.userCart.find(item => item.slug === funko.result.slug);
             foundItem != undefined ? setCartItem(foundItem) : setCartItem(null)
-            setProductQuantity(
-                foundItem ? foundItem.quantity : funko.result.quantity
-            );
-
         }
     }, [funko, cart])
 
@@ -90,7 +90,7 @@ export default function ProductPage() {
                     message: err.message
                 })
             })
-    }, [pageSlug])
+    }, [pageSlug, pageDate])
 
 
 
@@ -126,7 +126,6 @@ export default function ProductPage() {
                                     <label htmlFor="">{funko.result.license.toUpperCase()}</label>
                                     <h2 className="mb-2">{funko.result.name}</h2>
                                     <div className="price_section">
-                                        {/* <h2 className="mb-4">Price:</h2> */}
                                         <div>
                                             {funko.result.promotion.length > 0 ? (
                                                 <>
@@ -153,33 +152,43 @@ export default function ProductPage() {
                                             )}
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={() => handleCart(funko.result, funko.result.quantity)}
-                                        className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
-                                        type="submit"
-                                    >
-                                        Add to cart
-                                    </button>
-
-                                    <div>
+                                    {
+                                        cartItem ? (<></>) : (
+                                            <>
+                                                <button
+                                                    onClick={() => handleCart(funko.result, funko.result.quantity)}
+                                                    className={`${styles.btn_add} btn btn_chart my-2 my-sm-0`}
+                                                    type="submit"
+                                                >
+                                                    Aggiungi al carrello
+                                                </button>
+                                            </>
+                                        )
+                                    }
+                                    <div className={btnStyles.btn_container}>
                                         {cartItem ? (
                                             <>
-                                                <button className="btn btn-transparent" onClick={() => subtractCartQuantity(cartItem)}>-</button>
-                                                {cartItem.cartQuantity}
-                                                <button className="btn btn-transparent" onClick={() => addCartQuantity(cartItem, funko.result.quantity)}>+</button>
+                                                <button className={btnStyles.btn_quantity} onClick={() => subtractCartQuantity(cartItem)}>-</button>
+                                                <div className={btnStyles.btn_item}>
+                                                    {cartItem.cartQuantity}
+                                                </div>
+                                                <button className={btnStyles.btn_quantity} onClick={() => addCartQuantity(cartItem, funko.result.quantity)}>+</button>
                                             </>
                                         ) : (<></>)}
 
                                     </div>
-                                    <span className="mx-4">{cart.message}</span>
+                                    {
+                                        displayMsg ? (<><span className="mx-4">{cart.message}</span></>) : (<></>)
+                                    }
+
 
                                     <span className="d-block pt-4">
                                         {" "}
-                                        <i class="bi bi-box-fill"></i> Available: {cartItem != null ? cartItem.quantity : funko.result.quantity}
+                                        <i class="bi bi-box-fill"></i> Disponibilita: {cartItem != null ? cartItem.quantity : funko.result.quantity}
                                     </span>
 
                                     <div className="product_description">
-                                        <h4>Description:</h4>
+                                        <h4>Descrizione:</h4>
                                         <p>{funko.result.description}</p>
                                     </div>
                                     <div
@@ -196,7 +205,7 @@ export default function ProductPage() {
                                                     aria-expanded="true"
                                                     aria-controls="collapseOne"
                                                 >
-                                                    Additional Information
+                                                    Informazioni aggiuntive
                                                 </button>
                                             </h2>
                                             <div
@@ -206,14 +215,14 @@ export default function ProductPage() {
                                             >
                                                 <div className="accordion-body">
                                                     <p>
-                                                        <strong>Category:</strong> {funko.result.category}
+                                                        <strong>Categoria: :</strong> {funko.result.category}
                                                     </p>
                                                     <p>
-                                                        <strong>License: </strong>
+                                                        <strong>Licensa: </strong>
                                                         {funko.result.license}
                                                     </p>
                                                     <div>
-                                                        <strong>Special Attributes:</strong>
+                                                        <strong>Attributi Speciali:</strong>
                                                         <ul className="list-unstyled">
                                                             {funko.result.attributes.map((item) => (
                                                                 <>

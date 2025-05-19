@@ -1,29 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../contexts/cartContext";
-import { useEffect, useState } from "react";
 import styles from "../assets/css_modules/CartPage.module.css";
+import btnStyles from "../assets/css_modules/btnQuantity.module.css";
 
 export default function Cart() {
-  const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity, setCart } =
+
+  const { cart, deleteFromCart, subtractCartQuantity, addCartQuantity } =
     useCartContext();
-  console.log(cart);
 
   const navigate = useNavigate();
-
-  console.log(`cart shipping in cart page: ${cart.shipping}`);
-
 
   switch (true) {
     case cart.userCart.length == 0:
       return (
         <>
           <div className="container empty_cart">
-            <h3>You don't have anything in your cart</h3>
+            <h3>Non hai ancora aggiunto prodotti al carrello</h3>
             <p className="fs-2">
               <i class="bi bi-emoji-frown-fill"></i>
             </p>
+
             <button onClick={() => navigate("/")} className="btn btn-dark mt-4">
-              <i class="bi bi-arrow-left-short"></i> Home Page
+              <i class="bi bi-arrow-left-short"></i> Torna alla Home
             </button>
           </div>
         </>
@@ -42,22 +40,22 @@ export default function Cart() {
                     scope="col"
                     style={{ width: "15%" }}
                   >
-                    Product Image
+                    Immagine prodotto
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Product Name
+                    Nome prodotto
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Promotions
+                    Promozioni
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Quantity
+                    Quantità
                   </th>
                   <th className={styles.table_header} scope="col">
-                    Price*
+                    Prezzo*
                   </th>
                   <th className={styles.table_header} scope="col">
-                    ACTIONS
+                    Azioni
                   </th>
                 </tr>
               </thead>
@@ -108,17 +106,19 @@ export default function Cart() {
                             <span>{item.promotion[0].discount}%</span>
                           </>
                         ) : (
-                          <>No promotions found</>
+                          <>Nessuna promozione trovata</>
                         )}
                       </td>
                       <td className={`${styles.table_body} ${styles.desktop}`}>
                         <button
                           onClick={() => subtractCartQuantity(item)}
-                          className="btn btn-transaprent fs-3 p-2"
+                          className={btnStyles.btn_quantity}
                         >
                           -
                         </button>
-                        X{item.cartQuantity}
+                        <div className={btnStyles.btn_item}>
+                          <span className="fs-5">X{item.cartQuantity}</span>
+                        </div>
                         <button
                           onClick={() =>
                             addCartQuantity(
@@ -126,11 +126,11 @@ export default function Cart() {
                               item.cartQuantity + item.quantity
                             )
                           }
-                          className="btn btn-transaprent fs-4 p-2"
+                          className={btnStyles.btn_quantity}
                         >
                           +
                         </button>
-                        <p className={styles.add_message}>{cart.message}</p>
+                        {/* <p className={styles.add_message}>{cart.message}</p> */}
                       </td>
                       <td className={`${styles.table_body} ${styles.desktop}`}>
                         {item.promotion.length > 0 ? (
@@ -158,11 +158,15 @@ export default function Cart() {
                         <td className={styles.table_body}>
                           <button
                             onClick={() => subtractCartQuantity(item)}
-                            className="btn btn-transaprent fs-3 p-2"
+                            className={btnStyles.btn_quantity}
                           >
                             -
                           </button>
-                          X{item.cartQuantity}
+                          <div className={btnStyles.btn_item}>
+                            <span className="fs-5">X{item.cartQuantity}</span>
+
+                          </div>
+
                           <button
                             onClick={() =>
                               addCartQuantity(
@@ -170,11 +174,11 @@ export default function Cart() {
                                 item.cartQuantity + item.quantity
                               )
                             }
-                            className="btn btn-transaprent fs-4 p-2"
+                            className={btnStyles.btn_quantity}
                           >
                             +
                           </button>
-                          <p className={styles.add_message}>{cart.message}</p>
+                          {/* <p className={styles.add_message}>{cart.message}</p> */}
                         </td>
                         <td
                           className={`${styles.table_body} ${styles.price_tag}`}
@@ -221,10 +225,14 @@ export default function Cart() {
               </tbody>
             </table>
             <div className={`${styles.total_price} total`}>
-              <h5>TOTAL: </h5>
-              <h4 className={styles.price}>{(cart.amount + cart.shipping).toFixed(2)}€</h4>
-              <h6>Shipping:</h6>
-              <p>{cart.shipping === 0 ? (<>Free!</>) : (<>{cart.shipping}€</>)}</p>
+              <h5>TOTALE: </h5>
+              <h4 className={styles.price}>
+                {(cart.amount + cart.shipping).toFixed(2)}€
+              </h4>
+              <h6>Spedizione: </h6>
+              <p>
+                {cart.shipping === 0 ? <>Gratuita!</> : <>{cart.shipping}€</>}
+              </p>
             </div>
             <div className={styles.payment}>
               <button
@@ -232,7 +240,7 @@ export default function Cart() {
                 class={`${styles.btn_payment} btn fs-3 my-2 my-sm-0`}
                 type="submit"
               >
-                Proceed to payment
+                Procedi al pagamento
               </button>
             </div>
           </div>

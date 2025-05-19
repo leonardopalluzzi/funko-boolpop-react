@@ -1,6 +1,5 @@
 import styles from "../../assets/css_modules/Loader.module.css"
 
-
 export default function Loader() {
   return (
     <div
