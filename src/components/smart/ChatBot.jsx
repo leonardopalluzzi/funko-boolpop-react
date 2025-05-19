@@ -7,8 +7,6 @@ import { useCartContext } from '../../contexts/cartContext'
 export default function ChatBot({ onClose }) {
 
     const { cart } = useCartContext()
-    console.log(cart);
-
 
     const [question, setQuestion] = useState('')
     const [messages, setMessages] = useState([])
