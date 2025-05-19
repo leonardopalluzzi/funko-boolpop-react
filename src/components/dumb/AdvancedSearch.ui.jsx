@@ -127,16 +127,16 @@ export default function AdvancedSearchUi({ searchName, searchDescription, search
                                     name="promotion"
 
                                 >
-                                    <option value='' selected>Sort By</option>
+                                    <option value='' selected>Scegli un opzione</option>
 
                                     {/* fare map per le options  */}
 
-                                    <option value="price=1">Sort By Price Cheaper</option>
-                                    <option value="price=-1">Sort By Price Most Expensive</option>
-                                    <option value="date=1">Sort By Date last Arrive</option>
-                                    <option value="date=-1">Sort By Date Oldest</option>
-                                    <option value="sales=1">Sort By Most Sold</option>
-                                    <option value="sales=-1">Sort By Less Sold</option>
+                                    <option value="price=1">Price Cheaper</option>
+                                    <option value="price=-1">Price Most Expensive</option>
+                                    <option value="date=1">Date last Arrive</option>
+                                    <option value="date=-1">Date Oldest</option>
+                                    <option value="sales=1">Most Sold</option>
+                                    <option value="sales=-1">Less Sold</option>
 
                                 </select>
                             </div>
