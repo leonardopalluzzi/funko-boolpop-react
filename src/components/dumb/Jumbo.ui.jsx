@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function JumboUi({ productList, slideIndex, setIndex }) {
+
+    const navigate = useNavigate()
+
     return (
         <>
 
@@ -9,7 +12,7 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
                     <div className="col col-lg-3 jumbo_info">
                         <h1 className="jumbo-title">{productList[slideIndex].name}</h1>
                         <p className="pb-4 me-1 fs-6 d-none d-lg-block">{productList[slideIndex].description}</p>
-                        <button className="btn btn-primary my-2">Details</button>
+                        <button onClick={() => navigate(`/${productList[slideIndex].slug}`)} className="btn btn-dark my-2">Details</button>
                     </div>
                     <div className="col col-lg-8">
                         <div className="img_jumbo_container">

@@ -81,7 +81,7 @@ body::before {
 }
 
 .btn-dark {
-  background-color: var(--darker);
+  background-color: var(--fb-background-dark);
 }
 
 /*accordion*/
