@@ -1,7 +1,7 @@
 .btn_quantity {
 
-    background-color: var(--darker);
-    color: var(--text-light);
+    background-color: var(--fb-darker);
+    color: var(--fb-text-light);
     padding: 1px 10px;
     border: none;
     border-radius: 0;
@@ -24,6 +24,6 @@
 }
 
 .btn_quantity:hover {
-    background-color: var(--tertiary);
-    color: var(--darker);
+    background-color: var(--fb-tertiary);
+    color: var(--fb-darker);
 }

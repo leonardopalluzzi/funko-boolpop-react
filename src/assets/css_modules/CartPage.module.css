@@ -1,56 +1,45 @@
-:root {
-  --background: #fcfcfc;
-  --darker: #2e3532;
-  --primary: #dd3355;
-  --secondary: #f0d3f7;
-  --tertiary: #fbd87f;
-  --accent: #81d2c7;
-  --text: #000000;
-  --text-light: #ffffff;
-}
-
 .table_border {
   border-radius: 20px;
   overflow: hidden;
 }
 
 .table_header {
-  color: var(--darker) !important;
+  color: var(--fb-darker) !important;
   text-align: center;
   text-transform: uppercase;
 }
 
 .table_body {
-  color: var(--darker) !important;
+  color: var(--fb-darker) !important;
   text-align: center;
   vertical-align: middle;
 }
 
 .btn_delete {
-  background-color: var(--darker) !important;
-  color: var(--text-light) !important;
+  background-color: var(--fb-darker) !important;
+  color: var(--fb-text-light) !important;
 }
 
 .btn_delete:hover {
-  background-color: var(--primary) !important;
-  color: var(--text-light) !important;
+  background-color: var(--fb-primary) !important;
+  color: var(--fb-text-light) !important;
 }
 
 .btn_watch {
-  background-color: var(--darker) !important;
+  background-color: var(--fb-darker) !important;
   color: var(--text-light) !important;
 }
 
 .btn_watch:hover {
-  background-color: var(--accent) !important;
-  color: var(--text-light) !important;
+  background-color: var(--fb-accent) !important;
+  color: var(--fb-text-light) !important;
 }
 
 .total_price {
   flex-direction: row !important;
   justify-content: end;
   background-color: white;
-  border: 1px solid var(--darker);
+  border: 1px solid var(--fb-darker);
 }
 
 .price {
@@ -65,13 +54,13 @@
 }
 
 .btn_payment {
-  background-color: var(--darker);
-  color: var(--background);
+  background-color: var(--fb-darker);
+  color: var(--fb-background);
 }
 
 .btn_payment:hover {
-  background-color: var(--accent);
-  color: var(--darker);
+  background-color: var(--fb-accent);
+  color: var(--fb-darker);
 }
 
 /* UTILITY */
@@ -90,6 +79,7 @@
     border: none !important;
     border-radius: 0 !important;
   }
+
   .table_mobile {
     display: block;
     width: 100%;
@@ -100,7 +90,7 @@
   .table_mobile tbody tr {
     display: block;
     margin-bottom: 1rem;
-    border: 1px solid var(--darker);
+    border: 1px solid var(--fb-darker);
     border-radius: 20px !important;
     padding: 1rem;
     background-color: white;
@@ -164,34 +154,4 @@
   .desktop {
     display: none !important;
   }
-  /* .table_body {
-    display: none;
-  } */
-
-  /* UTILITY */
-  /* .vertical_align {
-    justify-content: center !important;
-  } */
-
-  /* .td_img_container {
-    display: none;
-  } */
-
-  /* .td_img_container img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  } */
-
-  /* .table_mobile tbody {
-    display: block;
-  } */
-
-  /* .mobile_header_row {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: 0 !important;
-  } */
 }

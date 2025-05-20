@@ -1,20 +1,9 @@
-:root {
-  --background: #fcfcfc;
-  --darker: #2e3532;
-  --primary: #dd3355;
-  --secondary: #f0d3f7;
-  --tertiary: #fbd87f;
-  --accent: #81d2c7;
-  --text: #000000;
-  --text-light: #ffffff;
-}
-
 .btn_load {
-  background-color: var(--darker);
-  color: var(--text-light);
+  background-color: var(--fb-darker);
+  color: var(--fb-text-light);
 }
 
 .btn_load:hover {
-  background-color: var(--tertiary);
-  color: var(--darker);
+  background-color: var(--fb-tertiary);
+  color: var(--fb-darker);
 }

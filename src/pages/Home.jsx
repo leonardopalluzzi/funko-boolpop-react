@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Jumbo />
 
-      <main className="debug">
+      <main className="">
         <HomeCarousels />
 
       </main>

@@ -1,20 +1,9 @@
-:root {
-  --background: #fcfcfc;
-  --darker: #2e3532;
-  --primary: #dd3355;
-  --secondary: #f0d3f7;
-  --tertiary: #fbd87f;
-  --accent: #81d2c7;
-  --text: #000000;
-  --text-light: #ffffff;
-}
-
 .btn_proceed {
-  background-color: var(--darker);
+  background-color: var(--fb-darker);
   color: var(--text-light);
 }
 
 .btn_proceed:hover {
-  background-color: var(--accent);
-  color: var(--darker);
+  background-color: var(--fb-accent);
+  color: var(--fb-darker);
 }

@@ -9,8 +9,8 @@ export default function CardUi({ images, name, price, license, promotions, slug 
         <>
             <div className="col">
                 <div onClick={() => navigate(`/${slug}`)
-                } className="card_on_click">
-                    <div className="card w-100 h-100">
+                }>
+                    <div className="card h-100">
                         <div className="card-header p-0">
                             <ProductImages images={images} />
                         </div>

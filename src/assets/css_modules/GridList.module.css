@@ -1,18 +1,7 @@
-:root {
-  --background: #fcfcfc;
-  --darker: #2e3532;
-  --primary: #dd3355;
-  --secondary: #f0d3f7;
-  --tertiary: #fbd87f;
-  --accent: #81d2c7;
-  --text: #000000;
-  --text-light: #ffffff;
-}
-
 .list_container {
   margin: 1rem 0;
 
-  border: 1px solid var(--darker);
+  border: 1px solid var(--fb-darker);
   border-radius: 20px;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -44,7 +33,7 @@
 .item_title {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--darker);
+  color: var(--fb-darker);
 }
 
 .item_description {
@@ -59,11 +48,11 @@
 }
 
 .text_promo_list {
-  color: var(--primary) !important;
+  color: var(--fb-primary) !important;
 }
 
 .text_old_price_list {
-  color: #6c757d !important;
+  color: var(--fb-accent) !important;
 }
 
 @media (max-width: 767px) {
