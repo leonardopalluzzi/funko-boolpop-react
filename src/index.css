@@ -1,10 +1,10 @@
+/* =======================
+   COMMON RULES
+   ======================= */
 @import "bootstrap";
 @import "bootstrap-icons";
-
-/*fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Rampart+One&display=swap");
 
-/*common region*/
 * {
   margin: 0;
   box-sizing: border-box;
@@ -31,14 +31,6 @@
   /* Bianco puro */
 }
 
-
-
-
-
-
-
-
-
 body {
   min-width: 400px;
   position: relative;
@@ -48,8 +40,6 @@ body {
   font-style: normal;
   color: var(--fb-text-light);
 }
-
-
 
 body::before {
   content: "";
@@ -85,7 +75,6 @@ body::before {
 }
 
 /*accordion*/
-
 .accordion_button {
   width: 100%;
   background-color: transparent;
@@ -119,7 +108,6 @@ body::before {
 }
 
 /* #region carosello per cards  */
-
 .caro_btn {
   background-color: transparent;
   font-size: 2rem;
@@ -148,42 +136,6 @@ body::before {
   max-width: 100%;
 }
 
-/*#region JUMBO region*/
-
-.jumbo_slide {
-  background-color: var(--fb-accent);
-  min-height: 50vh;
-  padding: 2rem 1rem;
-  position: relative;
-}
-
-.jumbo_img {
-  max-width: 100%;
-
-}
-
-.jumbo_info {
-  color: var(--fb-background-dark);
-  z-index: 10;
-
-  .jumbo-title {
-    font-size: 1.8rem;
-    font-weight: 900;
-  }
-}
-
-.img_jumbo_container {
-  transition-duration: 1s;
-}
-
-/* #endregion JUMBO region  */
-
-#filtersForm {
-  label {
-    font-size: 0.7rem;
-  }
-}
-
 .dots {
   position: absolute;
   z-index: 10;
@@ -205,43 +157,13 @@ body::before {
   }
 }
 
-/* #endregion carosello per cards  */
-
 .page_counter {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-/*HEADER*/
-header {
-  background-color: var(--fb-background-dark);
-  color: var(--fb-text-light);
-
-  overflow: hidden;
-  background-image: url("/halftone.svg");
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-
-  .custom-btn {
-    background-color: var(--darker);
-    color: white;
-    border: none;
-  }
-
-  .custom-btn:hover {
-    background-color: var(--tertiary);
-    color: var(--darker);
-  }
-
-  img {
-    max-width: 20rem;
-    padding-block: 1rem;
-  }
-}
-
-/*cambia gli effetti del bottone con l'icona search*/
+/* cambia gli effetti del bottone con l'icona search */
 .btn:focus,
 .btn:active {
   box-shadow: none;
@@ -274,23 +196,7 @@ header {
   box-shadow: 0 0 0 2px var(--tertiary);
 }
 
-/*FOOTER*/
-
-footer {
-  /*background-color: var(--darker);*/
-  background-color: var(--fb-primary);
-  overflow: hidden;
-  background-image: url("/halftone.svg");
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-  font-weight: bold;
-
-  a {
-    color: var(--accent);
-  }
-}
-
+/* Product Images */
 .product_images {
   width: 100%;
   height: 100%;
@@ -641,8 +547,138 @@ td {
   /* Nasconde la scrollbar su Chrome, Edge e Safari */
 }
 
-/*media query*/
+/*search page*/
+.filter-text {
+  color: var(--fb-text-light);
+  text-decoration: none;
 
+  &:hover {
+    color: var(--fb-tertiary);
+  }
+
+  &:active {
+    color: var(--fb-tertiary) !important;
+  }
+}
+
+.bg-custom-darker {
+  background-color: var(--fb-darker);
+}
+
+.btn-custom-primary {
+  background-color: var(--fb-tertiary);
+  font-weight: 600;
+}
+
+.cancel-focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* productPage */
+.carousel_productpage {
+  margin-top: 5rem;
+
+  h1 {
+    margin-bottom: -1.25rem !important;
+  }
+}
+
+.custom-input {
+  border: none;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-input:focus,
+.custom-input:active {
+  border-color: var(--fb-tertiary);
+  box-shadow: 0 0 0 2px var(--fb-tertiary);
+}
+
+/* =======================
+   HEADER
+   ======================= */
+header {
+  background-color: var(--fb-background-dark);
+  color: var(--fb-text-light);
+  overflow: hidden;
+  background-image: url("/halftone.svg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+
+  .custom-btn {
+    background-color: var(--darker);
+    color: white;
+    border: none;
+  }
+
+  .custom-btn:hover {
+    background-color: var(--tertiary);
+    color: var(--darker);
+  }
+
+  img {
+    max-width: 20rem;
+    padding-block: 1rem;
+  }
+}
+
+/* =======================
+   JUMBO
+   ======================= */
+.jumbo_slide {
+  background-color: var(--fb-accent);
+  min-height: 50vh;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+.jumbo_img {
+  max-width: 100%;
+}
+
+.jumbo_info {
+  color: var(--fb-background-dark);
+  z-index: 10;
+
+  .jumbo-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+  }
+}
+
+.img_jumbo_container {
+  transition-duration: 1s;
+}
+
+/* =======================
+   MAIN
+   ======================= */
+/* (Le regole main sono già incluse sopra come common rules, carosello, card, ecc.) */
+
+/* =======================
+   FOOTER
+   ======================= */
+footer {
+  /*background-color: var(--darker);*/
+  background-color: var(--fb-primary);
+  overflow: hidden;
+  background-image: url("/halftone.svg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  font-weight: bold;
+
+  a {
+    color: var(--accent);
+  }
+}
+
+/* =======================
+   MEDIA QUERY (from smaller to wider)
+   ======================= */
 @media screen and (min-width: 575px) {
   .search_results_container {
     max-width: 50%;
@@ -658,12 +694,9 @@ td {
   .jumbo_slide {
     min-height: 60vh;
   }
-
 }
 
-/*tablet in su*/
 @media screen and (min-width: 768px) {
-
   .cart-offcanvas {
     width: 60%;
   }
@@ -699,10 +732,7 @@ td {
   }
 }
 
-/*desktop in su*/
 @media screen and (min-width: 992px) {
-
-
   #filtersForm {
     label {
       font-size: 1rem;
@@ -753,53 +783,4 @@ td {
     font-size: 2rem;
     margin-bottom: 0.5rem;
   }
-}
-
-/*search page*/
-.filter-text {
-  color: var(--fb-text-light);
-  text-decoration: none;
-
-  &:hover {
-    color: var(--fb-tertiary);
-  }
-
-  &:active {
-    color: var(--fb-tertiary) !important;
-  }
-}
-
-.bg-custom-darker {
-  background-color: var(--fb-darker);
-}
-
-.btn-custom-primary {
-  background-color: var(--fb-tertiary);
-  font-weight: 600;
-}
-
-.cancel-focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* productPage */
-.carousel_productpage {
-  margin-top: 5rem;
-
-  h1 {
-    margin-bottom: -1.25rem !important;
-  }
-}
-
-.custom-input {
-  border: none;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.custom-input:focus,
-.custom-input:active {
-  border-color: var(--fb-tertiary);
-  box-shadow: 0 0 0 2px var(--fb-tertiary);
 }
