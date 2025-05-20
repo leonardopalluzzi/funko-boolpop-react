@@ -32,19 +32,7 @@ body {
   font-style: normal;
 }
 
-/*levare inisieme se si vogliono levare*/
-header {
-  position: fixed;
-  width: 100%;
-  z-index: 50;
-  box-shadow: 0px 0px 8px 0px black;
-}
 
-main {
-  margin-top: 5.6rem;
-}
-
-/*levare inisieme se si vogliono levare*/
 
 body::before {
   content: "";
@@ -228,6 +216,11 @@ body::before {
   }
 }
 
+#filtersForm {
+  label {
+    font-size: 0.7rem;
+  }
+}
 
 /*.jumbo-title {
   text-shadow:
@@ -793,6 +786,12 @@ td {
   .jumbo_img {
     width: 60%;
     left: 5%;
+  }
+
+  #filtersForm {
+    label {
+      font-size: 1rem;
+    }
   }
 
   .jumbo_slide {

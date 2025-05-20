@@ -29,7 +29,7 @@ export default function Cart() {
     case cart.userCart.length > 0:
       return (
         <>
-          <div className="container">
+          <div className="container my-5">
             <table
               class={`${styles.table_mobile} ${styles.table_border} table mt-3`}
             >
