@@ -172,7 +172,7 @@ body::before {
 .jumbo_info {
   position: absolute;
   z-index: 10;
-  bottom: 15%;
+  bottom: 8%;
   left: 5%;
   color: var(--darker);
   color: var(--sf-text);

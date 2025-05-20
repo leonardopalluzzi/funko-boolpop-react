@@ -10,8 +10,8 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
                 </Link>
 
                 <div className="jumbo_info">
-                    <h1 className="jumbo-title">{productList[slideIndex].name}</h1>
-                    <p className="pb-4 me-1 fs-6 d-none d-md-block">{productList[slideIndex].description}</p>
+                    <h1 className="jumbo-title d-none d-lg-block">{productList[slideIndex].name}</h1>
+                    {/* <p className="pb-4 me-1 fs-6 d-none d-lg-block">{productList[slideIndex].description}</p> */}
                 </div>
                 <div className="dots">
                     <ul className="list-unstyled">
