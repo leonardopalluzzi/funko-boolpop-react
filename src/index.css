@@ -32,6 +32,7 @@ body {
   font-style: normal;
 }
 
+/*levare inisieme se si vogliono levare*/
 header {
   position: fixed;
   width: 100%;
@@ -42,6 +43,8 @@ header {
 main {
   margin-top: 5.6rem;
 }
+
+/*levare inisieme se si vogliono levare*/
 
 body::before {
   content: "";
@@ -164,7 +167,10 @@ body::before {
 }
 
 .jumbo-title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+
 }
 
 .jumbo_img {
@@ -180,12 +186,11 @@ body::before {
 .jumbo_info {
   position: absolute;
   text-transform: uppercase;
-  font-weight: 800;
   z-index: 10;
   bottom: 15%;
   left: 5%;
   color: var(--darker);
-  background-color: rgba(53, 53, 53, 0.123);
+  background-color: rgba(53, 53, 53, 0.151);
   color: var(--sf-text);
   padding: 0 01rem;
   border-radius: 20px;
