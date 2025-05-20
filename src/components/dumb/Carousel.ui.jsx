@@ -5,48 +5,43 @@ export default function CarouselUi({ content, page, setPage, dataLength }) {
     const scrollRef = useRef(0)
     const { current } = scrollRef;
 
-
     function scroll(direction) {
         const scrollAmount = 1000;
 
         if (direction === 'right') {
-            if (page < dataLength) {
-                setPage(page + 1);
-            } else {
-                setPage(1);
-            }
-
-
             if (scrollRef?.current) {
-                scrollRef.current.scrollLeft = 0;
+                const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+                // alla fine dello scroll
+                if (Math.abs(scrollLeft + clientWidth - scrollWidth) < 5) {
+                    // cambia pagina avanti
+                    if (page < dataLength) {
+                        setPage(page + 1);
+                    } else {
+                        setPage(1);
+                    }
+                    // resetta lo scroll
+                    scrollRef.current.scrollLeft = 0;
+                } else {
+                    scrollRef.current.scrollLeft += scrollAmount;
+                }
             }
         } else if (direction === 'left') {
-            if (page > 1) {
-                setPage(page - 1);
-            } else {
-                setPage(dataLength);
-            }
-
-            // Resetta lo scroll
             if (scrollRef?.current) {
-                scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+                // Se siamo all'inizio dello scroll
+                if (scrollRef.current.scrollLeft === 0) {
+                    // Cambia pagina indietro
+                    if (page > 1) {
+                        setPage(page - 1);
+                    } else {
+                        setPage(dataLength);
+                    }
+                    // Porta lo scroll alla fine
+                    scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+                } else {
+                    scrollRef.current.scrollLeft -= scrollAmount;
+                }
             }
         }
-    }
-    function handleLoadNext() {
-        console.log(page);
-        console.log(dataLength);
-
-        if (page < dataLength) {
-            setPage(page + 1);
-        } else {
-            setPage(1);
-        }
-
-        if (scrollRef?.current) {
-            scrollRef.current.scrollLeft = 0;
-        }
-        console.log(page);
     }
 
     return (

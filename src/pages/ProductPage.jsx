@@ -112,7 +112,7 @@ export default function ProductPage() {
             return (
                 <>
                     <main>
-                        <div className="container py-5 h-100">
+                        <div className="container h-100">
                             <div className="row row-cols-1 row-cols-lg-2 ">
                                 <div
                                     className=" col col-xs-12 col-sm-12 col-md-12 col-lg-6 "
