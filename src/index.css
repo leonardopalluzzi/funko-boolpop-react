@@ -12,35 +12,41 @@
 }
 
 :root {
-  --fb-background: #f8f9fa;
-  /* Grigio chiarissimo – sfondo neutro */
-  --fb-darker: #1e1e2f;
-  /* Blu notte/grigio scuro – per header, footer o testo importante */
-  --fb-primary: #4a6fa5;
-  /* Blu acciaio – colore primario per bottoni/link */
-  --fb-secondary: #c3aed6;
-  /* Lavanda – colore secondario delicato ma distintivo */
-  --fb-tertiary: #ffb347;
-  /* Arancione pesca – colore terziario per enfasi */
-  --fb-tertiary-light: #ffe5b4;
-  /* Versione chiara del terziario – hover o sfondi morbidi */
-  --fb-accent: #5db7de;
-  /* Azzurro vivace – per accenti o call to action */
-  --fb-text: #1a1a1a;
-  /* Quasi nero – testo principale */
+  --fb-background: white;
+  --fb-background-dark: #121212;
+  /* Nero profondo */
+  --fb-primary: #ff4f00;
+  /* Arancio brillante */
+  --fb-secondary: #ff6f00;
+  /* Arancio più chiaro */
+  --fb-accent: #00b8d4;
+  /* Turchese acceso */
+  --fb-tertiary: #6200ea;
+  /* Viola intenso */
+  --fb-tertiary-light: #bb86fc;
+  /* Viola chiaro */
+  --fb-text: #e0e0e0;
+  /* Grigio chiaro */
   --fb-text-light: #ffffff;
-  /* Bianco – testo su sfondo scuro */
+  /* Bianco puro */
 }
+
+
+
+
+
+
 
 
 
 body {
   min-width: 400px;
   position: relative;
-  background-color: var(--background);
+  background-color: var(--fb-background);
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  color: var(--fb-text-light);
 }
 
 
@@ -142,80 +148,41 @@ body::before {
   max-width: 100%;
 }
 
-/*JUMBO region*/
+/*#region JUMBO region*/
 
 .jumbo_slide {
-  overflow: hidden;
-  min-width: 100%;
-  height: 26.5rem;
-  position: relative;
-  transition: transform 0.6s ease-in-out;
   background-color: var(--fb-accent);
-  background-size: cover;
-  background-position: center;
-}
-
-.jumbo-title {
-  font-size: 1.6rem;
-  font-weight: 800;
+  min-height: 50vh;
+  padding: 2rem 1rem;
+  position: relative;
 }
 
 .jumbo_img {
-  width: 100%;
-  object-fit: cover;
-  display: block;
-  margin-inline: auto;
-  margin-top: 1rem;
-  /*transform: scale(1);
-  transition: transform 1s ease;*/
+  max-width: 100%;
+
 }
 
 .jumbo_info {
-  position: absolute;
+  color: var(--fb-background-dark);
   z-index: 10;
-  bottom: 8%;
-  left: 5%;
-  color: var(--fb-text-light);
-  color: var(--fb-text);
-}
 
-
-.img_jumbo_container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 1s;
-
-  .jumbo_img {
-    transition-duration: 0.5s;
-    max-width: 100%;
-    height: auto;
-
-    &:hover {
-      transform: scale(1.02);
-    }
+  .jumbo-title {
+    font-size: 1.8rem;
+    font-weight: 900;
   }
 }
+
+.img_jumbo_container {
+  transition-duration: 1s;
+}
+
+/* #endregion JUMBO region  */
 
 #filtersForm {
   label {
     font-size: 0.7rem;
   }
 }
-
-/*.jumbo-title {
-  text-shadow:
-    -1px -1px 0 white,
-    1px -1px 0 white,
-    -1px 1px 0 white,
-    1px 1px 0 white,
-    -2px -2px 0 white,
-    2px -2px 0 white,
-    -2px 2px 0 white,
-    2px 2px 0 white;
-}*/
 
 .dots {
   position: absolute;
@@ -248,7 +215,8 @@ body::before {
 
 /*HEADER*/
 header {
-  background-color: var(--fb-primary);
+  background-color: var(--fb-background-dark);
+  color: var(--fb-text-light);
 
   overflow: hidden;
   background-image: url("/halftone.svg");
@@ -687,25 +655,14 @@ td {
     z-index: 20;
   }
 
-  /*.jumbo_slide {
-    height: 80vh;
-  }*/
-
-  .jumbo-title {
-    font-size: 2rem;
+  .jumbo_slide {
+    min-height: 60vh;
   }
+
 }
 
 /*tablet in su*/
 @media screen and (min-width: 768px) {
-  .jumbo_img {
-    width: 70%;
-  }
-
-  .jumbo_slide {
-    /*height: 75vh;*/
-    height: 28rem;
-  }
 
   .cart-offcanvas {
     width: 60%;
@@ -721,9 +678,8 @@ td {
     }
   }
 
-  .search_results_container {
-    max-width: 40%;
-    top: 8%;
+  .jumbo_slide {
+    min-height: 70vh;
   }
 
   .order_container {
@@ -745,10 +701,7 @@ td {
 
 /*desktop in su*/
 @media screen and (min-width: 992px) {
-  .jumbo_img {
-    width: 60%;
-    left: 5%;
-  }
+
 
   #filtersForm {
     label {
@@ -756,9 +709,14 @@ td {
     }
   }
 
+  .img_jumbo_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .jumbo_slide {
-    /*height: 75vh;*/
-    height: 28rem;
+    height: 60vh;
   }
 
   .cart-offcanvas {
@@ -786,7 +744,7 @@ td {
   }
 
   .jumbo_slide {
-    height: 70vh;
+    height: 80vh;
   }
 }
 
