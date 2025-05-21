@@ -11,7 +11,7 @@ export default function PromoBanner() {
     })
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?category=${categoryToDisplay}`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop?category=${categoryToDisplay}&limit=5`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

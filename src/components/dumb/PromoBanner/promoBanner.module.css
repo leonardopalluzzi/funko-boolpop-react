@@ -1,6 +1,10 @@
 #promo_banner {
     color: var(--fb-text);
     background-color: var(--fb-background-dark);
+    background-image: url('../../../../public/halftone-card-darken.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
     padding: 2rem 0;
 }
 

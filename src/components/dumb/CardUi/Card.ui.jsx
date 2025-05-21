@@ -1,5 +1,6 @@
-import ProductImages from "../smart/ProductImages"
+import ProductImages from "../../smart/ProductImages"
 import { useNavigate } from "react-router-dom"
+import style from './card.module.css'
 
 export default function CardUi({ images, name, price, license, promotions, slug }) {
     const navigate = useNavigate()
@@ -10,11 +11,11 @@ export default function CardUi({ images, name, price, license, promotions, slug 
             <div className="col">
                 <div onClick={() => navigate(`/${slug}`)
                 }>
-                    <div className="card h-100">
-                        <div className="card-header p-0">
+                    <div className={`card ${style.card_custom}`}>
+                        <div className="card-header border-0 p-0">
                             <ProductImages images={images} />
                         </div>
-                        <div className="card-body p-3">
+                        <div className="card-body border-0 p-3">
                             <span className="fs-8"> {license.name.toUpperCase()}</span>
                             <h4 className="pb-2 card-title">{name}</h4>
                             <div className="price_section_card">

@@ -129,6 +129,14 @@ body::before {
   /*height: 70vh;*/
 }
 
+.home_list_title {
+  color: var(--fb-text-dark);
+  text-align: center;
+  font-weight: 800;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px var(--fb-text-dark);
+}
+
 .lists_scroll::-webkit-scrollbar {
   display: none;
   /* Nasconde la scrollbar su gli altri browser*/

@@ -8,8 +8,6 @@ export default function HomeCarousels() {
     state: "loading",
   });
 
-  // const [scrollRefTrans, setScrollRefTrans] = useState(useRef())
-  // const [scrollRefLast, setScrollRefLast] = useState(useRef())
   const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
   const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
   const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
@@ -44,7 +42,17 @@ export default function HomeCarousels() {
     case "loading":
       return (
         <>
-          <Loader />
+          <div className="my-5">
+            <h1 className="home_list_title">PIU VENDUTI</h1>
+            <CarouselUi
+              content={
+                <>
+                  <Loader />
+                </>
+              }
+            />
+          </div>
+
         </>
       );
     case "error":
@@ -57,10 +65,10 @@ export default function HomeCarousels() {
     case "success":
       return (
         <>
-          <div className="container">
+          <div className="container-fluid">
             {/* piu venduti */}
-            <div className="mt-5">
-              <h1 className="fs-3">PIU VENDUTI</h1>
+            <div className="my-5">
+              <h1 className="home_list_title">PIU VENDUTI</h1>
               <CarouselUi
                 dataLength={products.dataTrans.totalPages}
                 page={pageTrans}
@@ -76,7 +84,7 @@ export default function HomeCarousels() {
             </div>
             {/*  ultimi arrivi */}
             <div className="my-5">
-              <h1 className="fs-3">ULTIMI ARRIVI</h1>
+              <h1 className="home_list_title">ULTIMI ARRIVI</h1>
               <CarouselUi
                 dataLength={products.dataDate.totalPages}
                 page={pageDate}

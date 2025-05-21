@@ -1,4 +1,4 @@
-import CardUi from "../dumb/Card.ui";
+import CardUi from "../dumb/CardUi/Card.ui";
 
 export default function List({ products }) {
   return (

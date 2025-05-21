@@ -1,0 +1,13 @@
+.card_custom {
+    height: 100%;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.199);
+    transition-duration: 0.5s;
+
+    &:hover {
+        box-shadow: 1px 1px 10px 2px var(--fb-tertiary-light);
+    }
+
+}
