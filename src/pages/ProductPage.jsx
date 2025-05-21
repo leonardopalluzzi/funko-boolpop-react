@@ -111,7 +111,7 @@ export default function ProductPage() {
         case "success":
             return (
                 <>
-                    <main>
+                    <main className="prod_page">
                         <div className="container my-5 h-100">
                             <div className="row row-cols-1 row-cols-lg-2 ">
                                 <div
@@ -124,7 +124,7 @@ export default function ProductPage() {
                                 </div>
                                 <div className="col">
                                     <label htmlFor="">{funko.result.license?.toUpperCase()}</label>
-                                    <h2 className="mb-2">{funko.result.name}</h2>
+                                    <h2 className="mb-2 prod_title">{funko.result.name}</h2>
                                     <div className="price_section">
                                         <div>
                                             {funko.result.promotion?.length > 0 ? (

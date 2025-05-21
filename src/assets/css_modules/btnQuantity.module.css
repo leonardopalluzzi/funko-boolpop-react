@@ -1,6 +1,6 @@
 .btn_quantity {
 
-    background-color: var(--fb-darker);
+    background-color: var(--fb-background-dark);
     color: var(--fb-text-light);
     padding: 1px 10px;
     border: none;
@@ -23,7 +23,10 @@
     font-size: 2rem;
 }
 
+.btn_add {
+    background-color: var(--fb-primary);
+}
+
 .btn_quantity:hover {
-    background-color: var(--fb-tertiary);
-    color: var(--fb-darker);
+    background-color: var(--fb-primary);
 }

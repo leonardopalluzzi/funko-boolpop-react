@@ -259,7 +259,7 @@ body::before {
 }
 
 .btn_chart {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-background-dark);
   color: var(--fb-background);
   padding: 1rem;
   border: none;
@@ -267,7 +267,7 @@ body::before {
   font-size: 1.5rem;
 
   &:hover {
-    background-color: var(--fb-tertiary);
+    background-color: var(--fb-primary);
   }
 }
 
@@ -286,7 +286,7 @@ body::before {
 
 .product_description {
   margin: 1.5rem 0;
-  border: 1px solid var(--fb-darker);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.26);
   background-color: white;
   padding: 1rem;
   border-radius: 20px;
@@ -630,6 +630,28 @@ header {
 
 
 /* #endregion banner bot  */
+
+/* #region product page  */
+.prod_page {
+  color: var(--fb-text-dark);
+}
+
+.product_page_img {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.247);
+  transition-duration: 1s;
+
+  &:hover {
+    box-shadow: 0 0 5px 1px var(--fb-tertiary-light);
+  }
+}
+
+.prod_title {
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+/* #endregion product page  */
 
 /* =======================
    MAIN
