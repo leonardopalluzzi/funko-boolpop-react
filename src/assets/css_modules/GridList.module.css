@@ -1,7 +1,7 @@
 .list_container {
   margin: 1rem 0;
 
-  border: 1px solid var(--fb-darker);
+  border: 1px solid var(--fb-background-dark);
   border-radius: 20px;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -33,7 +33,7 @@
 .item_title {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--fb-darker);
+  color: var(--fb-background-dark);
 }
 
 .item_description {

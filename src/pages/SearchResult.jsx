@@ -56,7 +56,7 @@ export default function SearchResult() {
             </div>
 
             <main className="container p-4">
-                <h1>Risultati ricerca</h1>
+                <h1 className="home_list_title mt-5">Risultati ricerca</h1>
                 {/* Risultati della ricerca*/}
                 <LayoutSearchProducts />
             </main>

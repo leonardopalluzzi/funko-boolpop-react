@@ -1,22 +1,23 @@
 .table_border {
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.301);
 }
 
 .table_header {
-  color: var(--fb-darker) !important;
+  color: var(--fb-text-dark) !important;
   text-align: center;
   text-transform: uppercase;
 }
 
 .table_body {
-  color: var(--fb-darker) !important;
+  color: var(--fb-text-dark) !important;
   text-align: center;
   vertical-align: middle;
 }
 
 .btn_delete {
-  background-color: var(--fb-darker) !important;
+  background-color: var(--fb-background-dark) !important;
   color: var(--fb-text-light) !important;
 }
 
@@ -26,25 +27,32 @@
 }
 
 .btn_watch {
-  background-color: var(--fb-darker) !important;
-  color: var(--text-light) !important;
+  background-color: var(--fb-background-dark) !important;
+  color: var(--fb-text-light) !important;
 }
 
 .btn_watch:hover {
-  background-color: var(--fb-accent) !important;
+  background-color: var(--fb-primary) !important;
   color: var(--fb-text-light) !important;
 }
 
 .total_price {
   flex-direction: row !important;
   justify-content: end;
-  background-color: white;
-  border: 1px solid var(--fb-darker);
+  background-color: var(--fb-accent);
+  border: 1px solid var(--fb-background-dark);
+  color: var(--fb-text-dark);
+  display: flex;
+  align-items: center;
 }
 
 .price {
   margin-left: 1rem;
   margin-right: 1rem;
+  background-color: var(--fb-primary);
+  padding: 0.5rem;
+  border-radius: 20px;
+  color: var(--fb-text-light);
 }
 
 .payment {
@@ -54,13 +62,13 @@
 }
 
 .btn_payment {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-background-dark);
   color: var(--fb-background);
 }
 
 .btn_payment:hover {
   background-color: var(--fb-accent);
-  color: var(--fb-darker);
+  color: var(--fb-text-dark);
 }
 
 /* UTILITY */
@@ -90,7 +98,7 @@
   .table_mobile tbody tr {
     display: block;
     margin-bottom: 1rem;
-    border: 1px solid var(--fb-darker);
+    border: 1px solid var(--fb-background-dark);
     border-radius: 20px !important;
     padding: 1rem;
     background-color: white;

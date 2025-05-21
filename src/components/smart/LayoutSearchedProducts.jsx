@@ -63,7 +63,7 @@ export default function LayoutSearchedProducts() {
                 </div>
               </div>
 
-              <div className="container">
+              <div className="container text-dark">
                 <div className={`items-container ${layout}`}>
                   <PaginationControls />
                   <GridLayout products={products.data} />

@@ -14,7 +14,7 @@ export default function ListLayout({ products }) {
   }
 
   return (
-    <div className="container py-4">
+    <div className="container py-4 text-dark">
       <ul className="list-unstyled">
         {products.results.map((item, i) => (
           <li

@@ -62,14 +62,13 @@ body::before {
 }
 
 .btn-warning {
-  background-color: var(--tertiary);
-  border: 1px solid var(--tertiary);
+  background-color: var(--fb-background-dark);
+  color: var(--tertiary-light);
+  border: none;
 }
 
 .btn-warning:hover {
-  background-color: var(--tertiary-light);
-  color: var(--darker) !important;
-  border: 1px solid var(--tertiary-light);
+  background-color: var(--fb-primary);
 }
 
 .btn-dark {
@@ -522,7 +521,7 @@ td {
 }
 
 .bg-custom-darker {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-accent);
 }
 
 .btn-custom-primary {

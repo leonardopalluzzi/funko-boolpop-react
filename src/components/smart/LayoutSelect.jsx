@@ -1,7 +1,7 @@
 export default function LayoutSelect({ setLayout, layout }) {
     return (
         <>
-            <div className="container">
+            <div className="container text-dark">
                 <div className="layout-buttons">
                     <button
                         onClick={() => setLayout("grid")}
