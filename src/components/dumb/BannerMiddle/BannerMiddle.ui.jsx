@@ -19,18 +19,19 @@ export default function BannerMiddleUi({ contentLeft, contentRight }) {
                 <>
                     <section id={style.banner_middle}>
                         <div className="container-fluid">
-                            <div className="row row-cols-1 row-cols-2">
-                                <div className="col text-center">
+                            <div className="row row-cols-1 row-cols-md-2 align-items-center justify-content-between">
+                                <div className="col-12 col-md-4 text-center">
                                     <h1 className={style.banner_title}>{contentLeft}</h1>
                                 </div>
-                                <div className="col text-center w-25">
-                                    <div className={`row row-cols-${images.length} position-relative`}>
+                                <div className={`${style.card_list_banner} col-12 col-md-7 text-center`}>
+                                    <div className="position-relative w-50 h-100">
                                         {
                                             contentRight.data.results.map((item, i) => (
                                                 <>
                                                     <div className={`${style.card_banner} card offset-${i + i} overflow-hidden bg-white rounded rounded-3`}>
-                                                        <div className="card-header bg-white">
+                                                        <div className={`${style.card_header} card-header bg-white border-0 position-relative h-100`}>
                                                             <img className={style.banner_img} src={`http://localhost:3000/${item.images[0].image}`} alt='' />
+                                                            <label className={style.promo_label} htmlFor="">{item.promotions[0].name}</label>
                                                         </div>
                                                     </div>
                                                 </>
@@ -39,8 +40,8 @@ export default function BannerMiddleUi({ contentLeft, contentRight }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='w-100 text-center'>
-                                <button onClick={() => navigate(`/search-result?searchOnly=true&promotion=${contentRight.data.results[0].promotions[0].name}`)} className='btn btn-dark'>Shop Now!</button>
+                            <div className='w-100 text-center my-4'>
+                                <button onClick={() => navigate(`/search-result?searchOnly=true&promotion=${contentRight.data.results[0].promotions[0].name}`)} className='btn btn-dark fs-4'>Shop Now!</button>
                             </div>
                         </div>
                     </section>

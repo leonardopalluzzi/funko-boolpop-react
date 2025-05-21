@@ -10,7 +10,7 @@
 }
 
 .banner_title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     width: 50%;
     text-align: center;
@@ -18,13 +18,85 @@
 }
 
 .banner_img {
+    width: 100%;
     max-width: 100%;
+    min-width: 100%;
+}
+
+.card_list_banner {
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card_banner {
     position: absolute;
-    width: 45%;
+    width: 100%;
+    max-width: 100%;
+    top: 60%;
+    left: 20%;
+    transform: translate(-50%, -50%);
     height: auto;
-    aspect-ratio: 1;
+    aspect-ratio: 0.8;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.397);
+}
+
+.promo_label {
+    position: absolute;
+    color: var(--fb-text-light);
+    font-weight: 700;
+    font-size: 1.5rem;
+    bottom: 5%;
+    left: 0;
+    background-color: var(--fb-primary);
+    padding: 0 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0px black;
+}
+
+@media screen and (min-width: 425px) {
+    .card_list_banner {
+        min-height: 400px;
+
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .card_list_banner {
+        min-height: 600px;
+
+    }
+
+    .banner_title {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card_list_banner {
+        max-width: 50%;
+        min-height: 400px;
+    }
+
+    .banner_title {
+        font-size: 3rem;
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .card_list_banner {
+        max-width: 50%;
+        min-height: 400px;
+    }
+
+    .card_banner {
+        max-height: 400px;
+    }
+
+    .banner_title {
+        font-size: 3rem;
+    }
 }
