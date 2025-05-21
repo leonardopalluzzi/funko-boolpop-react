@@ -116,6 +116,11 @@ body::before {
   font-weight: 700;
   color: var(--fb-accent);
   border: none;
+
+  .bi-caret-left,
+  .bi-caret-right {
+    text-shadow: 1px 1px 2px black;
+  }
 }
 
 .lists_scroll {
@@ -533,6 +538,8 @@ td {
 /* productPage */
 .carousel_productpage {
   margin-top: 5rem;
+  background-color: var(--fb-tertiary-light);
+  padding: 3rem 0;
 
   h1 {
     margin-bottom: -1.25rem !important;
@@ -706,6 +713,8 @@ footer {
   }
 
   .hover_cart {
+    color: var(--fb-text-dark);
+
     .cart_hover_display {
       display: table-cell;
     }

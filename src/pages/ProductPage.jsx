@@ -239,25 +239,30 @@ export default function ProductPage() {
                                     </div>
                                 </div>
                             </div>
-                            {suggested.state === 'success' ? (
-                                <>
-                                    <div className="carousel_productpage mb-5">
-                                        <h1 className="fs-3">Guarda anche...</h1>
-                                        <CarouselUi dataLength={suggested.results.totalPages} page={pageDate} setPage={setPageDate} content={(
-                                            <>
-                                                <List products={suggested.results} queryName={'date'} page={pageDate} query={date} />
 
-                                            </>
-                                        )} />
-                                    </div>
 
-                                </>
-                            ) : (
-                                <>
-                                    <Loader />
-                                </>
-                            )}
+                        </div>
+                        <div className="carousel_productpage">
+                            <div className="container-fluid">
+                                {suggested.state === 'success' ? (
+                                    <>
+                                        <div className="mb-5">
+                                            <h1 className="home_list_title">Guarda anche...</h1>
+                                            <CarouselUi dataLength={suggested.results.totalPages} page={pageDate} setPage={setPageDate} content={(
+                                                <>
+                                                    <List products={suggested.results} queryName={'date'} page={pageDate} query={date} />
 
+                                                </>
+                                            )} />
+                                        </div>
+
+                                    </>
+                                ) : (
+                                    <>
+                                        <Loader />
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </main>
                 </>

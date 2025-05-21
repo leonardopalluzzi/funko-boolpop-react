@@ -21,7 +21,7 @@
 }
 
 .btn_del {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-background-dark);
   color: var(--fb-text-light);
 }
 
@@ -31,32 +31,30 @@
 }
 
 .btn_watch {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-background-dark);
   color: var(--fb-text-light);
 }
 
 .btn_watch:hover {
-  background-color: var(--fb-tertiary);
+  background-color: var(--fb-primary);
   color: var(--fb-darker);
 }
 
 .btn_show {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-background-dark);
   color: var(--fb-text-light);
   margin-left: 0 !important;
 }
 
 .btn_show:hover {
-  background-color: var(--fb-tertiary);
-  color: var(--fb-darker);
+  background-color: var(--fb-primary);
 }
 
 .btn_proceed {
-  background-color: var(--fb-darker);
-  color: var(--text-light);
+  background-color: var(--fb-background-dark);
+  color: var(--fb-text-light);
 }
 
 .btn_proceed:hover {
-  background-color: var(--fb-accent);
-  color: var(--fb-darker);
+  background-color: var(--fb-primary);
 }

@@ -148,26 +148,32 @@ export default function CartHover({ onClose }) {
                     <h5 className="text-end">{cart.amount.toFixed(2)}</h5>
                   </div>
 
-                  <button
-                    onClick={() => {
-                      if (onClose) onClose();
-                      navigate(`/cart`);
-                    }}
-                    className={`${styles.btn_show} btn fs-5 my-2 my-sm-0 mx-3`}
-                    type="submit"
-                  >
-                    Vai al carrello
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (onClose) onClose();
-                      navigate(`/checkout`);
-                    }}
-                    className={`${styles.btn_proceed} btn fs-5 my-2 my-sm-0`}
-                    type="submit"
-                  >
-                    Procedi al pagamento
-                  </button>
+                  <div className="row row-cols-1 row-cols-md-3 gap-3 w-100">
+                    <div className="col">
+                      <button
+                        onClick={() => {
+                          if (onClose) onClose();
+                          navigate(`/cart`);
+                        }}
+                        className={`${styles.btn_show} btn fs-5`}
+                        type="submit"
+                      >
+                        Vai al carrello
+                      </button>
+                    </div>
+                    <div className="col">
+                      <button
+                        onClick={() => {
+                          if (onClose) onClose();
+                          navigate(`/checkout`);
+                        }}
+                        className={`${styles.btn_proceed} btn fs-5`}
+                        type="submit"
+                      >
+                        Procedi al pagamento
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
