@@ -5,9 +5,43 @@
     overflow: hidden;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.199);
     transition-duration: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    img {
+        max-width: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
     &:hover {
         box-shadow: 1px 1px 10px 2px var(--fb-tertiary-light);
+    }
+
+    .card_license {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .card_title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+    }
+
+    .card_promo {
+        color: var(--fb-primary);
+        font-weight: 700;
+    }
+
+    .card_total {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--fb-accent);
+        margin: 0.5rem 1rem;
     }
 
 }

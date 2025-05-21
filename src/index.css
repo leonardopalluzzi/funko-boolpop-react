@@ -258,28 +258,6 @@ body::before {
   }
 }
 
-.card {
-  height: 100%;
-  transition-duration: 0.5s;
-
-  .card-title {
-    height: 60px;
-    font-size: 1.1rem;
-  }
-
-  .text-price {
-    color: var(--fb-text);
-  }
-
-  .text-promo {
-    color: var(--fb-tertiary);
-  }
-
-  .text-old-price {
-    color: var(--fb-text);
-  }
-}
-
 .btn_chart {
   background-color: var(--fb-darker);
   color: var(--fb-background);
@@ -314,13 +292,6 @@ body::before {
   border-radius: 20px;
 }
 
-.price_label_card {
-  padding: 1rem;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 1.3rem;
-}
-
 .cart_label {
   color: var(--fb-text-light);
   font-size: 0.7rem;
@@ -339,6 +310,8 @@ body::before {
   transform: translate(50%);
 }
 
+
+/* da cambiare !!!!!!!!! */
 td {
   max-width: 15%;
 }
