@@ -1,0 +1,10 @@
+#banner_middle {
+    background-color: var(--fb-tertiary-light);
+    background-image: url('/halftone.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: color-burn;
+    padding: 2rem 0;
+    margin: 8rem 0;
+    color: var(--fb-text-dark)
+}

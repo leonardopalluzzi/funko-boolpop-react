@@ -1,47 +1,40 @@
 export default function Footer() {
     return (
-        <>
-            <footer>
-
-                <div className="text-center py-3 text-light">
-                    &copy;2025 Team 2. All Rights Reserved
-                </div>
-
-                {/*<div className="container">
-                    <div className="col col-xl-12">
+        <footer className="mt-5">
+            <div className="container py-4">
+                <div className="row">
+                    <div className="col-md-4 mb-3 text-center text-md-start">
+                        <h5 className="mb-2">Funko Boolpop</h5>
+                        <p className="small">
+                            Il tuo shop di fiducia per Funko Pop! <br />
+                            Scopri le ultime novità, offerte e collezioni esclusive.
+                        </p>
+                    </div>
+                    <div className="col-md-4 mb-3 text-center">
+                        <h6 className="mb-2">Contatti</h6>
+                        <p className="mb-1 small">Email: info@funkoboolpop.it</p>
+                        <p className="mb-1 small">Tel: +39 0123 456789</p>
                         <div>
-                            <ul className="nav justify-content-start flex-column ">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        Saperne di più
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        Contattaci
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        FunkoInfo
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        Lavora con noi
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        Scegli il tuo Funko
-                                    </a>
-                                </li>
-                            </ul>
+                            <a href="#" className="me-2 text-light"><i className="bi bi-facebook"></i></a>
+                            <a href="#" className="me-2 text-light"><i className="bi bi-instagram"></i></a>
+                            <a href="#" className="text-light"><i className="bi bi-twitter-x"></i></a>
                         </div>
                     </div>
-                </div>*/}
-
-            </footer>
-        </>
+                    <div className="col-md-4 mb-3 text-center text-md-end">
+                        <h6 className="mb-2">Link utili</h6>
+                        <ul className="list-unstyled small">
+                            <li><a href="/about" className="text-light text-decoration-none">Chi siamo</a></li>
+                            <li><a href="/faq" className="text-light text-decoration-none">FAQ</a></li>
+                            <li><a href="/contatti" className="text-light text-decoration-none">Contattaci</a></li>
+                            <li><a href="/privacy" className="text-light text-decoration-none">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr className="border-light" />
+                <div className="text-center text-light small">
+                    &copy;2025 Funko Boolpop. Tutti i diritti riservati.
+                </div>
+            </div>
+        </footer>
     );
 }

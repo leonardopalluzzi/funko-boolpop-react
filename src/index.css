@@ -618,7 +618,7 @@ header {
    ======================= */
 footer {
   /*background-color: var(--darker);*/
-  background-color: var(--fb-primary);
+  background-color: var(--fb-background-dark);
   overflow: hidden;
   background-image: url("/halftone.svg");
   background-size: cover;
@@ -702,6 +702,10 @@ footer {
 
   .jumbo_slide {
     height: 60vh;
+
+    .jumbo-title {
+      font-size: 3rem;
+    }
   }
 
   .cart-offcanvas {
@@ -724,10 +728,6 @@ footer {
 }
 
 @media screen and (min-width: 1440px) {
-  .jumbo-title {
-    font-size: 2.5rem;
-  }
-
   .jumbo_slide {
     height: 80vh;
   }

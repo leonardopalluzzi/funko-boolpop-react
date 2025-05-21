@@ -6,7 +6,7 @@
     font-size: 35px;
     border: none;
     border-radius: 50%;
-    background-color: var(--fb-darker);
+    background-color: var(--fb-primary);
     color: white;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -15,9 +15,9 @@
 }
 
 .chatbot_button:hover {
-    background-color: var(--fb-primary);
+    background-color: var(--fb-tertiary);
     transform: scale(1.1);
-    color: var(--text-light)
+    color: var(--fb-accent)
 }
 
 .chatbot_content {
@@ -43,11 +43,11 @@
 
 a {
     text-decoration: none;
-    color: var(--fb-text);
+    color: var(--fb-text-dark);
     transition-duration: 0.5s;
 
     &:hover {
-        color: var(--fb-primary);
+        color: var(--fb-tertiary);
     }
 
     ul {
@@ -63,7 +63,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--fb-darker);
+    background-color: var(--fb-primary);
     color: var(--fb-text-light);
     padding: 16px 16px;
     border-top-left-radius: 20px;
@@ -83,6 +83,7 @@ a {
     padding: 16px;
     overflow-y: auto;
     margin-bottom: 80px;
+    color: var(--fb-text-dark);
 
 }
 
@@ -94,9 +95,8 @@ a {
     border-radius: 20px;
     padding: 0.25rem 1rem;
     padding-right: 50px;
-
     resize: none;
-    border: 1px solid #ddd;
+    border: none;
 }
 
 .form_chat {
@@ -121,9 +121,10 @@ a {
     right: 10px;
     padding: 10px 16px;
     border-radius: 20px;
-    background-color: var(--fb-darker);
+    background-color: var(--fb-accent);
     color: white;
     border: none;
+    transition-duration: 0.5s;
 }
 
 .btn_chat:hover {
@@ -132,7 +133,7 @@ a {
 }
 
 .sent_text {
-    border: solid 0.50px var(--fb-darker);
+    border: solid 0.50px var(--fb-accent);
     border-radius: 20px;
     padding: 0.75rem 1rem;
     margin: 0.75rem 0;

@@ -1,4 +1,4 @@
-import CardUi from "./Card.ui";
+import CardUi from "./CardUi/Card.ui";
 export default function GridLayout({ products }) {
   if (!products || !products.results) {
     return (
