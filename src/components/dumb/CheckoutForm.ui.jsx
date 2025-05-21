@@ -13,7 +13,8 @@ export default function CheckoutFormUi({
 }) {
   return (
     <>
-      <div className="container app-layout">
+      <div className="container my-5 text-dark">
+        <h1>Insert your shipping data</h1>
         <form
           method="POST"
           onSubmit={(e) => {
@@ -318,7 +319,7 @@ export default function CheckoutFormUi({
           )}
           <button
             type="submit"
-            className={`${styles.btn_proceed} btn  ms-2 mt-3 mb-3`}
+            className={`${styles.btn_proceed} btn my-4`}
           >
             Procedi al pagamento
           </button>

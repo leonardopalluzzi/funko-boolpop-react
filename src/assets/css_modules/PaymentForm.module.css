@@ -1,5 +1,5 @@
 .btn_pay {
-  background-color: var(--fb-darker);
+  background-color: var(--fb-background-dark);
   color: var(--fb-text-light);
   border-color: transparent;
 }

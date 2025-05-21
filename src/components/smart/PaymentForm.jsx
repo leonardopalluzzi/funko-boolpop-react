@@ -148,7 +148,7 @@ export default function PaymentForm() {
     case "success":
       return (
         <>
-          <div className="container my-5">
+          <div className="container my-5 text-dark">
             <div className="cart_summary text-center my-5">
               <h1>Riepilogo Carrello</h1>
               <div className="container">

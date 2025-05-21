@@ -1,11 +1,11 @@
 .btn_checkout {
 
-    background-color: var(--fb-darker);
+    background-color: var(--fb-background-dark);
     color: var(--fb-text-light);
 
 }
 
 .btn_checkout:hover {
-    background-color: var(--fb-tertiary);
+    background-color: var(--fb-accent);
     color: var(--fb-darker);
 }

@@ -61,7 +61,7 @@ export default function SuccessCheckout() {
     case "loading":
       return (
         <>
-          <div className="container text-center my-5">
+          <div className="container text-center text-dark my-5">
             <h1>Abbiamo ricevuto correttamente il tuo ordine!</h1>
             <div>
               <i class="bi bi-check-circle text-success fs-1"></i>
@@ -79,7 +79,7 @@ export default function SuccessCheckout() {
     case "success":
       return (
         <>
-          <div className="container text-center my-5">
+          <div className="container text-center text-dark my-5">
             <h1>Abbiamo ricevuto correttamente il tuo ordine!</h1>
             <div>
               <i class="bi bi-check-circle text-success fs-1"></i>

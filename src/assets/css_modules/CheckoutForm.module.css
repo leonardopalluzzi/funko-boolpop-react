@@ -1,6 +1,6 @@
 .btn_proceed {
-  background-color: var(--fb-darker);
-  color: var(--text-light);
+  background-color: var(--fb-background-dark);
+  color: var(--fb-text-light);
 }
 
 .btn_proceed:hover {

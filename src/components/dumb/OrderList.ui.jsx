@@ -23,7 +23,7 @@ export default function OrderListUi({ orderList }) {
         case 'success':
             return (
                 <>
-                    <ul className="list-unstyled w-100 order_bg">
+                    <ul className="list-unstyled w-100 text-dark">
                         {orderList.data.map(item => (
                             <>
                                 <li className="order">
@@ -42,7 +42,7 @@ export default function OrderListUi({ orderList }) {
                                                             <span className="text-secondary price_original">
                                                                 <del>{item.price}€</del>
                                                             </span>
-                                                            <span className="price_label_card text-dark price_discount">
+                                                            <span className="fs-5 mx-2 text-dark ">
                                                                 {
                                                                     (item.price * item.promotion[0].discount / 100).toFixed(2)
                                                                 }€
@@ -51,7 +51,7 @@ export default function OrderListUi({ orderList }) {
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <label className="price_label_card">
+                                                        <label className="fs-5 mx-2 text-dark ">
                                                             {item.price}€
                                                         </label>
                                                     </>
