@@ -9,7 +9,7 @@ export default function HomeCarousels() {
     state: "loading",
   });
 
-  const promotionToDisplay = 'Summer-Sale'
+  const promotionToDisplay = 'Summer Sale'
 
   const [bannerProd, setBannerProd] = useState({
     state: 'loading'
@@ -18,7 +18,6 @@ export default function HomeCarousels() {
   const [limit, setLimit] = useState(4); // definisce il numero di elementi ricevuti dal db
   const [pageTrans, setPageTrans] = useState(1); //definisce il numero della pagina visualizzata
   const [pageDate, setPageDate] = useState(1); //definisce il numero della pagina visualizzata
-
 
   useEffect(() => {
     Promise.all([
@@ -45,9 +44,13 @@ export default function HomeCarousels() {
       });
   }, [pageTrans, pageDate]);
 
+
+
   // fetch per bannerino
   useEffect(() => {
-    fetch(`http:localhost:3000/api/v1/funkoboolpop?promotion=${promotionToDisplay}&limit=5`)
+    console.log('useeffect');
+
+    fetch(`http://localhost:3000/api/v1/funkoboolpop?promotion=${promotionToDisplay}&limit=5`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -55,16 +58,18 @@ export default function HomeCarousels() {
           state: 'success',
           data: data
         })
-          .catch(err => {
-            console.error(err)
-            setBannerProd({
-              state: 'error',
-              message: err.message
-            })
-          })
-
+      })
+      .catch(err => {
+        console.error(err)
+        setBannerProd({
+          state: 'error',
+          message: err.message
+        })
       })
   }, [])
+
+
+
 
   switch (products.state) {
     case "loading":
@@ -83,24 +88,6 @@ export default function HomeCarousels() {
               />
             </div>
           </div>
-          {
-            bannerProd.state == 'loading' && (<> <Loader /></>)
-          }
-          {
-            bannerProd.state == 'erorr' && (
-              <>
-                <h1>{bannerProd.state}</h1>
-                <p>{bannerProd.message}</p>
-              </>
-            )
-          }
-          {
-            bannerProd.state == 'success' && (<> <BannerMiddleUi contentLeft={'Discover our latest promotion!'} contentRight={bannerProd} /></>)
-          }
-
-
-
-
           <div className="container-fluid">
             {/*  ultimi arrivi */}
             <div className="my-5">
@@ -147,7 +134,20 @@ export default function HomeCarousels() {
           </div>
 
 
-          <BannerMiddleUi />
+          {
+            bannerProd.state == 'loading' && (<> <Loader /></>)
+          }
+          {
+            bannerProd.state == 'error' && (
+              <>
+                <h1>{bannerProd.state}</h1>
+                <p>{bannerProd.message}</p>
+              </>
+            )
+          }
+          {
+            bannerProd.state == 'success' && (<> <BannerMiddleUi contentLeft={'Discover our latest Promotion'} contentRight={bannerProd} /></>)
+          }
 
 
           <div className="container-fluid">

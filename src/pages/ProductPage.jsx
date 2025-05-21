@@ -123,11 +123,11 @@ export default function ProductPage() {
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <label htmlFor="">{funko.result.license.toUpperCase()}</label>
+                                    <label htmlFor="">{funko.result.license?.toUpperCase()}</label>
                                     <h2 className="mb-2">{funko.result.name}</h2>
                                     <div className="price_section">
                                         <div>
-                                            {funko.result.promotion.length > 0 ? (
+                                            {funko.result.promotion?.length > 0 ? (
                                                 <>
                                                     <label>
                                                         <span className="text-secondary fs-5">

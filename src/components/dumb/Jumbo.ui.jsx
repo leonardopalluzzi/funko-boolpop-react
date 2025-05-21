@@ -4,7 +4,6 @@ import AutoCarouselUi from './AutoCarouosel.ui'
 export default function JumboUi({ productList, slideIndex, setIndex }) {
 
     const navigate = useNavigate()
-    const images = productList.map(item => item.banner)
 
     return (
         <>

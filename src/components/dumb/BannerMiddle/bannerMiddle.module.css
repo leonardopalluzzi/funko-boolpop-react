@@ -8,3 +8,23 @@
     margin: 8rem 0;
     color: var(--fb-text-dark)
 }
+
+.banner_title {
+    font-size: 3rem;
+    font-weight: 700;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.banner_img {
+    max-width: 100%;
+}
+
+.card_banner {
+    position: absolute;
+    width: 45%;
+    height: auto;
+    aspect-ratio: 1;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.397);
+}
