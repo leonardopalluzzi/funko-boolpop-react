@@ -10,6 +10,7 @@ import { PaymentProvider } from "./contexts/paymentContext"
 import SuccessCheckout from "./pages/SuccessCheckout"
 import SearchResult from "./pages/SearchResult"
 import { FiltersProvider } from "./contexts/filtersContext"
+import Collections from "./pages/Collections"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route Component={DefaultLayout}>
               <Route path="/" Component={Home} />
+              <Route path="/collections" Component={Collections} />
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
               <Route path="/success-checkout" Component={SuccessCheckout} />

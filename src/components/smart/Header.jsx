@@ -32,8 +32,13 @@ export default function Header({ setCartOpen }) {
               id="collapsibleNavId"
             >
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
+                <Link to={'/'} className="nav-item text-white mx-4">
+                  Home
+                </Link>
+                <Link to={'/collections'} className="nav-item text-white">
+                  Collections
+                </Link>
               </div>
-
               <Link
                 onClick={() => setCartOpen(true)}
                 className="mx-4 text-white fs-4 position-relative"
