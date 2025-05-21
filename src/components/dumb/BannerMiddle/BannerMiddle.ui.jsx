@@ -38,7 +38,6 @@ export default function BannerMiddleUi({ contentLeft, contentRight }) {
                                         }
                                     </div>
                                 </div>
-
                             </div>
                             <div className='w-100 text-center'>
                                 <button onClick={() => navigate(`/search-result?searchOnly=true&promotion=${contentRight.data.results[0].promotions[0].name}`)} className='btn btn-dark'>Shop Now!</button>
