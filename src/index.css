@@ -608,6 +608,29 @@ header {
   transition-duration: 1s;
 }
 
+/* #region banner bot  */
+.banner_bot {
+  background-color: var(--fb-primary);
+  height: 100%;
+  padding: 2rem 0;
+
+  h4 {
+    color: var(--fb-text-dark);
+    font-weight: 500;
+  }
+
+  .bi-robot {
+    font-size: 7rem;
+  }
+
+  h2 {
+    font-weight: 800;
+  }
+}
+
+
+/* #endregion banner bot  */
+
 /* =======================
    MAIN
    ======================= */
