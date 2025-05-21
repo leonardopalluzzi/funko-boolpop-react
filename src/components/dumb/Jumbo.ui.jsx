@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import AutoCarouselUi from './AutoCarouosel.ui'
 
 export default function JumboUi({ productList, slideIndex, setIndex }) {
 
     const navigate = useNavigate()
+    const images = productList.map(item => item.banner)
 
     return (
         <>
@@ -16,6 +18,7 @@ export default function JumboUi({ productList, slideIndex, setIndex }) {
                     </div>
                     <div className="col col-lg-8">
                         <div className="img_jumbo_container">
+                            {/* <AutoCarouselUi images={images} /> */}
                             <img className="jumbo_img" src={`http://localhost:3000/${productList[slideIndex].banner}`} alt="" />
                         </div>
                     </div>
