@@ -40,7 +40,7 @@ export default function Jumbo() {
         setCurrentIndex((prevIndex) =>
           prevIndex === funkos.data.results.length - 1 ? 0 : prevIndex + 1
         );
-      }, 10000);
+      }, 4000);
 
       return () => clearInterval(timer);
     }

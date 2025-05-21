@@ -1,5 +1,6 @@
 import Jumbo from "../components/smart/Jumbo";
 import HomeCarousels from "../components/smart/HomeCarousels";
+import PromoBanner from "../components/smart/PromoBanner";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <Jumbo />
 
       <main className="">
+        <PromoBanner />
         <HomeCarousels />
 
       </main>

@@ -1,0 +1,47 @@
+#promo_banner {
+    color: var(--fb-text);
+    background-color: var(--fb-background-dark);
+    padding: 2rem 0;
+}
+
+.card_custom {
+    margin: auto;
+    width: 70%;
+}
+
+@media screen and (min-width: 575px) {
+    .card_custom {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card_custom {
+        width: 50%;
+        margin: 0;
+    }
+
+    .info {
+        h1 {
+            text-align: left;
+        }
+    }
+
+    .card_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .card_custom {
+        width: 35%;
+    }
+
+    .info {
+        h1 {
+            font-size: 3.5rem;
+        }
+    }
+}

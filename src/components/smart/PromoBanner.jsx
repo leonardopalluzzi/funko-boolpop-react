@@ -1,0 +1,53 @@
+import Loader from "../dumb/Loader.ui"
+import PromoBannerUi from "../dumb/PromoBanner/PromoBanner.ui"
+import { useEffect, useState } from "react"
+
+export default function PromoBanner() {
+
+    const categoryToDisplay = 'POP!'
+
+    const [products, setProducts] = useState({
+        state: 'loading'
+    })
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/v1/funkoboolpop?category=${categoryToDisplay}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setProducts({
+                    state: 'success',
+                    data: data
+                })
+            })
+            .catch(err => {
+                console.error(err)
+                setProducts({
+                    state: 'error',
+                    message: err.message
+                })
+            })
+    }, [])
+
+    switch (products.state) {
+        case 'laoding':
+            return (
+                <>
+                    <Loader />
+                </>
+            )
+        case 'error':
+            return (
+                <>
+                    <h1>{products.state}</h1>
+                    <p>{products.message}</p>
+                </>
+            )
+        case 'success':
+            return (
+                <>
+                    <PromoBannerUi products={products.data} />
+                </>
+            )
+    }
+}
