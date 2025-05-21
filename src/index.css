@@ -295,7 +295,7 @@ body::before {
 .cart_label {
   color: var(--fb-text-light);
   font-size: 0.7rem;
-  background-color: var(--fb-darker);
+  background-color: var(--fb-primary);
   padding: 0.2rem;
   width: 20px;
   height: 20px;

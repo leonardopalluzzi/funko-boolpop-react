@@ -26,7 +26,7 @@ export default function CardUi({ images, name, price, license, promotions, slug 
                                         <>
                                             <label>
                                                 <div className={style.card_promo}>{promotions[0].name}</div>
-                                                <span className="fs-5 text-old-price">
+                                                <span className={`${style.card_old_price} text-old-price`}>
                                                     <del>{price}€</del>
                                                 </span>
                                                 <span className={style.card_total}>
