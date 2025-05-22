@@ -15,7 +15,6 @@ export default function CollecitonPage() {
     const [page, setPage] = useState(1)
 
     useEffect(() => {
-
         Promise.all([
             fetch(`http://localhost:3000/api/v1/funkoboolpop?license=${id}&limit=${limit}&page=${page}`).then(res => res.json()),
             fetch(`http://localhost:3000/api/v1/funkoboolpop?getLicense=true`).then(res => res.json())
@@ -25,7 +24,7 @@ export default function CollecitonPage() {
                 setPop({
                     state: 'success',
                     data: data[0],
-                    banner: data[1]
+                    banner: data[1].results.find(item => item.id == id)
                 })
             })
             .catch(err => {
@@ -34,7 +33,6 @@ export default function CollecitonPage() {
                     message: err.message
                 })
             })
-
     }, [])
 
 
