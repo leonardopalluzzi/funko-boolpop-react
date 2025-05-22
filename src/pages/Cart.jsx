@@ -100,10 +100,10 @@ export default function Cart() {
                       </div>
                       {/* END MOBILE */}
                       <td className={`${styles.table_body} ${styles.td_promo}`}>
-                        {item.promotion.length > 0 ? (
+                        {item.promotions.length > 0 ? (
                           <>
-                            <span>{item.promotion[0].name}: </span>
-                            <span>{item.promotion[0].discount}%</span>
+                            <span>{item.promotions[0].name}: </span>
+                            <span>{item.promotions[0].discount}%</span>
                           </>
                         ) : (
                           <>Nessuna promozione trovata</>
@@ -133,12 +133,12 @@ export default function Cart() {
                         {/* <p className={styles.add_message}>{cart.message}</p> */}
                       </td>
                       <td className={`${styles.table_body} ${styles.desktop}`}>
-                        {item.promotion.length > 0 ? (
+                        {item.promotions.length > 0 ? (
                           <>
                             <label>
                               <span className="price_label_card text-success">
                                 {(
-                                  (item.price * item.promotion[0].discount) /
+                                  (item.price * item.promotions[0].discount) /
                                   100
                                 ).toFixed(2)}{" "}
                                 €
@@ -183,12 +183,12 @@ export default function Cart() {
                         <td
                           className={`${styles.table_body} ${styles.price_tag}`}
                         >
-                          {item.promotion.length > 0 ? (
+                          {item.promotions.length > 0 ? (
                             <>
                               <label>
                                 <span className="price_label_card text-success">
                                   {(
-                                    (item.price * item.promotion[0].discount) /
+                                    (item.price * item.promotions[0].discount) /
                                     100
                                   ).toFixed(2)}{" "}
                                   €
