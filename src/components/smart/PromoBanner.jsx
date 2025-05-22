@@ -4,14 +4,14 @@ import { useEffect, useState } from "react"
 
 export default function PromoBanner() {
 
-    const categoryToDisplay = 'POP!'
+    const categoryToDisplay = 6
 
     const [products, setProducts] = useState({
         state: 'loading'
     })
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkoboolpop?category=${categoryToDisplay}&limit=5`)
+        fetch(`http://localhost:3000/api/v1/funkoboolpop?license=${categoryToDisplay}&limit=5`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

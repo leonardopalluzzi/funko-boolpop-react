@@ -11,6 +11,7 @@ import SuccessCheckout from "./pages/SuccessCheckout"
 import SearchResult from "./pages/SearchResult"
 import { FiltersProvider } from "./contexts/filtersContext"
 import Collections from "./pages/Collections"
+import CollecitonPage from "./pages/CollectionPage"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route Component={DefaultLayout}>
               <Route path="/" Component={Home} />
               <Route path="/collections" Component={Collections} />
+              <Route path="/collection/:id" Component={CollecitonPage} />
               <Route path="/:slug" Component={ProductPage} />
               <Route path="/cart" Component={Cart} />
               <Route path="/success-checkout" Component={SuccessCheckout} />
