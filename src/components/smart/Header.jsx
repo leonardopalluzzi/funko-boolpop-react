@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useCartContext } from "../../contexts/cartContext";
@@ -32,12 +32,12 @@ export default function Header({ setCartOpen }) {
               id="collapsibleNavId"
             >
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
-                <Link to={'/'} className="nav-item text-white mx-4">
+                <NavLink to={'/'} className="nav-item text-white mx-4">
                   Home
-                </Link>
-                <Link to={'/collections'} className="nav-item text-white">
+                </NavLink>
+                <NavLink to={'/collections'} className="nav-item text-white">
                   Collections
-                </Link>
+                </NavLink>
               </div>
               <Link
                 onClick={() => setCartOpen(true)}

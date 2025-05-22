@@ -48,3 +48,15 @@
         box-shadow: 0 0 5px 1px var(--fb-tertiary);
     }
 }
+
+@media screen and (min-width: 768px) {
+    #collection_banner {
+        height: 50vh;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #collection_banner {
+        height: 60vh;
+    }
+}

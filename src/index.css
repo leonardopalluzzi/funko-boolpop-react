@@ -277,13 +277,14 @@ body::before {
 
 .price_section {
   margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
 }
 
 .price_label {
   padding: 1rem;
   border: 1px solid var(--fb-accent);
   border-radius: 20px;
-  margin-bottom: 3rem;
   font-weight: 700;
   font-size: 2rem;
 }
