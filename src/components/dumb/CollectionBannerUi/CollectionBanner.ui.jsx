@@ -20,7 +20,7 @@ export default function CollectionBannerUi({ product, banner }) {
                         <div className="col-12 col-4 my-4">
                             <p className={style.parag}>DISCOVER OUR {product.results[0].license.name.toUpperCase()} COLLECTION</p>
                             <h2 className={style.title}>{product.results[0].license.name}</h2>
-                            <button className='btn btn-light'>Show Collection</button>
+                            <button onClick={() => navigate(`/collection/${product.results[0].license.id}`)} className='btn btn-light'>Show Collection</button>
                         </div>
                         <div className="col-12 col-7">
                             <div className={`d-flex ${style.card_stack} position-relative`} style={{ gap: 0 }}>
