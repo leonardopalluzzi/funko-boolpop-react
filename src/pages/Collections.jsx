@@ -47,7 +47,7 @@ export default function Collections() {
                     {
                         licenses.data.results.map(item => (
                             <>
-                                <CollectionBanner licenseId={item.id} />
+                                <CollectionBanner licenseId={item.id} banner={item.image} />
                             </>
                         ))
                     }

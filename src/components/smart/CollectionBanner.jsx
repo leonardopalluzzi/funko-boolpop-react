@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Loader from "../dumb/Loader.ui"
 import CollectionBannerUi from "../dumb/CollectionBannerUi/CollectionBanner.ui"
 
-export default function CollectionBanner({ licenseId }) {
+export default function CollectionBanner({ licenseId, banner }) {
 
     const [products, setProducts] = useState({
         state: 'loading'
@@ -44,10 +44,20 @@ export default function CollectionBanner({ licenseId }) {
                 </>
             )
         case 'success':
-            return (
-                <>
-                    <CollectionBannerUi product={products.data} />
-                </>
-            )
+
+            switch (products.data.results.length > 0) {
+                case true:
+                    return (
+                        <>
+                            <CollectionBannerUi product={products.data} banner={banner} />
+                        </>
+                    )
+                case false:
+                    return (
+                        <>
+
+                        </>
+                    )
+            }
     }
 }
