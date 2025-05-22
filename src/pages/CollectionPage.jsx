@@ -5,7 +5,9 @@ import CollectioPageUi from "../components/dumb/CollectionPageUi/CollectionPage.
 
 export default function CollecitonPage() {
 
-    const { slug } = useParams()
+    const { id } = useParams()
+    console.log(id);
+
     const [pop, setPop] = useState({
         state: 'loading'
     })
@@ -13,12 +15,17 @@ export default function CollecitonPage() {
     const [page, setPage] = useState(1)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/funkopop?license=${slug}&limit=${limit}&page=${page}`)
-            .then(res => res.json())
+
+        Promise.all([
+            fetch(`http://localhost:3000/api/v1/funkoboolpop?license=${id}&limit=${limit}&page=${page}`).then(res => res.json()),
+            fetch(`http://localhost:3000/api/v1/funkoboolpop?getLicense=true`).then(res => res.json())
+        ])
             .then(data => {
+                console.log(data);
                 setPop({
                     state: 'success',
-                    data: data
+                    data: data[0],
+                    banner: data[1]
                 })
             })
             .catch(err => {
@@ -27,6 +34,7 @@ export default function CollecitonPage() {
                     message: err.message
                 })
             })
+
     }, [])
 
 
