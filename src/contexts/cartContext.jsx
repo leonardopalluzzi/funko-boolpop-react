@@ -47,7 +47,7 @@ function CartProvider({ children }) {
   }
 
   function handleCart(newItem, totalQuantity) {
-    console.log(cart.userCart);
+    console.log(newItem);
 
     //controlla inizialmente se la quantita e 0
     if (newItem.quantity == 0) {
@@ -87,6 +87,8 @@ function CartProvider({ children }) {
         userCart: [...cart.userCart, itemToPush],
       });
     }
+    console.log(cart.userCart);
+
   }
 
   function deleteFromCart(itemToDelete) {

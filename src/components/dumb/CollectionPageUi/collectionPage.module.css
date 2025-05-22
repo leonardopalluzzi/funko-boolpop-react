@@ -1,0 +1,37 @@
+#collection_banner {
+    height: 40vh;
+    width: 100%;
+    position: relative;
+}
+
+.banner_title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--fb-text-light);
+    text-shadow: 5px 5px 5px var(--fb-background-dark);
+    z-index: 2;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.61);
+    /* Opacità regolabile */
+    z-index: 1;
+}
+
+.cards_container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--fb-text-dark);
+}
+
+.card_container {
+    width: 100%;
+    border: 1px solid var(--fb-tertiary);
+    border-radius: 20px;
+    padding: 3rem;
+}

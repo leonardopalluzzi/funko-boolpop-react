@@ -1,50 +1,57 @@
-import style from '../CollectionBannerUi/collectionBanner.module.css'
+import style from './collectionPage.module.css'
+import CardUi from '../CardUi/Card.ui';
 
 export default function CollectioPageUi({ pops, setLimit, setPage }) {
     console.log(pops);
 
     return (
         <>
-            <div class="row align-items-md-stretch">
-                <div class="col-md-6">
-                    <div
-                        class="h-100 p-5 text-white bg-primary border rounded-3"
-                    >
+            <section>
 
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div
-                        class="h-100 p-5 bg-primary border rounded-3"
-                    >
-                        <div className="col-12 col-7">
-                            <div className={`d-flex ${style.card_stack} position-relative`} style={{ gap: 0 }}>
-                                {
-                                    pops.data.results.map((item, i) => (
-                                        <div
-                                            onClick={() => navigate(`/${item.slug}`)}
-                                            key={i}
-                                            style={{
-                                                '--i': i,
-                                                '--rotate': `${(i - pops.data.results.length / 2) * 4}deg`
-                                            }}
+                {/* banner  */}
+                <div
+                    id={style.collection_banner}
+                    style={{
+                        backgroundImage: `url(http://localhost:3000/banner/${pops.banner.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}>
+                    <div className={style.overlay}></div>
+                    <div className="container-fluid h-100 d-flex align-items-center  justify-content-center">
+                        <h1 className={style.banner_title}>{pops.banner.name}</h1>
+                    </div >
+                </div >
 
-                                            className={`${style.card_banner} card overflow-hidden bg-white rounded-3`}
-                                        >
-                                            <div className={`${style.card_header} card-header bg-white border-0 position-relative h-100`}>
-                                                <img className={style.banner_img} src={`http://localhost:3000/${item.images[0].image}`} alt='' />
+                {/* lista cards  */}
+                <div className="container py-5">
+                    <div className={style.cards_container}>
+                        {
+                            pops.data.results.map(item => (
+                                <>
+                                    <div className={style.card_container}>
+                                        <div className='row row-cols-1 row-cols-md-2'>
+                                            <div className="col-12 col-md-3">
+                                                <CardUi images={item.images} name={item.name} price={item.price} license={item.license} promotions={item.promotions} slug={item.slug} />
+
+                                            </div>
+                                            <div className='col-12 col-md-7'>
+                                                <p className='p-5 border rounded rounded-5'>{item.description}</p>
+                                                <h5 className='mt-4'>INFORMATIONS</h5>
+                                                <ul className='list-unstyled'>
+                                                    <li className='ms-4'><strong>CATEGORY: </strong>{item.category[0].name}</li>
+                                                    <li className='ms-4'><strong>ATTRIBUTES: </strong>{item.attributes.map(att => (<>{att.name.toUpperCase()}, </>))}</li>
+                                                </ul>
                                             </div>
                                         </div>
-                                    ))
-                                }
-                            </div>
-
-
-                        </div>
+                                    </div>
+                                </>
+                            ))
+                        }
                     </div>
                 </div>
-            </div>
 
+
+            </section>
         </>
     )
 }

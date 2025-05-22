@@ -77,16 +77,16 @@ export default function CartHover({ onClose }) {
                               {truncateText(item.name, 10)}
                             </td>
                             <td className="cart_hover_display">
-                              {item.promotion.length > 0 ? (
+                              {item.promotions.length > 0 ? (
                                 <>
-                                  <span>{item.promotion[0].discount}%</span>
+                                  <span>{item.promotions[0].discount}%</span>
                                 </>
                               ) : (
                                 <>Nessuna promozione trovata</>
                               )}
                             </td>
                             <td>
-                              {item.promotion.length > 0 ? (
+                              {item.promotions.length > 0 ? (
                                 <>
                                   <label>
                                     <span
@@ -94,7 +94,7 @@ export default function CartHover({ onClose }) {
                                     >
                                       {(
                                         (item.price *
-                                          item.promotion[0].discount) /
+                                          item.promotions[0].discount) /
                                         100
                                       ).toFixed(2)}
                                       {""}€
