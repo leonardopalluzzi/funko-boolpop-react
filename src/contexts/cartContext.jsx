@@ -33,7 +33,7 @@ function CartProvider({ children }) {
           ? Number(item.promotions[0].discount)
           : 0;
       const quantity = Number(item.cartQuantity);
-      const promo = ((basePrice * discount) / 100)
+      const promo = (basePrice * discount) / 100
       let price = (basePrice - promo) * quantity;
 
       return Number(price);
