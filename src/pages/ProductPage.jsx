@@ -127,7 +127,7 @@ export default function ProductPage() {
                                     <h2 className="mb-2 prod_title">{funko.result.name}</h2>
                                     <div className="price_section">
                                         <div>
-                                            {funko.result.promotion?.length > 0 ? (
+                                            {funko.result.promotions?.length > 0 ? (
                                                 <>
                                                     <label>
                                                         <span className="text-secondary fs-5">
@@ -135,9 +135,9 @@ export default function ProductPage() {
                                                         </span>
                                                         <span className={`${styles.price_label} mx-3`}>
                                                             {(
-                                                                (funko.result.price *
-                                                                    funko.result.promotion[0].discount) /
-                                                                100
+                                                                (funko.result.price - (funko.result.price *
+                                                                    funko.result.promotions[0].discount) /
+                                                                    100)
                                                             ).toFixed(2)}{" "}
                                                             €
                                                         </span>

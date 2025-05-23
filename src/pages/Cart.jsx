@@ -138,8 +138,8 @@ export default function Cart() {
                             <label>
                               <span className="price_label_card text-success">
                                 {(
-                                  (item.price * item.promotions[0].discount) /
-                                  100
+                                  (item.price - (item.price * item.promotions[0].discount) /
+                                    100)
                                 ).toFixed(2)}{" "}
                                 €
                               </span>
@@ -188,8 +188,8 @@ export default function Cart() {
                               <label>
                                 <span className="price_label_card text-success">
                                   {(
-                                    (item.price * item.promotions[0].discount) /
-                                    100
+                                    (item.price - (item.price * item.promotions[0].discount) /
+                                      100)
                                   ).toFixed(2)}{" "}
                                   €
                                 </span>

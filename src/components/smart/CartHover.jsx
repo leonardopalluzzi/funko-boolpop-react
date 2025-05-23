@@ -93,11 +93,11 @@ export default function CartHover({ onClose }) {
                                       className={`${styles.price_tag_hover} price_label_card text-success fs-6`}
                                     >
                                       {(
-                                        (item.price *
+                                        (item.price - (item.price *
                                           item.promotions[0].discount) /
-                                        100
+                                          100)
                                       ).toFixed(2)}
-                                      {""}€
+                                      {""} €
                                     </span>
                                   </label>
                                 </>

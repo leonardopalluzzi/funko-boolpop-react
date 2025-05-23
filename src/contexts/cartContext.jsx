@@ -29,12 +29,12 @@ function CartProvider({ children }) {
     const priceArr = currentItems.map((item) => {
       const basePrice = Number(item.price);
       const discount =
-        Array.isArray(item.promotion) && item.promotion.length > 0
-          ? Number(item.promotion[0].discount)
-          : 100;
+        Array.isArray(item.promotions) && item.promotions.length > 0
+          ? Number(item.promotions[0].discount)
+          : 0;
       const quantity = Number(item.cartQuantity);
-
-      let price = ((basePrice * discount) / 100) * quantity;
+      const promo = ((basePrice * discount) / 100)
+      let price = (basePrice - promo) * quantity;
 
       return Number(price);
     });

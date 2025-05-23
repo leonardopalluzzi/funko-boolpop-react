@@ -34,17 +34,17 @@ export default function OrderListUi({ orderList }) {
                                     <div className="order_col">X{item.cartQuantity}</div>
                                     <div className="order_col">
                                         {
-                                            item.promotion.length > 0 ?
+                                            item.promotions.length > 0 ?
                                                 (
                                                     <>
                                                         <label>
-                                                            <div className="fw-bold text-danger price">{item.promotion[0].name}</div>
+                                                            <div className="fw-bold text-danger price">{item.promotions[0].name}</div>
                                                             <span className="text-secondary price_original">
                                                                 <del>{item.price}€</del>
                                                             </span>
                                                             <span className="fs-5 mx-2 text-dark ">
                                                                 {
-                                                                    (item.price * item.promotion[0].discount / 100).toFixed(2)
+                                                                    (item.price - (item.price * item.promotions[0].discount / 100)).toFixed(2)
                                                                 }€
                                                             </span>
                                                         </label>

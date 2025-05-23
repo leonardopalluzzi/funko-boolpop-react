@@ -31,7 +31,7 @@ export default function CardUi({ images, name, price, license, promotions, slug 
                                                 </span>
                                                 <span className={style.card_total}>
                                                     {
-                                                        (price * promotions[0].discount / 100).toFixed(2)
+                                                        (price - (price * promotions[0].discount / 100)).toFixed(2)
                                                     }€
                                                 </span>
                                             </label>
