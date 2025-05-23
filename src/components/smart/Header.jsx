@@ -11,7 +11,7 @@ export default function Header({ setCartOpen }) {
   return (
     <>
       <header>
-        <nav className="navbar navbar-expand-sm position-static">
+        <nav className="navbar navbar-expand-sm navbar-dark position-static">
           <div className="container position-static">
             <Link to={"/"} className="navbar-brand">
               <img className="w-100" src="/logo.svg" alt="" />
@@ -28,16 +28,22 @@ export default function Header({ setCartOpen }) {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div
-              className="collapse navbar-collapse position-static"
+              className="collapse navbar-collapse"
               id="collapsibleNavId"
             >
               <div className="navbar-nav me-auto mt-2 mt-lg-0">
-                <NavLink to={'/'} className="nav-item text-white mx-4">
-                  Home
-                </NavLink>
-                <NavLink to={'/collections'} className="nav-item text-white">
-                  Collections
-                </NavLink>
+                <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+                  <li className="nav-item">
+                    <NavLink to={'/'} className="nav-item text-white mx-4">
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to={'/collections'} className="nav-item text-white">
+                      Collections
+                    </NavLink>
+                  </li>
+                </ul>
               </div>
               <Link
                 onClick={() => setCartOpen(true)}

@@ -104,7 +104,7 @@ export default function SearchBar({ page = 1, limit = 10, display }) {
             handleSearch={handleSearch}
             message={message}
           />
-          <p className={message !== '' ? `alert alert-danger position-absolute top-0 left-50` : 'd-none'}>{message}</p>
+          <p className={message !== '' ? `alert alert-danger alert_custom` : 'd-none'}>{message}</p>
           <div className={display == false ? 'd-block' : 'd-none'}>
 
             {filteredFunko.data.results && filteredFunko.data.results.length > 0 && resultsDisplay == true ? (<><SearchResultsUi emptyResearch={emptyResearch} results={filteredFunko.data.results} /></>) : (<></>)}

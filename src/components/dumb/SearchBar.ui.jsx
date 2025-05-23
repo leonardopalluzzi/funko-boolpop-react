@@ -1,5 +1,5 @@
 export default function SearchBarUi({ searchName, onchange, handleSearch }) {
- return (
+  return (
     <>
       <div>
         <form
@@ -15,6 +15,7 @@ export default function SearchBarUi({ searchName, onchange, handleSearch }) {
               className="form-control searchbar"
               type="text"
               placeholder="Cerca..."
+              aria-label="Search"
               name="name"
               value={searchName}
               onChange={(e) => onchange(e.target.name, e.target.value)}

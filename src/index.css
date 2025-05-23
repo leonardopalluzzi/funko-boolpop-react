@@ -76,6 +76,13 @@ body::before {
   background-color: var(--fb-background-dark);
 }
 
+.alert_custom {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 /*accordion*/
 .accordion_button {
   width: 100%;
@@ -577,13 +584,17 @@ header {
   background-blend-mode: overlay;
 
   .custom-btn {
-    background-color: var(--darker);
+    background-color: var(--fb-background-dark);
     color: white;
     border: none;
   }
 
+  .input-group {
+    min-width: 150px;
+  }
+
   .custom-btn:hover {
-    background-color: var(--tertiary);
+    background-color: var(--fb-primary);
     color: var(--darker);
   }
 
@@ -685,7 +696,7 @@ footer {
   font-weight: bold;
 
   a {
-    color: var(--accent);
+    color: var(--fb-accent);
   }
 }
 
