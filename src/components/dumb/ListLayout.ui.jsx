@@ -48,8 +48,8 @@ export default function ListLayout({ products }) {
                       </span>
                       <span className="price_label_card text-price fs-5">
                         {(
-                          (item.price * item.promotions[0].discount) /
-                          100
+                          (item.price - (item.price * item.promotions[0].discount) /
+                            100)
                         ).toFixed(2)}
                         €
                       </span>
